@@ -10,9 +10,11 @@ Every standard Schema Commons reads, extracted from the standard's own published
 | `camara-2025` (38 objects) | [github.com](https://github.com/camaraproject) | -- | [network-apis](https://github.com/api-commons/network-apis) |
 | `cap-1.2` (7 objects) | [docs.oasis-open.org](https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd) | [weather](https://github.com/api-commons/weather) | -- |
 | `dcat-us-1.1` (2 objects) | [github.com](https://github.com/project-open-data/project-open-data.github.io/tree/master/v1.1/schema) | [open-data-catalogs](https://github.com/api-commons/open-data-catalogs) | -- |
+| `oci-distribution-1.1` (1 objects) | [github.com](https://github.com/opencontainers/distribution-spec/tree/v1.1.1) | -- | [registry-protocol](https://github.com/api-commons/registry-protocol) |
 | `ocpi-2.2.1` (7 objects) | [github.com](https://github.com/ocpi/ocpi/tree/release-2.2.1-bugfixes) | [ev-charging](https://github.com/api-commons/ev-charging) | -- |
 | `otlp-1` (9 objects) | [github.com](https://github.com/open-telemetry/opentelemetry-proto) | [observability](https://github.com/api-commons/observability) | -- |
 | `reso-dd-2.0` (41 objects) | [github.com](https://github.com/RESOStandards/reso-tools/blob/main/reso-certification/tests/fixtures/commander/RESODataDictionary-2.0.xml) | [property-management](https://github.com/api-commons/property-management) | -- |
+| `stac-1.1` (11 objects) | [github.com](https://github.com/radiantearth/stac-api-spec/tree/v1.0.0) | -- | [imagery-catalogs](https://github.com/api-commons/imagery-catalogs) |
 
 ## Candidates
 

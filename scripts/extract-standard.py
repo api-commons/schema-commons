@@ -9,6 +9,7 @@ standard's published source (not from any provider's spec). One reader per sourc
   reso  OData EDMX (RESO Data Dictionary 2.0): entity type properties
   jsonschema  JSON Schema files, one object per file (DCAT-US 1.1)
   openapi  OpenAPI component schemas, allOf and $refs followed (CAMARA)
+  oci   OCI Distribution spec.md endpoint table: the standard's operations
 
 Usage: extract-standard.py <format> <out-name> <source-url> <file> [<file> ...]"""
 import re, sys
@@ -51,7 +52,24 @@ elif fmt == "jsonschema":
     import json
     for f in files:
         d = json.load(open(f))
-        objects[Path(f).stem.split("-")[-1]] = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
+        top = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
+        if top:
+            objects[Path(f).stem.split("-")[-1]] = top
+            continue
+        # No top-level properties (STAC): each definition is an object, with allOf parts and
+        # local #/definitions refs followed.
+        defs = d.get("definitions") or {}
+        def dprops(n, seen=()):
+            if "$ref" in n and n["$ref"].startswith("#/definitions/"):
+                r = n["$ref"].split("/")[-1]
+                return [] if r in seen else dprops(defs.get(r, {}), seen + (r,))
+            out = [k for k in (n.get("properties") or {})]
+            for part in (n.get("allOf") or []) + (n.get("oneOf") or []) + (n.get("anyOf") or []):
+                out += [k for k in dprops(part, seen) if k not in out]
+            return out
+        for k, n in defs.items():
+            if dprops(n):
+                objects[f"{Path(f).stem}.{k}"] = dprops(n)
 elif fmt == "openapi":
     # A standard published as OpenAPI (CAMARA): each component schema's properties, with
     # allOf parts and local $refs followed, so a request body lists what a caller sends.
@@ -69,15 +87,33 @@ elif fmt == "openapi":
         for k, s in schemas.items():
             if k not in objects and props(s):
                 objects[k] = props(s)
+elif fmt == "oci":
+    # OCI Distribution: the endpoint table in spec.md (end-1 ... end-13). The standard is its
+    # operations; request and response bodies are image-spec documents, not objects here.
+    ops = []
+    for f in files:
+        for m in re.finditer(r"^\|\s*(end-\w+)\s*\|\s*([^|]+)\|\s*`([^`]+)`", Path(f).read_text(), re.M):
+            for method in re.findall(r"`(\w+)`", m.group(2)):
+                op = f"{method} {m.group(3).split('?')[0]}"
+                if op not in ops:
+                    ops.append(op)
+    objects["endpoints"] = ops
 elif fmt == "reso":
     text = Path(files[0]).read_text()
     for m in re.finditer(r'<EntityType Name="([^"]+)"(.*?)</EntityType>', text, re.S):
         objects[m.group(1)] = re.findall(r'<Property Name="([^"]+)"', m.group(2))
 
+p = Path(__file__).resolve().parent.parent / "standards" / f"{name}.yml"
+# MERGE=1 adds this run's objects to an existing standard file: one standard published in two
+# formats (STAC: an OpenAPI API spec and JSON Schema object specs) is still one standard.
+import os
+if os.environ.get("MERGE") and p.exists():
+    prev = yaml.safe_load(open(p))
+    objects = {**prev["objects"], **objects}
+    url, fmt = f"{prev['source']} + {url}", f"{prev['format']}+{fmt}"
 out = {"standard": name, "source": url, "format": fmt,
        "note": "Field names extracted from the standard's own published definition by "
                "scripts/extract-standard.py; nothing here comes from a provider's spec.",
        "objects": {k: v for k, v in objects.items() if v}}
-p = Path(__file__).resolve().parent.parent / "standards" / f"{name}.yml"
 yaml.safe_dump(out, open(p, "w"), sort_keys=False, width=120)
 print(name, {k: len(v) for k, v in out["objects"].items()} if len(out["objects"]) < 15 else f"{len(out['objects'])} objects")

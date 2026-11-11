@@ -1,0 +1,21 @@
+standard: oci-distribution-1.1
+source: https://github.com/opencontainers/distribution-spec/tree/v1.1.1
+format: oci
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  endpoints:
+  - GET /v2/
+  - GET /v2/<name>/blobs/<digest>
+  - HEAD /v2/<name>/blobs/<digest>
+  - GET /v2/<name>/manifests/<reference>
+  - HEAD /v2/<name>/manifests/<reference>
+  - POST /v2/<name>/blobs/uploads/
+  - PATCH /v2/<name>/blobs/uploads/<reference>
+  - PUT /v2/<name>/blobs/uploads/<reference>
+  - PUT /v2/<name>/manifests/<reference>
+  - GET /v2/<name>/tags/list
+  - DELETE /v2/<name>/manifests/<reference>
+  - DELETE /v2/<name>/blobs/<digest>
+  - GET /v2/<name>/referrers/<digest>
+  - GET /v2/<name>/blobs/uploads/<reference>

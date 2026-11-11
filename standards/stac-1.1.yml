@@ -1,0 +1,58 @@
+standard: stac-1.1
+source: https://github.com/radiantearth/stac-api-spec/tree/v1.0.0 + https://github.com/radiantearth/stac-spec/tree/v1.1.0
+format: openapi+jsonschema
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  searchBody:
+  - bbox
+  - datetime
+  - intersects
+  - collections
+  - ids
+  - limit
+  bboxFilter:
+  - bbox
+  datetimeFilter:
+  - datetime
+  intersectsFilter:
+  - intersects
+  limitFilter:
+  - limit
+  idsFilter:
+  - ids
+  collectionsFilter:
+  - collections
+  item.core:
+  - geometry
+  - bbox
+  - stac_version
+  - stac_extensions
+  - id
+  - links
+  - assets
+  - properties
+  item.link:
+  - href
+  - rel
+  - type
+  - title
+  - method
+  - headers
+  - body
+  item.asset:
+  - href
+  - title
+  - description
+  - type
+  - roles
+  collection.collection:
+  - stac_version
+  - stac_extensions
+  - type
+  - id
+  - extent
+  - assets
+  - item_assets
+  - links
+  - summaries

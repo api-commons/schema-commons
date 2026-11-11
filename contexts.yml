@@ -860,3 +860,11 @@ contexts:
   name: Operator Network APIs (CAMARA)
   status: reference
   repo: api-commons/network-apis
+- context: imagery-catalogs
+  name: Imagery Catalogs (STAC)
+  status: reference
+  repo: api-commons/imagery-catalogs
+- context: registry-protocol
+  name: Container Registry Protocol (OCI Distribution)
+  status: reference
+  repo: api-commons/registry-protocol

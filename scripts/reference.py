@@ -19,6 +19,9 @@ concepts.yml carries a `reference:` block:
         release: https://github.com/camaraproject/NumberVerification/tree/r4.2
         operations:                  # METHOD path, as the standard publishes it
           - {op: POST /verify, request: NumberVerificationRequestBody, response: NumberVerificationMatchResponse}
+        signature: [POST /verify]           # optional: operations only this API defines
+        match: path                         # optional: the path alone identifies the API (OCI's /v2/<name>/...)
+        path_contains: /v2/                 # optional: a path segment every operation of this API carries
 
 Writes profile.yml, adopters.yml, crosswalk/<provider>.yml and schema/<object>.json.
 Usage, from the context's directory: reference.py
@@ -36,6 +39,8 @@ OBJ = std["objects"]
 cohort = json.load(open("census/cohort.json"))
 # The standard body's own catalog listings carry its specs verbatim; they are not implementations.
 PUBLISHERS = set(ref.get("publishers") or [])
+# One company listed twice (a rename) counts once, under the canonical slug, as in census contexts.
+DUP = {d: c for c, ds in (cfg.get("duplicates") or {}).items() for d in ds}
 
 
 def norm(n):
@@ -91,7 +96,15 @@ def names_api(api, doc, path, spec):
     file names it."""
     hay = " ".join([path, spec.name, str((doc.get("info") or {}).get("title", ""))] +
                    [str(s.get("url", "")) for s in doc.get("servers") or [] if isinstance(s, dict)])
-    return norm(api) in norm(hay)
+    if "-" in api:  # a multi-word name is distinctive however it is cased (NumberVerification)
+        return norm(api) in norm(hay)
+    # a single word must stand alone: "stac" is not in "sift-stack"
+    return re.search(rf"(^|[^a-z0-9]){re.escape(api)}([^a-z0-9]|$)", hay.lower()) is not None
+
+
+def canon(path):
+    """A path template with every parameter as {} -- <name>, {repository} and {name} are one slot."""
+    return re.sub(r"[{<][^}>]+[}>]", "{}", path).rstrip("/")
 
 
 def std_fields(obj):
@@ -115,8 +128,9 @@ for entry in cohort:
                 for o in a["operations"]:
                     method, spath = o["op"].split(" ", 1)
                     op = item.get(method.lower())
-                    if not isinstance(op, dict) or not path.rstrip("/").endswith(spath.rstrip("/")) \
-                            or not names_api(a["api"], doc, path, spec):
+                    if not isinstance(op, dict) or not canon(path).endswith(canon(spath)) \
+                            or (a.get("match") != "path" and not names_api(a["api"], doc, path, spec)) \
+                            or (a.get("path_contains") and a["path_contains"] not in path):
                         continue
                     req, res = body_props(doc, op)
                     have = {norm(x): x for x in req | res}
@@ -127,6 +141,14 @@ for entry in cohort:
                         found[key] = {"api": a["api"], "operation": o["op"], "evidence": f"{rel}#{method} {path}",
                                       "fields": len(want), "crosswalk": cw,
                                       "coverage": round(len(cw) / len(want), 2) if want else None}
+    # An API's `signature` operations are the ones only it defines (STAC's /search; /collections
+    # alone is plain OGC API Features). Without one, the provider does not implement that API.
+    for a in ref["apis"]:
+        sig = set(a.get("signature") or [])
+        if sig and not any(k[0] == a["api"] and k[1] in sig for k in found):
+            found = {k: v for k, v in found.items() if k[0] != a["api"]}
+    if found and slug in DUP:
+        continue  # merged: the canonical listing carries this company
     if found:
         ops = sorted(found.values(), key=lambda x: (x["api"], x["operation"]))
         yaml.safe_dump({"provider": slug, "standard": ref["standard"], "operations": ops},
@@ -187,7 +209,8 @@ L += ["", "## Implementers", "",
 for ad in sorted(adopters, key=lambda x: (x["role"], x["provider"])):
     if ad["role"] != "implementer":
         continue
-    cells = ", ".join(f"{a} {max(v):.0%}" for a, v in sorted(cov[ad["provider"]].items()))
+    cells = ", ".join(f"{a} {max(x for x in v if x is not None):.0%}" if any(x is not None for x in v)
+                      else f"{a} ({len(v)} operations)" for a, v in sorted(cov[ad["provider"]].items()))
     L.append(f"| [{ad['provider']}]({ad['url']}) | {cells} |")
 if profile["publishers"]:
     L += ["", "The standard's own publishing bodies are listed in the catalog too ("
