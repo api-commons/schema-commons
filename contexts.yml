@@ -680,7 +680,7 @@ contexts:
   status: thin
 - context: behavioral-health
   name: Behavioral Health
-  status: planned
+  status: thin
 - context: patient-engagement
   name: Patient Engagement
   status: planned
