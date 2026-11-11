@@ -179,6 +179,12 @@ every harvested spec the census could not parse even after tolerating control ch
 JSON trailing commas and YAML's `=` tag. That file is a work list for re-profiling those
 providers, not a finding about the market.
 
+`scripts/check-findings.py` re-checks every context's prose findings against its profile --
+the properties a finding says are core, the shares and provider counts it cites, and that any
+provider it names has a crosswalk -- and `context.sh finish` refuses to commit when one has
+drifted. Findings are the one hand-written part of a context that cites measurements, and in
+the first batch about twenty went stale as the census improved.
+
 The census also reads an action verb after a collection (`/mail/send`, `/email/batch`) as a
 write to that collection.
 

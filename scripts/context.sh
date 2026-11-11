@@ -20,6 +20,8 @@ case "$1" in
     python3 "$HUB/scripts/readme.py"
     python3 "$HUB/scripts/build.py" 2>&1 | tail -1
     python3 "$HUB/scripts/apisjson.py"
+    # Findings cite measurements; refuse to commit a context whose findings have drifted.
+    python3 "$HUB/scripts/check-findings.py" "$2" --strict || { echo "findings drifted -- fix concepts.yml findings, then finish again"; exit 1; }
     npx --yes @stoplight/spectral-cli@6.15.0 lint openapi.yml -r "$HUB/ruleset/schema-commons-naming.yaml" --fail-severity=info 2>&1 | q | tail -1
     [ -d .git ] || git init -q -b main
     git add -A . && git commit -q -m "Schema Commons: $(python3 -c "import yaml;print(yaml.safe_load(open('concepts.yml'))['name'])") context
