@@ -22,7 +22,7 @@ case "$1" in
       || { echo "no intro in concepts.yml: a hand-written context -- run standard-pass.py and overlay.py directly"; exit 1; }
     # Always re-census: a renamed concept is otherwise silently empty in the build.
     python3 "$HUB/scripts/census.py" --cohort census/cohort.json 2>&1 | grep -E "Traceback|Error" || true
-    rm -rf schema
+    find schema -mindepth 1 -maxdepth 1 ! -regex "schema/v[0-9]*" -exec rm -rf {} + 2>/dev/null || true  # never a released schema/v<major>/
     python3 "$HUB/scripts/readme.py"
     python3 "$HUB/scripts/build.py" 2>&1 | tail -1
     python3 "$HUB/scripts/arazzo.py"

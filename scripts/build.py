@@ -30,6 +30,11 @@ TODAY = date.today().isoformat()
 # "Versioning"). The stamp says so on every artifact until a context is locked.
 VERSION = f"0.1.0-draft.{TODAY.replace('-', '')}"
 cfg = yaml.safe_load(open("concepts.yml"))
+# A locked context (release.py) stamps its released version; the live schema/ is still
+# re-measured on every build, and release.py --diff reports what moved against schema/v<major>/.
+STATUS = "draft"
+if (cfg.get("release") or {}).get("version"):
+    VERSION, STATUS = str(cfg["release"]["version"]), "stable"
 census = json.load(open("census/census.json"))
 CTX = cfg["context"]
 RAW = f"https://raw.githubusercontent.com/api-commons/{CTX}/main"
@@ -63,7 +68,7 @@ def tier(share, n):
 
 
 JSON_TYPES = {"string", "integer", "number", "boolean", "object", "array"}
-profile = {"context": CTX, "name": cfg["name"], "generated": TODAY, "version": VERSION, "status": "draft",
+profile = {"context": CTX, "name": cfg["name"], "generated": TODAY, "version": VERSION, "status": STATUS,
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": census["cohort_size"]},
            "thresholds": {"core": CORE, "extended": EXTENDED, "min_providers": MIN_PROVIDERS},
            "excluded": cfg.get("exclude") or {}, "duplicates": cfg.get("duplicates") or {},
@@ -71,7 +76,11 @@ profile = {"context": CTX, "name": cfg["name"], "generated": TODAY, "version": V
            "concepts": {}}
 crosswalks = collections.defaultdict(dict)
 import shutil
-shutil.rmtree("schema", ignore_errors=True)
+# Clear the live measurement, never a released contract: schema/v<major>/ is frozen by release.py.
+for f in Path("schema").glob("*") if Path("schema").exists() else []:
+    if f.is_dir() and re.fullmatch(r"v\d+", f.name):
+        continue
+    shutil.rmtree(f) if f.is_dir() else f.unlink()
 adopters = collections.defaultdict(dict)
 
 for concept, spec in cfg["concepts"].items():
@@ -155,7 +164,7 @@ for concept, spec in cfg["concepts"].items():
                              f"own OpenAPI. Each property records the share of them that declare it.",
               "type": "object", "properties": {}, "required": ["id"] if any(p["name"] == "id" for p in keep) else [],
               "x-commons": {"context": CTX, "concept": concept, "providers": len(readable), "generated": TODAY,
-                             "version": VERSION, "status": "draft"}}
+                             "version": VERSION, "status": STATUS}}
     for p in keep:
         s = {"x-commons-tier": p["tier"], "x-commons-share": p["share"], "x-commons-providers": p["providers"],
              "x-commons-spellings": p["spellings"]}

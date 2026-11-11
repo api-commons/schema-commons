@@ -394,6 +394,20 @@ The common OpenAPI and JSON Schema are the contract and are versioned; `profile.
 one. A demotion -- a property falling below its tier as the market moves -- is reported
 in the release notes and only applied at the next major.
 
+**The tools.** `scripts/lock-check.py [<ctx> ...]` reports the four criteria per context
+(criterion 3 is hub-wide: `LOCK_RULESET_ACCEPTED=1` now that openlint/rules#2 is merged).
+`scripts/release.py <ctx> <version>` freezes the contract at `schema/v<major>/`, records
+`release:` in concepts.yml, writes CHANGELOG.md, commits and tags; it refuses a context that is
+not ready unless `RELEASE_OVERRIDE='<reason>'` records the exception. After a release every
+build stamps the released version (status `stable`) and keeps re-measuring the live `schema/`;
+`release.py <ctx> --diff` lists promotions (next minor) and demotions (next major). Builds never
+touch `schema/v<major>/`.
+
+**Lock queue.** Source control, trading, ticketing and identity are reviewed and findings-clean.
+They wait on criterion 1 (the method changed on 2026-11-11 with the standards layer, and the
+catalog repair will trigger a re-measure) and criterion 4 (the apis.io build of 2026-11-13).
+Run `lock-check.py` after both; the first context to show READY is the first 1.0.0.
+
 ## Linking both ways
 
 - **Commons -> APIs.io.** Every `adopters.yml` entry and every crosswalk links the provider's
