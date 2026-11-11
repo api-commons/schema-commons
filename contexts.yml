@@ -795,7 +795,7 @@ contexts:
   status: thin
 - context: robotics
   name: Robotics
-  status: planned
+  status: thin
 - context: autonomous-vehicles
   name: Autonomous Vehicles
   status: planned
