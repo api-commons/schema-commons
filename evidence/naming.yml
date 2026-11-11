@@ -4,63 +4,64 @@ contexts:
 - ticketing
 - commerce
 - payments
-providers: 1168
+- card-issuing
+providers: 1258
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 694
-    singular: 372
+    plural: 835
+    singular: 414
   foreign_key:
-    Id: 326
-    _id: 299
+    Id: 381
+    _id: 337
   pagination_param:
-    limit: 465
-    page: 378
-    offset: 243
-    page_size: 221
-    cursor: 140
-    per_page: 113
-    size: 88
-    count: 58
-    start: 56
-    skip: 53
-    after: 52
-    before: 38
+    limit: 492
+    page: 394
+    offset: 261
+    page_size: 234
+    cursor: 148
+    per_page: 118
+    size: 90
+    count: 61
+    start: 59
+    skip: 56
+    after: 55
+    before: 41
     page_token: 37
-    starting_after: 29
+    starting_after: 30
     max_results: 17
-    top: 15
-    next: 9
+    top: 16
+    next: 10
   path_param:
-    lower: 682
-    camelCase: 551
-    snake_case: 410
-    PascalCase: 50
-    kebab-case: 49
-    other: 34
+    lower: 723
+    camelCase: 579
+    snake_case: 434
+    PascalCase: 69
+    kebab-case: 52
+    other: 36
   path_segment:
-    lower: 1122
-    kebab-case: 666
-    snake_case: 360
-    camelCase: 256
-    other: 226
-    PascalCase: 100
+    lower: 1209
+    kebab-case: 731
+    snake_case: 380
+    camelCase: 269
+    other: 234
+    PascalCase: 104
   property:
-    lower: 702
-    camelCase: 365
-    snake_case: 363
-    other: 58
-    PascalCase: 42
-    kebab-case: 5
+    lower: 811
+    camelCase: 432
+    snake_case: 413
+    PascalCase: 83
+    other: 74
+    kebab-case: 6
   query_param:
-    lower: 897
-    camelCase: 516
-    snake_case: 498
-    other: 210
-    PascalCase: 67
-    kebab-case: 40
+    lower: 954
+    camelCase: 562
+    snake_case: 528
+    other: 222
+    PascalCase: 69
+    kebab-case: 44
   timestamp:
-    _at: 299
-    bare: 114
-    _date/_time/on: 78
+    _at: 349
+    bare: 130
+    _date/_time/on: 89

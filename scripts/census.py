@@ -28,7 +28,27 @@ ap.add_argument("--out", default="census/census.json")
 a = ap.parse_args()
 
 CONCEPTS = yaml.safe_load(open(a.concepts))["concepts"]
-SEG2CONCEPT = {s: c for c, d in CONCEPTS.items() for s in d["segments"]}
+# A segment may carry a qualifier on its parents: "cards@customers|users" counts only beneath
+# one of those literals (a card saved on a customer), "cards!customers" never beneath them
+# (an issued card). The same bare segment can then belong to different concepts by context.
+SEG_RULES = collections.defaultdict(list)
+for c, d in CONCEPTS.items():
+    for raw in d["segments"]:
+        seg, only, never = raw, None, None
+        if "@" in raw:
+            seg, rest = raw.split("@", 1); only = set(rest.split("|"))
+        elif "!" in raw:
+            seg, rest = raw.split("!", 1); never = set(rest.split("|"))
+        SEG_RULES[seg].append((c, only, never))
+SEG2CONCEPT = {seg: rules[0][0] for seg, rules in SEG_RULES.items()}
+
+
+def concept_for(seg, parents):
+    for c, only, never in SEG_RULES.get(seg, []):
+        if only is not None and not parents & only: continue
+        if never is not None and parents & never: continue
+        return c
+    return None
 PARAM = re.compile(r"^\{.*\}$")
 METHODS = ("get", "post", "put", "patch", "delete")
 
@@ -155,7 +175,8 @@ for prov in cohort:
                             naming["pagination_param"][snake(n)].add(slug)
                 if not hit: continue
                 i, seg = hit
-                concept = SEG2CONCEPT[seg]
+                concept = concept_for(seg, {x for _, x in lits if _ < i})
+                if concept is None: continue
                 # /tickets/{id}/conversations is a child of a ticket, not a ticket: a segment
                 # nested under its own concept's path is not that concept.
                 if any(SEG2CONCEPT.get(s) == concept for _, s in lits if _ < i):

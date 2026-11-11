@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments: 1168 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing: 1258 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 1122; multi-word kebab 666 / snake 360 / camel 256 | warn |
-| timestamps end in `_at` | `_at` 299 / bare `created` 114 / `_time`, `_date`, `on` 78 | warn |
-| collections are plural | plural 694 / singular 372 | info |
-| properties snake_case | multi-word snake 363 / camel 365 | info |
-| references `<resource>_id` | `_id` 299 / `...Id` 326 | info |
-| path params snake_case | `{id}` 682; multi-word camel 551 / snake 410 | info |
-| query params snake_case | snake 498 / camel 516 | info |
-| paging is `limit` + `cursor` | limit 465, page 378, offset 243, cursor 140 | info |
+| path segments kebab-case | lowercase 1209; multi-word kebab 731 / snake 380 / camel 269 | warn |
+| timestamps end in `_at` | `_at` 349 / bare `created` 130 / `_time`, `_date`, `on` 89 | warn |
+| collections are plural | plural 835 / singular 414 | info |
+| properties snake_case | multi-word snake 413 / camel 432 | info |
+| references `<resource>_id` | `_id` 337 / `...Id` 381 | info |
+| path params snake_case | `{id}` 723; multi-word camel 579 / snake 434 | info |
+| query params snake_case | snake 528 / camel 562 | info |
+| paging is `limit` + `cursor` | limit 492, page 394, offset 261, cursor 148 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -79,9 +79,10 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published | 177 | 111 |
 | Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published | 77 | 48 |
 | Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 252 |
-| Payments | [api-commons/payments](https://github.com/api-commons/payments) | built | 692 | 431 |
+| Payments | [api-commons/payments](https://github.com/api-commons/payments) | published | 692 | 431 |
+| Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | built | 740 | 64 |
 
-Planned, in order: Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
+Planned, in order: Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
 <!-- /commons:contexts -->
 
 ## Running a context
@@ -109,7 +110,11 @@ in one place as it matures.
 3. **Run and read the long tail.** `profile.yml` lists every spelling; collapse the ones that
    mean the same field in `aliases`. That review is the work.
 4. **Review every ambiguous match.** Every provider counted only through an ambiguous segment
-   is looked at by hand. Wrong ones go under `exclude:` with a one-line reason. Run
+   is looked at by hand. Wrong ones go under `exclude:` with a one-line reason. When the
+   same segment means different things by where it sits, qualify it instead of dropping it:
+   `cards@customers|users` counts only beneath those parents, `cards!customers` never beneath
+   them. When a generic segment (`users`, `transactions`) is this concept only at providers
+   that also expose another one, say `requires: [card]`. Run
    `scripts/duplicates.py`: the same company listed twice goes under `duplicates:` (merged,
    not dropped); different companies on one standard go under `shared_specs:`.
 5. **Decide in public.** Every naming call that is a choice rather than a count is written in
@@ -124,12 +129,16 @@ Then re-run `naming-evidence.py` and bring the ruleset's counts up to date.
   multi-word names (see the naming table). The count cannot decide it, so the reasons do:
   snake_case has one spelling for an acronym (`customer_id`, never `customerID` or
   `customerId`), it is the form the census already normalises every name to, and a camelCase
-  provider loses nothing because the crosswalk keeps its own spelling. Revisit if a clear
-  majority appears as contexts are added.
+  provider loses nothing because the crosswalk keeps its own spelling. **Revisit when either
+  side reaches 60% of the multi-word providers** on properties or on references --
+  `naming-evidence.py` prints a warning when it does. The trend so far is toward camelCase as
+  fintech contexts are added (properties 51% camel after five contexts, references 53%).
 - **A concept moves to the context that owns it.** Commerce found `/checkout` to be a
   payment session and handed `checkout_session` to payments; payments found `/cards` to be
   issued cards and registered card issuing as a context. Concepts are not duplicated across
-  contexts to make one look complete.
+  contexts to make one look complete. A hand-over can be wrong in both directions: payments
+  dropped `/cards` as issued cards, and card issuing then showed that `/customers/{id}/cards`
+  are saved payment methods -- so the segment is now split by its parent between the two.
 - **Duplicates merge; shared specifications count once.** One company listed twice is merged
   (`duplicates:`). Different companies republishing one specification -- the UK Open Banking
   standard -- each stay an adopter with a crosswalk but are one voice in the vocabulary

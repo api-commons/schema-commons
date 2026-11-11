@@ -6,7 +6,7 @@ Reads each context's census/census.json (listed in contexts.yml) and counts PROV
 convention, union across contexts, with catalog duplicates folded into one company.
 Writes evidence/naming.yml. The numbers in the ruleset's rule descriptions are copied from
 this file; re-run it whenever a context is added or rebuilt, then update the ruleset."""
-import collections, json, re
+import collections, json, re, sys
 from datetime import date
 from pathlib import Path
 import yaml
@@ -109,3 +109,11 @@ rows += ["", "Planned, in order: " + ", ".join(planned) + "."]
 t = readme.read_text()
 i, j = t.index("<!-- commons:contexts -->"), t.index("<!-- /commons:contexts -->")
 readme.write_text(t[:i] + "<!-- commons:contexts -->\n" + "\n".join(rows) + "\n" + t[j:])
+
+# The snake_case decision is reasoned on a tie; it is revisited when either side reaches 60%.
+for dim, a, b in (("property", "camelCase", "snake_case"), ("foreign_key", "Id", "_id")):
+    x, y = M[dim].get(a, 0), M[dim].get(b, 0)
+    share = max(x, y) / ((x + y) or 1)
+    lead = a if x > y else b
+    print(f"{dim}: {lead} {share:.0%} of multi-word providers"
+          + ("  ** REVISIT the snake_case decision (>= 60%) **" if share >= 0.6 else ""), file=sys.stderr)

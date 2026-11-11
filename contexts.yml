@@ -23,14 +23,15 @@ contexts:
 - context: payments
   name: Payments
   repo: api-commons/payments
-  status: built
+  status: published
   tags: [Payments, Payment Processing]
   # checkout sessions were handed over from commerce, where /checkout is a hosted payment
   concepts: [payment, checkout_session, refund, customer, payment_method, payout, dispute]
 - context: card-issuing
   name: Card Issuing
-  status: planned
-  tags: [Card Issuing]
+  repo: api-commons/card-issuing
+  status: built
+  tags: [Card Issuing, Issuing, Corporate Cards, Virtual Cards, Spend Management, Banking as a Service, Payments]
   # handed over from payments, where /cards and /tokens were issued cards, not payment methods
   concepts: [card, cardholder, authorization, card_program, spending_control]
 - context: billing

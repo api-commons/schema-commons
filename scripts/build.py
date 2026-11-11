@@ -90,6 +90,11 @@ for concept, spec in cfg["concepts"].items():
         for canon, al in group.items():
             alias[canon] = canon
             for x in al: alias[snake(x)] = canon
+    # requires: a generic segment (users, transactions) is this concept only at a provider
+    # that also exposes the required concept -- a card issuer's /users are its cardholders.
+    for req in spec.get("requires") or []:
+        have = {DUPLICATES.get(k, k) for k in census["concepts"].get(req, {})} - set(((cfg.get("exclude") or {}).get(req) or {}))
+        hits = {k: v for k, v in hits.items() if k in have}
     readable = {s: h for s, h in hits.items() if h["properties"]}
     fields = collections.defaultdict(lambda: {"providers": {}, "types": collections.Counter(), "spellings": collections.Counter()})
     for slug, h in readable.items():
