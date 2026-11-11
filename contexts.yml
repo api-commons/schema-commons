@@ -542,10 +542,11 @@ contexts:
   repo: api-commons/crypto-exchanges
 - context: image-generation
   name: Image and Video Generation
-  status: planned
+  status: built
+  repo: api-commons/image-generation
 - context: computer-vision
   name: Computer Vision
-  status: planned
+  status: thin
 - context: nlp
   name: Natural Language Processing
   status: planned
