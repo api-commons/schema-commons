@@ -789,7 +789,7 @@ contexts:
   status: thin
 - context: climate
   name: Climate and Emissions
-  status: planned
+  status: thin
 - context: sustainability
   name: Sustainability Reporting
   status: planned
