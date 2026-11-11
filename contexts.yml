@@ -431,28 +431,31 @@ contexts:
   repo: api-commons/membership
 - context: marketplace
   name: Marketplace
-  status: planned
+  status: thin
 - context: returns
   name: Returns
-  status: planned
+  status: built
+  repo: api-commons/returns
 - context: warehouse
   name: Warehouse Management
-  status: planned
+  status: built
+  repo: api-commons/warehouse
 - context: freight
   name: Freight and TMS
-  status: planned
+  status: built
+  repo: api-commons/freight
 - context: gift-cards
   name: Gift Cards
-  status: planned
+  status: thin
 - context: subscription-commerce
   name: Subscription Commerce
-  status: planned
+  status: thin
 - context: privacy
   name: Privacy and Consent
-  status: planned
+  status: thin
 - context: background-checks
   name: Background Checks
-  status: planned
+  status: thin
 - context: open-data
   name: Open Data Catalogs
   status: planned
