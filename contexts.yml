@@ -628,7 +628,7 @@ contexts:
   status: thin
 - context: fraud-prevention
   name: Fraud Prevention
-  status: planned
+  status: thin
 - context: object-storage
   name: Object Storage
   status: planned
