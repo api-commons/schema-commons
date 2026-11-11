@@ -656,7 +656,7 @@ contexts:
   status: thin
 - context: esg
   name: ESG and Carbon Accounting
-  status: planned
+  status: thin
 - context: tokenization
   name: Asset Tokenization
   status: planned
