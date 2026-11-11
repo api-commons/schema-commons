@@ -1,6 +1,7 @@
 # The bounded contexts of the API Commons common schema, in the order they are being
 # distilled. Each one is its own repository under api-commons, built by the scripts in
-# this one. status: published | built (local, not yet public) | planned
+# this one. status: published | built (local, not yet public) | thin (measured, too little
+# published to distil -- recorded, not published) | planned
 contexts:
 - context: crm
   name: Customer Relationship Management
@@ -371,49 +372,63 @@ contexts:
   repo: api-commons/document-ai
 - context: data-enrichment
   name: Data Enrichment
-  status: planned
+  status: built
+  repo: api-commons/data-enrichment
 - context: tax
   name: Tax
-  status: planned
+  status: built
+  repo: api-commons/tax
 - context: legal
   name: Legal Practice
-  status: planned
+  status: built
+  repo: api-commons/legal
 - context: contracts
   name: Contract Lifecycle
-  status: planned
+  status: built
+  repo: api-commons/contracts
 - context: expenses
   name: Expense Management
-  status: planned
+  status: built
+  repo: api-commons/expenses
 - context: time-tracking
   name: Time Tracking
-  status: planned
+  status: built
+  repo: api-commons/time-tracking
 - context: field-service
   name: Field Service
-  status: planned
+  status: built
+  repo: api-commons/field-service
 - context: it-assets
   name: IT Asset Management
-  status: planned
+  status: built
+  repo: api-commons/it-assets
 - context: cmdb
   name: ITSM Change and CMDB
-  status: planned
+  status: built
+  repo: api-commons/cmdb
 - context: customer-success
   name: Customer Success
-  status: planned
+  status: thin
 - context: sales-engagement
   name: Sales Engagement
-  status: planned
+  status: built
+  repo: api-commons/sales-engagement
 - context: cpq
   name: Configure, Price, Quote
-  status: planned
+  status: built
+  repo: api-commons/cpq
 - context: affiliates
   name: Affiliates and Partners
-  status: planned
+  status: built
+  repo: api-commons/affiliates
 - context: fundraising
   name: Nonprofit Fundraising
-  status: planned
+  status: built
+  repo: api-commons/fundraising
 - context: membership
   name: Membership
-  status: planned
+  status: built
+  repo: api-commons/membership
 - context: marketplace
   name: Marketplace
   status: planned

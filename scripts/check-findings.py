@@ -46,7 +46,7 @@ def slug(n):
 NOT_PROVIDERS = {"OpenAPI", "GraphQL", "RBAC", "RESO", "OSRM", "OTLP", "Open Banking", "Issues", "Questions",
                  "Current", "Once", "Balance", "Monday", "Wave", "FIX", "SCIM", "FHIR", "NPI", "CAP", "ActivityPub", "LTI", "OneRoster", "OCPI", "OCPP", "CDR",
                  "JSON", "XML", "REST", "HTTP", "SDK", "SDKs", "API", "APIs", "URL", "CSV", "PDF", "HTML", "LLM", "AI", "OCR",
-                 "MCP", "OAuth", "SSO", "SAML", "SIEM", "KMS", "TLS", "DNS", "CDN", "OTLP", "IoT", "EHR", "ERP", "CRM", "POS"}
+                 "MCP", "OAuth", "SSO", "SAML", "SIEM", "KMS", "TLS", "DNS", "CDN", "OTLP", "IoT", "EHR", "ERP", "CRM", "POS", "ITSM", "CMDB", "ITIL", "MDM", "SaaS", "B2B", "BNPL", "KYC", "AML", "HR", "LMS", "CMS", "PDF"}
 SPLIT = re.compile(r",\s*(?:and\s+)?|\s+and\s+|\s*/\s*")
 STOP = {"the", "a", "an", "its", "their", "whether", "when", "which", "what", "dates", "timestamps",
         "it", "them", "both", "one", "two", "three"}
@@ -88,9 +88,14 @@ def _resolve(token, concepts, prof):
             if t in ALIASES.get(c, {}):
                 t = ALIASES[c][t]
                 break
+    # An exact property name in any named concept wins over a recorded spelling of another.
     for c in concepts:
         for p in prof[c]["properties"]:
-            if t == p["name"] or t in {snake(s) for s in p["spellings"]}:
+            if t == p["name"]:
+                return p["name"]
+    for c in concepts:
+        for p in prof[c]["properties"]:
+            if t in {snake(s) for s in p["spellings"]}:
                 return p["name"]
     # long-tail or extended names are still properties, just not core
     for c in concepts:
@@ -173,6 +178,10 @@ def check(ctx):
         absent = re.search(r"absent|publish(es)? no|publishes none|no harvested|not in (this cohort|the catalog)|GraphQL|keep their APIs|partner-gated|private", text, re.I)
         for m in ([] if absent else re.finditer(r"\b([A-Z][A-Za-z0-9]+(?:[ .][A-Z][A-Za-z0-9]+)?)\b", text)):
             if m.group(1) in NOT_PROVIDERS:
+                continue
+            # a single capitalised word opening a sentence is ordinary English ("Every", "Most")
+            before = text[:m.start()].rstrip()
+            if " " not in m.group(1) and (not before or before[-1] in ".:;!?\"-"):
                 continue
             s = slug(m.group(1))
             if len(s) > 3 and (ALL / s).is_dir() and s not in crosswalk and not any(s in x for x in crosswalk):
