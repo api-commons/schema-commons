@@ -771,16 +771,19 @@ contexts:
   status: thin
 - context: staffing
   name: Staffing
-  status: planned
+  status: built
+  repo: api-commons/staffing
 - context: employee-benefits
   name: Employee Benefits
-  status: planned
+  status: built
+  repo: api-commons/employee-benefits
 - context: job-boards
   name: Job Boards
-  status: planned
+  status: built
+  repo: api-commons/job-boards
 - context: real-estate
   name: Real Estate Listings
-  status: planned
+  status: thin
 - context: mortgages
   name: Mortgages
   status: planned
