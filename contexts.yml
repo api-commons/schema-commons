@@ -621,10 +621,11 @@ contexts:
   status: thin
 - context: threat-detection
   name: Threat Detection and SIEM
-  status: planned
+  status: built
+  repo: api-commons/threat-detection
 - context: zero-trust
   name: Zero Trust and Device Posture
-  status: planned
+  status: thin
 - context: fraud-prevention
   name: Fraud Prevention
   status: planned
