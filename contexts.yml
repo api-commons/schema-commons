@@ -712,7 +712,7 @@ contexts:
   status: thin
 - context: mining
   name: Mining
-  status: planned
+  status: thin
 - context: construction
   name: Construction
   status: planned
