@@ -699,7 +699,7 @@ contexts:
   status: thin
 - context: drones
   name: Drones
-  status: planned
+  status: thin
 - context: maritime
   name: Maritime and Vessels
   status: planned
