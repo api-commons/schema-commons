@@ -801,7 +801,7 @@ contexts:
   status: thin
 - context: 3d-printing
   name: 3D Printing
-  status: planned
+  status: thin
 - context: live-streaming
   name: Live Streaming
   status: planned
