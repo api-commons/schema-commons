@@ -219,25 +219,32 @@ contexts:
   repo: api-commons/observability
 - context: incident-management
   name: Incident Management
-  status: planned
+  status: built
+  repo: api-commons/incident-management
 - context: ci-cd
   name: CI/CD
-  status: planned
+  status: built
+  repo: api-commons/ci-cd
 - context: source-control
   name: Source Control
-  status: planned
+  status: built
+  repo: api-commons/source-control
 - context: cloud-infrastructure
   name: Cloud Infrastructure
-  status: planned
+  status: built
+  repo: api-commons/cloud-infrastructure
 - context: vulnerability-management
   name: Vulnerability Management
-  status: planned
+  status: built
+  repo: api-commons/vulnerability-management
 - context: identity-verification
   name: Identity Verification
-  status: planned
+  status: built
+  repo: api-commons/identity-verification
 - context: healthcare
   name: Healthcare
-  status: planned
+  status: built
+  repo: api-commons/healthcare
 - context: lms
   name: Learning Management
   status: planned

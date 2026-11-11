@@ -88,8 +88,9 @@ for concept, spec in cfg["concepts"].items():
     alias = {f"{concept}_id": "id"}
     for group in (cfg.get("common_fields") or {}, spec.get("aliases") or {}):
         for canon, al in group.items():
-            alias[canon] = canon
-            for x in al: alias[snake(x)] = canon
+            alias[str(canon)] = str(canon)
+            # str(): YAML 1.1 reads a bare `on` or `yes` as a boolean.
+            for x in al: alias[snake(str(x))] = str(canon)
     # requires: a generic segment (users, transactions) is this concept only at a provider
     # that also exposes the required concept -- a card issuer's /users are its cardholders.
     for req in spec.get("requires") or []:
@@ -170,7 +171,9 @@ for concept, spec in cfg["concepts"].items():
 # OpenAPI: one collection + item path per concept, operations that clear the extended bar.
 def pluralise(c):
     c = c.replace("_", "-")
-    return c[:-1] + "ies" if c.endswith("y") and c[-2] not in "aeiou" else c + "s"
+    if c.endswith("y") and c[-2] not in "aeiou": return c[:-1] + "ies"
+    if c.endswith(("s", "sh", "ch", "x", "z")): return c + "es"
+    return c + "s"
 VERB = {"GET collection": ("get", "list", "List"), "POST collection": ("post", "create", "Create"),
         "GET item": ("get", "get", "Get"), "UPDATE item": ("patch", "update", "Update"),
         "DELETE item": ("delete", "delete", "Delete")}
