@@ -1,0 +1,17 @@
+standard: cloudevents-1.0
+source: https://github.com/cloudevents/spec/tree/ce@v1.0.2
+format: jsonschema
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  cloudevents:
+  - id
+  - source
+  - specversion
+  - type
+  - datacontenttype
+  - dataschema
+  - subject
+  - time
+  - data
+  - data_base64

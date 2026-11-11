@@ -19,6 +19,7 @@ concepts.yml carries a `reference:` block:
     object_threshold: 0.5                # optional: count a provider whose component schema carries this share
                                          # of a listed object's fields (a standard used as a format)
     match_objects: [indicator]           # optional: the objects distinctive enough to match on (default: objects)
+    match_requires: {indicator: [pattern_type]}  # optional: fields a matching schema must carry
     apis:                            # one entry per API in the standard
       - api: number-verification     # the slug a provider's path, server or title names it by
         release: https://github.com/camaraproject/NumberVerification/tree/r4.2
@@ -179,6 +180,9 @@ for entry in cohort:
                 for obj in ref.get("match_objects") or ref.get("objects") or []:
                     want = OBJ.get(obj, [])
                     cw = {f: have[norm(f)] for f in want if norm(f) in have}
+                    # fields only this standard uses (CloudEvents' specversion) must be present
+                    if any(norm(f) not in have for f in (ref.get("match_requires") or {}).get(obj, [])):
+                        continue
                     cov_ = round(len(cw) / len(want), 2) if want else 0
                     key = ("objects", obj)
                     if cov_ >= ref["object_threshold"] and (key not in found or cov_ > found[key]["coverage"]):

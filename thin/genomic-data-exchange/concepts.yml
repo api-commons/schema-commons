@@ -37,6 +37,6 @@ reference:
         - {op: POST /tasks, request: tesTask, response: tesCreateTaskResponse}
         - {op: "GET /tasks/{id}", response: tesTask}
 findings:
-  - "GA4GH Cloud standards are implemented by research platforms that are mostly absent from the catalog's harvested specs: in a 473-provider genomics, life-sciences and research cohort, 2 providers name GA4GH in a harvested spec and one (seqera-labs) publishes the Workflow Execution Service at /ga4gh/wes/v1, carrying 78-100% of its fields. No provider publishes DRS or TES. The GA4GH objects are extracted in standards/ga4gh-2025.yml for when the implementing platforms' specs are in the catalog."
+  - "GA4GH Cloud standards are rarely published in the catalog's harvested specs: in a 473-provider genomics, life-sciences and research cohort, 2 providers name GA4GH in a harvested spec and one (seqera-labs) publishes the Workflow Execution Service at /ga4gh/wes/v1, carrying 78-100% of its fields. No provider publishes DRS or TES. The GA4GH objects are extracted in standards/ga4gh-2025.yml for when the implementing platforms' specs are in the catalog."
 decisions:
   - "Measured as a reference context and recorded as thin, below the three-implementer bar."

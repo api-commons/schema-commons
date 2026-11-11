@@ -884,3 +884,7 @@ contexts:
 - context: genomic-data-exchange
   name: Genomic Data Exchange (GA4GH)
   status: thin
+- context: cloud-events
+  name: Event Envelopes (CloudEvents)
+  status: reference
+  repo: api-commons/cloud-events
