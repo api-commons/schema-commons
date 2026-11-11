@@ -186,7 +186,8 @@ for prov in cohort:
             for m in METHODS:
                 op = item.get(m)
                 if not isinstance(op, dict): continue
-                for prm in (op.get("parameters") or []) + (item.get("parameters") or []):
+                plist = [x for x in (op.get("parameters"), item.get("parameters")) if isinstance(x, list)]
+                for prm in [p for ps in plist for p in ps]:  # a malformed dict here is skipped
                     prm = resolve(doc, prm)
                     n = prm.get("name")
                     if prm.get("in") == "query" and isinstance(n, str):
@@ -201,7 +202,10 @@ for prov in cohort:
                 if concept is None: continue
                 # /tickets/{id}/conversations is a child of a ticket, not a ticket: a segment
                 # nested under its own concept's path is not that concept.
-                if any(SEG2CONCEPT.get(s) == concept for _, s in lits if _ < i):
+                # Only when an id sits between them: FreshBooks' /expenses/expenses is a
+                # module followed by its resource, not a child.
+                if any(SEG2CONCEPT.get(s) == concept and any(PARAM.match(x) for x in segs[_ + 1:i])
+                       for _, s in lits if _ < i):
                     continue
                 under = CONCEPTS[concept].get("under")
                 if under and not any(s in under for _, s in lits if _ < i):
