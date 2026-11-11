@@ -804,7 +804,7 @@ contexts:
   status: thin
 - context: live-streaming
   name: Live Streaming
-  status: planned
+  status: thin
 - context: movies
   name: Movies and TV
   status: planned
