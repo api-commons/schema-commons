@@ -36,6 +36,10 @@ RAW = f"https://raw.githubusercontent.com/api-commons/{CTX}/main"
 ENVELOPE = set(cfg.get("envelope", []))
 # One company listed twice in the catalog counts once: its listings are merged under the
 # canonical slug, so neither the count nor the evidence is lost.
+# A bare string would iterate as characters and merge nothing, silently -- refuse it.
+for _canon, _dups in (cfg.get("duplicates") or {}).items():
+    if not isinstance(_dups, list):
+        sys.exit(f"duplicates: {_canon}: must be a list of merged slugs, got {_dups!r}")
 DUPLICATES = {dup: canon for canon, dups in (cfg.get("duplicates") or {}).items() for dup in dups}
 # Different companies publishing ONE specification (a standard such as Open Banking UK) are
 # one voice in the vocabulary: merged under the spec's name for measuring, like duplicates.
