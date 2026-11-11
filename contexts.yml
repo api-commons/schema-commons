@@ -753,7 +753,7 @@ contexts:
   status: thin
 - context: public-spending
   name: Public Spending and Grants
-  status: planned
+  status: thin
 - context: legislation
   name: Legislation
   status: planned
