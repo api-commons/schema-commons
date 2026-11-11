@@ -600,10 +600,11 @@ contexts:
   status: thin
 - context: testing
   name: Software Testing
-  status: planned
+  status: built
+  repo: api-commons/testing
 - context: kubernetes
   name: Kubernetes and Clusters
-  status: planned
+  status: thin
 - context: containers
   name: Container Registries
   status: planned
