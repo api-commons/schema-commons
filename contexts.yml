@@ -631,10 +631,11 @@ contexts:
   status: thin
 - context: object-storage
   name: Object Storage
-  status: planned
+  status: built
+  repo: api-commons/object-storage
 - context: design-tools
   name: Design Tools
-  status: planned
+  status: thin
 - context: foreign-exchange
   name: Foreign Exchange
   status: planned
