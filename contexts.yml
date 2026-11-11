@@ -715,7 +715,7 @@ contexts:
   status: thin
 - context: construction
   name: Construction
-  status: planned
+  status: thin
 - context: manufacturing
   name: Manufacturing
   status: planned
