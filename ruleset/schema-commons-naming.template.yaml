@@ -34,7 +34,9 @@ rules:
       recorded as one.
     message: "{{property}} is not snake_case (the common vocabulary's casing)."
     severity: info
-    given: "$..properties[*]~"
+    # Extension keys (x-...) are annotations, not properties -- they appear under a property
+    # literally named "properties" (an analytics event's), which $..properties also matches.
+    given: "$..properties[?(!@property.match(/^x-/))]~"
     then:
       function: casing
       functionOptions: {type: snake}

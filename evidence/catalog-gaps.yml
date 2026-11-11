@@ -1,0 +1,31 @@
+# Providers absent from, or thin in, a context for a reason in the CATALOG rather than the
+# market -- the work list for re-profiling. Kept by hand as contexts are built; the parse
+# failures are generated separately into unreadable-specs.yml.
+gaps:
+  - provider: recurly
+    context: billing
+    reason: harvested specs present in openapi/_original but no provenance recorded
+  - provider: orb
+    context: billing
+    reason: contracts are API Evangelist-authored only; no harvested spec
+  - provider: intuit
+    context: accounting
+    reason: harvested spec covers only invoices, customers and payments; accounting resources absent
+  - provider: novopayment
+    context: payments, card-issuing
+    reason: four harvested YAML files are malformed (block scalar errors)
+  - provider: fedex
+    context: shipping
+    reason: 28 specs in openapi/_original, provenance recorded for 1
+  - provider: usps
+    context: shipping
+    reason: 4 specs in openapi/_original, no provenance recorded
+  - provider: dhl
+    context: shipping
+    reason: no harvested OpenAPI
+  - provider: shipengine
+    context: shipping
+    reason: no harvested OpenAPI
+  - provider: ups
+    context: shipping
+    reason: in the cohort, but versioned action paths (/shipments/v1/ship) match no concept -- a census limitation, not a catalog one

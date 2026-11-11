@@ -160,7 +160,10 @@ for concept, spec in cfg["concepts"].items():
                  "properties": {k: (v[0] if len(v) == 1 else v) for k, v in mapped.items()},
                  "core_coverage": round(sum(1 for c in core if c in mapped) / (len(core) or 1), 3) if h["properties"] else None,
                  "evidence": h["evidence"][:5]}
-        for slug in [canon] + MEMBERS.get(canon, []):
+        # A shared spec may be named for the standard (au-cdr-banking) rather than a
+        # provider; only real providers get adopter rows and crosswalks.
+        real = canon in census["concepts"].get(concept, {}) or canon not in MEMBERS
+        for slug in ([canon] if real else []) + MEMBERS.get(canon, []):
             adopters[slug][concept] = {"operations": h["operations"], "segments": h["segments"]}
             crosswalks[slug][concept] = dict(entry, **({"shared_spec": canon} if slug != canon else {}))
 

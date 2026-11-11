@@ -1,27 +1,55 @@
 generated: '2026-11-10'
-count: 4
+count: 10
 specs:
+  cisco-ise/openapi/_original/cisco-ise-legacy-ers-allowed-protocols.yaml:
+    error: while scanning a plain scalar
+    contexts:
+    - identity
+  cisco-ise/openapi/_original/cisco-ise-legacy-ers-pxgrid-node.yaml:
+    error: while scanning for the next token
+    contexts:
+    - identity
+  cruisebound/openapi/_original/openapi.json:
+    error: 'Expecting value: line 1 column 1 (char 0)'
+    contexts:
+    - travel
+  duckduckgo/openapi/_original/instant-answer-openapi.yml:
+    error: could not determine a constructor for the tag '!w'
+    contexts:
+    - identity
+  leaseweb/openapi/_original/leaseweb-openapi-openapi.yml:
+    error: while parsing a block mapping
+    contexts:
+    - files
+  leaseweb/openapi/_original/leaseweb-publiccloud-openapi.yaml:
+    error: while parsing a block mapping
+    contexts:
+    - files
   novopayment/openapi/_original/novopayment-issuer-tokenization-openapi.yml:
     error: while scanning a block scalar
     contexts:
     - payments
     - card-issuing
     - billing
+    - banking
   novopayment/openapi/_original/novopayment-issuer-tokenization.yaml:
     error: while scanning a block scalar
     contexts:
     - payments
     - card-issuing
     - billing
+    - banking
   novopayment/openapi/_original/novopayment-payment-authorizer-openapi.yml:
     error: while scanning a block scalar
     contexts:
     - payments
     - card-issuing
     - billing
+    - banking
   novopayment/openapi/_original/novopayment-payment-authorizer.yaml:
     error: while scanning a block scalar
     contexts:
     - payments
     - card-issuing
     - billing
+    - banking

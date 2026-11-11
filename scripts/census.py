@@ -140,6 +140,16 @@ def props_of(doc, schema, depth=0):
 
 
 def body_schema(doc, op, responses=True):
+    """The response (or request) body schema of an operation, or None. Providers' specs are
+    malformed in every way imaginable -- a string where content belongs, a dict where
+    parameters belong -- so anything unexpected yields None rather than an exception."""
+    try:
+        return _body_schema(doc, op, responses)
+    except (AttributeError, TypeError, KeyError):
+        return None
+
+
+def _body_schema(doc, op, responses=True):
     if not isinstance(op, dict): return None
     if responses:
         r = (op.get("responses") or {})
@@ -150,7 +160,8 @@ def body_schema(doc, op, responses=True):
     else:
         rb = resolve(doc, op.get("requestBody") or {})
         if not rb:
-            for prm in op.get("parameters") or []:
+            params = op.get("parameters")
+            for prm in params if isinstance(params, list) else []:
                 prm = resolve(doc, prm)
                 if prm.get("in") == "body": return prm.get("schema")
             return None

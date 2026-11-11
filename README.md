@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat): 1651 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising: 3195 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 1586; multi-word kebab 928 / snake 503 / camel 370 | warn |
-| timestamps end in `_at` | `_at` 444 / bare `created` 173 / `_time`, `_date`, `on` 131 | warn |
-| collections are plural | plural 1079 / singular 536 | info |
-| properties snake_case | multi-word snake 541 / camel 561 | info |
-| references `<resource>_id` | `_id` 444 / `...Id` 485 | info |
-| path params snake_case | `{id}` 960; multi-word camel 761 / snake 574 | info |
-| query params snake_case | snake 697 / camel 732 | info |
-| paging is `limit` + `cursor` | limit 655, page 517, offset 342, cursor 196 | info |
+| path segments kebab-case | lowercase 3036; multi-word kebab 1710 / snake 926 / camel 696 | warn |
+| timestamps end in `_at` | `_at` 717 / bare `created` 328 / `_time`, `_date`, `on` 216 | warn |
+| collections are plural | plural 1913 / singular 916 | info |
+| properties snake_case | multi-word snake 918 / camel 997 | info |
+| references `<resource>_id` | `_id` 725 / `...Id` 840 | info |
+| path params snake_case | `{id}` 1813; multi-word camel 1460 / snake 1049 | info |
+| query params snake_case | snake 1349 / camel 1421 | info |
+| paging is `limit` + `cursor` | limit 1191, page 936, offset 666, cursor 333 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -76,15 +76,34 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 <!-- commons:contexts -->
 | Context | Repo | Status | Providers measured | Crosswalks |
 | --- | --- | --- | ---: | ---: |
-| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published | 177 | 111 |
+| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published | 177 | 112 |
 | Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published | 77 | 48 |
-| Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 252 |
-| Payments | [api-commons/payments](https://github.com/api-commons/payments) | published | 692 | 431 |
+| Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 254 |
+| Payments | [api-commons/payments](https://github.com/api-commons/payments) | published | 692 | 436 |
 | Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | published | 740 | 65 |
-| Billing and Invoicing | [api-commons/billing](https://github.com/api-commons/billing) | published | 837 | 269 |
-| Messaging (Email, SMS, Chat) | [api-commons/messaging](https://github.com/api-commons/messaging) | built | 365 | 194 |
+| Billing and Invoicing | [api-commons/billing](https://github.com/api-commons/billing) | published | 837 | 270 |
+| Messaging (Email, SMS, Chat) | [api-commons/messaging](https://github.com/api-commons/messaging) | built | 365 | 198 |
+| Calendars and Scheduling | [api-commons/scheduling](https://github.com/api-commons/scheduling) | built | 112 | 38 |
+| People and HR | [api-commons/hris](https://github.com/api-commons/hris) | built | 171 | 61 |
+| Payroll | [api-commons/payroll](https://github.com/api-commons/payroll) | built | 192 | 27 |
+| Recruiting | [api-commons/recruiting](https://github.com/api-commons/recruiting) | built | 67 | 32 |
+| Files and Documents | [api-commons/files](https://github.com/api-commons/files) | built | 133 | 51 |
+| Identity and Users | [api-commons/identity](https://github.com/api-commons/identity) | built | 443 | 185 |
+| E-Signature | [api-commons/e-signature](https://github.com/api-commons/e-signature) | built | 72 | 35 |
+| Accounting | [api-commons/accounting](https://github.com/api-commons/accounting) | built | 139 | 67 |
+| Banking | [api-commons/banking](https://github.com/api-commons/banking) | built | 315 | 211 |
+| Lending | [api-commons/lending](https://github.com/api-commons/lending) | built | 134 | 14 |
+| Insurance | [api-commons/insurance](https://github.com/api-commons/insurance) | built | 143 | 47 |
+| Property Management | [api-commons/property-management](https://github.com/api-commons/property-management) | built | 143 | 62 |
+| Travel and Lodging | [api-commons/travel](https://github.com/api-commons/travel) | built | 184 | 67 |
+| Shipping | [api-commons/shipping](https://github.com/api-commons/shipping) | built | 258 | 99 |
+| Fleet and Telematics | [api-commons/fleet](https://github.com/api-commons/fleet) | built | 85 | 29 |
+| Project Management | [api-commons/project-management](https://github.com/api-commons/project-management) | built | 95 | 43 |
+| Content Management | [api-commons/cms](https://github.com/api-commons/cms) | built | 73 | 36 |
+| Email Marketing | [api-commons/email-marketing](https://github.com/api-commons/email-marketing) | built | 102 | 51 |
+| Advertising | [api-commons/advertising](https://github.com/api-commons/advertising) | built | 134 | 33 |
 
-Planned, in order: Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
+Planned, in order: Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging.
 <!-- /commons:contexts -->
 
 ## Running a context

@@ -167,43 +167,56 @@ contexts:
   repo: api-commons/accounting
 - context: banking
   name: Banking
-  status: planned
+  status: built
+  repo: api-commons/banking
 - context: lending
   name: Lending
-  status: planned
+  status: built
+  repo: api-commons/lending
 - context: insurance
   name: Insurance
-  status: planned
+  status: built
+  repo: api-commons/insurance
 - context: property-management
   name: Property Management
-  status: planned
+  status: built
+  repo: api-commons/property-management
 - context: travel
   name: Travel and Lodging
-  status: planned
+  status: built
+  repo: api-commons/travel
 - context: shipping
   name: Shipping
-  status: planned
+  status: built
+  repo: api-commons/shipping
 - context: fleet
   name: Fleet and Telematics
-  status: planned
+  status: built
+  repo: api-commons/fleet
 - context: project-management
   name: Project Management
-  status: planned
+  status: built
+  repo: api-commons/project-management
 - context: cms
   name: Content Management
-  status: planned
+  status: built
+  repo: api-commons/cms
 - context: email-marketing
   name: Email Marketing
-  status: planned
+  status: built
+  repo: api-commons/email-marketing
 - context: advertising
   name: Advertising
-  status: planned
+  status: built
+  repo: api-commons/advertising
 - context: product-analytics
   name: Product Analytics
-  status: planned
+  status: built
+  repo: api-commons/product-analytics
 - context: observability
   name: Observability
-  status: planned
+  status: built
+  repo: api-commons/observability
 - context: incident-management
   name: Incident Management
   status: planned

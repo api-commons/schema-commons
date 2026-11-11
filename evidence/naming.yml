@@ -7,63 +7,82 @@ contexts:
 - card-issuing
 - billing
 - messaging
-providers: 1651
+- scheduling
+- hris
+- payroll
+- recruiting
+- files
+- identity
+- e-signature
+- accounting
+- banking
+- lending
+- insurance
+- property-management
+- travel
+- shipping
+- fleet
+- project-management
+- cms
+- email-marketing
+- advertising
+providers: 3195
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 1079
-    singular: 536
+    plural: 1913
+    singular: 916
   foreign_key:
-    Id: 485
-    _id: 444
+    Id: 840
+    _id: 725
   pagination_param:
-    limit: 655
-    page: 517
-    offset: 342
-    page_size: 309
-    cursor: 196
-    per_page: 154
-    size: 124
-    start: 87
-    count: 87
-    after: 81
-    before: 72
-    skip: 68
-    page_token: 63
-    starting_after: 39
-    max_results: 30
-    top: 28
-    next: 17
+    limit: 1191
+    page: 936
+    offset: 666
+    page_size: 581
+    cursor: 333
+    per_page: 293
+    size: 220
+    start: 199
+    count: 190
+    after: 148
+    page_token: 137
+    skip: 134
+    before: 127
+    top: 69
+    max_results: 63
+    starting_after: 51
+    next: 32
   path_param:
-    lower: 960
-    camelCase: 761
-    snake_case: 574
-    PascalCase: 90
-    kebab-case: 71
-    other: 52
+    lower: 1813
+    camelCase: 1460
+    snake_case: 1049
+    PascalCase: 140
+    kebab-case: 124
+    other: 107
   path_segment:
-    lower: 1586
-    kebab-case: 928
-    snake_case: 503
-    camelCase: 370
-    other: 324
-    PascalCase: 145
+    lower: 3036
+    kebab-case: 1710
+    snake_case: 926
+    camelCase: 696
+    other: 685
+    PascalCase: 320
   property:
-    lower: 1051
-    camelCase: 561
-    snake_case: 541
-    other: 97
-    PascalCase: 94
-    kebab-case: 9
+    lower: 1850
+    camelCase: 997
+    snake_case: 918
+    other: 170
+    PascalCase: 168
+    kebab-case: 20
   query_param:
-    lower: 1266
-    camelCase: 732
-    snake_case: 697
-    other: 298
-    PascalCase: 99
-    kebab-case: 66
+    lower: 2482
+    camelCase: 1421
+    snake_case: 1349
+    other: 565
+    PascalCase: 215
+    kebab-case: 152
   timestamp:
-    _at: 444
-    bare: 173
-    _date/_time/on: 131
+    _at: 717
+    bare: 328
+    _date/_time/on: 216
