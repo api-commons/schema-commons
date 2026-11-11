@@ -96,6 +96,14 @@ for concept, spec in cfg["concepts"].items():
     for req in spec.get("requires") or []:
         have = {DUPLICATES.get(k, k) for k in census["concepts"].get(req, {})} - set(((cfg.get("exclude") or {}).get(req) or {}))
         hits = {k: v for k, v in hits.items() if k in have}
+    # requires_any: the concept counts at a provider exposing AT LEAST ONE of these -- an event
+    # is ticketed if the provider sells ticket types, issues tickets or registers attendees.
+    if spec.get("requires_any"):
+        ex_all = cfg.get("exclude") or {}
+        have = set()
+        for req in spec["requires_any"]:
+            have |= {DUPLICATES.get(k, k) for k in census["concepts"].get(req, {})} - set((ex_all.get(req) or {}))
+        hits = {k: v for k, v in hits.items() if k in have}
     readable = {s: h for s, h in hits.items() if h["properties"]}
     fields = collections.defaultdict(lambda: {"providers": {}, "types": collections.Counter(), "spellings": collections.Counter()})
     for slug, h in readable.items():

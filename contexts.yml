@@ -247,19 +247,24 @@ contexts:
   repo: api-commons/healthcare
 - context: lms
   name: Learning Management
-  status: planned
+  status: built
+  repo: api-commons/lms
 - context: food-ordering
   name: Food Ordering
-  status: planned
+  status: built
+  repo: api-commons/food-ordering
 - context: point-of-sale
   name: Point of Sale
-  status: planned
+  status: built
+  repo: api-commons/point-of-sale
 - context: loyalty
   name: Loyalty
-  status: planned
+  status: built
+  repo: api-commons/loyalty
 - context: events
   name: Events and Ticketing
-  status: planned
+  status: built
+  repo: api-commons/events
 - context: video
   name: Video
   status: planned
