@@ -482,16 +482,19 @@ contexts:
   repo: api-commons/books
 - context: localization
   name: Translation and Localization
-  status: planned
+  status: built
+  repo: api-commons/localization
 - context: speech
   name: Speech and Transcription
-  status: planned
+  status: built
+  repo: api-commons/speech
 - context: energy
   name: Energy and Utilities
-  status: planned
+  status: built
+  repo: api-commons/energy
 - context: solar
   name: Solar and Energy Storage
-  status: planned
+  status: thin
 - context: agriculture
   name: Agriculture
   status: planned
