@@ -456,9 +456,10 @@ contexts:
 - context: background-checks
   name: Background Checks
   status: thin
-- context: open-data
+- context: open-data-catalogs
   name: Open Data Catalogs
-  status: planned
+  status: built
+  repo: api-commons/open-data-catalogs
 - context: research-repositories
   name: Research Repositories
   status: planned

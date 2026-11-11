@@ -1,0 +1,45 @@
+standard: dcat-us-1.1
+source: https://github.com/project-open-data/project-open-data.github.io/tree/master/v1.1/schema
+format: jsonschema
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  dataset:
+  - accessLevel
+  - rights
+  - accrualPeriodicity
+  - bureauCode
+  - contactPoint
+  - describedBy
+  - describedByType
+  - conformsTo
+  - dataQuality
+  - description
+  - distribution
+  - identifier
+  - issued
+  - keyword
+  - landingPage
+  - language
+  - license
+  - modified
+  - primaryITInvestmentUII
+  - programCode
+  - publisher
+  - references
+  - spatial
+  - systemOfRecords
+  - temporal
+  - isPartOf
+  - theme
+  - title
+  distribution:
+  - downloadURL
+  - mediaType
+  - format
+  - accessURL
+  - description
+  - title
+  - conformsTo
+  - describedBy
+  - describedByType

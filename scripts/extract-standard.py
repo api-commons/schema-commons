@@ -7,6 +7,7 @@ standard's published source (not from any provider's spec). One reader per sourc
   otlp  Protocol Buffers (open-telemetry/opentelemetry-proto): message fields, JSON-mapped
   cap   XML Schema (OASIS CAP 1.2): alert and info elements
   reso  OData EDMX (RESO Data Dictionary 2.0): entity type properties
+  jsonschema  JSON Schema files, one object per file (DCAT-US 1.1)
 
 Usage: extract-standard.py <format> <out-name> <source-url> <file> [<file> ...]"""
 import re, sys
@@ -45,6 +46,11 @@ elif fmt == "cap":
             for k in kids:
                 walk(k)
     walk(ET.parse(files[0]).getroot().find(f"{XS}element"))
+elif fmt == "jsonschema":
+    import json
+    for f in files:
+        d = json.load(open(f))
+        objects[Path(f).stem.split("-")[-1]] = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
 elif fmt == "reso":
     text = Path(files[0]).read_text()
     for m in re.finditer(r'<EntityType Name="([^"]+)"(.*?)</EntityType>', text, re.S):
