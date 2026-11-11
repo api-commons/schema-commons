@@ -843,7 +843,7 @@ contexts:
   status: thin
 - context: printing
   name: Print and Mail
-  status: planned
+  status: thin
 - context: photos
   name: Photos and Stock Media
   status: planned
