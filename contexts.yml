@@ -702,7 +702,7 @@ contexts:
   status: thin
 - context: maritime
   name: Maritime and Vessels
-  status: planned
+  status: thin
 - context: aviation
   name: Aviation and Flights
   status: planned
