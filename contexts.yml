@@ -462,19 +462,24 @@ contexts:
   repo: api-commons/open-data-catalogs
 - context: research-repositories
   name: Research Repositories
-  status: planned
+  status: built
+  repo: api-commons/research-repositories
 - context: news
   name: News
-  status: planned
+  status: built
+  repo: api-commons/news
 - context: music
   name: Music
-  status: planned
+  status: built
+  repo: api-commons/music
 - context: podcasts
   name: Podcasts
-  status: planned
+  status: built
+  repo: api-commons/podcasts
 - context: books
   name: Books and Publishing
-  status: planned
+  status: built
+  repo: api-commons/books
 - context: localization
   name: Translation and Localization
   status: planned

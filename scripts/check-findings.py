@@ -177,13 +177,15 @@ def check(ctx):
         # Capitalised names that are catalog providers must be in this context's crosswalks
         absent = re.search(r"absent|publish(es)? no|publishes none|no harvested|not in (this cohort|the catalog)|GraphQL|keep their APIs|partner-gated|private", text, re.I)
         for m in ([] if absent else re.finditer(r"\b([A-Z][A-Za-z0-9]+(?:[ .][A-Z][A-Za-z0-9]+)?)\b", text)):
-            if m.group(1) in NOT_PROVIDERS:
+            if m.group(1) in NOT_PROVIDERS or any(w in NOT_PROVIDERS for w in re.split(r"[ .]", m.group(1))):
                 continue
             # a single capitalised word opening a sentence is ordinary English ("Every", "Most")
             before = text[:m.start()].rstrip()
             if " " not in m.group(1) and (not before or before[-1] in ".:;!?\"-"):
                 continue
             s = slug(m.group(1))
+            if s in (cfg.get("shared_specs") or {}) or any(s in k for k in (cfg.get("shared_specs") or {})):
+                continue  # a shared standard's voice is named for the standard, not a crosswalk
             if len(s) > 3 and (ALL / s).is_dir() and s not in crosswalk and not any(s in x for x in crosswalk):
                 problems.append(f"names {m.group(1)}, which has no crosswalk in this context")
     return problems
