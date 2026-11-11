@@ -267,52 +267,69 @@ contexts:
   repo: api-commons/events
 - context: video
   name: Video
-  status: planned
+  status: built
+  repo: api-commons/video
 - context: maps
   name: Maps and Geocoding
-  status: planned
+  status: built
+  repo: api-commons/maps
 - context: weather
   name: Weather
-  status: planned
+  status: built
+  repo: api-commons/weather
 - context: market-data
   name: Market Data
-  status: planned
+  status: built
+  repo: api-commons/market-data
 - context: trading
   name: Trading
-  status: planned
+  status: built
+  repo: api-commons/trading
 - context: crypto-wallets
   name: Crypto Wallets
-  status: planned
+  status: built
+  repo: api-commons/crypto-wallets
 - context: search
   name: Search
-  status: planned
+  status: built
+  repo: api-commons/search
 - context: forms
   name: Forms and Surveys
-  status: planned
+  status: built
+  repo: api-commons/forms
 - context: reviews
   name: Reviews
-  status: planned
+  status: built
+  repo: api-commons/reviews
 - context: social-media
   name: Social Media
-  status: planned
+  status: built
+  repo: api-commons/social-media
 - context: telephony
   name: Telephony
-  status: planned
+  status: built
+  repo: api-commons/telephony
 - context: contact-center
   name: Contact Center
-  status: planned
+  status: built
+  repo: api-commons/contact-center
 - context: workflow-automation
   name: Workflow Automation
-  status: planned
+  status: built
+  repo: api-commons/workflow-automation
 - context: knowledge-base
   name: Knowledge Base
-  status: planned
+  status: built
+  repo: api-commons/knowledge-base
 - context: procurement
   name: Procurement
-  status: planned
+  status: built
+  repo: api-commons/procurement
 - context: iot
   name: IoT Devices
-  status: planned
+  status: built
+  repo: api-commons/iot
 - context: ev-charging
   name: EV Charging
-  status: planned
+  status: built
+  repo: api-commons/ev-charging

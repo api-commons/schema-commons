@@ -123,7 +123,12 @@ def props_of(doc, schema, depth=0):
             out.update(props_of(doc, s[key][0], depth + 1))
     p = s.get("properties") or {}
     if isinstance(p, dict):
-        for env in ("data", "results", "_results", "items", "records", "result", "value"):
+        # GeoJSON: a Feature's fields live under `properties`, beside its geometry.
+        if {"type", "geometry", "properties"} <= set(p):
+            inner = props_of(doc, p["properties"], depth + 1)
+            if inner:
+                return {**inner, "geometry": "object"}
+        for env in ("data", "results", "_results", "items", "records", "result", "value", "features"):
             if env in p and len(p) <= 6:
                 inner = props_of(doc, p[env], depth + 1)
                 if inner: return inner
@@ -133,6 +138,15 @@ def props_of(doc, schema, depth=0):
         if len(wrap) == 1:
             inner = props_of(doc, p[wrap[0]], depth + 1)
             if len(inner) > 2: return inner
+        # A small wrapper with exactly one array of objects is that collection plus metadata:
+        # {symbol, interval, candles: [...]} or {meta, values: [...]}. Read the collection.
+        if len(p) <= 6:
+            arrays = [k for k, v in p.items()
+                      if resolve(doc, v).get("type") == "array" and props_of(doc, resolve(doc, v).get("items", {}), depth + 1)]
+            if len(arrays) == 1:
+                inner = props_of(doc, p[arrays[0]], depth + 1)
+                if len(inner) > 2:
+                    return inner
         for k, v in p.items():
             v = resolve(doc, v)
             out[k] = v.get("type") or ("object" if "properties" in v else "array" if "items" in v else None)

@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising: 3195 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging: 5552 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 3036; multi-word kebab 1710 / snake 926 / camel 696 | warn |
-| timestamps end in `_at` | `_at` 717 / bare `created` 328 / `_time`, `_date`, `on` 216 | warn |
-| collections are plural | plural 1913 / singular 916 | info |
-| properties snake_case | multi-word snake 918 / camel 997 | info |
-| references `<resource>_id` | `_id` 725 / `...Id` 840 | info |
-| path params snake_case | `{id}` 1813; multi-word camel 1460 / snake 1049 | info |
-| query params snake_case | snake 1349 / camel 1421 | info |
-| paging is `limit` + `cursor` | limit 1191, page 936, offset 666, cursor 333 | info |
+| path segments kebab-case | lowercase 5246; multi-word kebab 2874 / snake 1500 / camel 1134 | warn |
+| timestamps end in `_at` | `_at` 1132 / bare `created` 526 / `_time`, `_date`, `on` 322 | warn |
+| collections are plural | plural 3072 / singular 1616 | info |
+| properties snake_case | multi-word snake 1565 / camel 1609 | info |
+| references `<resource>_id` | `_id` 1172 / `...Id` 1313 | info |
+| path params snake_case | `{id}` 3110; multi-word camel 2431 / snake 1787 | info |
+| query params snake_case | snake 2273 / camel 2364 | info |
+| paging is `limit` + `cursor` | limit 2103, page 1530, offset 1142, cursor 585 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -102,8 +102,39 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Content Management | [api-commons/cms](https://github.com/api-commons/cms) | built | 73 | 36 |
 | Email Marketing | [api-commons/email-marketing](https://github.com/api-commons/email-marketing) | built | 102 | 51 |
 | Advertising | [api-commons/advertising](https://github.com/api-commons/advertising) | built | 134 | 33 |
+| Product Analytics | [api-commons/product-analytics](https://github.com/api-commons/product-analytics) | built | 80 | 40 |
+| Observability | [api-commons/observability](https://github.com/api-commons/observability) | built | 279 | 104 |
+| Incident Management | [api-commons/incident-management](https://github.com/api-commons/incident-management) | built | 75 | 28 |
+| CI/CD | [api-commons/ci-cd](https://github.com/api-commons/ci-cd) | built | 241 | 81 |
+| Source Control | [api-commons/source-control](https://github.com/api-commons/source-control) | built | 242 | 49 |
+| Cloud Infrastructure | [api-commons/cloud-infrastructure](https://github.com/api-commons/cloud-infrastructure) | built | 384 | 88 |
+| Vulnerability Management | [api-commons/vulnerability-management](https://github.com/api-commons/vulnerability-management) | built | 111 | 54 |
+| Identity Verification | [api-commons/identity-verification](https://github.com/api-commons/identity-verification) | built | 173 | 31 |
+| Healthcare | [api-commons/healthcare](https://github.com/api-commons/healthcare) | built | 259 | 69 |
+| Learning Management | [api-commons/lms](https://github.com/api-commons/lms) | built | 57 | 22 |
+| Food Ordering | [api-commons/food-ordering](https://github.com/api-commons/food-ordering) | built | 77 | 35 |
+| Point of Sale | [api-commons/point-of-sale](https://github.com/api-commons/point-of-sale) | built | 84 | 20 |
+| Loyalty | [api-commons/loyalty](https://github.com/api-commons/loyalty) | built | 77 | 17 |
+| Events and Ticketing | [api-commons/events](https://github.com/api-commons/events) | built | 123 | 26 |
+| Video | [api-commons/video](https://github.com/api-commons/video) | built | 163 | 51 |
+| Maps and Geocoding | [api-commons/maps](https://github.com/api-commons/maps) | built | 193 | 45 |
+| Weather | [api-commons/weather](https://github.com/api-commons/weather) | built | 54 | 27 |
+| Market Data | [api-commons/market-data](https://github.com/api-commons/market-data) | built | 237 | 95 |
+| Trading | [api-commons/trading](https://github.com/api-commons/trading) | built | 174 | 51 |
+| Crypto Wallets | [api-commons/crypto-wallets](https://github.com/api-commons/crypto-wallets) | built | 345 | 75 |
+| Search | [api-commons/search](https://github.com/api-commons/search) | built | 187 | 112 |
+| Forms and Surveys | [api-commons/forms](https://github.com/api-commons/forms) | built | 93 | 40 |
+| Reviews | [api-commons/reviews](https://github.com/api-commons/reviews) | built | 42 | 26 |
+| Social Media | [api-commons/social-media](https://github.com/api-commons/social-media) | built | 118 | 53 |
+| Telephony | [api-commons/telephony](https://github.com/api-commons/telephony) | built | 146 | 49 |
+| Contact Center | [api-commons/contact-center](https://github.com/api-commons/contact-center) | built | 93 | 10 |
+| Workflow Automation | [api-commons/workflow-automation](https://github.com/api-commons/workflow-automation) | built | 348 | 73 |
+| Knowledge Base | [api-commons/knowledge-base](https://github.com/api-commons/knowledge-base) | built | 146 | 21 |
+| Procurement | [api-commons/procurement](https://github.com/api-commons/procurement) | built | 126 | 35 |
+| IoT Devices | [api-commons/iot](https://github.com/api-commons/iot) | built | 195 | 69 |
+| EV Charging | [api-commons/ev-charging](https://github.com/api-commons/ev-charging) | built | 41 | 4 |
 
-Planned, in order: Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging.
+Planned, in order: .
 <!-- /commons:contexts -->
 
 ## Running a context
@@ -159,8 +190,9 @@ write to that collection.
   `customerId`), it is the form the census already normalises every name to, and a camelCase
   provider loses nothing because the crosswalk keeps its own spelling. **Revisit when either
   side reaches 60% of the multi-word providers** on properties or on references --
-  `naming-evidence.py` prints a warning when it does. The trend so far is toward camelCase as
-  fintech contexts are added (properties 51% camel after five contexts, references 53%).
+  `naming-evidence.py` prints a warning when it does. After 57 contexts and 5,552 providers the
+  split has held: properties 51% camelCase, references 53% `...Id` -- below the trigger, and
+  steady since fintech joined at context four.
 - **A concept moves to the context that owns it.** Commerce found `/checkout` to be a
   payment session and handed `checkout_session` to payments; payments found `/cards` to be
   issued cards and registered card issuing as a context. Concepts are not duplicated across

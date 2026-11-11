@@ -1,6 +1,10 @@
 generated: '2026-11-10'
-count: 10
+count: 16
 specs:
+  aeris/openapi/_original/aeris-watchtower-api-openapi-openapi.yaml:
+    error: did not find expected <document start>
+    contexts:
+    - iot
   cisco-ise/openapi/_original/cisco-ise-legacy-ers-allowed-protocols.yaml:
     error: while scanning a plain scalar
     contexts:
@@ -17,14 +21,25 @@ specs:
     error: could not determine a constructor for the tag '!w'
     contexts:
     - identity
+    - search
+  gp-connect/openapi/_original/gp-connect-access-record-structured-fhir.yaml:
+    error: while scanning a block scalar
+    contexts:
+    - healthcare
+  hhs/openapi/_original/simpler-grants-gov.yml:
+    error: could not determine a constructor for the tag 'tag:yaml.org,2002:python/object/apply:src.api.opportunities_v1.opportunity_schemas.SearchQueryOperator'
+    contexts:
+    - healthcare
   leaseweb/openapi/_original/leaseweb-openapi-openapi.yml:
     error: while parsing a block mapping
     contexts:
     - files
+    - cloud-infrastructure
   leaseweb/openapi/_original/leaseweb-publiccloud-openapi.yaml:
     error: while parsing a block mapping
     contexts:
     - files
+    - cloud-infrastructure
   novopayment/openapi/_original/novopayment-issuer-tokenization-openapi.yml:
     error: while scanning a block scalar
     contexts:
@@ -32,6 +47,7 @@ specs:
     - card-issuing
     - billing
     - banking
+    - identity-verification
   novopayment/openapi/_original/novopayment-issuer-tokenization.yaml:
     error: while scanning a block scalar
     contexts:
@@ -39,6 +55,7 @@ specs:
     - card-issuing
     - billing
     - banking
+    - identity-verification
   novopayment/openapi/_original/novopayment-payment-authorizer-openapi.yml:
     error: while scanning a block scalar
     contexts:
@@ -46,6 +63,7 @@ specs:
     - card-issuing
     - billing
     - banking
+    - identity-verification
   novopayment/openapi/_original/novopayment-payment-authorizer.yaml:
     error: while scanning a block scalar
     contexts:
@@ -53,3 +71,16 @@ specs:
     - card-issuing
     - billing
     - banking
+    - identity-verification
+  opsmeter/openapi/_original/opsmeter-openapi.json:
+    error: 'Expecting value: line 1 column 1 (char 0)'
+    contexts:
+    - observability
+  piknik-spot/openapi/_original/piknik-spot-api-openapi.yaml:
+    error: mapping values are not allowed in this context
+    contexts:
+    - events
+  vitagroup/openapi/_original/vitagroup-hip-ehrbase-enterprise.yml:
+    error: did not find expected <document start>
+    contexts:
+    - healthcare

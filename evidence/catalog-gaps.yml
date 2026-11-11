@@ -29,3 +29,9 @@ gaps:
   - provider: ups
     context: shipping
     reason: in the cohort, but versioned action paths (/shipments/v1/ship) match no concept -- a census limitation, not a catalog one
+  - provider: amazon-connect, five9, nice, talkdesk
+    context: contact-center
+    reason: in the catalog with no harvested OpenAPI; the contact-center context is built from Genesys and CPaaS providers alone
+  - provider: national-weather-service (noaa, noaa-gov, weather-gov)
+    context: weather
+    reason: four catalog listings for one publisher -- merged as duplicates here; the catalog itself still lists them separately

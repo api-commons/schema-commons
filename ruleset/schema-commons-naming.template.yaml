@@ -72,7 +72,7 @@ rules:
     description: >-
       Path parameters are snake_case and name the thing they identify ({contact_id}). A
       bare {id} is the most common single form ({{path_param.lower}} providers) and passes; camelCase ({{path_param.camelCase}})
-      leads snake_case ({{path_param.snake_case}}) among multi-word names, so this is info, not a warning.
+      and snake_case ({{path_param.snake_case}}) are both common among multi-word names, so this is info, not a warning.
     message: "Path {{property}} has a parameter that is not snake_case."
     severity: info
     given: "$.paths"
@@ -85,7 +85,8 @@ rules:
   commons-query-param-snake-case:
     description: >-
       Query parameters are snake_case. Lowercase single words are used by {{query_param.lower}} providers;
-      snake_case ({{query_param.snake_case}}) narrowly leads camelCase ({{query_param.camelCase}}) among multi-word names.
+      snake_case ({{query_param.snake_case}}) and camelCase ({{query_param.camelCase}}) are
+      near-even among multi-word names.
     message: "Query parameter {{value}} is not snake_case."
     severity: info
     given: "$.paths[*][*].parameters[?(@.in == 'query')].name"
