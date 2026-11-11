@@ -527,10 +527,11 @@ contexts:
   status: thin
 - context: blockchain-data
   name: Blockchain Data
-  status: planned
+  status: built
+  repo: api-commons/blockchain-data
 - context: defi
   name: DeFi Protocols
-  status: planned
+  status: thin
 - context: nfts
   name: NFTs and Digital Collectibles
   status: planned
