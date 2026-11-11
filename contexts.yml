@@ -750,7 +750,7 @@ contexts:
   status: thin
 - context: government
   name: Government Services and Permits
-  status: planned
+  status: thin
 - context: public-spending
   name: Public Spending and Grants
   status: planned
