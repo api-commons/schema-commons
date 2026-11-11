@@ -677,7 +677,7 @@ contexts:
   status: thin
 - context: pharmacy
   name: Pharmacy and Prescriptions
-  status: planned
+  status: thin
 - context: behavioral-health
   name: Behavioral Health
   status: planned
