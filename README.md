@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging, Webhooks, Audit Logs, Feature Flags, API Management, Secrets Management, DNS and Domains, CDN and Edge, AI Agents, Document AI, Data Enrichment, Tax, Legal Practice, Contract Lifecycle, Expense Management, Time Tracking, Field Service, IT Asset Management, ITSM Change and CMDB, Customer Success, Sales Engagement, Configure, Price, Quote, Affiliates and Partners, Nonprofit Fundraising, Membership, Marketplace, Returns, Warehouse Management, Freight and TMS, Gift Cards, Subscription Commerce, Privacy and Consent, Background Checks, Open Data Catalogs, Research Repositories, News, Music, Podcasts, Books and Publishing, Translation and Localization, Speech and Transcription, Energy and Utilities, Solar and Energy Storage, Agriculture, Automotive, Mobility and Ride-Hailing, Parking, Sports Data, Gaming, Fitness and Wellness, Genomics and Clinical Trials: 6688 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging, Webhooks, Audit Logs, Feature Flags, API Management, Secrets Management, DNS and Domains, CDN and Edge, AI Agents, Document AI, Data Enrichment, Tax, Legal Practice, Contract Lifecycle, Expense Management, Time Tracking, Field Service, IT Asset Management, ITSM Change and CMDB, Customer Success, Sales Engagement, Configure, Price, Quote, Affiliates and Partners, Nonprofit Fundraising, Membership, Marketplace, Returns, Warehouse Management, Freight and TMS, Gift Cards, Subscription Commerce, Privacy and Consent, Background Checks, Open Data Catalogs, Research Repositories, News, Music, Podcasts, Books and Publishing, Translation and Localization, Speech and Transcription, Energy and Utilities, Solar and Energy Storage, Agriculture, Automotive, Mobility and Ride-Hailing, Parking, Sports Data, Gaming, Fitness and Wellness, Genomics and Clinical Trials, Blockchain Data, DeFi Protocols, NFTs and Digital Collectibles, Crypto Exchanges, Image and Video Generation, Computer Vision, Natural Language Processing, Chatbots and Conversational AI, Vector Search and RAG, MLOps and Model Registry, AI Inference and Deployments, MCP Servers and Agent Registries, Databases, Data Integration and ETL, Event Streaming and Queues, Data Catalogs and Governance, Business Intelligence, Data Warehouses and Query, Web Scraping and Crawling, SEO, Software Testing, Kubernetes and Clusters, Container Registries, Serverless Functions, Cloud Cost and FinOps, Threat Intelligence, Threat Detection and SIEM, Zero Trust and Device Posture, Fraud Prevention, Object Storage, Design Tools, Foreign Exchange, Payouts and Cross-Border Payments, Personal Finance, Wealth and Asset Management, Risk and Compliance, ESG and Carbon Accounting, Asset Tokenization, Agentic Commerce, Clinical Trials, Drug Discovery, Lab Diagnostics, Medical Imaging, Pharmacy and Prescriptions, Behavioral Health, Patient Engagement, Medical Devices, Telecommunications, IoT Connectivity and SIMs, Satellite and Earth Observation, Drones, Maritime and Vessels, Aviation and Flights, Oil and Gas, Mining, Construction, Manufacturing, Industrial Automation, Supply Chain Visibility, Inventory Management, Wholesale and B2B Ordering, Grocery, Nutrition and Recipes, Restaurants and Menus, Beauty and Salons, Fashion and Apparel, Government Services and Permits, Public Spending and Grants, Legislation, Courts and Case Records, Elections, Higher Education, Course Catalogs, Staffing, Employee Benefits, Job Boards, Real Estate Listings, Mortgages, Climate and Emissions, Sustainability Reporting, Robotics, Autonomous Vehicles, 3D Printing, Live Streaming, Movies and TV, Digital Asset Management, Content Moderation, Personalization and Recommendations, Pricing and Price Lists, Mobile Attribution, Online Communities, Notes and Productivity, Whiteboards and Collaboration, URL Shortening and Links, QR Codes, Print and Mail, Photos and Stock Media, Pets and Veterinary, Hotels and Property Systems, Churches and Congregations: 7574 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 6310; multi-word kebab 3413 / snake 1791 / camel 1288 | warn |
-| timestamps end in `_at` | `_at` 1338 / bare `created` 613 / `_time`, `_date`, `on` 360 | warn |
-| collections are plural | plural 3646 / singular 1953 | info |
-| properties snake_case | multi-word snake 1880 / camel 1894 | info |
-| references `<resource>_id` | `_id` 1388 / `...Id` 1479 | info |
-| path params snake_case | `{id}` 3724; multi-word camel 2846 / snake 2134 | info |
-| query params snake_case | snake 2757 / camel 2750 | info |
-| paging is `limit` + `cursor` | limit 2538, page 1805, offset 1408, cursor 709 | info |
+| path segments kebab-case | lowercase 7106; multi-word kebab 3761 / snake 1966 / camel 1431 | warn |
+| timestamps end in `_at` | `_at` 1566 / bare `created` 750 / `_time`, `_date`, `on` 426 | warn |
+| collections are plural | plural 4362 / singular 2467 | info |
+| properties snake_case | multi-word snake 2266 / camel 2292 | info |
+| references `<resource>_id` | `_id` 1644 / `...Id` 1748 | info |
+| path params snake_case | `{id}` 4149; multi-word camel 3161 / snake 2368 | info |
+| query params snake_case | snake 3031 / camel 3054 | info |
+| paging is `limit` + `cursor` | limit 2805, page 1973, offset 1555, cursor 769 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -183,6 +183,106 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Gaming | [api-commons/gaming](https://github.com/api-commons/gaming) | built | 73 | 26 |
 | Fitness and Wellness | [api-commons/fitness](https://github.com/api-commons/fitness) | built | 52 | 18 |
 | Genomics and Clinical Trials | -- | thin | 101 | 27 |
+| Blockchain Data | [api-commons/blockchain-data](https://github.com/api-commons/blockchain-data) | built | 374 | 109 |
+| DeFi Protocols | -- | thin | 154 | 74 |
+| NFTs and Digital Collectibles | [api-commons/nfts](https://github.com/api-commons/nfts) | built | 47 | 25 |
+| Crypto Exchanges | [api-commons/crypto-exchanges](https://github.com/api-commons/crypto-exchanges) | built | 288 | 55 |
+| Image and Video Generation | [api-commons/image-generation](https://github.com/api-commons/image-generation) | built | 148 | 70 |
+| Computer Vision | -- | thin | 73 | 24 |
+| Natural Language Processing | -- | thin | 91 | 34 |
+| Chatbots and Conversational AI | [api-commons/chatbots](https://github.com/api-commons/chatbots) | built | 147 | 69 |
+| Vector Search and RAG | [api-commons/vector-search](https://github.com/api-commons/vector-search) | built | 125 | 26 |
+| MLOps and Model Registry | [api-commons/mlops](https://github.com/api-commons/mlops) | built | 342 | 126 |
+| AI Inference and Deployments | [api-commons/ai-inference](https://github.com/api-commons/ai-inference) | built | 172 | 41 |
+| MCP Servers and Agent Registries | -- | thin | 926 | 38 |
+| Databases | [api-commons/databases](https://github.com/api-commons/databases) | built | 184 | 73 |
+| Data Integration and ETL | [api-commons/etl](https://github.com/api-commons/etl) | built | 101 | 47 |
+| Event Streaming and Queues | -- | thin | 421 | 44 |
+| Data Catalogs and Governance | [api-commons/data-governance](https://github.com/api-commons/data-governance) | built | 94 | 27 |
+| Business Intelligence | [api-commons/business-intelligence](https://github.com/api-commons/business-intelligence) | built | 159 | 42 |
+| Data Warehouses and Query | -- | thin | 112 | 39 |
+| Web Scraping and Crawling | [api-commons/web-scraping](https://github.com/api-commons/web-scraping) | built | 109 | 50 |
+| SEO | -- | thin | 51 | 13 |
+| Software Testing | [api-commons/testing](https://github.com/api-commons/testing) | built | 95 | 32 |
+| Kubernetes and Clusters | -- | thin | 296 | 71 |
+| Container Registries | -- | thin | 104 | 22 |
+| Serverless Functions | [api-commons/serverless](https://github.com/api-commons/serverless) | built | 136 | 22 |
+| Cloud Cost and FinOps | [api-commons/finops](https://github.com/api-commons/finops) | built | 81 | 21 |
+| Threat Intelligence | -- | thin | 135 | 35 |
+| Threat Detection and SIEM | [api-commons/threat-detection](https://github.com/api-commons/threat-detection) | built | 60 | 25 |
+| Zero Trust and Device Posture | -- | thin | 103 | 51 |
+| Fraud Prevention | -- | thin | 173 | 48 |
+| Object Storage | [api-commons/object-storage](https://github.com/api-commons/object-storage) | built | 121 | 21 |
+| Design Tools | -- | thin | 27 | 8 |
+| Foreign Exchange | [api-commons/foreign-exchange](https://github.com/api-commons/foreign-exchange) | built | 65 | 30 |
+| Payouts and Cross-Border Payments | [api-commons/payouts](https://github.com/api-commons/payouts) | built | 100 | 62 |
+| Personal Finance | [api-commons/personal-finance](https://github.com/api-commons/personal-finance) | built | 133 | 34 |
+| Wealth and Asset Management | -- | thin | 85 | 18 |
+| Risk and Compliance | -- | thin | 336 | 57 |
+| ESG and Carbon Accounting | -- | thin | 79 | 11 |
+| Asset Tokenization | -- | thin | 113 | 52 |
+| Agentic Commerce | -- | thin | 160 | 34 |
+| Clinical Trials | -- | thin | 40 | 4 |
+| Drug Discovery | -- | thin | 59 | 7 |
+| Lab Diagnostics | -- | thin | 23 | 9 |
+| Medical Imaging | -- | thin | 11 | 2 |
+| Pharmacy and Prescriptions | -- | thin | 45 | 9 |
+| Behavioral Health | -- | thin | 17 | 7 |
+| Patient Engagement | -- | thin | 57 | 12 |
+| Medical Devices | -- | thin | 18 | 4 |
+| Telecommunications | -- | thin | 95 | 20 |
+| IoT Connectivity and SIMs | [api-commons/iot-connectivity](https://github.com/api-commons/iot-connectivity) | built | 35 | 10 |
+| Satellite and Earth Observation | -- | thin | 170 | 61 |
+| Drones | -- | thin | 30 | 4 |
+| Maritime and Vessels | -- | thin | 228 | 25 |
+| Aviation and Flights | [api-commons/aviation](https://github.com/api-commons/aviation) | built | 56 | 17 |
+| Oil and Gas | -- | thin | 19 | 3 |
+| Mining | -- | thin | 10 | 1 |
+| Construction | -- | thin | 54 | 28 |
+| Manufacturing | -- | thin | 82 | 24 |
+| Industrial Automation | [api-commons/industrial-automation](https://github.com/api-commons/industrial-automation) | built | 30 | 11 |
+| Supply Chain Visibility | -- | thin | 280 | 55 |
+| Inventory Management | -- | thin | 122 | 54 |
+| Wholesale and B2B Ordering | -- | thin | 151 | 31 |
+| Grocery | -- | thin | 11 | 3 |
+| Nutrition and Recipes | [api-commons/nutrition](https://github.com/api-commons/nutrition) | built | 62 | 24 |
+| Restaurants and Menus | -- | thin | 106 | 31 |
+| Beauty and Salons | -- | thin | 21 | 3 |
+| Fashion and Apparel | -- | thin | 157 | 78 |
+| Government Services and Permits | -- | thin | 208 | 8 |
+| Public Spending and Grants | -- | thin | 117 | 9 |
+| Legislation | -- | thin | 129 | 15 |
+| Courts and Case Records | -- | thin | 22 | 3 |
+| Elections | -- | thin | 39 | 5 |
+| Higher Education | -- | thin | 164 | 27 |
+| Course Catalogs | -- | thin | 91 | 30 |
+| Staffing | [api-commons/staffing](https://github.com/api-commons/staffing) | built | 51 | 12 |
+| Employee Benefits | [api-commons/employee-benefits](https://github.com/api-commons/employee-benefits) | built | 37 | 18 |
+| Job Boards | [api-commons/job-boards](https://github.com/api-commons/job-boards) | built | 33 | 23 |
+| Real Estate Listings | -- | thin | 131 | 54 |
+| Mortgages | -- | thin | 44 | 14 |
+| Climate and Emissions | -- | thin | 79 | 16 |
+| Sustainability Reporting | -- | thin | 68 | 19 |
+| Robotics | -- | thin | 25 | 1 |
+| Autonomous Vehicles | -- | thin | 6 | 0 |
+| 3D Printing | -- | thin | 19 | 10 |
+| Live Streaming | -- | thin | 170 | 43 |
+| Movies and TV | [api-commons/movies](https://github.com/api-commons/movies) | built | 203 | 35 |
+| Digital Asset Management | [api-commons/digital-asset-management](https://github.com/api-commons/digital-asset-management) | built | 82 | 42 |
+| Content Moderation | -- | thin | 32 | 8 |
+| Personalization and Recommendations | -- | thin | 107 | 35 |
+| Pricing and Price Lists | -- | thin | 66 | 11 |
+| Mobile Attribution | -- | thin | 39 | 5 |
+| Online Communities | -- | thin | 68 | 21 |
+| Notes and Productivity | [api-commons/productivity](https://github.com/api-commons/productivity) | built | 171 | 49 |
+| Whiteboards and Collaboration | -- | thin | 122 | 5 |
+| URL Shortening and Links | -- | thin | 6 | 3 |
+| QR Codes | -- | thin | 11 | 5 |
+| Print and Mail | -- | thin | 31 | 15 |
+| Photos and Stock Media | -- | thin | 56 | 26 |
+| Pets and Veterinary | -- | thin | 7 | 5 |
+| Hotels and Property Systems | -- | thin | 86 | 18 |
+| Churches and Congregations | -- | thin | 4 | 4 |
 
 Planned, in order: .
 <!-- /commons:contexts -->

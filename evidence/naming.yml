@@ -107,63 +107,163 @@ contexts:
 - gaming
 - fitness
 - genomics
-providers: 6688
+- blockchain-data
+- defi
+- nfts
+- crypto-exchanges
+- image-generation
+- computer-vision
+- nlp
+- chatbots
+- vector-search
+- mlops
+- ai-inference
+- mcp-servers
+- databases
+- etl
+- event-streaming
+- data-governance
+- business-intelligence
+- data-warehouses
+- web-scraping
+- seo
+- testing
+- kubernetes
+- containers
+- serverless
+- finops
+- threat-intelligence
+- threat-detection
+- zero-trust
+- fraud-prevention
+- object-storage
+- design-tools
+- foreign-exchange
+- payouts
+- personal-finance
+- wealth-management
+- risk-management
+- esg
+- tokenization
+- agentic-commerce
+- clinical-trials
+- drug-discovery
+- diagnostics
+- medical-imaging
+- pharmacy
+- behavioral-health
+- patient-engagement
+- medical-devices
+- telecommunications
+- iot-connectivity
+- satellite
+- drones
+- maritime
+- aviation
+- oil-and-gas
+- mining
+- construction
+- manufacturing
+- industrial-automation
+- supply-chain
+- inventory
+- wholesale
+- grocery
+- nutrition
+- restaurants
+- beauty
+- fashion
+- government
+- public-spending
+- legislation
+- courts
+- elections
+- higher-education
+- course-catalogs
+- staffing
+- employee-benefits
+- job-boards
+- real-estate
+- mortgages
+- climate
+- sustainability
+- robotics
+- autonomous-vehicles
+- 3d-printing
+- live-streaming
+- movies
+- digital-asset-management
+- content-moderation
+- personalization
+- pricing
+- mobile-attribution
+- communities
+- productivity
+- whiteboards
+- url-shortening
+- qr-codes
+- printing
+- photos
+- pets
+- hospitality
+- churches
+providers: 7574
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 3646
-    singular: 1953
+    plural: 4362
+    singular: 2467
   foreign_key:
-    Id: 1479
-    _id: 1388
+    Id: 1748
+    _id: 1644
   pagination_param:
-    limit: 2538
-    page: 1805
-    offset: 1408
-    page_size: 1134
-    cursor: 709
-    per_page: 530
-    start: 461
-    size: 451
-    count: 372
-    after: 323
-    page_token: 278
-    before: 264
-    skip: 262
-    max_results: 179
-    top: 133
-    starting_after: 83
-    next: 69
+    limit: 2805
+    page: 1973
+    offset: 1555
+    page_size: 1241
+    cursor: 769
+    per_page: 564
+    start: 493
+    size: 492
+    count: 406
+    after: 355
+    page_token: 318
+    skip: 284
+    before: 283
+    max_results: 214
+    top: 141
+    starting_after: 89
+    next: 74
   path_param:
-    lower: 3724
-    camelCase: 2846
-    snake_case: 2134
-    PascalCase: 226
-    kebab-case: 226
-    other: 223
+    lower: 4149
+    camelCase: 3161
+    snake_case: 2368
+    kebab-case: 246
+    PascalCase: 245
+    other: 242
   path_segment:
-    lower: 6310
-    kebab-case: 3413
-    snake_case: 1791
-    other: 1515
-    camelCase: 1288
-    PascalCase: 568
+    lower: 7106
+    kebab-case: 3761
+    snake_case: 1966
+    other: 1739
+    camelCase: 1431
+    PascalCase: 618
   property:
-    lower: 3639
-    camelCase: 1894
-    snake_case: 1880
-    other: 320
-    PascalCase: 241
-    kebab-case: 34
+    lower: 4377
+    camelCase: 2292
+    snake_case: 2266
+    other: 375
+    PascalCase: 283
+    kebab-case: 45
   query_param:
-    lower: 5130
-    snake_case: 2757
-    camelCase: 2750
-    other: 1005
-    PascalCase: 366
-    kebab-case: 334
+    lower: 5703
+    camelCase: 3054
+    snake_case: 3031
+    other: 1087
+    PascalCase: 411
+    kebab-case: 372
   timestamp:
-    _at: 1338
-    bare: 613
-    _date/_time/on: 360
+    _at: 1566
+    bare: 750
+    _date/_time/on: 426

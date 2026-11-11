@@ -1,21 +1,32 @@
 generated: '2026-11-11'
-count: 18
+count: 19
 specs:
   aeris/openapi/_original/aeris-watchtower-api-openapi-openapi.yaml:
     error: did not find expected <document start>
     contexts:
     - iot
     - it-assets
+    - zero-trust
+    - telecommunications
+    - iot-connectivity
   cisco-ise/openapi/_original/cisco-ise-legacy-ers-allowed-protocols.yaml:
     error: while scanning a plain scalar
     contexts:
     - identity
     - audit-logs
+    - zero-trust
+    - legislation
   cisco-ise/openapi/_original/cisco-ise-legacy-ers-pxgrid-node.yaml:
     error: while scanning for the next token
     contexts:
     - identity
     - audit-logs
+    - zero-trust
+    - legislation
+  converseon/openapi/_original/openapi.json:
+    error: 'Expecting value: line 1 column 1 (char 0)'
+    contexts:
+    - nlp
   cruisebound/openapi/_original/openapi.json:
     error: 'Expecting value: line 1 column 1 (char 0)'
     contexts:
@@ -27,6 +38,7 @@ specs:
     - search
     - audit-logs
     - privacy
+    - zero-trust
   f5/openapi/_original/f5-big-ip-fast-openapi.yml:
     error: while scanning a plain scalar
     contexts:
@@ -41,23 +53,29 @@ specs:
     error: while scanning a block scalar
     contexts:
     - healthcare
+    - pharmacy
   hhs/openapi/_original/simpler-grants-gov.yml:
     error: could not determine a constructor for the tag 'tag:yaml.org,2002:python/object/apply:src.api.opportunities_v1.opportunity_schemas.SearchQueryOperator'
     contexts:
     - healthcare
     - open-data-catalogs
+    - government
+    - public-spending
+    - legislation
   leaseweb/openapi/_original/leaseweb-openapi-openapi.yml:
     error: while parsing a block mapping
     contexts:
     - files
     - cloud-infrastructure
     - dns
+    - object-storage
   leaseweb/openapi/_original/leaseweb-publiccloud-openapi.yaml:
     error: while parsing a block mapping
     contexts:
     - files
     - cloud-infrastructure
     - dns
+    - object-storage
   novopayment/openapi/_original/novopayment-issuer-tokenization-openapi.yml:
     error: while scanning a block scalar
     contexts:
@@ -66,6 +84,7 @@ specs:
     - billing
     - banking
     - identity-verification
+    - tokenization
   novopayment/openapi/_original/novopayment-issuer-tokenization.yaml:
     error: while scanning a block scalar
     contexts:
@@ -74,6 +93,7 @@ specs:
     - billing
     - banking
     - identity-verification
+    - tokenization
   novopayment/openapi/_original/novopayment-payment-authorizer-openapi.yml:
     error: while scanning a block scalar
     contexts:
@@ -82,6 +102,7 @@ specs:
     - billing
     - banking
     - identity-verification
+    - tokenization
   novopayment/openapi/_original/novopayment-payment-authorizer.yaml:
     error: while scanning a block scalar
     contexts:
@@ -90,6 +111,7 @@ specs:
     - billing
     - banking
     - identity-verification
+    - tokenization
   opsmeter/openapi/_original/opsmeter-openapi.json:
     error: 'Expecting value: line 1 column 1 (char 0)'
     contexts:
@@ -100,6 +122,10 @@ specs:
     - events
     - marketplace
     - agriculture
+    - mcp-servers
+    - nutrition
+    - job-boards
+    - communities
   vitagroup/openapi/_original/vitagroup-hip-ehrbase-enterprise.yml:
     error: did not find expected <document start>
     contexts:
