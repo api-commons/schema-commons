@@ -849,7 +849,7 @@ contexts:
   status: thin
 - context: pets
   name: Pets and Veterinary
-  status: planned
+  status: thin
 - context: hospitality
   name: Hotels and Property Systems
   status: planned
