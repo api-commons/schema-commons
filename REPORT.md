@@ -184,6 +184,77 @@ warns when that happens. The split has held steady since context four.
 5. **Arazzo:** write the cross-concept workflows (create a contact and a deal; quote, bind, claim) against the common operations.
 6. **Locking:** apply the lock criteria in the README. The likeliest first candidates are the stable, well-agreed contexts: source control, trading, ticketing and identity.
 
+## Second batch: 50 more contexts (2026-11-11)
+
+The second 50 ran from webhooks to genomics, one at a time. 41 were built and 9 were measured
+and recorded as `thin` (customer success, marketplace, gift cards, subscription commerce,
+privacy, background checks, solar, parking and genomics). Their findings stay in the hub, but
+they have no repository.
+
+| | |
+| --- | ---: |
+| Contexts built or published | 98 |
+| Contexts measured and recorded thin | 9 |
+| Providers measured (naming evidence, across all 107) | 6,688 |
+| Providers mapped to a concept on apis.io | 3,530 |
+| Concepts published | 389 |
+| Properties at core | 1,404 |
+| Provider crosswalks | 5,295 |
+| Concepts measured and dropped, each with a comment | 45 |
+| Arazzo documents / workflows | 17 / 18 |
+| Standards passes (OCPI, OTLP, CAP, RESO, DCAT-US) | 10 |
+
+### Follow-ups done before the batch
+
+- **Findings checker** (`check-findings.py`). It verifies every "agrees on", share, provider count and
+  provider name in `findings:` against the measured profile and crosswalks, and `context.sh finish`
+  refuses to commit on drift. Its first run found about twenty stale findings, including two wrong
+  cores and eight provider names with no crosswalk in the context. All 107 contexts now read 0 drifted.
+- **Standards passes.** OCPI, OTLP, CAP, RESO and DCAT-US were extracted as reference shapes, and each
+  context's core is measured against them (the "Measured against the standard" table in each README).
+- **Arazzo.** Reference workflows compose core and extended operations only. They are validated against
+  the context's own common OpenAPI and linted with the Spectral Arazzo ruleset.
+
+### What the second batch taught
+
+1. **A config that does nothing must fail.** `duplicates:` takes `canon: [merged slugs]`. Three contexts
+   (energy, agriculture, fitness) wrote `dup: canon`, which iterated as characters and merged nothing,
+   with no error. In fitness this produced a ten-property sleep core that was really one aggregator
+   listed under three catalog names. `build.py` now refuses the wrong form. The same rule applies to
+   the earlier lessons: the silent path is the dangerous one.
+2. **Standards dominate small cohorts.** Eleven Australian energy retailers publish the Consumer Data
+   Right energy standard. Uncounted, its servicepoint vocabulary would have been the core of energy;
+   counted as one voice, energy agrees only on a meter id and an interval with a unit. Expect this
+   wherever a regulator publishes the spec.
+3. **Feed formats agree; telemetry does not.** Shared mobility agrees almost completely because fleets
+   follow the open bike-share feed format. Solar production, IoT readings and wearables each report
+   time-series in their own shape, and agree on little beyond a timestamp or a score.
+4. **Wearables agree on a judgement before a measurement.** Sleep and daily summaries share a 0-100
+   score before they share any physiological field.
+5. **Thin rises down the long tail.** None of the first 57 contexts was thin; 9 of the second 50 were.
+   The vocabulary is common where many providers expose the same resource as REST. Where a domain moves
+   data as files (genomics: VCF, BAM), browser SDKs (consent) or feeds, a market census is the wrong
+   instrument, and a standards pass is the right one.
+6. **Context names collide too.** `open-data` would have overwritten the existing API Commons CKAN
+   standard, so it became `open-data-catalogs`. Concept names follow the same collision rule across
+   contexts: `game_title`, `player_profile` and `game_match` in gaming, because sports holds game and player.
+7. **The naming tie holds.** Multi-word property names are camelCase at 50% of providers across 6,688
+   providers measured. snake_case stays a reasoned decision, and the 60% revisit trigger has not fired.
+
+### Tooling backlog
+
+- Body readers for XML and form-encoded schemas (CDN), table APIs (ServiceNow, CMDB) and OAI-PMH verbs.
+- A GA4GH pass (Beacon, htsget, DRS) for genomics, a sportsbook context for odds and markets, and a
+  re-measure of solar once the larger inverter and battery platforms' specs are in the catalog.
+- Catalog repair (`evidence/catalog-gaps.yml`, `evidence/unreadable-specs.yml`) in the re-profiling
+  session, then a re-measure of the contexts it touches.
+
+### To publish
+
+`create-repos.sh` creates the 41 new repositories, pushes every existing context and the hub, and
+pushes the OpenLint branch (re-measured across 107 contexts) and the apis.io `common-schema` branch
+(98 contexts, 3,530 providers, 601 tags). The apis.io change then waits for the weekend build.
+
 ## Appendix: every context
 
 Generated by `scripts/report.py` from each context's files.
@@ -479,7 +550,7 @@ Decisions:
 Findings:
 
 - A user agrees on id, email and name -- and only just on name: SCIM nests it as an object, others split first and last name, others carry a display name, so the most common resource in the catalog agrees on less than a CRM contact does.
-- Roles and groups agree on name, id and description, and roles reference their permissions a third of the time -- RBAC is the same shape everywhere.
+- Roles and groups agree on name, id and description -- and a third of roles reference their permissions: RBAC is the same shape everywhere.
 - An invite agrees on email, id and the role it grants: the minimum to bring someone in.
 - API keys agree on id, name, key and created_at once only unambiguous paths count.
 
@@ -503,7 +574,7 @@ Decisions:
 
 Findings:
 
-- A recipient agrees on email, name, role and status -- the routing information every signing flow needs -- across DocuSign, Dropbox Sign, PandaDoc, Documenso and the rest.
+- A recipient agrees on email, name, role and status -- the routing information every signing flow needs -- across DocuSign, PandaDoc, Documenso and the rest.
 - Signature fields agree on type, name and whether they are required, so a field layout maps between products even where the documents do not.
 - The envelope agrees on id, name, status, created_at and its signers; what else it carries (documents, expiry) is modelled differently by every provider.
 
@@ -628,6 +699,7 @@ Findings:
 - A property agrees only on id and address. Type, size, year built and unit count are each modelled by too few providers to share -- residential management, commercial portfolios and MLS listings describe a building differently.
 - Listings agree on nothing but an id, although the industry has a listing standard (RESO): the listing APIs published here name their fields differently enough that the aliases cannot reconcile them. Worth a RESO-specific pass, as Open Banking and CDR got.
 - Units, tenants and work orders are thin (5-9 providers): most property-management systems keep their APIs to partners.
+- Measured against the RESO Data Dictionary 2.0, the standard covers the listing and property core and defines about 600 more fields that no provider in the cohort publishes as OpenAPI -- the clearest measure in the commons of how much richer a standard is than what reaches an API description.
 
 Decisions:
 
@@ -752,7 +824,7 @@ Decisions:
 
 Findings:
 
-- A post agrees on id, title, status, body, tags and dates: WordPress set the shape of a blog post and the rest of the market kept it.
+- A post agrees on id, title, status, body, tags and dates -- the blog post has one shape across every CMS that exposes one.
 - An asset agrees only on id, name and dates; MIME type falls just short. A CMS asset is a file, but CMSs describe the bytes less consistently than storage APIs do.
 - Headless CMS is barely represented (6 providers each for content types and entries): the leading headless platforms either publish GraphQL or no OpenAPI the catalog holds.
 
@@ -804,7 +876,7 @@ Decisions:
 Findings:
 
 - An ad campaign agrees more than anything else in advertising: name, status, account, budget, start and end dates are all core. The campaign is where ad platforms converged.
-- An ad group agrees on id, name and its campaign -- the hierarchy is shared even where the targeting inside it is not. Meta's ad sets, DV360's line items and Amazon's ad groups are one concept.
+- An ad group agrees on id, name, its campaign and its account -- the hierarchy is shared even where the targeting inside it is not. Facebook's ad sets, DV360's line items and Amazon's ad groups are one concept.
 - Reports agree on nothing: every platform reports impressions, clicks and spend, under its own names and its own breakdowns.
 - Ads themselves are thin as a resource (7 providers); most platforms expose the ad through its creative.
 
@@ -854,6 +926,7 @@ Findings:
 - A monitor agrees on name, id, status and type: uptime checks, synthetic tests and metric monitors share the identity of a watcher even where their thresholds differ.
 - An SLO agrees almost completely -- name, description, its indicator, tags and dates -- the newest concept here and the most standardised.
 - Traces agree on a trace id, a name and metadata; logs agree on nothing as a resource. Several are OpenTelemetry payloads whose shape lives in the OTLP standard, and others LLM-observability traces with a different shape again. OTLP deserves its own pass, as Open Banking did.
+- Measured against OTLP, a trace is an OpenTelemetry span: OTLP defines every core property of a trace. Logs have no measured core, and OTLP's LogRecord is the shape the market would converge on if it published one.
 
 Decisions:
 
@@ -1026,7 +1099,7 @@ Decisions:
 Findings:
 
 - FHIR is to healthcare what Open Banking is to banking: 32 providers in this cohort publish nothing but FHIR resources. Counted once as HL7's voice, the market's own agreement shows.
-- A patient agrees on date of birth, gender, name and email -- the demographic core every EHR, telehealth platform and payer API carries.
+- A patient agrees on date of birth, gender, first and last name and email -- the demographic core every EHR, telehealth platform and payer API carries.
 - A practitioner agrees on name, NPI and specialty: the National Provider Identifier is the one identifier the US market shares.
 - Coverage agrees on the payer, the member's relationship and status, and a claim on its patient, practitioner, payer and date of service -- the payer side of healthcare is more uniform than the clinical side.
 - Clinical records (observations, conditions, prescriptions) agree only on a code and the patient: the code is the vocabulary (LOINC, SNOMED, ICD-10, RxNorm), and the structure around it is the provider's.
@@ -1076,7 +1149,7 @@ Decisions:
 
 Findings:
 
-- A food order agrees only on the restaurant it belongs to. Aggregators (DoorDash, Just Eat), ordering platforms and kitchen systems each model the order, its items and its fulfilment type differently -- the same divergence as orders in commerce.
+- A food order agrees only on the restaurant and its items -- aggregators (DoorDash, Just Eat), ordering platforms and kitchen systems each model the totals and the fulfilment type differently, the same divergence as orders in commerce.
 - A restaurant agrees only on name and id; hours and address are carried by too few to share, because many APIs take the restaurant as given from their own onboarding.
 - Modifier groups -- the min/max choice rules that make a menu orderable -- are almost never a resource of their own (2 providers); they live inside the menu item.
 
@@ -1099,7 +1172,7 @@ Decisions:
 Findings:
 
 - A store location agrees on name, address, phone, status, country, currency and time zone -- the most complete location core in the commons, because a POS needs every one of them to ring a sale.
-- A sale agrees only on an id: POS systems call it a sale, a transaction, a check, a ticket or an order, and carry items, taxes and tenders under as many names.
+- A sale agrees only on an id and the customer -- POS systems call it a sale, a transaction, a check, a ticket or an order, and carry items, taxes and tenders under as many names.
 - Terminals are thin (4 providers, agreeing only on id and name); shifts (5) agree on the employee, the location and timestamps.
 
 Decisions:
@@ -1220,6 +1293,7 @@ Findings:
 - Weather agrees on less than any other data context. Current conditions come closest -- a condition, a temperature and a time, each at 36-45% -- and forecasts agree on nothing: every provider nests readings in time-series arrays (daily, hourly, list, timelines) wrapped in its own location metadata.
 - Counted per listing, alerts looked standardised: four National Weather Service listings return the Common Alerting Protocol. Counted once, alerts still agree on the event and its severity -- the two fields every warning needs -- and little else.
 - The physical quantities are shared even where the shapes are not: temperature, humidity, wind and pressure collapse to one name each through the aliases, so the vocabulary is usable as a dictionary even though no resource reaches core.
+- Measured against its standard, the alert is CAP: the Common Alerting Protocol 1.2 defines every core property of a weather alert, and 11 fields (urgency, certainty, response type, audience...) that providers in the cohort do not publish.
 
 Decisions:
 
@@ -1242,7 +1316,7 @@ Decisions:
 Findings:
 
 - A bar agrees completely: open, high, low, close and volume are core across 43 equity, crypto and data-vendor APIs. OHLCV is the most universal shape in the commons -- the single place where the market converged without a standards body.
-- An order book agrees on bids, asks and the symbol, and a trade on price and time. A quote agrees only on the symbol: bid, ask and last price sit just below core, because some providers quote a last price and others a two-sided market.
+- An order book agrees on bids, asks and the symbol. A trade agrees on price and time. A quote agrees only on the symbol -- bid, ask and last price sit just below core, because some providers quote a last price and others a two-sided market.
 - An instrument agrees only on a name: equities, crypto pairs, futures and FX each identify an instrument differently (ticker, pair, FIGI, ISIN, product id), and the symbol field is the most-aliased name in this context.
 
 Decisions:
@@ -1373,7 +1447,7 @@ Decisions:
 
 Findings:
 
-- A post agrees on id, text and created_at across networks (X, Mastodon-compatible servers, LinkedIn) and the publishing tools that schedule onto them.
+- A post agrees on id, text and created_at -- across networks (X, LinkedIn, ActivityPub servers such as Pixelfed) and the publishing tools that schedule onto them.
 - A comment agrees on id, author, text and created_at -- the same core as a post, one level down.
 - A social account agrees on nothing outright: networks expose a user, publishing tools a connected channel, and creator platforms an influencer profile.
 
@@ -1397,7 +1471,7 @@ Findings:
 
 - A call agrees on status, direction, the caller and created_at across CPaaS platforms, business phone systems and voice-AI agents -- the call-detail record is shared.
 - A recording agrees on id, duration, status and created_at; a conference on id, name, status and created_at.
-- Transcriptions span call transcripts and general speech-to-text jobs: they agree only on id, status and created_at, because the transcript itself is text, utterances or segments.
+- Transcriptions span call transcripts and general speech-to-text jobs, and agree only on id, status and created_at -- the transcript itself is text, utterances or segments depending on the provider.
 
 Decisions:
 
@@ -1501,7 +1575,7 @@ Decisions:
 Findings:
 
 - A device agrees on name, id and type across IoT clouds, smart-home platforms and industrial systems; firmware version and last-seen time are carried by too few to share.
-- Telemetry agrees only on a timestamp: a reading is a value, a map of values, a fragment (Cumulocity) or a sample with every sensor in it, depending on the platform.
+- Telemetry agrees only on a timestamp -- a reading is a value, a map of values, a fragment or a sample with every sensor in it, depending on the platform.
 - A device command agrees on the command and its status -- the remote-procedure-call shape that IoT platforms share.
 
 Decisions:
@@ -1523,6 +1597,7 @@ Findings:
 
 - EV charging publishes the least of any context in the commons: 41 tagged providers, 4 with a charger or session the census can read. Chargers agree on id and name; sessions on an id.
 - OCPI -- the roaming standard that defines locations, EVSEs, sessions, tariffs and charge detail records -- does not appear in this cohort as harvested OpenAPI: no provider here publishes an OCPI contract the census can read. The standard exists; its OpenAPI is not in the catalog.
+- Measured against OCPI 2.2.1, the standard defines all of a charging session's core and every core property of a charger except a display name -- and it defines locations, tariffs and charge detail records that no provider in the cohort publishes as OpenAPI. OCPI is the spine this context lacked; its crosswalk is in standards/.
 
 Decisions:
 
@@ -1530,4 +1605,921 @@ Decisions:
 - Chargers cover EVSEs, charge points and charge boxes; sessions are `/charging-sessions`.
 - An OCPI pass -- reading the standard's own module definitions as the reference, as the models context does for the OpenAI interface -- would give this context its spine. Noted as the next step rather than done by hand.
 - Duplicates merged: Leap into Leapfrog Power.
+
+### Webhooks (`webhooks`)
+
+487 providers measured, 202 crosswalks, [api-commons/webhooks](https://github.com/api-commons/webhooks).
+
+- `webhook_endpoint` (202 providers): `id`, `url`, `status`, `events`, `created_at`
+- `event_type` (17 providers): `id`, `name`
+- `event` (65 providers): `type`, `id`
+- `delivery` (27 providers): `id`, `status`, `created_at`, `attempt`, `event_id`
+
+Findings:
+
+- A webhook endpoint agrees on its url, the events it subscribes to, its status and created_at across 207 providers -- the most widely implemented management resource in the commons, and one of the most uniform.
+- An event agrees on its type and id; its payload is the resource that changed, so it takes the shape of whichever context sent it.
+- Event types and deliveries are thin as resources (17 and 30 providers): most providers document their event types rather than serving them, and few expose delivery history.
+
+Decisions:
+
+- The Webhook tag marks APIs that offer webhooks, which is the cohort wanted: the management API for webhooks, wherever it lives.
+- In this context a bare `/events` is the event feed -- the meaning it had in every other context where it was excluded.
+- Webhook subscriptions, hooks, callbacks and notification channels are webhook endpoints, published at `/webhooks` (the market's word).
+- Attempts count as deliveries only beneath a webhook, delivery or event path; a bare `/attempts` was an exam or an import elsewhere.
+- Duplicates merged: eight listings, including Keap, Quo and Later.
+
+### Audit Logs (`audit-logs`)
+
+844 providers measured, 61 crosswalks, [api-commons/audit-logs](https://github.com/api-commons/audit-logs).
+
+- `audit_event` (61 providers): `action`, `id`, `created_at`, `actor_id`
+
+Findings:
+
+- An audit event agrees on the action, the actor, an id and when it happened -- who did what, and when -- across 62 providers. The target, the IP address and the outcome sit below core: every audit log records the actor and the act, fewer record what was acted on.
+- Log streams to a SIEM are almost never a resource of their own (2 providers); exporting audit logs is configured, not modelled.
+
+Decisions:
+
+- The cohort is the security, identity, compliance and governance tags: audit logs are part of the enterprise surface of almost any API, and these tags find the ones that publish them.
+- Only audit-specific paths count -- audit logs, audit events, audit trails, activity logs, and events or logs beneath an audit path; a bare `/events` or `/logs` is another context's.
+- Audit events are `/audit-events`.
+- Duplicates merged: eight listings, including ConductorOne, Oracle Health, Cvent and LSEG.
+
+### Feature Flags (`feature-flags`)
+
+36 providers measured, 19 crosswalks, [api-commons/feature-flags](https://github.com/api-commons/feature-flags).
+
+- `flag` (19 providers): `name`, `description`, `enabled`, `id`, `key`, `metadata`, `created_at`, `type`
+- `flag_environment` (11 providers): `name`, `id`
+- `flag_segment` (9 providers): `description`, `id`, `name`, `created_at`, `rules`
+- `experiment` (7 providers): `id`, `name`, `description`, `status`, `created_at`, `ended_at`, `started_at`
+
+Findings:
+
+- A flag agrees on key, name, description, whether it is enabled, its type and created_at -- feature-flag platforms, experimentation tools and identity providers with flags (Statsig's gates, PostHog, Kinde) share the toggle's shape almost completely.
+- Segments agree on name, description and rules; experiments on status, start and end -- the targeting and the test share a shape as well as the flag.
+- The cohort is small (36 providers, 19 mapped): most flag platforms deliver flags through SDKs and keep the management API secondary.
+
+Decisions:
+
+- Gates, toggles and switches are flags; features count as flags only beneath a project or environment (a bare `/features` is a product's feature list elsewhere).
+- Environments are `/flag-environments` and segments `/flag-segments`: CI/CD owns `/environments` and analytics owns cohorts. Audiences and cohorts count as flag segments only at a provider that also serves flags.
+
+### API Management (`api-management`)
+
+135 providers measured, 23 crosswalks, [api-commons/api-management](https://github.com/api-commons/api-management).
+
+- `managed_api` (23 providers): `name`, `id`, `created_at`, `description`, `metadata`, `updated_at`
+- `api_product` (6 providers): `description`, `name`, `created_at`
+- `consumer_app` (12 providers): `name`, `created_at`, `description`, `id`, `status`, `credentials`, `metadata`
+
+Findings:
+
+- A managed API agrees on name, description, id and timestamps across gateways and API management platforms; base path and upstream target are each named too differently to share.
+- An API product agrees on Apigee's quota model -- quota, interval and time unit -- because Apigee defined the API product and the rest of the market copied it.
+- A consumer app agrees on name, status, credentials and description: the developer app that holds keys is the same resource across Apigee, Azure API Management, Kong and APISIX.
+
+Decisions:
+
+- API keys are the identity context's and plans billing's; neither is duplicated here.
+- Managed APIs are `/apis`; proxies and gateway services count. Products are `/api-products` (billing owns plans, commerce owns products); consumers, developer apps and clients beneath a portal are `/consumer-apps`.
+- Routes were measured and dropped (4 providers).
+- Duplicates merged: Google Apigee into Apigee, Gloo into Solo.io.
+
+### Secrets Management (`secrets`)
+
+46 providers measured, 11 crosswalks, [api-commons/secrets](https://github.com/api-commons/secrets).
+
+- `secret` (9 providers): `metadata`, `created_at`, `id`, `name`, `type`, `updated_at`
+- `secret_store` (4 providers): `id`, `name`
+- `encryption_key` (3 providers): `name`
+
+Findings:
+
+- A secret agrees on name, type, id and timestamps -- and never on its value: providers return secret metadata on the resource and the value through a separate read, so the value does not reach core anywhere.
+- Secrets management publishes thinly: 46 providers in the cohort, 12 mapped.
+
+Decisions:
+
+- Password-manager items in a vault, credentials and passwords beneath a vault, KV paths and parameter-store parameters are secrets.
+- Vaults, safes and secret environments are `/secret-stores`: crypto custody owns the bare word vault in the crypto-wallets context.
+- Encryption keys are `/encryption-keys` and count only beneath a KMS, key ring, vault or transit path: identity owns API keys.
+- Secret versions were measured and dropped (2 providers).
+- Duplicates merged: HVault into HashiCorp Vault.
+
+### DNS and Domains (`dns`)
+
+69 providers measured, 28 crosswalks, [api-commons/dns](https://github.com/api-commons/dns).
+
+- `domain` (23 providers): `id`, `name`, `created_at`
+- `zone` (7 providers): `id`, `name`, `created_at`, `status`
+- `dns_record` (18 providers): `name`, `type`, `ttl`, `id`, `priority`
+
+Findings:
+
+- A DNS record agrees on name, type, TTL, priority and id across registrars, DNS hosts and clouds (Cloudflare, Route 53, Google Cloud DNS, Hetzner) -- the record is fixed by the DNS protocol, and the APIs follow it. Its content is the one field named differently everywhere (content, value, rdata, rrdatas, target).
+- A domain agrees on name, id and created_at; expiry, auto-renew and nameservers are each carried by too few registrars to share.
+
+Decisions:
+
+- Records, resource-record sets and DNS records are one concept, published beneath their zone at `/zones/{zone_id}/records`.
+- Zones count only at a provider that also exposes records; hosted zones and managed zones are zones.
+
+### CDN and Edge (`cdn`)
+
+77 providers measured, 17 crosswalks, [api-commons/cdn](https://github.com/api-commons/cdn).
+
+- `purge` (17 providers): no core
+- `tls_certificate` (4 providers): `id`, `status`, `type`, `updated_at`
+
+Findings:
+
+- CDN is the context where the census sees least of a large market. The major CDNs publish APIs, but CloudFront's is XML, Fastly's takes form-encoded bodies -- so distributions, the central concept, could not be measured from 4 providers.
+- Purges are the most published CDN operation (17 providers) and agree on nothing outright: a purge is a list of URLs at some providers, of cache tags at others, and a whole-zone flush at the rest.
+
+Decisions:
+
+- Purges cover invalidations and cache flushes, at `/purges`.
+- TLS certificates count at a provider that also exposes purges, at `/tls-certificates`.
+- Distributions and edge functions were measured and dropped. Reading XML and form-encoded APIs is the census change that would recover them; it is recorded for the tooling backlog.
+- Pull zones (Bunny), services (Fastly) and distributions (CloudFront) are the same concept under three names.
+
+### AI Agents (`ai-agents`)
+
+680 providers measured, 156 crosswalks, [api-commons/ai-agents](https://github.com/api-commons/ai-agents).
+
+- `ai_agent` (156 providers): `name`, `id`, `created_at`
+- `agent_thread` (52 providers): `id`, `created_at`
+- `agent_run` (41 providers): `status`, `id`, `created_at`
+- `agent_tool` (37 providers): `name`, `id`, `description`, `created_at`, `parameters`
+
+Findings:
+
+- An agent agrees on its name, id and created_at -- and not on what makes it an agent: its instructions sit at 29%, and the model and the tools it may call are each carried by a minority under different names. 156 platforms expose an agent; they describe its brain 156 ways.
+- A tool agrees on name, description and a parameters schema -- the function-calling shape the model providers defined, which agent platforms adopted wholesale.
+- A run agrees on status, id and created_at; a thread only on id and created_at.
+
+Decisions:
+
+- Agents are `/ai-agents`, threads `/agent-threads`, runs `/agent-runs` and tools `/agent-tools`: help desk owns agents, messaging owns conversations, and CI/CD and workflow automation own runs.
+- Assistants, bots and copilots are agents.
+- Singular `/chat` is a chat-completion call and belongs to the models standard, not here.
+- Executions count as runs only beneath an agent, task or workflow path.
+- Duplicates merged: Duvo, Parallel, Sail, Ottic into Rime, and the eventwren family.
+
+### Document AI (`document-ai`)
+
+132 providers measured, 35 crosswalks, [api-commons/document-ai](https://github.com/api-commons/document-ai).
+
+- `extraction` (35 providers): `id`, `status`
+- `extractor` (2 providers): no core
+
+Findings:
+
+- An extraction agrees only on id and status. What comes back -- key-value fields, tables, markdown, entities, a JSON object shaped by a schema -- is each product's own model; document AI shares the job, not the result.
+- Extractors (parsers, processors, document types) are a resource at only a few providers; most take the schema inline with each extraction request.
+
+Decisions:
+
+- An extraction covers OCR, parse, extract and analyze operations, and jobs or predictions beneath a document or parser path.
+- Extractors cover parsers, processors, document types and extraction templates, at `/extractors`.
+- Web-page extraction (Diffbot) is not document AI and is excluded; a web-scraping context would own it.
+- Duplicates merged: Nitro, Sensible.
+
+### Data Enrichment (`data-enrichment`)
+
+137 providers measured, 47 crosswalks, [api-commons/data-enrichment](https://github.com/api-commons/data-enrichment).
+
+- `person_profile` (26 providers): `name`
+- `company_profile` (35 providers): `name`, `domain`, `description`, `id`
+- `email_lookup` (7 providers): `email`, `result`, `catch_all`, `domain`, `first_name`, `last_name`, `linkedin_url`, `score`
+
+Findings:
+
+- A company profile agrees on name, domain, description and id -- the domain is the join key of B2B data, and every enrichment provider returns it.
+- A person profile agrees only on a name: email, title, company and LinkedIn URL are each returned by a minority, because people data is sold field by field and each vendor's coverage differs.
+- An email lookup agrees on the email, a result and a confidence score, and whether the domain is catch-all -- verification is the most uniform enrichment product.
+
+Decisions:
+
+- Enrichment returns results about people and companies; CRM owns the contacts and companies you keep. Profiles are `/person-profiles` and `/company-profiles`, lookups `/email-lookups`.
+- Prospects, and people or contacts beneath an enrich or search path, are person profiles; organizations and firmographics are company profiles.
+- Duplicates merged: Apollo, Golden, Parallel, Windfall.
+
+### Tax (`tax`)
+
+51 providers measured, 13 crosswalks, [api-commons/tax](https://github.com/api-commons/tax).
+
+- `tax_calculation` (6 providers): `tax_amount`
+- `tax_transaction` (12 providers): `id`, `amount`, `date`, `type`
+
+Findings:
+
+- A tax transaction agrees on id, amount, date and type -- the committed record a tax engine reports from.
+- A tax calculation agrees on nothing: sales-tax engines, VAT services and global tax APIs each take addresses, lines and exemptions in their own shape, and return a breakdown in another.
+- Tax is thin as published OpenAPI (51 providers, 15 mapped), and splits by country -- US sales tax, EU VAT and the UK's Making Tax Digital are three different vocabularies.
+
+Decisions:
+
+- Payroll and contractor tax belong to payroll; property-transfer tax quotes are excluded.
+- Calculations are `/tax-calculations` and committed transactions `/tax-transactions`: payments and banking own the bare words.
+- Rates, exemption certificates and filings were measured and dropped.
+
+### Legal Practice (`legal`)
+
+79 providers measured, 10 crosswalks, [api-commons/legal](https://github.com/api-commons/legal).
+
+- `matter` (10 providers): `id`, `name`, `client_id`, `status`, `created_at`, `description`, `number`, `practice_area`, `closed_at`, `matter_type`
+
+Findings:
+
+- A matter agrees on more than most work records in the commons: number, client, practice area, status, description and when it closed are all core across practice-management systems (Clio, MyCase and others) -- legal practice converged on one shape of a case file.
+- Court data is not published as OpenAPI by courts. The few legal-data services that expose dockets, filings and opinions do so in their own shapes, too few to call common.
+
+Decisions:
+
+- Contracts belong to contract lifecycle, time entries to project management, documents to files, and invoices to billing; legal practice keeps the matter.
+- Cases beneath a firm, client or matter path are matters; cases beneath a court are dockets.
+- Dockets, filings and opinions were measured and dropped.
+- Duplicates merged: CourtListener into Free Law Project.
+
+### Contract Lifecycle (`contracts`)
+
+45 providers measured, 10 crosswalks, [api-commons/contracts](https://github.com/api-commons/contracts).
+
+- `contract` (10 providers): `id`, `status`, `name`, `created_at`
+- `contract_template` (5 providers): `id`, `name`
+
+Findings:
+
+- A contract agrees only on id, name, status and created_at. Counterparty, value, effective and expiration dates -- the facts a contract system exists to track -- are each carried by a minority under different names.
+- Contract lifecycle publishes little (45 providers, 11 mapped), and the analysis that sets CLM apart -- clauses, obligations -- is almost never a resource of its own.
+
+Decisions:
+
+- Signing is e-signature's: envelopes and recipients are not duplicated. Agreements count as contracts here unless they are clickwrap acceptance records.
+- Templates are `/contract-templates`: e-signature owns `/templates`.
+- Clauses and obligations were measured and dropped.
+
+### Expense Management (`expenses`)
+
+58 providers measured, 11 crosswalks, [api-commons/expenses](https://github.com/api-commons/expenses).
+
+- `expense_claim` (11 providers): `description`, `id`, `amount`, `category`, `date`, `currency`, `employee_id`, `merchant`, `status`
+
+Findings:
+
+- An expense claim agrees almost completely -- amount, currency, date, category, merchant, employee, description and status are all core. The line on an expense report is one of the most uniform records in the commons.
+- Everything around the claim -- receipts, reports, policies -- is rarely a resource in the published APIs (2 providers or fewer readable): expense platforms expose the spend, and keep the approval workflow inside the product.
+
+Decisions:
+
+- Claims are `/expense-claims`: accounting owns `/expenses` as a ledger posting, and the two are different records of the same spend.
+- Expense transactions and report entries are claims.
+- Receipts, reports and policies were measured and dropped.
+- Duplicates merged: Concur into SAP Concur Expense.
+
+### Time Tracking (`time-tracking`)
+
+80 providers measured, 20 crosswalks, [api-commons/time-tracking](https://github.com/api-commons/time-tracking).
+
+- `timesheet` (13 providers): `employee_id`
+- `scheduled_shift` (12 providers): `end_at`, `employee_id`, `id`, `start_at`, `break_minutes`
+
+Findings:
+
+- A scheduled shift agrees on its start, its end, the employee and the unpaid break -- workforce scheduling shares the shape of a shift completely enough to move one between systems.
+- A timesheet agrees only on the employee: the period, the hours and the approval are each modelled differently, because a timesheet is a weekly roll-up in some products and a single day's card in others.
+
+Decisions:
+
+- Time logged against tasks is project management's (time entries); time off is HR's (absences); pay is payroll's.
+- Timecards are timesheets; rosters are shifts.
+- Shifts are `/scheduled-shifts`: point of sale owns `/shifts` for cash-drawer shifts.
+- Clock punches were measured and dropped.
+
+### Field Service (`field-service`)
+
+50 providers measured, 21 crosswalks, [api-commons/field-service](https://github.com/api-commons/field-service).
+
+- `field_job` (21 providers): `id`, `description`, `status`, `location_id`
+- `technician` (4 providers): `email`, `id`, `phone`
+
+Findings:
+
+- A field job agrees on description, status and the service location -- the where and what of a dispatch -- across home-service platforms, maintenance systems and FSM suites. Schedule, priority and totals are each named too differently to share.
+- Technicians agree on email and phone where they are a resource (4 providers); most platforms treat them as users.
+
+Decisions:
+
+- Jobs, work orders, service orders and service calls are one concept, `/field-jobs`: recruiting owns `/jobs` and property management `/work-orders`. Property maintenance requests stay with property management.
+- Customers are CRM's, invoices billing's and appointments scheduling's.
+- Estimates and visits were measured and dropped.
+
+### IT Asset Management (`it-assets`)
+
+54 providers measured, 31 crosswalks, [api-commons/it-assets](https://github.com/api-commons/it-assets).
+
+- `it_asset` (31 providers): `id`, `name`
+- `software_license` (4 providers): `status`
+
+Findings:
+
+- A managed device agrees only on id and name across MDM, endpoint-management and asset platforms. Serial number, model, OS and assignee are each carried by a minority under different names: every tool describes the same laptop from its own angle (inventory, security posture, assignment).
+- Software licenses are thin as a resource; most platforms report installed software per device rather than licenses owned.
+
+Decisions:
+
+- Devices are `/it-assets`. In this cohort a bare `/devices` is a managed computer or phone; IoT devices are the IoT context's.
+- Installed-software inventory (`/devices/{id}/software`) is not a license.
+
+### ITSM Change and CMDB (`cmdb`)
+
+32 providers measured, 4 crosswalks, [api-commons/cmdb](https://github.com/api-commons/cmdb).
+
+- `change_request` (4 providers): `description`, `name`
+
+Findings:
+
+- ITSM beyond the ticket is nearly invisible as OpenAPI (32 providers, 4 mapped). The market's largest platform exposes every ITSM record through a generic table API (`/table/{tableName}`), so configuration items, changes and problems have no resource paths to measure.
+- A change request agrees on its title and description where it is a resource (3 providers): too few to say more.
+
+Decisions:
+
+- Incidents and service requests stay in help desk; this context keeps changes, problems and the CMDB.
+- Configuration items and problems were measured and dropped. A table-API reader -- one that reads a provider's table schemas as resources -- would recover them; it is recorded for the tooling backlog.
+
+### Customer Success (`customer-success`)
+
+65 providers measured, 14 crosswalks, measured and recorded as `thin`, not published.
+
+- `health_score` (12 providers): no core
+- `nps_response` (2 providers): no core
+- `success_plan` (2 providers): no core
+- `playbook` (2 providers): no core
+
+Findings:
+
+- Customer success is not published as OpenAPI. Every health-score match in a 65-provider cohort was a `/health` service check; the success objects themselves -- CTAs, success plans -- come from one platform (Gainsight). No concept clears the three-provider floor.
+
+Decisions:
+
+- Measured and not published: the context is recorded as `thin`, with its findings, and gets no repository until the market publishes enough to distil.
+- A bare `/health` is a service health check, not a customer health score.
+
+### Sales Engagement (`sales-engagement`)
+
+61 providers measured, 12 crosswalks, [api-commons/sales-engagement](https://github.com/api-commons/sales-engagement).
+
+- `sequence` (12 providers): `id`, `name`, `owner_id`, `created_at`, `updated_at`, `status`
+- `sequence_step` (5 providers): `id`, `type`, `name`, `position`
+- `enrollment` (4 providers): `id`, `created_at`, `prospect_id`, `sequence_id`, `state`, `updated_at`
+
+Findings:
+
+- A sequence agrees on name, owner, status and timestamps; its steps on type, name and position; an enrollment on the sequence, the prospect and a state. Outreach's model -- sequences, steps and sequence states -- is the shape the rest of the category kept.
+- Sales engagement publishes modestly (61 providers, 12 mapped), but what is published agrees well: the three concepts together describe a cadence end to end.
+
+Decisions:
+
+- Cadences are sequences; campaigns count as sequences beneath an outreach or sequence path.
+- Sequence states, memberships and prospects or leads beneath a sequence or campaign are enrollments.
+- Prospects are CRM's contacts and leads; marketing automations are email marketing's.
+- Duplicates merged: Infusionsoft into Keap.
+
+### Configure, Price, Quote (`cpq`)
+
+46 providers measured, 16 crosswalks, [api-commons/cpq](https://github.com/api-commons/cpq).
+
+- `sales_quote` (16 providers): `id`, `status`
+
+Findings:
+
+- A sales quote agrees only on id and status: total, discount, expiry and the deal it belongs to are each carried by a minority. Quotes are built inside CRM and CPQ suites and exposed as documents more than as structured records.
+- Quote lines and price books are almost never resources in published APIs (2 and 1 providers).
+
+Decisions:
+
+- Quotes are `/sales-quotes`: insurance and market data own `/quotes`. Proposals count.
+- Products are commerce's, deals CRM's, and invoices billing's.
+- Quote lines and price books were measured and dropped.
+
+### Affiliates and Partners (`affiliates`)
+
+28 providers measured, 6 crosswalks, [api-commons/affiliates](https://github.com/api-commons/affiliates).
+
+- `partner` (6 providers): `created_at`, `email`, `id`, `metadata`, `name`
+
+Findings:
+
+- A partner agrees on name, email, id and created_at where it is published -- but affiliate networks publish thinly (28 providers, 8 mapped), and programs, conversions and commissions are not resources often enough to share a shape.
+
+Decisions:
+
+- Affiliates, partners, publishers beneath an affiliate path, media partners and ambassadors are partners.
+- Customer referral programs are loyalty's; ad campaigns are advertising's.
+- Programs, conversions and commissions were measured and dropped.
+- Duplicates merged: Impact Radius into Impact.
+
+### Nonprofit Fundraising (`fundraising`)
+
+50 providers measured, 14 crosswalks, [api-commons/fundraising](https://github.com/api-commons/fundraising).
+
+- `donor` (6 providers): `email`, `first_name`, `id`, `last_name`, `created_at`, `phone`, `address`, `gender`, `name`, `organization_id`, `updated_at`
+- `donation` (11 providers): `id`, `amount`, `metadata`, `created_at`, `donor_id`, `type`
+- `fundraising_campaign` (6 providers): `created_at`, `id`, `name`, `goal`, `end_date`, `status`, `updated_at`, `currency`, `start_date`
+- `fund` (5 providers): `id`, `name`, `created_at`, `updated_at`, `campaign_id`, `description`, `is_default`
+
+Findings:
+
+- Fundraising publishes little (50 providers, 14 mapped), but what is published agrees almost completely: a donation on amount, type, donor and date; a campaign on name, goal, currency, start and end; a donor on name, email, phone and address; a fund on name, description and the campaign it belongs to.
+- Nonprofit software converged on one model of giving -- the donor, the gift, the appeal and the fund -- and the published APIs carry it with little drift.
+
+Decisions:
+
+- Constituents and supporters are donors; gifts and contributions are donations; designations are funds.
+- Campaigns are `/fundraising-campaigns`: email marketing and advertising own `/campaigns`.
+- Donations need no donor resource in the same API: gift-processing platforms expose gifts alone.
+- Pledges were measured and dropped.
+
+### Membership (`membership`)
+
+26 providers measured, 9 crosswalks, [api-commons/membership](https://github.com/api-commons/membership).
+
+- `member` (9 providers): `id`, `email`, `status`
+
+Findings:
+
+- A member agrees on id, email and status across association, club and gym platforms -- and that is all membership publishes in common (26 providers, 9 mapped). Memberships, levels and chapters are kept inside the products.
+
+Decisions:
+
+- Members are `/members`, the market's word: inside this cohort it means only one thing (HR excluded it as workspace members, identity counts it as users).
+- Dues are billing's invoices; events are the events context's.
+- Memberships, membership types and chapters were measured and dropped.
+
+### Marketplace (`marketplace`)
+
+468 providers measured, 14 crosswalks, measured and recorded as `thin`, not published.
+
+- `seller` (14 providers): `id`
+- `marketplace_listing` (5 providers): `name`, `sku`
+
+Findings:
+
+- Marketplace is not published in a common shape. Across a 468-provider cohort, sellers agree on nothing but an id (14 providers), and listings and offers are one marketplace's model each -- the large marketplaces publish proprietary seller APIs, and `offers` elsewhere are loyalty, game-store and order-book offers.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings, and given no repository until a shared seller or listing shape appears.
+- Orders are commerce's and seller payouts are payments'.
+
+### Returns (`returns`)
+
+370 providers measured, 32 crosswalks, [api-commons/returns](https://github.com/api-commons/returns).
+
+- `return_request` (32 providers): `id`, `status`, `created_at`
+
+Findings:
+
+- A return agrees on id, status and created_at across returns platforms and commerce systems. Returns-management tools carry items and reasons; commerce platforms record a return as a status on an order -- so line items and reasons fall just short of core once both count.
+
+Decisions:
+
+- Returns are `/returns`; RMAs and return requests count. Exchanges do not -- in this cohort they were currency exchanges as often as product exchanges.
+- The e-commerce, order-management and fulfillment tags are in the cohort: commerce platforms expose returns that returns-only tools do not. Refunds are payments'; return labels are shipping's.
+- Return reasons were measured and dropped.
+- Duplicates merged: four listings.
+
+### Warehouse Management (`warehouse`)
+
+75 providers measured, 13 crosswalks, [api-commons/warehouse](https://github.com/api-commons/warehouse).
+
+- `warehouse` (11 providers): `name`, `id`, `address`
+- `inbound_receipt` (4 providers): `status`
+
+Findings:
+
+- A warehouse agrees on name, id and address across WMS, 3PL and inventory platforms. Everything that happens inside it -- bins, receiving, picking -- is barely published: inbound receipts at 4 providers (agreeing on a status), bins and pick lists at 2 or fewer.
+- 3PLs expose the receiving workflow (ShipBob, ShipMonk) without exposing the warehouse; a warehouse is the customer's view, receiving is the operator's.
+
+Decisions:
+
+- Facilities, fulfillment centers and distribution centers are warehouses.
+- ASNs, inbound shipments and receivings are inbound receipts (`/inbound-receipts`) -- the concept procurement measured and dropped as goods receipts.
+- Stock levels are commerce's inventory; outbound shipments are shipping's.
+- Bins and pick lists were measured and dropped.
+- Duplicates merged: 3PL Central into Extensiv.
+
+### Freight and TMS (`freight`)
+
+205 providers measured, 12 crosswalks, [api-commons/freight](https://github.com/api-commons/freight).
+
+- `load` (12 providers): `commodity`, `id`, `status`, `weight`
+- `freight_carrier` (5 providers): `email`, `id`, `name`, `phone`
+
+Findings:
+
+- A load agrees on its weight, commodity, status and id: what is moving and how heavy, not where -- origin, destination and dates are each nested differently (stops, pickup/delivery objects, addresses).
+- Freight publishes thinly as OpenAPI: 205 providers in the cohort, 13 mapped.
+
+Decisions:
+
+- Loads cover freight shipments, TMS orders and freight bookings; parcel shipments are shipping's.
+- Carriers are `/freight-carriers` (trucking companies identified by SCAC, DOT and MC numbers); shipping's carriers are parcel networks.
+- Freight quotes and tenders were measured and dropped.
+- Duplicates merged: Kargo.
+
+### Gift Cards (`gift-cards`)
+
+54 providers measured, 5 crosswalks, measured and recorded as `thin`, not published.
+
+- `gift_card` (5 providers): `id`, `created_at`, `status`
+- `gift_card_activity` (3 providers): no core
+- `gift_card_brand` (1 providers): no core
+
+Findings:
+
+- Gift cards are not published in a common shape: 54 providers in the cohort, 4 with a readable gift-card resource, agreeing only on id, status and created_at. Gift-card platforms expose a brand catalog and an order flow; loyalty platforms expose redemptions -- the card itself is rarely a resource.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- Redemptions are loyalty's where they spend points, and payments' where they spend money.
+
+### Subscription Commerce (`subscription-commerce`)
+
+413 providers measured, 6 crosswalks, measured and recorded as `thin`, not published.
+
+- `scheduled_order` (6 providers): `id`, `created_at`, `status`, `total`
+
+Findings:
+
+- The scheduled order a product subscription produces is barely a resource of its own: 6 providers in a 413-provider commerce cohort, agreeing on id, status, total and created_at. A first measurement found 21 -- most of them payment processors' `/charges`, which are payments, not scheduled orders.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- A bare `/charges` is a payment charge (payments); charges count here only beneath a subscription path.
+- The subscription is billing's; its products are commerce's.
+
+### Privacy and Consent (`privacy`)
+
+113 providers measured, 8 crosswalks, measured and recorded as `thin`, not published.
+
+- `consent` (7 providers): no core
+- `data_subject_request` (1 providers): no core
+
+Findings:
+
+- Privacy is not published in a common shape: in a 113-provider cohort, consent records appear at 7 providers with no shared property, and data-subject requests at one. Consent-management platforms deliver consent through a browser SDK and a consent string, not a REST resource.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- Email unsubscribes and suppressions are messaging's; privacy here is regulatory consent and data-subject rights.
+
+### Background Checks (`background-checks`)
+
+16 providers measured, 3 crosswalks, measured and recorded as `thin`, not published.
+
+- `screening` (3 providers): `created_at`, `id`, `status`
+- `screening_report` (2 providers): no core
+- `screening_package` (1 providers): no core
+
+Findings:
+
+- Background screening is barely published as OpenAPI: 16 providers in the cohort, 3 exposing a screening, agreeing on id, status and created_at.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- Identity verification is its own context; candidates are recruiting's.
+
+### Open Data Catalogs (`open-data-catalogs`)
+
+276 providers measured, 33 crosswalks, [api-commons/open-data-catalogs](https://github.com/api-commons/open-data-catalogs).
+
+- `dataset` (33 providers): `id`
+
+Findings:
+
+- A dataset agrees only on an id across 33 portals; its name (48%) and description (41%) fall just short. CKAN portals wrap every response in an untyped result, and portals built on other platforms serve datasets as views, so the dataset that every open-data standard describes is rarely published as a typed resource.
+- Measured against DCAT-US 1.1, the standard defines the dataset core and eleven more fields -- keywords, publisher, contact point, access level, temporal and spatial coverage -- that no portal in the cohort publishes as a property of the dataset resource.
+
+Decisions:
+
+- CKAN's Action API is profiled as its own standard in api-commons/open-data; this context measures the dataset across every kind of portal, CKAN action paths included.
+- Packages, package_show and views beneath a data API are datasets.
+- Distributions and publishers were measured and dropped; DCAT-US's distribution is recorded as the shape the standard defines.
+- Duplicates merged: BLS, CDC, NESO, Powershop.
+
+### Research Repositories (`research-repositories`)
+
+123 providers measured, 21 crosswalks, [api-commons/research-repositories](https://github.com/api-commons/research-repositories).
+
+- `work` (11 providers): `id`, `type`
+- `collection` (6 providers): `id`, `description`, `name`, `type`
+
+Findings:
+
+- Eleven universities in the cohort publish DSpace's REST API and nothing else for their repository -- the same distortion as CDR in banking and FHIR in healthcare. Counted once as DSpace's voice, a scholarly work agrees only on id and type.
+- Even the DOI, the identifier scholarly publishing is built around, is carried by only 30% of work resources: bibliographic indexes key on it, repository software keys on a handle.
+- A collection (journal, community, set) agrees on name, description and type.
+
+Decisions:
+
+- DSpace implementers count once (`dspace`), each with its own crosswalk, as the open-banking and FHIR implementers do.
+- Works cover publications, outputs, preprints, theses, research datasets and repository items and records; collections cover communities, journals and OAI sets.
+- OAI-PMH is query-parameter based and is not measured by path; a verb-aware reader is recorded for the tooling backlog.
+- Researchers were measured and dropped (2 providers).
+
+### News (`news`)
+
+73 providers measured, 31 crosswalks, [api-commons/news](https://github.com/api-commons/news).
+
+- `news_article` (31 providers): `name`, `description`, `published_at`, `id`, `source_id`
+- `news_source` (10 providers): `name`, `category`, `language`, `country`
+
+Findings:
+
+- A news article agrees on title, description, publish date, id and its source across aggregators, publishers and media-monitoring tools -- the headline record NewsAPI popularised, which most of the category copied.
+- A news source agrees on name, category, language and country.
+
+Decisions:
+
+- Articles are `/news-articles` and sources `/news-sources`: the knowledge base owns `/articles`, and a bare `/sources` means something else in most contexts.
+- Stories, headlines and news search results are news articles.
+- Duplicates merged: Dow Jones into Factiva.
+
+### Music (`music`)
+
+45 providers measured, 22 crosswalks, [api-commons/music](https://github.com/api-commons/music).
+
+- `track` (20 providers): `id`, `name`, `artist_ids`, `duration_ms`, `isrc`
+- `artist` (15 providers): `id`, `name`, `type`
+- `album` (10 providers): `id`, `name`, `artist_ids`, `type`
+- `music_playlist` (11 providers): `id`, `description`, `name`, `type`
+
+Findings:
+
+- A track agrees on id, name, artists, duration and ISRC across streaming services, music-data providers and licensing libraries: the ISRC is the music industry's shared key, and the published APIs carry it.
+- Albums and artists agree on id, name and type; Spotify's object model -- the `type` field on every object -- is visible in the core.
+
+Decisions:
+
+- Songs and recordings are tracks; releases and release groups are albums.
+- Playlists are `/music-playlists`: video owns `/playlists`.
+- Podcasts are their own context.
+
+### Podcasts (`podcasts`)
+
+88 providers measured, 13 crosswalks, [api-commons/podcasts](https://github.com/api-commons/podcasts).
+
+- `show` (13 providers): `id`, `name`, `description`, `author`
+- `episode` (11 providers): `id`, `description`, `name`, `duration`, `audio_url`, `show_id`
+
+Findings:
+
+- An episode agrees on title, description, duration, the audio URL and the show it belongs to -- the RSS enclosure model every podcast API inherits, because every podcast is an RSS feed first.
+- A show agrees on title, description and author.
+
+Decisions:
+
+- Podcasts, shows and podcast feeds are one concept, published as `/shows`.
+- Audio streaming of music is music's.
+
+### Books and Publishing (`books`)
+
+132 providers measured, 12 crosswalks, [api-commons/books](https://github.com/api-commons/books).
+
+- `book` (12 providers): `id`, `name`
+
+Findings:
+
+- A book agrees only on an id and a title. ISBN, authors, publisher and publication date are each carried by a minority: Google Books nests them under `volumeInfo`, library systems model titles as holdings, and retailers as products.
+
+Decisions:
+
+- Titles, volumes, editions, ebooks, audiobooks and works beneath a library path are books.
+- Authors were measured and dropped.
+- Duplicates merged: the eventwren family.
+
+### Translation and Localization (`localization`)
+
+49 providers measured, 27 crosswalks, [api-commons/localization](https://github.com/api-commons/localization).
+
+- `localization_project` (6 providers): `name`, `target_locales`, `description`, `id`, `project_id`, `slug`, `source_locale`
+- `string_key` (6 providers): `key`, `id`, `platforms`
+- `translation` (26 providers): no core
+- `locale_resource` (4 providers): `code`
+
+Findings:
+
+- A localization project agrees on name, description, its source locale and its target locales across translation-management platforms; a string key on the key and the platforms it ships to.
+- A translation agrees on nothing: machine-translation engines (DeepL among them) return translated text with a detected source language, while translation- management platforms store a reviewed translation of a key. One word, two records.
+
+Decisions:
+
+- Projects are `/localization-projects` (project management owns `/projects`) and count only at a provider that also exposes string keys; keys are `/string-keys`.
+- Machine translations and stored translations stay one concept for now; the measurement says they should split, and the next re-measure will split them if it holds.
+- Locales count only at a provider that also exposes string keys.
+
+### Speech and Transcription (`speech`)
+
+131 providers measured, 67 crosswalks, [api-commons/speech](https://github.com/api-commons/speech).
+
+- `speech_transcript` (42 providers): no core
+- `voice` (35 providers): `name`, `id`, `gender`
+- `speech_synthesis` (21 providers): `text`, `voice_id`, `format`, `model`
+
+Findings:
+
+- Text-to-speech agrees and speech-to-text does not. A synthesis request agrees on the text, the voice, the output format and the model -- and a voice on name, id and gender. A transcript agrees on nothing across 37 engines: words, utterances, segments, channels and speaker labels are each modelled differently.
+
+Decisions:
+
+- Transcripts are `/speech-transcripts`: telephony owns `/transcriptions` for call transcripts.
+- Listen, recognize and speech-to-text calls are transcripts; speak, synthesize and text-to-speech calls are syntheses (`/speech-syntheses`).
+- Duplicates merged: Wispr.
+
+### Energy and Utilities (`energy`)
+
+95 providers measured, 25 crosswalks, [api-commons/energy](https://github.com/api-commons/energy).
+
+- `meter` (15 providers): `id`
+- `meter_reading` (8 providers): `end_at`, `start_at`, `unit`
+- `utility_account` (5 providers): `id`, `created_at`
+
+Findings:
+
+- Eleven Australian retailers and regulators publish the same Consumer Data Right energy standard; counted once, the open market is thin. Meters agree only on id -- status, meter_type and number each reach a third of providers.
+- Meter readings agree on start and end and unit: an interval with a unit is the shared shape, the value field is spelled differently by every provider.
+
+Decisions:
+
+- The CDR energy standard counts as one voice (au-cdr-energy), as the banking standard did; without that, its servicepoint vocabulary would be the core of the context.
+- Bills were dropped: two readable schemas share nothing. Utility accounts stay at extended, with the meter they belong to as the required parent.
+
+### Solar and Energy Storage (`solar`)
+
+53 providers measured, 13 crosswalks, measured and recorded as `thin`, not published.
+
+- `site` (9 providers): `id`, `address`, `status`
+- `device` (2 providers): no core
+- `energy_production` (8 providers): `id`
+
+Findings:
+
+- Distributed energy is not yet published in a common shape: in a 53-provider cohort, sites agree on id, address and status at 8 readable providers, production telemetry shares nothing but an id, and devices appear at two. Each monitoring platform reports energy in its own time-series form.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- Revisit when the catalog carries the larger inverter and battery platforms' specs.
+
+### Agriculture (`agriculture`)
+
+47 providers measured, 9 crosswalks, [api-commons/agriculture](https://github.com/api-commons/agriculture).
+
+- `farm` (5 providers): `id`, `name`
+- `field` (7 providers): `boundary`, `id`, `name`, `area`
+
+Findings:
+
+- The field is the farm-data resource the market shares: fields agree on id, name, boundary and area, the boundary as GeoJSON geometry and the area in acres or hectares.
+- Farms agree only on id and name; they are the container, and the data lives on the field.
+
+Decisions:
+
+- Area keeps the provider's unit beside it rather than choosing acres or hectares; the market splits by region.
+- Crops, seasons and field operations were measured and dropped; they are the next agriculture revision once the catalog carries more farm-management specs.
+
+### Automotive (`automotive`)
+
+99 providers measured, 36 crosswalks, [api-commons/automotive](https://github.com/api-commons/automotive).
+
+- `vehicle` (36 providers): `id`, `make`, `model`
+- `vehicle_location` (8 providers): `latitude`, `longitude`, `id`, `recorded_at`
+
+Findings:
+
+- Vehicles agree on id, make and model; year reaches 46%. The VIN is how the market addresses a vehicle -- it sits in the path (/vin/{vin}) -- far more often than it appears as a property.
+- Vehicle locations agree on latitude, longitude and recorded_at: a timestamped point, with latitude and longitude at 88%.
+
+Decisions:
+
+- vin is kept as the canonical name for the identification number, though below the core line, because it is the vehicle's key across the market.
+- Odometer readings and dealer listings were measured and dropped; each provider shapes them its own way.
+
+### Mobility and Ride-Hailing (`mobility`)
+
+54 providers measured, 13 crosswalks, [api-commons/mobility](https://github.com/api-commons/mobility).
+
+- `station` (13 providers): `id`, `latitude`, `name`
+- `mobility_vehicle` (3 providers): `battery_level`, `id`, `is_disabled`, `is_reserved`, `latitude`, `longitude`, `max_range_meters`, `propulsion_type`, `vehicle_type`
+
+Findings:
+
+- Stations agree on id, latitude and name, with longitude at 46% -- the open bike-share feed format (station_information with lat, lon and capacity) carries most of that agreement.
+- Shared vehicles are published by fleets that follow that same feed format and agree almost completely: id, latitude, longitude, vehicle_type, propulsion_type, battery_level, is_reserved and is_disabled.
+
+Decisions:
+
+- The feed format's station_id and bike_id map to id; lat and lon map to latitude and longitude.
+- Trips were measured and dropped: ride-hailing and transit trips share no property at half the providers.
+
+### Parking (`parking`)
+
+32 providers measured, 5 crosswalks, measured and recorded as `thin`, not published.
+
+- `parking_facility` (2 providers): no core
+- `parking_session` (0 providers): no core
+- `parking_reservation` (4 providers): `status`
+
+Findings:
+
+- Parking is not published in a common shape: in a 32-provider cohort, one facility schema is readable, no parking sessions are exposed, and reservations at 4 providers share only a status.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+
+### Sports Data (`sports`)
+
+64 providers measured, 38 crosswalks, [api-commons/sports](https://github.com/api-commons/sports).
+
+- `league` (21 providers): `name`, `id`
+- `team` (26 providers): `name`, `id`
+- `player` (21 providers): `id`, `name`
+- `game` (26 providers): `id`
+
+Findings:
+
+- Leagues, teams and players agree on id and name and on little else: team abbreviation reaches 33%, and player first_name, last_name and position each reach 47%.
+- Games agree only on id; status is at 48% and start_at 35%. Home and away teams appear under a different name, nesting and score shape at nearly every provider -- the game is where sports data providers differ most.
+
+Decisions:
+
+- The market's word is kept per concept: league for competitions and tournaments, game for matches, fixtures and events.
+- Odds and betting markets were left out of this pass; they are a sportsbook context of their own.
+
+### Gaming (`gaming`)
+
+73 providers measured, 26 crosswalks, [api-commons/gaming](https://github.com/api-commons/gaming).
+
+- `game_title` (15 providers): `name`, `id`
+- `player_profile` (7 providers): `id`, `player_id`, `name`, `username`
+- `leaderboard` (15 providers): no core
+- `achievement` (5 providers): `name`, `description`, `id`
+
+Findings:
+
+- Game platforms agree on the game title's id and name, and on player profiles' id, name and username; player_id appears beside id at the same providers, the platform's key next to the game's own.
+- Leaderboards are widely exposed but share no core: rank reaches 42% and score 33%. Achievements agree on name, description and id.
+
+Decisions:
+
+- game_title, player_profile and game_match carry role names because game, player and match collide with the sports context.
+- Matches and lobbies were measured and dropped; each game-server platform shapes a session its own way.
+
+### Fitness and Wellness (`fitness`)
+
+52 providers measured, 18 crosswalks, [api-commons/fitness](https://github.com/api-commons/fitness).
+
+- `workout` (16 providers): `id`, `created_at`, `distance`, `workout_type`
+- `sleep` (10 providers): `score`, `id`
+- `daily_summary` (6 providers): `date`, `score`
+
+Findings:
+
+- Workouts agree on id, created_at, distance and workout_type; calories and duration reach 43%. The type of exercise is spelled type, sport_type or activity_type and is kept as workout_type.
+- Sleep and daily summaries agree on a score -- the wearable's own 0-100 judgement -- before they agree on any measurement: sleep agrees on score and id, daily summaries on date and score.
+- Before merging, one aggregator listed under three catalog names made a ten-property sleep core look like market agreement; folded into one company, it disappears.
+
+Decisions:
+
+- duplicates must be written canon: [merged slugs]; build.py now refuses any other form, because a bare string merged nothing and reported nothing.
+- Body measurements and fitness classes were measured and dropped.
+
+### Genomics and Clinical Trials (`genomics`)
+
+101 providers measured, 27 crosswalks, measured and recorded as `thin`, not published.
+
+- `gene` (5 providers): no core
+- `variant` (5 providers): no core
+- `sample` (10 providers): `created_at`, `updated_at`
+- `sequencing_run` (1 providers): no core
+- `dataset` (13 providers): `name`
+
+Findings:
+
+- Genomics is not published in a common shape: in a 101-provider cohort, genes and variants appear at 5 providers each with no shared property, samples agree only on timestamps, and datasets only on a name. Research genomics is exchanged through GA4GH protocols and file formats (VCF, BAM) more than through resource schemas.
+
+Decisions:
+
+- Measured and not published: recorded as `thin`, with its findings.
+- A GA4GH standards pass (Beacon, htsget, DRS) is the better route than a market census here.
 

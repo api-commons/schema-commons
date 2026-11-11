@@ -18,8 +18,9 @@ for c in yaml.safe_load(open(HUB / "contexts.yml"))["contexts"]:
     prof = yaml.safe_load(open(repo / "profile.yml"))
     n_cw = len(glob.glob(str(repo / "crosswalk" / "*.yml")))
     out.append(f"### {c['name']} (`{c['context']}`)\n")
-    out.append(f"{prof['cohort']['providers_with_harvested_openapi']} providers measured, {n_cw} crosswalks, "
-               f"[api-commons/{c['context']}](https://github.com/api-commons/{c['context']}).\n")
+    where = (f"[api-commons/{c['context']}](https://github.com/api-commons/{c['context']})" if c.get("repo")
+             else f"measured and recorded as `{c['status']}`, not published")
+    out.append(f"{prof['cohort']['providers_with_harvested_openapi']} providers measured, {n_cw} crosswalks, {where}.\n")
     for name, v in prof["concepts"].items():
         core = [p["name"] for p in v["properties"] if p["tier"] == "core"]
         out.append(f"- `{name}` ({v['providers_exposing']} providers): "
