@@ -497,16 +497,19 @@ contexts:
   status: thin
 - context: agriculture
   name: Agriculture
-  status: planned
+  status: built
+  repo: api-commons/agriculture
 - context: automotive
   name: Automotive
-  status: planned
+  status: built
+  repo: api-commons/automotive
 - context: mobility
   name: Mobility and Ride-Hailing
-  status: planned
+  status: built
+  repo: api-commons/mobility
 - context: parking
   name: Parking
-  status: planned
+  status: thin
 - context: sports
   name: Sports Data
   status: planned
