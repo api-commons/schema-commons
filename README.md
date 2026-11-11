@@ -49,19 +49,23 @@ against it, and any provider can run it against their own OpenAPI. Each rule cit
 market measurably does, and where the market is split it says so and drops to `info`:
 
 Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
-`scripts/naming-evidence.py` across every built context -- CRM and help desk so far, 236
-providers -- and re-measured whenever a context is added:
+`scripts/naming-evidence.py` across every built context, which also renders the ruleset
+and this table from them:
+
+<!-- commons:naming -->
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce: 620 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 227; multi-word kebab 112 / snake 65 / camel 58 | warn |
-| timestamps end in `_at` | `_at` 62 / bare `created` 44 / `_time`, `_date`, `on` 26 | warn |
-| collections are plural | plural 151 / singular 63 | info |
-| properties snake_case | multi-word snake 71 / camel 70 -- a choice, recorded as one | info |
-| references `<resource>_id` | `...Id` 68 / `_id` 59 -- follows the property rule | info |
-| path params snake_case | `{id}` 144; multi-word camel 116 / snake 82 | info |
-| query params snake_case | snake 106 / camel 102 | info |
-| paging is `limit` + `cursor` | limit 87, page 71, page_size 57, cursor 45 | info |
+| path segments kebab-case | lowercase 599; multi-word kebab 330 / snake 203 / camel 142 | warn |
+| timestamps end in `_at` | `_at` 149 / bare `created` 75 / `_time`, `_date`, `on` 49 | warn |
+| collections are plural | plural 376 / singular 189 | info |
+| properties snake_case | multi-word snake 200 / camel 180 | info |
+| references `<resource>_id` | `_id` 165 / `...Id` 162 | info |
+| path params snake_case | `{id}` 366; multi-word camel 282 / snake 235 | info |
+| query params snake_case | snake 286 / camel 265 | info |
+| paging is `limit` + `cursor` | limit 258, page 213, offset 131, cursor 80 | info |
+<!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
 
@@ -71,9 +75,10 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 
 | Context | Repo | Status |
 | --- | --- | --- |
-| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published -- 177 providers, 113 crosswalks |
-| Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | built -- 77 providers, 48 crosswalks |
-| Commerce, Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
+| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published -- 177 providers, 112 crosswalks |
+| Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published -- 77 providers, 48 crosswalks |
+| Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | built -- 401 providers, 256 crosswalks |
+| Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
 
 ## Running a context
 
@@ -107,6 +112,39 @@ in one place as it matures.
    follow the measured majority unless the majority word is ambiguous across contexts.
 
 Then re-run `naming-evidence.py` and bring the ruleset's counts up to date.
+
+## Versioning
+
+**Now: draft, and allowed to change anything.** Nobody depends on these artifacts yet, so
+the method, concept names, paths and properties are refined freely as each new context
+teaches us something (commerce renamed line items to `items` and fulfilment to
+`shipments` on the evidence; help desk renamed comments to `messages`). Every artifact
+says so: `info.version` and `x-commons.version` are `0.1.0-draft.<date>`, and
+`x-commons.status` is `draft`.
+
+**Locking a context** happens when all of these hold, and is a decision recorded in its
+README, not an automatic step:
+
+1. The method has stopped changing: two consecutive rebuilds with no edit to the scripts.
+2. Every ambiguous match has been reviewed, and the Decisions section is complete.
+3. The naming ruleset is settled (accepted into OpenLint, or explicitly kept here).
+4. APIs.io renders it, so the crosswalks have been looked at by more eyes than ours.
+
+**After a context locks**, it follows semantic versioning, released as git tags on the
+context repository, and the shape is separated from the measurements:
+
+| Change | Version |
+| --- | --- |
+| Rename or remove a concept, path or property; change a type | major |
+| Add a concept, operation or property; promote extended -> core | minor |
+| Fix a description, an alias, an exclusion that moves no tier | patch |
+| Re-measure: shares, counts, adopters, crosswalks | none -- data, dated by `generated` |
+
+The common OpenAPI and JSON Schema are the contract and are versioned; `profile.yml`,
+`adopters.yml` and `crosswalk/` are measurements and refresh on every build. Released schema
+`$id`s move to a versioned path (`schema/v1/<concept>.json`) at 1.0.0 so a consumer can pin
+one. A demotion -- a property falling below its tier as the market moves -- is reported
+in the release notes and only applied at the next major.
 
 ## Linking both ways
 

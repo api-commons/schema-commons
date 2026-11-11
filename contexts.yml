@@ -11,19 +11,21 @@ contexts:
 - context: ticketing
   name: Help Desk and Ticketing
   repo: api-commons/ticketing
-  status: built
+  status: published
   tags: [Customer Service, Help Desk, ITSM, Customer Support, Service Desk, IT Support, Support]
   concepts: [ticket, ticket_message, requester, agent, group, organization]
 - context: commerce
   name: Commerce
-  status: planned
-  tags: [Ecommerce, E-Commerce, Commerce, Retail]
-  concepts: [product, variant, order, line_item, customer, cart, inventory, fulfillment]
+  repo: api-commons/commerce
+  status: built
+  tags: [E-Commerce, Commerce, Headless Commerce, Composable Commerce, B2B Commerce, Storefront, Order Management]
+  concepts: [product, product_variant, category, customer, cart, order, order_item, shipment, inventory]
 - context: payments
   name: Payments
   status: planned
   tags: [Payments, Payment Processing]
-  concepts: [payment, refund, customer, payment_method, payout, dispute]
+  # checkout sessions were handed over from commerce, where /checkout is a hosted payment
+  concepts: [payment, checkout_session, refund, customer, payment_method, payout, dispute]
 - context: billing
   name: Billing and Invoicing
   status: planned

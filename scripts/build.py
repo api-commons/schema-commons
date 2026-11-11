@@ -26,6 +26,9 @@ import yaml
 
 CORE, EXTENDED, MIN_PROVIDERS = 0.5, 0.2, 3
 TODAY = date.today().isoformat()
+# Pre-1.0 every build is a dated draft and may change anything (schema-commons README,
+# "Versioning"). The stamp says so on every artifact until a context is locked.
+VERSION = f"0.1.0-draft.{TODAY.replace('-', '')}"
 cfg = yaml.safe_load(open("concepts.yml"))
 census = json.load(open("census/census.json"))
 CTX = cfg["context"]
@@ -48,7 +51,7 @@ def tier(share, n):
 
 
 JSON_TYPES = {"string", "integer", "number", "boolean", "object", "array"}
-profile = {"context": CTX, "name": cfg["name"], "generated": TODAY,
+profile = {"context": CTX, "name": cfg["name"], "generated": TODAY, "version": VERSION, "status": "draft",
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": census["cohort_size"]},
            "thresholds": {"core": CORE, "extended": EXTENDED, "min_providers": MIN_PROVIDERS},
            "excluded": cfg.get("exclude") or {}, "duplicates": cfg.get("duplicates") or {},
@@ -70,10 +73,14 @@ for concept, spec in cfg["concepts"].items():
         h["operations"] = sorted(set(h["operations"]) | set(v["operations"]))
         h["properties"] = {**v["properties"], **h["properties"]}
         h["evidence"] = h["evidence"] + v["evidence"]
-    alias = {}
-    for canon, al in {**cfg.get("common_fields", {}), **(spec.get("aliases") or {})}.items():
-        alias[canon] = canon
-        for x in al: alias[snake(x)] = canon
+    # Common aliases first, then the concept's own, which win on conflict and add to (never
+    # replace) the common list for the same canonical name. A concept's own <concept>_id on
+    # its own record is its identifier: an order's order_id is the order's id.
+    alias = {f"{concept}_id": "id"}
+    for group in (cfg.get("common_fields") or {}, spec.get("aliases") or {}):
+        for canon, al in group.items():
+            alias[canon] = canon
+            for x in al: alias[snake(x)] = canon
     readable = {s: h for s, h in hits.items() if h["properties"]}
     fields = collections.defaultdict(lambda: {"providers": {}, "types": collections.Counter(), "spellings": collections.Counter()})
     for slug, h in readable.items():
@@ -120,7 +127,8 @@ for concept, spec in cfg["concepts"].items():
               "description": f"The common {concept} in {cfg['name']}, distilled from {len(readable)} providers' "
                              f"own OpenAPI. Each property records the share of them that declare it.",
               "type": "object", "properties": {}, "required": ["id"] if any(p["name"] == "id" for p in keep) else [],
-              "x-commons": {"context": CTX, "concept": concept, "providers": len(readable), "generated": TODAY}}
+              "x-commons": {"context": CTX, "concept": concept, "providers": len(readable), "generated": TODAY,
+                             "version": VERSION, "status": "draft"}}
     for p in keep:
         s = {"x-commons-tier": p["tier"], "x-commons-share": p["share"], "x-commons-providers": p["providers"],
              "x-commons-spellings": p["spellings"]}
@@ -149,7 +157,7 @@ VERB = {"GET collection": ("get", "list", "List"), "POST collection": ("post", "
         "GET item": ("get", "get", "Get"), "UPDATE item": ("patch", "update", "Update"),
         "DELETE item": ("delete", "delete", "Delete")}
 oas = {"openapi": "3.1.0",
-       "info": {"title": f"{cfg['name']} (API Commons)", "version": TODAY,
+       "info": {"title": f"{cfg['name']} (API Commons)", "version": VERSION,
                 "description": f"The common {cfg['name']} interface, distilled from the harvested OpenAPI of "
                                f"{census['cohort_size']} providers in the APIs.io catalog. Not a product: no one "
                                "serves this API. It is the shape the market already shares, measured, so that "
@@ -171,7 +179,7 @@ for concept, c in profile["concepts"].items():
         item = o["operation"].endswith("item")
         path = f"{base}/{{{concept}_id}}" if item else base
         op = {"operationId": f"{verb}{(plural if verb == 'list' else concept).title().replace('_', '').replace('-', '')}",
-              "summary": f"{Verb} {plural.replace('-', ' ') if verb == 'list' else 'a ' + concept.replace('_', ' ')}",
+              "summary": f"{Verb} {base.rstrip('/').split('/')[-1].replace('-', ' ') if verb == 'list' else ('an ' if concept[0] in 'aeiou' else 'a ') + concept.replace('_', ' ')}",
               "tags": [plural.replace("-", " ").title()], "x-commons-tier": o["tier"], "x-commons-share": o["share"],
               "responses": {"200": {"description": "OK", "content": {"application/json": {"schema":
                             {"type": "array", "items": ref} if verb == "list" else ref}}}}}

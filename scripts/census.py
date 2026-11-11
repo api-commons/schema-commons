@@ -126,7 +126,8 @@ for prov in cohort:
         if not isinstance(doc, dict) or not isinstance(doc.get("paths"), dict): continue
         for path, item in doc["paths"].items():
             if not isinstance(item, dict) or not isinstance(path, str): continue
-            segs = [s for s in path.split("/") if s]
+            # Shopify-style /products.json: the extension is a format, not part of the name.
+            segs = [re.sub(r"\.(json|xml)$", "", s, flags=re.I) for s in path.split("/") if s]
             for s in segs:
                 if PARAM.match(s):
                     naming["path_param"][case_of(s[1:-1])].add(slug)
