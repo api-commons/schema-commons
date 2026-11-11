@@ -534,10 +534,12 @@ contexts:
   status: thin
 - context: nfts
   name: NFTs and Digital Collectibles
-  status: planned
+  status: built
+  repo: api-commons/nfts
 - context: crypto-exchanges
   name: Crypto Exchanges
-  status: planned
+  status: built
+  repo: api-commons/crypto-exchanges
 - context: image-generation
   name: Image and Video Generation
   status: planned
