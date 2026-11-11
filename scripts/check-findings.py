@@ -186,7 +186,9 @@ def check(ctx):
             s = slug(m.group(1))
             if s in (cfg.get("shared_specs") or {}) or any(s in k for k in (cfg.get("shared_specs") or {})):
                 continue  # a shared standard's voice is named for the standard, not a crosswalk
-            if len(s) > 3 and (ALL / s).is_dir() and s not in crosswalk and not any(s in x for x in crosswalk):
+            flat = {x.replace("-", "") for x in crosswalk}
+            if len(s) > 3 and (ALL / s).is_dir() and s not in crosswalk and not any(s in x for x in crosswalk) \
+                    and s.replace("-", "") not in flat:
                 problems.append(f"names {m.group(1)}, which has no crosswalk in this context")
     return problems
 

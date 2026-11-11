@@ -103,7 +103,9 @@ for c in yaml.safe_load(open(HUB / "contexts.yml"))["contexts"]:
     repo = HUB.parent / c["context"]
     prof = yaml.safe_load(open(repo / "profile.yml"))
     n_cw = len(list((repo / "crosswalk").glob("*.yml")))
-    rows.append(f"| {c['name']} | [{c['repo']}](https://github.com/{c['repo']}) | {c['status']} | "
+    # a thin context is measured and recorded here, not published, so it has no repo to link
+    link = f"[{c['repo']}](https://github.com/{c['repo']})" if c.get("repo") else "--"
+    rows.append(f"| {c['name']} | {link} | {c['status']} | "
                 f"{prof['cohort']['providers_with_harvested_openapi']} | {n_cw} |")
 rows += ["", "Planned, in order: " + ", ".join(planned) + "."]
 t = readme.read_text()

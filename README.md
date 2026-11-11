@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging: 5552 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging, Webhooks, Audit Logs, Feature Flags, API Management, Secrets Management, DNS and Domains, CDN and Edge, AI Agents, Document AI, Data Enrichment, Tax, Legal Practice, Contract Lifecycle, Expense Management, Time Tracking, Field Service, IT Asset Management, ITSM Change and CMDB, Customer Success, Sales Engagement, Configure, Price, Quote, Affiliates and Partners, Nonprofit Fundraising, Membership, Marketplace, Returns, Warehouse Management, Freight and TMS, Gift Cards, Subscription Commerce, Privacy and Consent, Background Checks, Open Data Catalogs, Research Repositories, News, Music, Podcasts, Books and Publishing, Translation and Localization, Speech and Transcription, Energy and Utilities, Solar and Energy Storage, Agriculture, Automotive, Mobility and Ride-Hailing, Parking, Sports Data, Gaming, Fitness and Wellness, Genomics and Clinical Trials: 6688 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 5246; multi-word kebab 2874 / snake 1500 / camel 1134 | warn |
-| timestamps end in `_at` | `_at` 1132 / bare `created` 526 / `_time`, `_date`, `on` 322 | warn |
-| collections are plural | plural 3072 / singular 1616 | info |
-| properties snake_case | multi-word snake 1565 / camel 1609 | info |
-| references `<resource>_id` | `_id` 1172 / `...Id` 1313 | info |
-| path params snake_case | `{id}` 3110; multi-word camel 2431 / snake 1787 | info |
-| query params snake_case | snake 2273 / camel 2364 | info |
-| paging is `limit` + `cursor` | limit 2103, page 1530, offset 1142, cursor 585 | info |
+| path segments kebab-case | lowercase 6310; multi-word kebab 3413 / snake 1791 / camel 1288 | warn |
+| timestamps end in `_at` | `_at` 1338 / bare `created` 613 / `_time`, `_date`, `on` 360 | warn |
+| collections are plural | plural 3646 / singular 1953 | info |
+| properties snake_case | multi-word snake 1880 / camel 1894 | info |
+| references `<resource>_id` | `_id` 1388 / `...Id` 1479 | info |
+| path params snake_case | `{id}` 3724; multi-word camel 2846 / snake 2134 | info |
+| query params snake_case | snake 2757 / camel 2750 | info |
+| paging is `limit` + `cursor` | limit 2538, page 1805, offset 1408, cursor 709 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -133,6 +133,56 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Procurement | [api-commons/procurement](https://github.com/api-commons/procurement) | built | 126 | 35 |
 | IoT Devices | [api-commons/iot](https://github.com/api-commons/iot) | built | 195 | 69 |
 | EV Charging | [api-commons/ev-charging](https://github.com/api-commons/ev-charging) | built | 41 | 4 |
+| Webhooks | [api-commons/webhooks](https://github.com/api-commons/webhooks) | built | 487 | 202 |
+| Audit Logs | [api-commons/audit-logs](https://github.com/api-commons/audit-logs) | built | 844 | 61 |
+| Feature Flags | [api-commons/feature-flags](https://github.com/api-commons/feature-flags) | built | 36 | 19 |
+| API Management | [api-commons/api-management](https://github.com/api-commons/api-management) | built | 135 | 23 |
+| Secrets Management | [api-commons/secrets](https://github.com/api-commons/secrets) | built | 46 | 11 |
+| DNS and Domains | [api-commons/dns](https://github.com/api-commons/dns) | built | 69 | 28 |
+| CDN and Edge | [api-commons/cdn](https://github.com/api-commons/cdn) | built | 77 | 17 |
+| AI Agents | [api-commons/ai-agents](https://github.com/api-commons/ai-agents) | built | 680 | 156 |
+| Document AI | [api-commons/document-ai](https://github.com/api-commons/document-ai) | built | 132 | 35 |
+| Data Enrichment | [api-commons/data-enrichment](https://github.com/api-commons/data-enrichment) | built | 137 | 47 |
+| Tax | [api-commons/tax](https://github.com/api-commons/tax) | built | 51 | 13 |
+| Legal Practice | [api-commons/legal](https://github.com/api-commons/legal) | built | 79 | 10 |
+| Contract Lifecycle | [api-commons/contracts](https://github.com/api-commons/contracts) | built | 45 | 10 |
+| Expense Management | [api-commons/expenses](https://github.com/api-commons/expenses) | built | 58 | 11 |
+| Time Tracking | [api-commons/time-tracking](https://github.com/api-commons/time-tracking) | built | 80 | 20 |
+| Field Service | [api-commons/field-service](https://github.com/api-commons/field-service) | built | 50 | 21 |
+| IT Asset Management | [api-commons/it-assets](https://github.com/api-commons/it-assets) | built | 54 | 31 |
+| ITSM Change and CMDB | [api-commons/cmdb](https://github.com/api-commons/cmdb) | built | 32 | 4 |
+| Customer Success | -- | thin | 65 | 14 |
+| Sales Engagement | [api-commons/sales-engagement](https://github.com/api-commons/sales-engagement) | built | 61 | 12 |
+| Configure, Price, Quote | [api-commons/cpq](https://github.com/api-commons/cpq) | built | 46 | 16 |
+| Affiliates and Partners | [api-commons/affiliates](https://github.com/api-commons/affiliates) | built | 28 | 6 |
+| Nonprofit Fundraising | [api-commons/fundraising](https://github.com/api-commons/fundraising) | built | 50 | 14 |
+| Membership | [api-commons/membership](https://github.com/api-commons/membership) | built | 26 | 9 |
+| Marketplace | -- | thin | 468 | 14 |
+| Returns | [api-commons/returns](https://github.com/api-commons/returns) | built | 370 | 32 |
+| Warehouse Management | [api-commons/warehouse](https://github.com/api-commons/warehouse) | built | 75 | 13 |
+| Freight and TMS | [api-commons/freight](https://github.com/api-commons/freight) | built | 205 | 12 |
+| Gift Cards | -- | thin | 54 | 5 |
+| Subscription Commerce | -- | thin | 413 | 6 |
+| Privacy and Consent | -- | thin | 113 | 8 |
+| Background Checks | -- | thin | 16 | 3 |
+| Open Data Catalogs | [api-commons/open-data-catalogs](https://github.com/api-commons/open-data-catalogs) | built | 276 | 33 |
+| Research Repositories | [api-commons/research-repositories](https://github.com/api-commons/research-repositories) | built | 123 | 21 |
+| News | [api-commons/news](https://github.com/api-commons/news) | built | 73 | 31 |
+| Music | [api-commons/music](https://github.com/api-commons/music) | built | 45 | 22 |
+| Podcasts | [api-commons/podcasts](https://github.com/api-commons/podcasts) | built | 88 | 13 |
+| Books and Publishing | [api-commons/books](https://github.com/api-commons/books) | built | 132 | 12 |
+| Translation and Localization | [api-commons/localization](https://github.com/api-commons/localization) | built | 49 | 27 |
+| Speech and Transcription | [api-commons/speech](https://github.com/api-commons/speech) | built | 131 | 67 |
+| Energy and Utilities | [api-commons/energy](https://github.com/api-commons/energy) | built | 95 | 25 |
+| Solar and Energy Storage | -- | thin | 53 | 13 |
+| Agriculture | [api-commons/agriculture](https://github.com/api-commons/agriculture) | built | 47 | 9 |
+| Automotive | [api-commons/automotive](https://github.com/api-commons/automotive) | built | 99 | 36 |
+| Mobility and Ride-Hailing | [api-commons/mobility](https://github.com/api-commons/mobility) | built | 54 | 13 |
+| Parking | -- | thin | 32 | 5 |
+| Sports Data | [api-commons/sports](https://github.com/api-commons/sports) | built | 64 | 38 |
+| Gaming | [api-commons/gaming](https://github.com/api-commons/gaming) | built | 73 | 26 |
+| Fitness and Wellness | [api-commons/fitness](https://github.com/api-commons/fitness) | built | 52 | 18 |
+| Genomics and Clinical Trials | -- | thin | 101 | 27 |
 
 Planned, in order: .
 <!-- /commons:contexts -->

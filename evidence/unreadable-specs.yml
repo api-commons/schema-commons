@@ -1,18 +1,21 @@
-generated: '2026-11-10'
-count: 16
+generated: '2026-11-11'
+count: 18
 specs:
   aeris/openapi/_original/aeris-watchtower-api-openapi-openapi.yaml:
     error: did not find expected <document start>
     contexts:
     - iot
+    - it-assets
   cisco-ise/openapi/_original/cisco-ise-legacy-ers-allowed-protocols.yaml:
     error: while scanning a plain scalar
     contexts:
     - identity
+    - audit-logs
   cisco-ise/openapi/_original/cisco-ise-legacy-ers-pxgrid-node.yaml:
     error: while scanning for the next token
     contexts:
     - identity
+    - audit-logs
   cruisebound/openapi/_original/openapi.json:
     error: 'Expecting value: line 1 column 1 (char 0)'
     contexts:
@@ -22,6 +25,18 @@ specs:
     contexts:
     - identity
     - search
+    - audit-logs
+    - privacy
+  f5/openapi/_original/f5-big-ip-fast-openapi.yml:
+    error: while scanning a plain scalar
+    contexts:
+    - audit-logs
+    - api-management
+  f5/openapi/_original/f5-big-ip-fast-openapi_2.yml:
+    error: while scanning a plain scalar
+    contexts:
+    - audit-logs
+    - api-management
   gp-connect/openapi/_original/gp-connect-access-record-structured-fhir.yaml:
     error: while scanning a block scalar
     contexts:
@@ -30,16 +45,19 @@ specs:
     error: could not determine a constructor for the tag 'tag:yaml.org,2002:python/object/apply:src.api.opportunities_v1.opportunity_schemas.SearchQueryOperator'
     contexts:
     - healthcare
+    - open-data-catalogs
   leaseweb/openapi/_original/leaseweb-openapi-openapi.yml:
     error: while parsing a block mapping
     contexts:
     - files
     - cloud-infrastructure
+    - dns
   leaseweb/openapi/_original/leaseweb-publiccloud-openapi.yaml:
     error: while parsing a block mapping
     contexts:
     - files
     - cloud-infrastructure
+    - dns
   novopayment/openapi/_original/novopayment-issuer-tokenization-openapi.yml:
     error: while scanning a block scalar
     contexts:
@@ -80,6 +98,8 @@ specs:
     error: mapping values are not allowed in this context
     contexts:
     - events
+    - marketplace
+    - agriculture
   vitagroup/openapi/_original/vitagroup-hip-ehrbase-enterprise.yml:
     error: did not find expected <document start>
     contexts:

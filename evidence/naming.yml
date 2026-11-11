@@ -1,4 +1,4 @@
-generated: '2026-11-10'
+generated: '2026-11-11'
 contexts:
 - crm
 - ticketing
@@ -57,63 +57,113 @@ contexts:
 - procurement
 - iot
 - ev-charging
-providers: 5552
+- webhooks
+- audit-logs
+- feature-flags
+- api-management
+- secrets
+- dns
+- cdn
+- ai-agents
+- document-ai
+- data-enrichment
+- tax
+- legal
+- contracts
+- expenses
+- time-tracking
+- field-service
+- it-assets
+- cmdb
+- customer-success
+- sales-engagement
+- cpq
+- affiliates
+- fundraising
+- membership
+- marketplace
+- returns
+- warehouse
+- freight
+- gift-cards
+- subscription-commerce
+- privacy
+- background-checks
+- open-data-catalogs
+- research-repositories
+- news
+- music
+- podcasts
+- books
+- localization
+- speech
+- energy
+- solar
+- agriculture
+- automotive
+- mobility
+- parking
+- sports
+- gaming
+- fitness
+- genomics
+providers: 6688
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 3072
-    singular: 1616
+    plural: 3646
+    singular: 1953
   foreign_key:
-    Id: 1313
-    _id: 1172
+    Id: 1479
+    _id: 1388
   pagination_param:
-    limit: 2103
-    page: 1530
-    offset: 1142
-    page_size: 960
-    cursor: 585
-    per_page: 459
-    start: 407
-    size: 379
-    count: 323
-    after: 263
-    page_token: 240
-    skip: 225
-    before: 214
-    max_results: 146
-    top: 120
-    starting_after: 73
-    next: 54
+    limit: 2538
+    page: 1805
+    offset: 1408
+    page_size: 1134
+    cursor: 709
+    per_page: 530
+    start: 461
+    size: 451
+    count: 372
+    after: 323
+    page_token: 278
+    before: 264
+    skip: 262
+    max_results: 179
+    top: 133
+    starting_after: 83
+    next: 69
   path_param:
-    lower: 3110
-    camelCase: 2431
-    snake_case: 1787
-    PascalCase: 202
-    kebab-case: 199
-    other: 194
+    lower: 3724
+    camelCase: 2846
+    snake_case: 2134
+    PascalCase: 226
+    kebab-case: 226
+    other: 223
   path_segment:
-    lower: 5246
-    kebab-case: 2874
-    snake_case: 1500
-    other: 1260
-    camelCase: 1134
-    PascalCase: 497
+    lower: 6310
+    kebab-case: 3413
+    snake_case: 1791
+    other: 1515
+    camelCase: 1288
+    PascalCase: 568
   property:
-    lower: 3057
-    camelCase: 1609
-    snake_case: 1565
-    other: 273
-    PascalCase: 224
-    kebab-case: 32
+    lower: 3639
+    camelCase: 1894
+    snake_case: 1880
+    other: 320
+    PascalCase: 241
+    kebab-case: 34
   query_param:
-    lower: 4258
-    camelCase: 2364
-    snake_case: 2273
-    other: 877
-    PascalCase: 322
-    kebab-case: 283
+    lower: 5130
+    snake_case: 2757
+    camelCase: 2750
+    other: 1005
+    PascalCase: 366
+    kebab-case: 334
   timestamp:
-    _at: 1132
-    bare: 526
-    _date/_time/on: 322
+    _at: 1338
+    bare: 613
+    _date/_time/on: 360

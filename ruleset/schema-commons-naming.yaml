@@ -7,7 +7,7 @@
 # the common vocabulary. Every rule cites what the market measurably does; where the
 # market is split, the rule says so and the severity drops to info.
 #
-# Measured across every built context (Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging: 5552 providers' own
+# Measured across every built context (Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Payroll, Recruiting, Files and Documents, Identity and Users, E-Signature, Accounting, Banking, Lending, Insurance, Property Management, Travel and Lodging, Shipping, Fleet and Telematics, Project Management, Content Management, Email Marketing, Advertising, Product Analytics, Observability, Incident Management, CI/CD, Source Control, Cloud Infrastructure, Vulnerability Management, Identity Verification, Healthcare, Learning Management, Food Ordering, Point of Sale, Loyalty, Events and Ticketing, Video, Maps and Geocoding, Weather, Market Data, Trading, Crypto Wallets, Search, Forms and Surveys, Reviews, Social Media, Telephony, Contact Center, Workflow Automation, Knowledge Base, Procurement, IoT Devices, EV Charging, Webhooks, Audit Logs, Feature Flags, API Management, Secrets Management, DNS and Domains, CDN and Edge, AI Agents, Document AI, Data Enrichment, Tax, Legal Practice, Contract Lifecycle, Expense Management, Time Tracking, Field Service, IT Asset Management, ITSM Change and CMDB, Customer Success, Sales Engagement, Configure, Price, Quote, Affiliates and Partners, Nonprofit Fundraising, Membership, Marketplace, Returns, Warehouse Management, Freight and TMS, Gift Cards, Subscription Commerce, Privacy and Consent, Background Checks, Open Data Catalogs, Research Repositories, News, Music, Podcasts, Books and Publishing, Translation and Localization, Speech and Transcription, Energy and Utilities, Solar and Energy Storage, Agriculture, Automotive, Mobility and Ride-Hailing, Parking, Sports Data, Gaming, Fitness and Wellness, Genomics and Clinical Trials: 6688 providers' own
 # harvested OpenAPI). Counts are PROVIDERS, not files, with catalog duplicates folded.
 # GENERATED: edit schema-commons-naming.template.yaml, then run scripts/naming-evidence.py,
 # which re-measures and renders this file. Do not edit the numbers here by hand.
@@ -26,9 +26,9 @@ rules:
   commons-property-snake-case:
     description: >-
       Property names are snake_case. Single-word names (id, name, email) are the most common
-      form of all (3057 providers) and satisfy every convention. Among multi-word
-      names the market is evenly split -- camelCase 1609 providers,
-      snake_case 1565 -- so the count cannot decide it. The commons uses
+      form of all (3639 providers) and satisfy every convention. Among multi-word
+      names the market is evenly split -- camelCase 1894 providers,
+      snake_case 1880 -- so the count cannot decide it. The commons uses
       snake_case because it has one spelling for an acronym (customer_id, never customerID
       or customerId) and the crosswalk carries camelCase names without loss. A decision,
       recorded as one.
@@ -44,8 +44,8 @@ rules:
   commons-path-segment-kebab-case:
     description: >-
       Literal path segments are lowercase, words separated by hyphens. Lowercase single words
-      are used by 5246 providers; for multi-word segments kebab-case (2874) leads
-      snake_case (1500) and camelCase (1134).
+      are used by 6310 providers; for multi-word segments kebab-case (3413) leads
+      snake_case (1791) and camelCase (1288).
     message: "Path {{property}} has a segment that is not lowercase kebab-case."
     severity: warn
     given: "$.paths"
@@ -57,8 +57,8 @@ rules:
 
   commons-collection-plural:
     description: >-
-      A collection is named with a plural noun (/contacts, not /contact). 3072 providers name
-      collections in the plural, 1616 use a singular somewhere.
+      A collection is named with a plural noun (/contacts, not /contact). 3646 providers name
+      collections in the plural, 1953 use a singular somewhere.
     message: "Collection path {{property}} ends in a singular segment."
     severity: info
     given: "$.paths"
@@ -71,8 +71,8 @@ rules:
   commons-path-param-snake-case:
     description: >-
       Path parameters are snake_case and name the thing they identify ({contact_id}). A
-      bare {id} is the most common single form (3110 providers) and passes; camelCase (2431)
-      and snake_case (1787) are both common among multi-word names, so this is info, not a warning.
+      bare {id} is the most common single form (3724 providers) and passes; camelCase (2846)
+      and snake_case (2134) are both common among multi-word names, so this is info, not a warning.
     message: "Path {{property}} has a parameter that is not snake_case."
     severity: info
     given: "$.paths"
@@ -84,8 +84,8 @@ rules:
 
   commons-query-param-snake-case:
     description: >-
-      Query parameters are snake_case. Lowercase single words are used by 4258 providers;
-      snake_case (2273) and camelCase (2364) are
+      Query parameters are snake_case. Lowercase single words are used by 5130 providers;
+      snake_case (2757) and camelCase (2750) are
       near-even among multi-word names.
     message: "Query parameter {{value}} is not snake_case."
     severity: info
@@ -96,8 +96,8 @@ rules:
 
   commons-timestamp-at-suffix:
     description: >-
-      Timestamps end in _at (created_at, updated_at). 1132 providers use the _at form,
-      526 a bare created/updated, 322 a _date, _time or "on" suffix (createdon, add_time).
+      Timestamps end in _at (created_at, updated_at). 1338 providers use the _at form,
+      613 a bare created/updated, 360 a _date, _time or "on" suffix (createdon, add_time).
     message: "{{property}} looks like a timestamp; the common form is created_at / updated_at."
     severity: warn
     given: "$..properties"
@@ -109,8 +109,8 @@ rules:
 
   commons-pagination-limit-cursor:
     description: >-
-      Page with limit and cursor. limit is the most common paging parameter (2103 providers),
-      ahead of page (1530) and page_size (960); cursor (585) is the most common continuation
+      Page with limit and cursor. limit is the most common paging parameter (2538 providers),
+      ahead of page (1805) and page_size (1134); cursor (709) is the most common continuation
       token. Offset paging is fine; this flags the long tail of synonyms.
     message: "{{value}} is a paging synonym; the common pair is limit + cursor."
     severity: info
@@ -123,8 +123,8 @@ rules:
   commons-foreign-key-id-suffix:
     description: >-
       A reference to another resource is named <resource>_id (company_id, owner_id).
-      camelCase ...Id is used by 1313 providers and snake_case _id by
-      1172; the commons follows commons-property-snake-case.
+      camelCase ...Id is used by 1479 providers and snake_case _id by
+      1388; the commons follows commons-property-snake-case.
     message: "{{property}} is a reference; the common form is <resource>_id."
     severity: info
     given: "$..properties"
