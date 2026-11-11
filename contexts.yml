@@ -525,3 +525,303 @@ contexts:
 - context: genomics
   name: Genomics and Clinical Trials
   status: thin
+- context: blockchain-data
+  name: Blockchain Data
+  status: planned
+- context: defi
+  name: DeFi Protocols
+  status: planned
+- context: nfts
+  name: NFTs and Digital Collectibles
+  status: planned
+- context: crypto-exchanges
+  name: Crypto Exchanges
+  status: planned
+- context: image-generation
+  name: Image and Video Generation
+  status: planned
+- context: computer-vision
+  name: Computer Vision
+  status: planned
+- context: nlp
+  name: Natural Language Processing
+  status: planned
+- context: chatbots
+  name: Chatbots and Conversational AI
+  status: planned
+- context: vector-search
+  name: Vector Search and RAG
+  status: planned
+- context: mlops
+  name: MLOps and Model Registry
+  status: planned
+- context: ai-inference
+  name: AI Inference and Deployments
+  status: planned
+- context: mcp-servers
+  name: MCP Servers and Agent Registries
+  status: planned
+- context: databases
+  name: Databases
+  status: planned
+- context: etl
+  name: Data Integration and ETL
+  status: planned
+- context: event-streaming
+  name: Event Streaming and Queues
+  status: planned
+- context: data-governance
+  name: Data Catalogs and Governance
+  status: planned
+- context: business-intelligence
+  name: Business Intelligence
+  status: planned
+- context: data-warehouses
+  name: Data Warehouses and Query
+  status: planned
+- context: web-scraping
+  name: Web Scraping and Crawling
+  status: planned
+- context: seo
+  name: SEO
+  status: planned
+- context: testing
+  name: Software Testing
+  status: planned
+- context: kubernetes
+  name: Kubernetes and Clusters
+  status: planned
+- context: containers
+  name: Container Registries
+  status: planned
+- context: serverless
+  name: Serverless Functions
+  status: planned
+- context: finops
+  name: Cloud Cost and FinOps
+  status: planned
+- context: threat-intelligence
+  name: Threat Intelligence
+  status: planned
+- context: threat-detection
+  name: Threat Detection and SIEM
+  status: planned
+- context: zero-trust
+  name: Zero Trust and Device Posture
+  status: planned
+- context: fraud-prevention
+  name: Fraud Prevention
+  status: planned
+- context: object-storage
+  name: Object Storage
+  status: planned
+- context: design-tools
+  name: Design Tools
+  status: planned
+- context: foreign-exchange
+  name: Foreign Exchange
+  status: planned
+- context: payouts
+  name: Payouts and Cross-Border Payments
+  status: planned
+- context: personal-finance
+  name: Personal Finance
+  status: planned
+- context: wealth-management
+  name: Wealth and Asset Management
+  status: planned
+- context: risk-management
+  name: Risk and Compliance
+  status: planned
+- context: esg
+  name: ESG and Carbon Accounting
+  status: planned
+- context: tokenization
+  name: Asset Tokenization
+  status: planned
+- context: agentic-commerce
+  name: Agentic Commerce
+  status: planned
+- context: clinical-trials
+  name: Clinical Trials
+  status: planned
+- context: drug-discovery
+  name: Drug Discovery
+  status: planned
+- context: diagnostics
+  name: Lab Diagnostics
+  status: planned
+- context: medical-imaging
+  name: Medical Imaging
+  status: planned
+- context: pharmacy
+  name: Pharmacy and Prescriptions
+  status: planned
+- context: behavioral-health
+  name: Behavioral Health
+  status: planned
+- context: patient-engagement
+  name: Patient Engagement
+  status: planned
+- context: medical-devices
+  name: Medical Devices
+  status: planned
+- context: telecommunications
+  name: Telecommunications
+  status: planned
+- context: iot-connectivity
+  name: IoT Connectivity and SIMs
+  status: planned
+- context: satellite
+  name: Satellite and Earth Observation
+  status: planned
+- context: drones
+  name: Drones
+  status: planned
+- context: maritime
+  name: Maritime and Vessels
+  status: planned
+- context: aviation
+  name: Aviation and Flights
+  status: planned
+- context: oil-and-gas
+  name: Oil and Gas
+  status: planned
+- context: mining
+  name: Mining
+  status: planned
+- context: construction
+  name: Construction
+  status: planned
+- context: manufacturing
+  name: Manufacturing
+  status: planned
+- context: industrial-automation
+  name: Industrial Automation
+  status: planned
+- context: supply-chain
+  name: Supply Chain Visibility
+  status: planned
+- context: inventory
+  name: Inventory Management
+  status: planned
+- context: wholesale
+  name: Wholesale and B2B Ordering
+  status: planned
+- context: grocery
+  name: Grocery
+  status: planned
+- context: nutrition
+  name: Nutrition and Recipes
+  status: planned
+- context: restaurants
+  name: Restaurants and Menus
+  status: planned
+- context: beauty
+  name: Beauty and Salons
+  status: planned
+- context: fashion
+  name: Fashion and Apparel
+  status: planned
+- context: government
+  name: Government Services and Permits
+  status: planned
+- context: public-spending
+  name: Public Spending and Grants
+  status: planned
+- context: legislation
+  name: Legislation
+  status: planned
+- context: courts
+  name: Courts and Case Records
+  status: planned
+- context: elections
+  name: Elections
+  status: planned
+- context: higher-education
+  name: Higher Education
+  status: planned
+- context: course-catalogs
+  name: Course Catalogs
+  status: planned
+- context: staffing
+  name: Staffing
+  status: planned
+- context: employee-benefits
+  name: Employee Benefits
+  status: planned
+- context: job-boards
+  name: Job Boards
+  status: planned
+- context: real-estate
+  name: Real Estate Listings
+  status: planned
+- context: mortgages
+  name: Mortgages
+  status: planned
+- context: climate
+  name: Climate and Emissions
+  status: planned
+- context: sustainability
+  name: Sustainability Reporting
+  status: planned
+- context: robotics
+  name: Robotics
+  status: planned
+- context: autonomous-vehicles
+  name: Autonomous Vehicles
+  status: planned
+- context: 3d-printing
+  name: 3D Printing
+  status: planned
+- context: live-streaming
+  name: Live Streaming
+  status: planned
+- context: movies
+  name: Movies and TV
+  status: planned
+- context: digital-asset-management
+  name: Digital Asset Management
+  status: planned
+- context: content-moderation
+  name: Content Moderation
+  status: planned
+- context: personalization
+  name: Personalization and Recommendations
+  status: planned
+- context: pricing
+  name: Pricing and Price Lists
+  status: planned
+- context: mobile-attribution
+  name: Mobile Attribution
+  status: planned
+- context: communities
+  name: Online Communities
+  status: planned
+- context: productivity
+  name: Notes and Productivity
+  status: planned
+- context: whiteboards
+  name: Whiteboards and Collaboration
+  status: planned
+- context: url-shortening
+  name: URL Shortening and Links
+  status: planned
+- context: qr-codes
+  name: QR Codes
+  status: planned
+- context: printing
+  name: Print and Mail
+  status: planned
+- context: photos
+  name: Photos and Stock Media
+  status: planned
+- context: pets
+  name: Pets and Veterinary
+  status: planned
+- context: hospitality
+  name: Hotels and Property Systems
+  status: planned
+- context: churches
+  name: Churches and Congregations
+  status: planned
