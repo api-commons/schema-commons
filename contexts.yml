@@ -830,10 +830,11 @@ contexts:
   status: thin
 - context: productivity
   name: Notes and Productivity
-  status: planned
+  status: built
+  repo: api-commons/productivity
 - context: whiteboards
   name: Whiteboards and Collaboration
-  status: planned
+  status: thin
 - context: url-shortening
   name: URL Shortening and Links
   status: planned
