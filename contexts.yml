@@ -747,7 +747,7 @@ contexts:
   status: thin
 - context: fashion
   name: Fashion and Apparel
-  status: planned
+  status: thin
 - context: government
   name: Government Services and Permits
   status: planned
