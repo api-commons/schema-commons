@@ -737,10 +737,11 @@ contexts:
   status: thin
 - context: nutrition
   name: Nutrition and Recipes
-  status: planned
+  status: built
+  repo: api-commons/nutrition
 - context: restaurants
   name: Restaurants and Menus
-  status: planned
+  status: thin
 - context: beauty
   name: Beauty and Salons
   status: planned
