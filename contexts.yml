@@ -744,7 +744,7 @@ contexts:
   status: thin
 - context: beauty
   name: Beauty and Salons
-  status: planned
+  status: thin
 - context: fashion
   name: Fashion and Apparel
   status: planned
