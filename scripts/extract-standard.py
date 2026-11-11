@@ -53,8 +53,16 @@ elif fmt == "jsonschema":
     for f in files:
         d = json.load(open(f))
         top = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
+        # STIX: properties live in a top-level allOf -- inline parts, and relative-file $refs
+        # (../common/core.json) read from beside the file.
+        for part in d.get("allOf") or []:
+            src = part
+            if str(part.get("$ref", "")).endswith(".json"):
+                ref = (Path(f).parent / part["$ref"]).resolve()
+                src = json.load(open(ref)) if ref.exists() else {}
+            top += [k for k in (src.get("properties") or {}) if k not in top and not k.startswith("@")]
         if top:
-            objects[Path(f).stem.split("-")[-1]] = top
+            objects[Path(f).stem] = top
             continue
         # No top-level properties (STAC): each definition is an object, with allOf parts and
         # local #/definitions refs followed.

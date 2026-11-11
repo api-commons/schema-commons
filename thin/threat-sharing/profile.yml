@@ -1,0 +1,56 @@
+context: threat-sharing
+kind: reference
+standard: stix-2.1
+cohort:
+  tags:
+  - Threat Intelligence
+  - Cyber Threat Intelligence
+  - Threat Detection
+  - Malware Analysis
+  - IP Reputation
+  - Cybersecurity
+  - Security
+  - SIEM
+  - Fraud Prevention
+  - Vulnerability Management
+  providers_with_harvested_openapi: 446
+implementers: 1
+publishers: []
+mentioned_by: 15
+mentioned_by_providers:
+- amazon-guardduty
+- armis
+- cisco-secure-firewall
+- cisco-xdr
+- cloudflare
+- cybelangel
+- cyware
+- demisto
+- rapid7
+- recorded-future
+- securonix
+- sumo-logic
+- tanium
+- vectranetworks
+- virustotal
+apis:
+  taxii:
+    release: https://docs.oasis-open.org/cti/taxii/v2.1/taxii-v2.1.html
+    providers: 0
+    operations:
+    - GET /taxii2
+    - GET /collections
+    - GET /collections/{id}
+    - GET /collections/{id}/objects
+    - POST /collections/{id}/objects
+    - GET /collections/{id}/manifest
+  stix:
+    release: https://github.com/oasis-open/cti-stix2-json-schemas/tree/9af1db41b7b8
+    providers: 0
+    operations:
+    - GET /indicators
+    - GET /indicators/{id}
+    - GET /malware
+    - GET /threat-actors
+    - GET /campaigns
+    - GET /reports

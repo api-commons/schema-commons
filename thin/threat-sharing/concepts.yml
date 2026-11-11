@@ -1,0 +1,42 @@
+context: threat-sharing
+name: Threat Intelligence Sharing (STIX and TAXII)
+kind: reference
+intro: >-
+  How threat intelligence is exchanged -- indicators, malware, threat actors, campaigns and the
+  relationships between them, served from collections. The shape is owned by OASIS's STIX 2.1 (the
+  objects) and TAXII 2.1 (the transport), so this context publishes STIX's own objects and measures
+  which providers serve them over TAXII or publish them in their own APIs.
+tags: [Threat Intelligence, Cyber Threat Intelligence, Threat Detection, Malware Analysis, IP Reputation, Cybersecurity, Security, SIEM, Fraud Prevention, Vulnerability Management]
+reference:
+  standard: stix-2.1
+  home: https://oasis-open.github.io/cti-documentation/
+  release: https://github.com/oasis-open/cti-stix2-json-schemas/tree/9af1db41b7b8
+  license: BSD-3-Clause
+  publishers: []
+  object_threshold: 0.5
+  mentions: '\b(stix|taxii)\b'
+  objects: [indicator, malware, threat-actor, campaign, attack-pattern, intrusion-set, vulnerability, report, identity, observed-data]
+  apis:
+    - api: taxii
+      release: https://docs.oasis-open.org/cti/taxii/v2.1/taxii-v2.1.html
+      signature: ["GET /collections/{id}/objects"]
+      operations:
+        - {op: GET /taxii2}
+        - {op: GET /collections}
+        - {op: "GET /collections/{id}"}
+        - {op: "GET /collections/{id}/objects"}
+        - {op: "POST /collections/{id}/objects"}
+        - {op: "GET /collections/{id}/manifest"}
+    - api: stix
+      release: https://github.com/oasis-open/cti-stix2-json-schemas/tree/9af1db41b7b8
+      operations:
+        - {op: GET /indicators, response: indicator}
+        - {op: "GET /indicators/{id}", response: indicator}
+        - {op: GET /malware, response: malware}
+        - {op: GET /threat-actors, response: threat-actor}
+        - {op: GET /campaigns, response: campaign}
+        - {op: GET /reports, response: report}
+findings:
+  - "STIX is the format threat intelligence is exchanged in, not a resource providers serve: in a 446-provider cohort, 15 providers name STIX or TAXII in a harvested spec -- mostly import and export endpoints, feed configuration and TAXII client settings -- but one (sumo-logic) publishes a component schema carrying half of a STIX object's fields, and none publishes a TAXII server in OpenAPI. The STIX 2.1 objects are extracted in standards/stix-2.1.yml for the next pass."
+decisions:
+  - "Measured as a reference context and recorded as thin: a reference context is published when at least three providers implement the standard."

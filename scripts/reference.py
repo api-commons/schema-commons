@@ -14,6 +14,10 @@ concepts.yml carries a `reference:` block:
     standard: camara-2025            # standards/<name>.yml, from extract-standard.py
     home: https://camaraproject.org
     publishers: [gsma, camara-project]   # catalog entries for the standard's own body: listed, not counted
+    objects: [indicator]                 # optional: standard objects published in schema/ beyond the operations'
+    mentions: '\bcamara\b'                  # optional: count providers whose specs name the standard at all
+    object_threshold: 0.5                # optional: count a provider whose component schema carries this share
+                                         # of a listed object's fields (a standard used as a format)
     apis:                            # one entry per API in the standard
       - api: number-verification     # the slug a provider's path, server or title names it by
         release: https://github.com/camaraproject/NumberVerification/tree/r4.2
@@ -113,7 +117,19 @@ def std_fields(obj):
 
 shutil.rmtree("crosswalk", ignore_errors=True); Path("crosswalk").mkdir()
 shutil.rmtree("schema", ignore_errors=True); Path("schema").mkdir()
+# How many providers name the standard at all, anywhere in a harvested spec: the gap between
+# mentioning a standard and implementing it is part of the finding.
+mentioned = []
+if ref.get("mentions"):
+    pat = re.compile(ref["mentions"], re.I)
+    for entry in cohort:
+        for rel in entry["specs"]:
+            spec = ALL / entry["slug"] / rel
+            if spec.exists() and pat.search(spec.read_text(errors="replace")):
+                mentioned.append(entry["slug"]); break
 adopters, per_api = [], {a["api"]: [] for a in ref["apis"]}
+if ref.get("object_threshold"):
+    per_api["objects"] = []
 for entry in cohort:
     slug, found = entry["slug"], {}
     for rel in entry["specs"]:
@@ -141,6 +157,26 @@ for entry in cohort:
                         found[key] = {"api": a["api"], "operation": o["op"], "evidence": f"{rel}#{method} {path}",
                                       "fields": len(want), "crosswalk": cw,
                                       "coverage": round(len(cw) / len(want), 2) if want else None}
+    # Object match: a standard used as a format (STIX objects in an export, an ingest config)
+    # shows in a provider's component schemas rather than its paths. Any schema carrying at
+    # least `object_threshold` of a listed object's fields counts, best schema per object.
+    if ref.get("object_threshold"):
+        for rel in entry["specs"]:
+            spec = ALL / slug / rel
+            doc = load(spec) if spec.exists() else None
+            if not isinstance(doc, dict):
+                continue
+            comps = ((doc.get("components") or {}).get("schemas")) or doc.get("definitions") or {}
+            for sname, sch in comps.items():
+                have = {norm(x): x for x in props(doc, sch)}
+                for obj in ref.get("objects") or []:
+                    want = OBJ.get(obj, [])
+                    cw = {f: have[norm(f)] for f in want if norm(f) in have}
+                    cov_ = round(len(cw) / len(want), 2) if want else 0
+                    key = ("objects", obj)
+                    if cov_ >= ref["object_threshold"] and (key not in found or cov_ > found[key]["coverage"]):
+                        found[key] = {"api": "objects", "operation": obj, "evidence": f"{rel}#/components/schemas/{sname}",
+                                      "fields": len(want), "crosswalk": cw, "coverage": cov_}
     # An API's `signature` operations are the ones only it defines (STAC's /search; /collections
     # alone is plain OGC API Features). Without one, the provider does not implement that API.
     for a in ref["apis"]:
@@ -161,7 +197,15 @@ for entry in cohort:
             for a in apis:
                 per_api[a].append(slug)
 
-# The schema is the standard's own objects, linked to the release they came from.
+# The schema is the standard's own objects, linked to the release they came from: the ones
+# operations carry, plus any the reference block lists under `objects` (STIX objects that a
+# TAXII operation returns inside its envelope).
+for obj in ref.get("objects") or []:
+    if obj in OBJ:
+        json.dump({"$schema": "https://json-schema.org/draft/2020-12/schema", "title": obj, "type": "object",
+                   "x-commons-source": "standard", "x-commons-standard": ref["standard"],
+                   "x-commons-release": ref.get("release") or ref["home"],
+                   "properties": {f: {} for f in OBJ[obj]}}, open(f"schema/{obj}.json", "w"), indent=2)
 for a in ref["apis"]:
     for o in a["operations"]:
         for obj in (o.get("request"), o.get("response")):
@@ -176,11 +220,13 @@ profile = {"context": cfg["context"], "kind": "reference", "standard": ref["stan
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": len(cohort)},
            "implementers": sum(1 for a in adopters if a["role"] == "implementer"),
            "publishers": sorted(a["provider"] for a in adopters if a["role"] == "publisher"),
+           "mentioned_by": len(mentioned), "mentioned_by_providers": sorted(mentioned),
            "apis": {a["api"]: {"release": a["release"], "providers": len(per_api[a["api"]]),
                                "operations": [o["op"] for o in a["operations"]]} for a in ref["apis"]}}
 yaml.safe_dump(profile, open("profile.yml", "w"), sort_keys=False, width=120)
 yaml.safe_dump({"adopters": adopters}, open("adopters.yml", "w"), sort_keys=False, width=120)
-print(f"{profile['implementers']} of {len(cohort)} providers implement {ref['standard']} "
+print(f"{profile['implementers']} of {len(cohort)} providers implement {ref['standard']}; "
+      f"{len(mentioned)} name it in a spec "
       f"(publishers listed, not counted: {', '.join(profile['publishers'])})")
 for a, ps in per_api.items():
     print(f"  {a:30} {len(ps):3}  {', '.join(ps[:8])}{' ...' if len(ps) > 8 else ''}")
@@ -198,7 +244,8 @@ L = [f"# {cfg['name']}", "", " ".join(cfg["intro"].split()), "",
      "`crosswalk/` measures, from each provider's harvested OpenAPI, which operations it implements "
      "and what share of the standard's request and response fields it carries.", "",
      f"Measured across {len(cohort)} providers tagged {', '.join(map(str, cfg['tags']))} in "
-     f"[APIs.io](https://apis.io): **{profile['implementers']} implement the standard.**", "",
+     f"[APIs.io](https://apis.io): **{profile['implementers']} implement the standard**"
+     + (f"; {profile['mentioned_by']} name it somewhere in a spec." if ref.get("mentions") else "."), "",
      "## The standard's APIs", "", "| API | Release | Implementers | Operations |", "| --- | --- | ---: | --- |"]
 for a in ref["apis"]:
     L.append(f"| {a['api']} | [{a['release'].rsplit('/', 1)[-1]}]({a['release']}) | "

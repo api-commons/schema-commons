@@ -868,3 +868,6 @@ contexts:
   name: Container Registry Protocol (OCI Distribution)
   status: reference
   repo: api-commons/registry-protocol
+- context: threat-sharing
+  name: Threat Intelligence Sharing (STIX and TAXII)
+  status: thin
