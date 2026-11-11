@@ -840,7 +840,7 @@ contexts:
   status: thin
 - context: qr-codes
   name: QR Codes
-  status: planned
+  status: thin
 - context: printing
   name: Print and Mail
   status: planned
