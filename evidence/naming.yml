@@ -1,0 +1,64 @@
+generated: '2026-11-10'
+contexts:
+- crm
+- ticketing
+providers: 236
+note: Counts are providers (catalog duplicates folded), a provider can appear under
+  several forms.
+measures:
+  collection_noun:
+    plural: 150
+    singular: 63
+  foreign_key:
+    Id: 67
+    _id: 59
+  pagination_param:
+    limit: 87
+    page: 71
+    page_size: 57
+    cursor: 45
+    offset: 40
+    per_page: 29
+    skip: 23
+    start: 15
+    after: 15
+    count: 13
+    size: 13
+    page_token: 12
+    before: 11
+    top: 10
+    max_results: 8
+    starting_after: 7
+    next: 2
+  path_param:
+    lower: 144
+    camelCase: 116
+    snake_case: 82
+    PascalCase: 9
+    kebab-case: 5
+    other: 4
+  path_segment:
+    lower: 227
+    kebab-case: 112
+    snake_case: 65
+    camelCase: 58
+    other: 44
+    PascalCase: 33
+  property:
+    lower: 138
+    snake_case: 71
+    camelCase: 70
+    other: 17
+    PascalCase: 13
+    kebab-case: 2
+  query_param:
+    lower: 181
+    snake_case: 106
+    camelCase: 102
+    other: 53
+    PascalCase: 15
+    kebab-case: 8
+  timestamp:
+    _at: 62
+    bare: 44
+    _date/_time/on: 26

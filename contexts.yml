@@ -10,9 +10,10 @@ contexts:
   concepts: [contact, company, deal, lead, activity, task, note, pipeline]
 - context: ticketing
   name: Help Desk and Ticketing
-  status: planned
-  tags: [Customer Service, Customer Support, Help Desk, Ticketing]
-  concepts: [ticket, comment, requester, agent, queue, sla]
+  repo: api-commons/ticketing
+  status: built
+  tags: [Customer Service, Help Desk, ITSM, Customer Support, Service Desk, IT Support, Support]
+  concepts: [ticket, ticket_message, requester, agent, group, organization]
 - context: commerce
   name: Commerce
   status: planned

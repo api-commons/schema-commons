@@ -7,9 +7,10 @@
 # the common vocabulary. Every rule cites what the market measurably does; where the
 # market is split, the rule says so and the severity drops to info.
 #
-# First measured on the CRM cohort (134 providers tagged CRM in APIs.io, 1,155 harvested
-# OpenAPI files, counts are PROVIDERS, not files). Re-measured each time a context is
-# added; see ../evidence/naming.yml for the per-context numbers.
+# Measured across every built context (CRM and Help Desk so far: 236 providers' own
+# harvested OpenAPI). Counts are PROVIDERS, not files, with catalog duplicates folded.
+# Re-measured each time a context is added: the numbers below are copied from
+# ../evidence/naming.yml, which scripts/naming-evidence.py generates.
 #
 # WHAT THIS DOES NOT DO
 #   - Rename anything. The crosswalk in each context maps a provider's names to the
@@ -26,7 +27,7 @@ rules:
     description: >-
       Property names are snake_case. Single-word names (id, name, email) are the most common
       form of all and satisfy every convention. Among multi-word names the market is split --
-      snake_case 44 providers, camelCase 41 in the CRM cohort -- so the commons picks one and
+      snake_case 71 providers, camelCase 70 -- so the commons picks one and
       the crosswalk carries the other. This is a choice, recorded as one.
     message: "{{property}} is not snake_case (the common vocabulary's casing)."
     severity: info
@@ -38,8 +39,8 @@ rules:
   commons-path-segment-kebab-case:
     description: >-
       Literal path segments are lowercase, words separated by hyphens. Lowercase single words
-      are used by 130 of 134 providers; for multi-word segments kebab-case (71) leads
-      snake_case (41) and camelCase (41).
+      are used by 227 providers; for multi-word segments kebab-case (112) leads
+      snake_case (65) and camelCase (58).
     message: "Path {{property}} has a segment that is not lowercase kebab-case."
     severity: warn
     given: "$.paths"
@@ -51,8 +52,8 @@ rules:
 
   commons-collection-plural:
     description: >-
-      A collection is named with a plural noun (/contacts, not /contact). 83 providers name
-      collections in the plural, 39 use a singular somewhere.
+      A collection is named with a plural noun (/contacts, not /contact). 151 providers name
+      collections in the plural, 63 use a singular somewhere.
     message: "Collection path {{property}} ends in a singular segment."
     severity: info
     given: "$.paths"
@@ -65,8 +66,8 @@ rules:
   commons-path-param-snake-case:
     description: >-
       Path parameters are snake_case and name the thing they identify ({contact_id}). A
-      bare {id} is the most common single form (86 providers) and passes; camelCase (65)
-      leads snake_case (50) among multi-word names, so this is info, not a warning.
+      bare {id} is the most common single form (144 providers) and passes; camelCase (116)
+      leads snake_case (82) among multi-word names, so this is info, not a warning.
     message: "Path {{property}} has a parameter that is not snake_case."
     severity: info
     given: "$.paths"
@@ -78,8 +79,8 @@ rules:
 
   commons-query-param-snake-case:
     description: >-
-      Query parameters are snake_case. Lowercase single words are used by 109 providers;
-      snake_case (69) narrowly leads camelCase (64) among multi-word names.
+      Query parameters are snake_case. Lowercase single words are used by 181 providers;
+      snake_case (106) narrowly leads camelCase (102) among multi-word names.
     message: "Query parameter {{value}} is not snake_case."
     severity: info
     given: "$.paths[*][*].parameters[?(@.in == 'query')].name"
@@ -89,8 +90,8 @@ rules:
 
   commons-timestamp-at-suffix:
     description: >-
-      Timestamps end in _at (created_at, updated_at). 37 providers use the _at form,
-      30 a bare created/updated, 17 a _date, _time or "on" suffix (createdon, add_time).
+      Timestamps end in _at (created_at, updated_at). 62 providers use the _at form,
+      44 a bare created/updated, 26 a _date, _time or "on" suffix (createdon, add_time).
     message: "{{property}} looks like a timestamp; the common form is created_at / updated_at."
     severity: warn
     given: "$..properties"
@@ -102,8 +103,8 @@ rules:
 
   commons-pagination-limit-cursor:
     description: >-
-      Page with limit and cursor. limit is the most common paging parameter (51 providers),
-      ahead of page (49) and page_size (38); cursor (25) is the most common continuation
+      Page with limit and cursor. limit is the most common paging parameter (87 providers),
+      ahead of page (71) and page_size (57); cursor (45) is the most common continuation
       token. Offset paging is fine; this flags the long tail of synonyms.
     message: "{{value}} is a paging synonym; the common pair is limit + cursor."
     severity: info
@@ -116,7 +117,7 @@ rules:
   commons-foreign-key-id-suffix:
     description: >-
       A reference to another resource is named <resource>_id (company_id, owner_id). camelCase
-      ...Id is used by 42 providers and snake_case _id by 36; the commons keeps snake_case for
+      ...Id is used by 68 providers and snake_case _id by 59; the commons keeps snake_case for
       consistency with commons-property-snake-case.
     message: "{{property}} is a reference; the common form is <resource>_id."
     severity: info

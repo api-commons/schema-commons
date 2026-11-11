@@ -15,7 +15,7 @@ ap.add_argument("--tags", nargs="+", required=True)
 ap.add_argument("--out", required=True)
 a = ap.parse_args()
 want = {t.lower() for t in a.tags}
-TAG = re.compile(r"^tags:\s*\n((?:- .*\n)+)", re.M)
+TAG = re.compile(r"^tags:[ \t]*\n((?:[ \t]*- .*\n)+)", re.M)
 
 cohort = []
 for apis in ALL.glob("*/apis.yml"):
@@ -24,7 +24,7 @@ for apis in ALL.glob("*/apis.yml"):
         m = TAG.search(apis.read_text(errors="ignore"))
     except OSError:
         continue
-    if not m or not want & {l[2:].strip().strip("'\"").lower() for l in m.group(1).splitlines()}:
+    if not m or not want & {l.strip()[2:].strip().strip("'\"").lower() for l in m.group(1).splitlines()}:
         continue
     orig = apis.parent / "openapi" / "_original"
     prov = apis.parent / "provenance.yml"

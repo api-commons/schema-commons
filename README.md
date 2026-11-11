@@ -48,16 +48,22 @@ Spectral compatible, built-in functions only. Every common artifact must lint cl
 against it, and any provider can run it against their own OpenAPI. Each rule cites what the
 market measurably does, and where the market is split it says so and drops to `info`:
 
-| Rule | Measured (CRM cohort, providers) | Severity |
+Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
+`scripts/naming-evidence.py` across every built context -- CRM and help desk so far, 236
+providers -- and re-measured whenever a context is added:
+
+| Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 130; multi-word kebab 71 / snake 41 / camel 41 | warn |
-| timestamps end in `_at` | `_at` 37 / bare `created` 30 / `_time`, `_date`, `on` 17 | warn |
-| collections are plural | plural 83 / singular 39 | info |
-| properties snake_case | multi-word snake 44 / camel 41 -- a choice, recorded as one | info |
-| references `<resource>_id` | `...Id` 42 / `_id` 36 -- follows the property rule | info |
-| path params snake_case | `{id}` 86; multi-word camel 65 / snake 50 | info |
-| query params snake_case | snake 69 / camel 64 | info |
-| paging is `limit` + `cursor` | limit 51, page 49, page_size 38, cursor 25 | info |
+| path segments kebab-case | lowercase 227; multi-word kebab 112 / snake 65 / camel 58 | warn |
+| timestamps end in `_at` | `_at` 62 / bare `created` 44 / `_time`, `_date`, `on` 26 | warn |
+| collections are plural | plural 151 / singular 63 | info |
+| properties snake_case | multi-word snake 71 / camel 70 -- a choice, recorded as one | info |
+| references `<resource>_id` | `...Id` 68 / `_id` 59 -- follows the property rule | info |
+| path params snake_case | `{id}` 144; multi-word camel 116 / snake 82 | info |
+| query params snake_case | snake 106 / camel 102 | info |
+| paging is `limit` + `cursor` | limit 87, page 71, page_size 57, cursor 45 | info |
+
+The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
 
 ## Bounded contexts
 
@@ -65,8 +71,9 @@ market measurably does, and where the market is split it says so and drops to `i
 
 | Context | Repo | Status |
 | --- | --- | --- |
-| Customer Relationship Management | [crm](../crm) | published -- 134 providers, 91 crosswalks |
-| Help Desk and Ticketing, Commerce, Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
+| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published -- 177 providers, 113 crosswalks |
+| Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | built -- 77 providers, 48 crosswalks |
+| Commerce, Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
 
 ## Running a context
 
@@ -76,9 +83,30 @@ scripts/run.sh ../crm      # cohort -> census -> build -> lint (must be clean)
 
 `cohort.py` picks providers by APIs.io tag with harvested OpenAPI; `census.py` finds each
 concept by the path segment the provider uses and reads the resource schema behind it;
-`build.py` writes every artifact above. To add a context: copy `crm/concepts.yml`, set its
-tags, concepts and segments, run, then review the long tail in `profile.yml` for aliases
-that should collapse -- that review is the work.
+`build.py` writes every artifact above and the measured table in the context README;
+`apisjson.py` writes its APIs.json index.
+
+## The method, as it stands
+
+Each context is the same five steps. They are written down so the method can be tightened
+in one place as it matures.
+
+1. **Cohort.** Pick APIs.io tags that mean this context and nothing else. A tag that mixes
+   meanings (help desk "Ticketing" also covers concert tickets) is left out, and the README
+   says so.
+2. **Concepts.** Name each concept for its role in the context, list the path segments
+   providers use for it, and -- where a segment is generic (`messages`, `notes`) -- require
+   it to sit `under:` a parent concept's path.
+3. **Run and read the long tail.** `profile.yml` lists every spelling; collapse the ones that
+   mean the same field in `aliases`. That review is the work.
+4. **Review every ambiguous match.** Every provider counted only through an ambiguous segment
+   is looked at by hand. Wrong ones go under `exclude:` with a one-line reason; the same
+   company listed twice goes under `duplicates:` and is merged, not dropped.
+5. **Decide in public.** Every naming call that is a choice rather than a count is written in
+   the context README's Decisions section, with the numbers that informed it. The default:
+   follow the measured majority unless the majority word is ambiguous across contexts.
+
+Then re-run `naming-evidence.py` and bring the ruleset's counts up to date.
 
 ## Linking both ways
 

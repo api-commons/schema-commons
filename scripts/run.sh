@@ -13,4 +13,5 @@ IFS=$'\n' read -r -d "" -a T <<< "$TAGS" || true
 python3 "$HUB/scripts/cohort.py" --tags "${T[@]}" --out census/cohort.json
 python3 "$HUB/scripts/census.py" --cohort census/cohort.json
 python3 "$HUB/scripts/build.py"
+python3 "$HUB/scripts/apisjson.py"
 npx --yes @stoplight/spectral-cli@6.15.0 lint openapi.yml -r "$HUB/ruleset/schema-commons-naming.yaml" --fail-severity=info

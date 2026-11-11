@@ -31,6 +31,9 @@ census = json.load(open("census/census.json"))
 CTX = cfg["context"]
 RAW = f"https://raw.githubusercontent.com/api-commons/{CTX}/main"
 ENVELOPE = set(cfg.get("envelope", []))
+# One company listed twice in the catalog counts once: its listings are merged under the
+# canonical slug, so neither the count nor the evidence is lost.
+DUPLICATES = {dup: canon for canon, dups in (cfg.get("duplicates") or {}).items() for dup in dups}
 
 
 def snake(n):
@@ -48,14 +51,25 @@ JSON_TYPES = {"string", "integer", "number", "boolean", "object", "array"}
 profile = {"context": CTX, "name": cfg["name"], "generated": TODAY,
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": census["cohort_size"]},
            "thresholds": {"core": CORE, "extended": EXTENDED, "min_providers": MIN_PROVIDERS},
-           "excluded": cfg.get("exclude") or {},
+           "excluded": cfg.get("exclude") or {}, "duplicates": cfg.get("duplicates") or {},
            "concepts": {}}
 crosswalks = collections.defaultdict(dict)
+import shutil
+shutil.rmtree("schema", ignore_errors=True)
 adopters = collections.defaultdict(dict)
 
 for concept, spec in cfg["concepts"].items():
     excluded = (cfg.get("exclude") or {}).get(concept) or {}
-    hits = {k: v for k, v in census["concepts"].get(concept, {}).items() if k not in excluded}
+    hits = {}
+    for k, v in census["concepts"].get(concept, {}).items():
+        if k in excluded: continue
+        k = DUPLICATES.get(k, k)
+        if k in excluded: continue
+        h = hits.setdefault(k, {"segments": [], "operations": [], "properties": {}, "evidence": []})
+        h["segments"] = h["segments"] + [x for x in v["segments"] if x not in h["segments"]]
+        h["operations"] = sorted(set(h["operations"]) | set(v["operations"]))
+        h["properties"] = {**v["properties"], **h["properties"]}
+        h["evidence"] = h["evidence"] + v["evidence"]
     alias = {}
     for canon, al in {**cfg.get("common_fields", {}), **(spec.get("aliases") or {})}.items():
         alias[canon] = canon
@@ -90,7 +104,7 @@ for concept, spec in cfg["concepts"].items():
                       "spellings": [s for s, _ in f["spellings"].most_common(8)]})
     props.sort(key=lambda p: (-p["providers"], p["name"]))
     oplist = [{"operation": o, "providers": n, "share": round(n / (len(hits) or 1), 3),
-               "tier": tier(n / (len(hits) or 1), n)} for o, n in ops.most_common()]
+               "tier": tier(n / (len(hits) or 1), n)} for o, n in sorted(ops.items(), key=lambda kv: (-kv[1], kv[0]))]
     profile["concepts"][concept] = {
         "segments_seen": dict(collections.Counter(s for h in hits.values() for s in h["segments"]).most_common()),
         "providers_exposing": len(hits), "providers_with_readable_schema": len(readable),
@@ -128,7 +142,9 @@ for concept, spec in cfg["concepts"].items():
             "evidence": h["evidence"][:5]}
 
 # OpenAPI: one collection + item path per concept, operations that clear the extended bar.
-def pluralise(c): return {"activity": "activities", "company": "companies"}.get(c, c + "s")
+def pluralise(c):
+    c = c.replace("_", "-")
+    return c[:-1] + "ies" if c.endswith("y") and c[-2] not in "aeiou" else c + "s"
 VERB = {"GET collection": ("get", "list", "List"), "POST collection": ("post", "create", "Create"),
         "GET item": ("get", "get", "Get"), "UPDATE item": ("patch", "update", "Update"),
         "DELETE item": ("delete", "delete", "Delete")}
@@ -142,18 +158,21 @@ oas = {"openapi": "3.1.0",
        "paths": {}, "components": {"schemas": {}, "parameters": {}}}
 for concept, c in profile["concepts"].items():
     plural = pluralise(concept)
-    oas["components"]["schemas"][concept.title()] = {"$ref": f"./schema/{concept}.json"}
+    base = cfg["concepts"][concept].get("path") or f"/{plural}"
+    oas["components"]["schemas"][concept.title().replace("_", "")] = {"$ref": f"./schema/{concept}.json"}
+    for parent in re.findall(r"\{(\w+)\}", base):
+        oas["components"]["parameters"].setdefault(parent, {"name": parent, "in": "path", "required": True, "schema": {"type": "string"}})
     oas["components"]["parameters"][f"{concept}_id"] = {"name": f"{concept}_id", "in": "path", "required": True,
                                                        "schema": {"type": "string"}}
-    ref = {"$ref": f"#/components/schemas/{concept.title()}"}
+    ref = {"$ref": f"#/components/schemas/{concept.title().replace('_', '')}"}
     for o in c["operations"]:
         if o["tier"] == "long-tail" or o["operation"] not in VERB: continue
         m, verb, Verb = VERB[o["operation"]]
         item = o["operation"].endswith("item")
-        path = f"/{plural}/{{{concept}_id}}" if item else f"/{plural}"
-        op = {"operationId": f"{verb}{(plural if verb == 'list' else concept).title().replace('_', '')}",
-              "summary": f"{Verb} {plural if verb == 'list' else 'a ' + concept}",
-              "tags": [plural.title()], "x-commons-tier": o["tier"], "x-commons-share": o["share"],
+        path = f"{base}/{{{concept}_id}}" if item else base
+        op = {"operationId": f"{verb}{(plural if verb == 'list' else concept).title().replace('_', '').replace('-', '')}",
+              "summary": f"{Verb} {plural.replace('-', ' ') if verb == 'list' else 'a ' + concept.replace('_', ' ')}",
+              "tags": [plural.replace("-", " ").title()], "x-commons-tier": o["tier"], "x-commons-share": o["share"],
               "responses": {"200": {"description": "OK", "content": {"application/json": {"schema":
                             {"type": "array", "items": ref} if verb == "list" else ref}}}}}
         if verb in ("create", "update"):
@@ -161,8 +180,9 @@ for concept, c in profile["concepts"].items():
         if verb == "list":
             op["parameters"] = [{"name": "limit", "in": "query", "schema": {"type": "integer"}},
                                 {"name": "cursor", "in": "query", "schema": {"type": "string"}}]
-        if item:
-            oas["paths"].setdefault(path, {})["parameters"] = [{"$ref": f"#/components/parameters/{concept}_id"}]
+        params = [{"$ref": f"#/components/parameters/{p}"} for p in re.findall(r"\{(\w+)\}", path)]
+        if params:
+            oas["paths"].setdefault(path, {})["parameters"] = params
         oas["paths"].setdefault(path, {})[m] = op
 
 Dumper = getattr(yaml, "CSafeDumper", yaml.SafeDumper)
@@ -182,3 +202,24 @@ for concept, c in profile["concepts"].items():
     core = [p["name"] for p in c["properties"] if p["tier"] == "core"]
     print(f"{concept:9} {c['providers_exposing']:3} exp / {c['providers_with_readable_schema']:3} readable  core: {', '.join(core)}", file=sys.stderr)
 print(len(crosswalks), "crosswalks", file=sys.stderr)
+
+# README: the measured table lives between markers and is regenerated on every build, so
+# the numbers a reader sees are never older than the artifacts beside them.
+readme = Path("README.md")
+if readme.exists() and "<!-- commons:summary -->" in readme.read_text():
+    rows = ["| Concept | Expose it | Readable schema | Core properties (share) | Collection named |",
+            "| --- | ---: | ---: | --- | --- |"]
+    for concept, c in profile["concepts"].items():
+        core = ", ".join(f"{p['name']} {round(p['share'] * 100)}%" for p in c["properties"] if p["tier"] == "core")
+        segs = ", ".join(f"{k} {n}" for k, n in list(c["segments_seen"].items())[:4])
+        rows.append(f"| {concept} | {c['providers_exposing']} | {c['providers_with_readable_schema']} | {core} | {segs} |")
+    first = next(iter(profile["concepts"]))
+    ops = {o["operation"]: round(o["share"] * 100) for o in profile["concepts"][first]["operations"]}
+    rows += ["", f"Cohort: {census['cohort_size']} providers with harvested OpenAPI, "
+             f"{len(crosswalks)} crosswalks. Of the providers exposing a {first}: "
+             f"{ops.get('POST collection', 0)}% create, {ops.get('GET collection', 0)}% list, "
+             f"{ops.get('GET item', 0)}% fetch, {ops.get('UPDATE item', 0)}% update, "
+             f"{ops.get('DELETE item', 0)}% delete. Generated {TODAY} by build.py."]
+    text = readme.read_text()
+    a, b = text.index("<!-- commons:summary -->"), text.index("<!-- /commons:summary -->")
+    readme.write_text(text[:a] + "<!-- commons:summary -->\n" + "\n".join(rows) + "\n" + text[b:])

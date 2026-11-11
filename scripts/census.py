@@ -81,7 +81,7 @@ def props_of(doc, schema, depth=0):
             out.update(props_of(doc, s[key][0], depth + 1))
     p = s.get("properties") or {}
     if isinstance(p, dict):
-        for env in ("data", "results", "items", "records", "result"):
+        for env in ("data", "results", "_results", "items", "records", "result", "value"):
             if env in p and len(p) <= 6:
                 inner = props_of(doc, p[env], depth + 1)
                 if inner: return inner
@@ -152,12 +152,19 @@ for prov in cohort:
                 if not hit: continue
                 i, seg = hit
                 concept = SEG2CONCEPT[seg]
+                # /tickets/{id}/conversations is a child of a ticket, not a ticket: a segment
+                # nested under its own concept's path is not that concept.
+                if any(SEG2CONCEPT.get(s) == concept for _, s in lits if _ < i):
+                    continue
+                under = CONCEPTS[concept].get("under")
+                if under and not any(s in under for _, s in lits if _ < i):
+                    continue
                 rest = segs[i + 1:]
                 if len(rest) > 1 or (rest and not PARAM.match(rest[0])): continue
                 shape = "item" if rest else "collection"
-                h = concept_hits[concept].setdefault(slug, {"segments": set(), "operations": set(),
+                h = concept_hits[concept].setdefault(slug, {"segments": collections.Counter(), "operations": set(),
                                                             "properties": {}, "evidence": set()})
-                h["segments"].add(seg)
+                h["segments"][seg] += 1
                 h["operations"].add(f"{m.upper()} {shape}")
                 h["evidence"].add(f"{rel}#{m.upper()} {path}")
                 for sch in (body_schema(doc, op), body_schema(doc, op, responses=False)):
@@ -169,7 +176,7 @@ for prov in cohort:
 
 out = {"cohort_size": len(cohort), "concepts": {}, "naming": {}}
 for c, provs in concept_hits.items():
-    out["concepts"][c] = {slug: {"segments": sorted(h["segments"]), "operations": sorted(h["operations"]),
+    out["concepts"][c] = {slug: {"segments": [s for s, _ in h["segments"].most_common()], "operations": sorted(h["operations"]),
                                  "properties": h["properties"], "evidence": sorted(h["evidence"])[:12]}
                           for slug, h in sorted(provs.items())}
 for dim, vals in naming.items():
