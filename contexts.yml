@@ -662,7 +662,7 @@ contexts:
   status: thin
 - context: agentic-commerce
   name: Agentic Commerce
-  status: planned
+  status: thin
 - context: clinical-trials
   name: Clinical Trials
   status: planned
