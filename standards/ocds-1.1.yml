@@ -1,0 +1,196 @@
+standard: ocds-1.1
+source: https://standard.open-contracting.org/schema/1__1__5/release-schema.json
+format: jsonschema
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  release-schema:
+  - ocid
+  - id
+  - date
+  - tag
+  - initiationType
+  - parties
+  - buyer
+  - planning
+  - tender
+  - awards
+  - contracts
+  - language
+  - relatedProcesses
+  release-schema.Planning:
+  - rationale
+  - budget
+  - documents
+  - milestones
+  release-schema.Tender:
+  - id
+  - title
+  - description
+  - status
+  - procuringEntity
+  - items
+  - value
+  - minValue
+  - procurementMethod
+  - procurementMethodDetails
+  - procurementMethodRationale
+  - mainProcurementCategory
+  - additionalProcurementCategories
+  - awardCriteria
+  - awardCriteriaDetails
+  - submissionMethod
+  - submissionMethodDetails
+  - tenderPeriod
+  - enquiryPeriod
+  - hasEnquiries
+  - eligibilityCriteria
+  - awardPeriod
+  - contractPeriod
+  - numberOfTenderers
+  - tenderers
+  - documents
+  - milestones
+  - amendments
+  - amendment
+  release-schema.Award:
+  - id
+  - title
+  - description
+  - status
+  - date
+  - value
+  - suppliers
+  - items
+  - contractPeriod
+  - documents
+  - amendments
+  - amendment
+  release-schema.Contract:
+  - id
+  - awardID
+  - title
+  - description
+  - status
+  - period
+  - value
+  - items
+  - dateSigned
+  - documents
+  - implementation
+  - relatedProcesses
+  - milestones
+  - amendments
+  - amendment
+  release-schema.Implementation:
+  - transactions
+  - milestones
+  - documents
+  release-schema.Milestone:
+  - id
+  - title
+  - type
+  - description
+  - code
+  - dueDate
+  - dateMet
+  - dateModified
+  - status
+  - documents
+  release-schema.Document:
+  - id
+  - documentType
+  - title
+  - description
+  - url
+  - datePublished
+  - dateModified
+  - format
+  - language
+  release-schema.Budget:
+  - id
+  - description
+  - amount
+  - project
+  - projectID
+  - uri
+  - source
+  release-schema.Transaction:
+  - id
+  - source
+  - date
+  - value
+  - payer
+  - payee
+  - uri
+  - amount
+  - providerOrganization
+  - receiverOrganization
+  release-schema.OrganizationReference:
+  - name
+  - id
+  - identifier
+  - address
+  - additionalIdentifiers
+  - contactPoint
+  release-schema.Organization:
+  - name
+  - id
+  - identifier
+  - additionalIdentifiers
+  - address
+  - contactPoint
+  - roles
+  - details
+  release-schema.Item:
+  - id
+  - description
+  - classification
+  - additionalClassifications
+  - quantity
+  - unit
+  release-schema.Amendment:
+  - date
+  - rationale
+  - id
+  - description
+  - amendsReleaseID
+  - releaseID
+  - changes
+  release-schema.Classification:
+  - scheme
+  - id
+  - description
+  - uri
+  release-schema.Identifier:
+  - scheme
+  - id
+  - legalName
+  - uri
+  release-schema.Address:
+  - streetAddress
+  - locality
+  - region
+  - postalCode
+  - countryName
+  release-schema.ContactPoint:
+  - name
+  - email
+  - telephone
+  - faxNumber
+  - url
+  release-schema.Value:
+  - amount
+  - currency
+  release-schema.Period:
+  - startDate
+  - endDate
+  - maxExtentDate
+  - durationInDays
+  release-schema.RelatedProcess:
+  - id
+  - relationship
+  - title
+  - scheme
+  - identifier
+  - uri

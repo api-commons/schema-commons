@@ -37,4 +37,5 @@ concepts:
 findings:
   - "Container registries share the OCI Distribution API, not a management shape: in a 104-provider cohort, repositories at 15 readable providers agree on name and description; tags at 5 agree on a name; registries at 9 agree on id and name. Pushing and pulling images goes through the OCI distribution protocol, which every registry implements identically, so a standards pass over the OCI specification is the reference here."
 decisions:
+  - "Measured against OCI Distribution in the reference context registry-protocol."
   - "Measured and not published: recorded as `thin`, with its findings."

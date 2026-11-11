@@ -871,3 +871,13 @@ contexts:
 - context: threat-sharing
   name: Threat Intelligence Sharing (STIX and TAXII)
   status: thin
+- context: data-lineage
+  name: Data Lineage (OpenLineage)
+  status: thin
+- context: open-contracting
+  name: Public Contracting (OCDS)
+  status: thin
+- context: ocean-shipping
+  name: Container Shipping (DCSA)
+  status: reference
+  repo: api-commons/ocean-shipping

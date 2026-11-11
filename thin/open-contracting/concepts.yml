@@ -1,0 +1,22 @@
+context: open-contracting
+name: Public Contracting (OCDS)
+kind: reference
+intro: >-
+  How public contracting is published -- the planning, tender, award and contract stages of a
+  procurement, the parties to it, and its value. The shape is owned by the Open Contracting Data
+  Standard (OCDS), so this context publishes OCDS's own objects and measures who implements them.
+tags: [Government, GovTech, Public Sector, Federal Government, Government Contracting, Public Procurement, Procurement, Grants, Government Spending, Open Government, Transparency]
+reference:
+  standard: ocds-1.1
+  home: https://standard.open-contracting.org/
+  license: Apache-2.0
+  mentions: '\b(ocds|open contracting|ocid)\b'
+  publishers: []
+  object_threshold: 0.5
+  match_objects: [release-schema, release-schema.Tender, release-schema.Award]
+  objects: [release-schema, release-schema.Tender, release-schema.Award, release-schema.Contract, release-schema.Organization, release-schema.Value]
+  apis: []
+findings:
+  - "Open contracting data is published as files, not APIs: in a 260-provider government and procurement cohort, one provider names OCDS in a harvested spec and none publishes a schema carrying half of an OCDS release, tender or award. OCDS publishers distribute release and record packages as bulk JSON downloads, which a census of OpenAPI cannot see."
+decisions:
+  - "Measured as a reference context and recorded as thin. The OCDS objects are extracted in standards/ocds-1.1.yml for the public-spending context's next pass."

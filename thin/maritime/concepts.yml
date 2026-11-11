@@ -44,4 +44,5 @@ concepts:
 findings:
   - "Maritime data is not published in a common shape: in a 228-provider cohort (mostly shipping and logistics companies), vessels at 11 readable providers share no property at half, and positions at 13 reach latitude and longitude at 46%. Ports and port calls are readable at 3 and 4. The shared vocabularies are the AIS message fields and the DCSA (Digital Container Shipping Association) standards for port calls and track-and-trace, which a standards pass should take."
 decisions:
+  - "Measured against DCSA in the reference context ocean-shipping."
   - "Measured and not published: recorded as `thin`, with its findings."

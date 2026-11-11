@@ -63,12 +63,11 @@ elif fmt == "jsonschema":
             top += [k for k in (src.get("properties") or {}) if k not in top and not k.startswith("@")]
         if top:
             objects[Path(f).stem] = top
-            continue
-        # No top-level properties (STAC): each definition is an object, with allOf parts and
-        # local #/definitions refs followed.
-        defs = d.get("definitions") or {}
+        # Each definition is an object too (STAC items, OCDS awards), with allOf/oneOf/anyOf
+        # parts and local #/definitions or #/$defs refs followed.
+        defs = d.get("definitions") or d.get("$defs") or {}
         def dprops(n, seen=()):
-            if "$ref" in n and n["$ref"].startswith("#/definitions/"):
+            if "$ref" in n and n["$ref"].startswith(("#/definitions/", "#/$defs/")):
                 r = n["$ref"].split("/")[-1]
                 return [] if r in seen else dprops(defs.get(r, {}), seen + (r,))
             out = [k for k in (n.get("properties") or {})]

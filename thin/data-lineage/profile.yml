@@ -1,0 +1,32 @@
+context: data-lineage
+kind: reference
+standard: openlineage-2.0
+cohort:
+  tags:
+  - Data Governance
+  - Data Catalog
+  - Data Management
+  - Metadata Management
+  - Data Lineage
+  - Data Quality
+  - Data Observability
+  - ETL
+  - ELT
+  - Data Integration
+  - Data Pipelines
+  - Data Engineering
+  providers_with_harvested_openapi: 167
+implementers: 2
+publishers: []
+mentioned_by: 4
+mentioned_by_providers:
+- collate
+- keboola
+- openmetadata
+- select-star
+apis:
+  openlineage:
+    release: https://github.com/OpenLineage/OpenLineage/tree/1.55.0/spec
+    providers: 1
+    operations:
+    - POST /lineage

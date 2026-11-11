@@ -1,0 +1,23 @@
+context: open-contracting
+kind: reference
+standard: ocds-1.1
+cohort:
+  tags:
+  - Government
+  - GovTech
+  - Public Sector
+  - Federal Government
+  - Government Contracting
+  - Public Procurement
+  - Procurement
+  - Grants
+  - Government Spending
+  - Open Government
+  - Transparency
+  providers_with_harvested_openapi: 260
+implementers: 0
+publishers: []
+mentioned_by: 1
+mentioned_by_providers:
+- sirenic-eu
+apis: {}

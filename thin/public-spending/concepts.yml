@@ -33,4 +33,5 @@ concepts:
 findings:
   - "Public spending is published by a handful of government systems, each in its own shape: in a 117-provider cohort, awards are readable at 3 providers and grant opportunities at 5, agreeing only on an id. The shared vocabularies are the Open Contracting Data Standard (OCDS) and the 360Giving and IATI standards, which a standards pass should take."
 decisions:
+  - "Measured against OCDS in the reference context open-contracting."
   - "Measured and not published: recorded as `thin`, with its findings."

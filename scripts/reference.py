@@ -18,6 +18,7 @@ concepts.yml carries a `reference:` block:
     mentions: '\bcamara\b'                  # optional: count providers whose specs name the standard at all
     object_threshold: 0.5                # optional: count a provider whose component schema carries this share
                                          # of a listed object's fields (a standard used as a format)
+    match_objects: [indicator]           # optional: the objects distinctive enough to match on (default: objects)
     apis:                            # one entry per API in the standard
       - api: number-verification     # the slug a provider's path, server or title names it by
         release: https://github.com/camaraproject/NumberVerification/tree/r4.2
@@ -26,6 +27,8 @@ concepts.yml carries a `reference:` block:
         signature: [POST /verify]           # optional: operations only this API defines
         match: path                         # optional: the path alone identifies the API (OCI's /v2/<name>/...)
         path_contains: /v2/                 # optional: a path segment every operation of this API carries
+        name: dcsa                          # optional: the token to match in path, server or title (default: api)
+    min_coverage: 0.3                    # optional: an operation with standard fields must carry this share
 
 Writes profile.yml, adopters.yml, crosswalk/<provider>.yml and schema/<object>.json.
 Usage, from the context's directory: reference.py
@@ -145,13 +148,17 @@ for entry in cohort:
                     method, spath = o["op"].split(" ", 1)
                     op = item.get(method.lower())
                     if not isinstance(op, dict) or not canon(path).endswith(canon(spath)) \
-                            or (a.get("match") != "path" and not names_api(a["api"], doc, path, spec)) \
+                            or (a.get("match") != "path" and not names_api(a.get("name", a["api"]), doc, path, spec)) \
                             or (a.get("path_contains") and a["path_contains"] not in path):
                         continue
                     req, res = body_props(doc, op)
                     have = {norm(x): x for x in req | res}
                     want = std_fields(o.get("request")) + std_fields(o.get("response"))
                     cw = {f: have[norm(f)] for f in want if norm(f) in have}
+                    # Matched on path alone, an operation that carries standard fields must carry enough
+                    # of them to count; one whose path or server names the standard counts as it is.
+                    if a.get("match") == "path" and want and len(cw) / len(want) < (ref.get("min_coverage") or 0):
+                        continue
                     key = (a["api"], o["op"])
                     if key not in found or len(cw) > len(found[key]["crosswalk"]):
                         found[key] = {"api": a["api"], "operation": o["op"], "evidence": f"{rel}#{method} {path}",
@@ -169,7 +176,7 @@ for entry in cohort:
             comps = ((doc.get("components") or {}).get("schemas")) or doc.get("definitions") or {}
             for sname, sch in comps.items():
                 have = {norm(x): x for x in props(doc, sch)}
-                for obj in ref.get("objects") or []:
+                for obj in ref.get("match_objects") or ref.get("objects") or []:
                     want = OBJ.get(obj, [])
                     cw = {f: have[norm(f)] for f in want if norm(f) in have}
                     cov_ = round(len(cw) / len(want), 2) if want else 0

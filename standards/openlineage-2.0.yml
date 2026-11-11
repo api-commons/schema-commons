@@ -1,0 +1,76 @@
+standard: openlineage-2.0
+source: https://github.com/OpenLineage/OpenLineage/tree/1.55.0/spec
+format: jsonschema
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  openlineage.BaseEvent:
+  - eventTime
+  - producer
+  - schemaURL
+  openlineage.RunEvent:
+  - eventTime
+  - producer
+  - schemaURL
+  - eventType
+  - run
+  - job
+  - inputs
+  - outputs
+  openlineage.DatasetEvent:
+  - eventTime
+  - producer
+  - schemaURL
+  - dataset
+  openlineage.JobEvent:
+  - eventTime
+  - producer
+  - schemaURL
+  - job
+  - inputs
+  - outputs
+  openlineage.Run:
+  - runId
+  - facets
+  openlineage.RunFacet:
+  - _producer
+  - _schemaURL
+  openlineage.Job:
+  - namespace
+  - name
+  - facets
+  openlineage.JobFacet:
+  - _producer
+  - _schemaURL
+  - _deleted
+  openlineage.InputDataset:
+  - namespace
+  - name
+  - facets
+  - inputFacets
+  openlineage.InputDatasetFacet:
+  - _producer
+  - _schemaURL
+  openlineage.OutputDataset:
+  - namespace
+  - name
+  - facets
+  - outputFacets
+  openlineage.OutputDatasetFacet:
+  - _producer
+  - _schemaURL
+  openlineage.Dataset:
+  - namespace
+  - name
+  - facets
+  openlineage.StaticDataset:
+  - namespace
+  - name
+  - facets
+  openlineage.DatasetFacet:
+  - _producer
+  - _schemaURL
+  - _deleted
+  openlineage.BaseFacet:
+  - _producer
+  - _schemaURL

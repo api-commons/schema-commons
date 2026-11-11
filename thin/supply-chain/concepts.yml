@@ -36,4 +36,5 @@ concepts:
 findings:
   - "Supply-chain visibility adds nothing common beyond what shipping and freight already hold: in a 280-provider cohort, tracked shipments at 31 readable providers agree only on status; suppliers agree on id and name. Milestone events agree on event_type, location and occurred_at, but at 5 providers. Container tracking follows the DCSA Track and Trace standard, and supply-chain events follow GS1 EPCIS, which are the references."
 decisions:
+  - "Measured against DCSA in the reference context ocean-shipping."
   - "Measured and not published: recorded as `thin`, with its findings."

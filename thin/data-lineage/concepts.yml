@@ -1,0 +1,28 @@
+context: data-lineage
+name: Data Lineage (OpenLineage)
+kind: reference
+intro: >-
+  How data pipelines report lineage -- a run of a job, the datasets it read and wrote, and the facets
+  that describe each. The shape is owned by the OpenLineage specification (an LF AI and Data project),
+  so this context publishes OpenLineage's own objects and measures who implements them.
+tags: [Data Governance, Data Catalog, Data Management, Metadata Management, Data Lineage, Data Quality, Data Observability, ETL, ELT, Data Integration, Data Pipelines, Data Engineering]
+reference:
+  standard: openlineage-2.0
+  home: https://openlineage.io
+  license: Apache-2.0
+  mentions: '\bopenlineage\b'
+  publishers: []
+  object_threshold: 0.6
+  match_objects: [openlineage.RunEvent]
+  objects: [openlineage.RunEvent, openlineage.Run, openlineage.Job, openlineage.Dataset]
+  apis:
+    - api: openlineage
+      release: https://github.com/OpenLineage/OpenLineage/tree/1.55.0/spec
+      operations:
+        - {op: POST /lineage, request: openlineage.RunEvent}
+duplicates:
+  openmetadata: [collate]
+findings:
+  - "OpenLineage is the lineage standard data tools emit, but few publish it as an API: in a 167-provider data-governance and pipeline cohort, 4 providers name OpenLineage in a harvested spec, openmetadata (with collate, the company behind it, merged) accepts OpenLineage run events at POST /v1/openlineage/lineage, and keboola publishes a run-event schema carrying 88% of the standard's fields."
+decisions:
+  - "Measured as a reference context and recorded as thin, below the three-implementer bar. Job and Dataset (namespace, name, facets) are too generic to match on; only the RunEvent is matched."

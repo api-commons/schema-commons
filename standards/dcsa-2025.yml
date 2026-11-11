@@ -1,0 +1,1887 @@
+standard: dcsa-2025
+source: https://app.swaggerhub.com/organizations/dcsaorg (TNT 2.2.0, CS 1.0.3, BKG 2.0.4, EBL 3.0.3, OVS 3.0.2)
+format: openapi
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  CreateBookingResponse:
+  - carrierBookingRequestReference
+  CancelBookingRequest:
+  - reason
+  BookingNotification:
+  - specversion
+  - id
+  - source
+  - type
+  - time
+  - datacontenttype
+  - subscriptionReference
+  - data
+  BookingNotificationData:
+  - bookingStatus
+  - amendedBookingStatus
+  - bookingCancellationStatus
+  - carrierBookingRequestReference
+  - carrierBookingReference
+  - feedbacks
+  - booking
+  - amendedBooking
+  BookingFullNotification:
+  - carrierBookingRequestReference
+  - carrierBookingReference
+  - bookingStatus
+  - amendedBookingStatus
+  - bookingCancellationStatus
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - serviceContractReference
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - contractQuotationReference
+  - vessel
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - routingReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - isPartialLoadAllowed
+  - isExportDeclarationRequired
+  - exportDeclarationReference
+  - expectedDepartureDate
+  - expectedDepartureFromPlaceOfReceiptDate
+  - expectedArrivalAtPlaceOfDeliveryStartDate
+  - expectedArrivalAtPlaceOfDeliveryEndDate
+  - transportDocumentTypeCode
+  - transportDocumentReference
+  - transportDocumentReferences
+  - requestedNumberOfTransportDocuments
+  - bookingChannelReference
+  - incoTerms
+  - isEquipmentSubstitutionAllowed
+  - termsAndConditions
+  - invoicePayableAt
+  - placeOfBLIssue
+  - references
+  - customsReferences
+  - documentParties
+  - partyContactDetails
+  - shipmentLocations
+  - requestedPreCarriageModeOfTransport
+  - requestedOnCarriageModeOfTransport
+  - requestedEquipments
+  - confirmedEquipments
+  - transportPlan
+  - shipmentCutOffTimes
+  - advanceManifestFilings
+  - charges
+  - carrierClauses
+  - feedbacks
+  AmendedBookingFullNotification:
+  - carrierBookingRequestReference
+  - carrierBookingReference
+  - bookingStatus
+  - amendedBookingStatus
+  - bookingCancellationStatus
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - serviceContractReference
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - contractQuotationReference
+  - vessel
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - routingReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - isPartialLoadAllowed
+  - isExportDeclarationRequired
+  - exportDeclarationReference
+  - expectedDepartureDate
+  - expectedDepartureFromPlaceOfReceiptDate
+  - expectedArrivalAtPlaceOfDeliveryStartDate
+  - expectedArrivalAtPlaceOfDeliveryEndDate
+  - transportDocumentTypeCode
+  - transportDocumentReference
+  - transportDocumentReferences
+  - requestedNumberOfTransportDocuments
+  - bookingChannelReference
+  - incoTerms
+  - isEquipmentSubstitutionAllowed
+  - termsAndConditions
+  - invoicePayableAt
+  - placeOfBLIssue
+  - references
+  - customsReferences
+  - documentParties
+  - partyContactDetails
+  - shipmentLocations
+  - requestedPreCarriageModeOfTransport
+  - requestedOnCarriageModeOfTransport
+  - requestedEquipments
+  - confirmedEquipments
+  - transportPlan
+  - shipmentCutOffTimes
+  - advanceManifestFilings
+  - charges
+  - carrierClauses
+  - feedbacks
+  Feedback:
+  - severity
+  - code
+  - message
+  - jsonPath
+  - property
+  ErrorResponse:
+  - httpMethod
+  - requestUri
+  - statusCode
+  - statusCodeText
+  - statusCodeMessage
+  - providerCorrelationReference
+  - errorDateTime
+  - errors
+  DetailedError:
+  - errorCode
+  - property
+  - value
+  - jsonPath
+  - errorCodeText
+  - errorCodeMessage
+  Address:
+  - street
+  - streetNumber
+  - floor
+  - postCode
+  - POBox
+  - city
+  - stateRegion
+  - countryCode
+  Facility:
+  - facilityCode
+  - facilityCodeListProvider
+  GeoCoordinate:
+  - latitude
+  - longitude
+  CreateBooking:
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - serviceContractReference
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - contractQuotationReference
+  - vessel
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - routingReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - isPartialLoadAllowed
+  - isExportDeclarationRequired
+  - exportDeclarationReference
+  - expectedDepartureDate
+  - expectedDepartureFromPlaceOfReceiptDate
+  - expectedArrivalAtPlaceOfDeliveryStartDate
+  - expectedArrivalAtPlaceOfDeliveryEndDate
+  - transportDocumentTypeCode
+  - transportDocumentReference
+  - transportDocumentReferences
+  - requestedNumberOfTransportDocuments
+  - bookingChannelReference
+  - incoTerms
+  - isEquipmentSubstitutionAllowed
+  - invoicePayableAt
+  - placeOfBLIssue
+  - references
+  - customsReferences
+  - documentParties
+  - partyContactDetails
+  - shipmentLocations
+  - requestedPreCarriageModeOfTransport
+  - requestedOnCarriageModeOfTransport
+  - requestedEquipments
+  UpdateBooking:
+  - carrierBookingRequestReference
+  - carrierBookingReference
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - serviceContractReference
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - contractQuotationReference
+  - vessel
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - routingReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - isPartialLoadAllowed
+  - isExportDeclarationRequired
+  - exportDeclarationReference
+  - expectedDepartureDate
+  - expectedDepartureFromPlaceOfReceiptDate
+  - expectedArrivalAtPlaceOfDeliveryStartDate
+  - expectedArrivalAtPlaceOfDeliveryEndDate
+  - transportDocumentTypeCode
+  - transportDocumentReference
+  - transportDocumentReferences
+  - requestedNumberOfTransportDocuments
+  - bookingChannelReference
+  - incoTerms
+  - isEquipmentSubstitutionAllowed
+  - invoicePayableAt
+  - placeOfBLIssue
+  - references
+  - customsReferences
+  - documentParties
+  - partyContactDetails
+  - shipmentLocations
+  - requestedPreCarriageModeOfTransport
+  - requestedOnCarriageModeOfTransport
+  - requestedEquipments
+  DocumentPartiesReq:
+  - bookingAgent
+  - shipper
+  - consignee
+  - serviceContractOwner
+  - carrierBookingOffice
+  - issueTo
+  - other
+  Booking:
+  - carrierBookingRequestReference
+  - carrierBookingReference
+  - bookingStatus
+  - amendedBookingStatus
+  - bookingCancellationStatus
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - serviceContractReference
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - contractQuotationReference
+  - vessel
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - routingReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - isPartialLoadAllowed
+  - isExportDeclarationRequired
+  - exportDeclarationReference
+  - expectedDepartureDate
+  - expectedDepartureFromPlaceOfReceiptDate
+  - expectedArrivalAtPlaceOfDeliveryStartDate
+  - expectedArrivalAtPlaceOfDeliveryEndDate
+  - transportDocumentTypeCode
+  - transportDocumentReference
+  - transportDocumentReferences
+  - requestedNumberOfTransportDocuments
+  - bookingChannelReference
+  - incoTerms
+  - isEquipmentSubstitutionAllowed
+  - termsAndConditions
+  - invoicePayableAt
+  - placeOfBLIssue
+  - references
+  - customsReferences
+  - documentParties
+  - partyContactDetails
+  - shipmentLocations
+  - requestedPreCarriageModeOfTransport
+  - requestedOnCarriageModeOfTransport
+  - requestedEquipments
+  - confirmedEquipments
+  - transportPlan
+  - shipmentCutOffTimes
+  - advanceManifestFilings
+  - charges
+  - carrierClauses
+  - feedbacks
+  InvoicePayableAt:
+  - UNLocationCode
+  PlaceOfBLIssue:
+  - locationName
+  DocumentParties:
+  - bookingAgent
+  - shipper
+  - consignee
+  - serviceContractOwner
+  - carrierBookingOffice
+  - issueTo
+  - other
+  ActiveReeferSettings:
+  - temperatureSetpoint
+  - temperatureUnit
+  - o2Setpoint
+  - co2Setpoint
+  - humiditySetpoint
+  - airExchangeSetpoint
+  - airExchangeUnit
+  - isVentilationOpen
+  - isDrainholesOpen
+  - isBulbMode
+  - isColdTreatmentRequired
+  - isControlledAtmosphereRequired
+  - isPreCoolingRequired
+  - isGeneratorSetRequired
+  PartyAddress:
+  - street
+  - streetNumber
+  - floor
+  - postCode
+  - POBox
+  - city
+  - UNLocationCode
+  - stateRegion
+  - countryCode
+  OtherDocumentParty:
+  - party
+  - partyFunction
+  BookingAgent:
+  - partyName
+  - address
+  - addressLines
+  - partyContactDetails
+  - identifyingCodes
+  - taxLegalReferences
+  - reference
+  Shipper:
+  - partyName
+  - eblPlatform
+  - address
+  - addressLines
+  - partyContactDetails
+  - identifyingCodes
+  - taxLegalReferences
+  - reference
+  - purchaseOrderReferences
+  Consignee:
+  - partyName
+  - eblPlatform
+  - address
+  - addressLines
+  - partyContactDetails
+  - identifyingCodes
+  - taxLegalReferences
+  - reference
+  - purchaseOrderReferences
+  ServiceContractOwner:
+  - partyName
+  - address
+  - addressLines
+  - partyContactDetails
+  - identifyingCodes
+  - taxLegalReferences
+  - reference
+  CarrierBookingOffice:
+  - partyName
+  - UNLocationCode
+  - address
+  - addressLines
+  - partyContactDetails
+  IssueToParty:
+  - partyName
+  - sendToPlatform
+  - identifyingCodes
+  - taxLegalReferences
+  Party:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  PartyContactDetail:
+  - name
+  IdentifyingCode:
+  - codeListProvider
+  - partyCode
+  - codeListName
+  TaxLegalReference:
+  - type
+  - countryCode
+  - value
+  ReferenceShipper:
+  - type
+  - value
+  Reference:
+  - type
+  - value
+  CustomsReference:
+  - type
+  - countryCode
+  - values
+  ShipmentLocation:
+  - location
+  - locationTypeCode
+  - departingVesselVoyage
+  Location:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  - geoCoordinate
+  RequestedEquipment:
+  - ISOEquipmentCode
+  - units
+  - containerPositionings
+  - emptyContainerPickup
+  - originEmptyContainerPickup
+  - fullContainerPickupDateTime
+  - equipmentReferences
+  - tareWeight
+  - cargoGrossWeight
+  - isShipperOwned
+  - isNonOperatingReefer
+  - activeReeferSettings
+  - references
+  - customsReferences
+  - commodities
+  RequestedEquipmentShipper:
+  - ISOEquipmentCode
+  - units
+  - containerPositionings
+  - emptyContainerPickup
+  - originEmptyContainerPickup
+  - fullContainerPickupDateTime
+  - equipmentReferences
+  - tareWeight
+  - cargoGrossWeight
+  - isShipperOwned
+  - isNonOperatingReefer
+  - activeReeferSettings
+  - references
+  - customsReferences
+  - commodities
+  TareWeight:
+  - value
+  - unit
+  ContainerPositioning:
+  - dateTime
+  - location
+  ContainerPositioningEstimated:
+  - estimatedDateTime
+  - location
+  ContainerPositioningLocation:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  - geoCoordinate
+  EmptyContainerDepotReleaseLocation:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  - geoCoordinate
+  CommodityShipper:
+  - commodityType
+  - HSCodes
+  - extendedHSCodes
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - cargoGrossWeight
+  - cargoGrossVolume
+  - cargoNetWeight
+  - cargoNetVolume
+  - exportLicense
+  - importLicense
+  - outerPackaging
+  - references
+  - customsReferences
+  Commodity:
+  - commoditySubReference
+  - commodityType
+  - HSCodes
+  - extendedHSCodes
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - cargoGrossWeight
+  - cargoGrossVolume
+  - cargoNetWeight
+  - cargoNetVolume
+  - exportLicense
+  - importLicense
+  - outerPackaging
+  - references
+  - customsReferences
+  ExportLicense:
+  - isRequired
+  - reference
+  - issueDate
+  - expiryDate
+  ImportLicense:
+  - isRequired
+  - reference
+  - issueDate
+  - expiryDate
+  CargoGrossWeightReq:
+  - value
+  - unit
+  CargoGrossWeight:
+  - value
+  - unit
+  CargoGrossVolume:
+  - value
+  - unit
+  CargoNetWeight:
+  - value
+  - unit
+  CargoNetVolume:
+  - value
+  - unit
+  NationalCommodityCode:
+  - type
+  - countryCode
+  - values
+  ExtendedNationalCommodityCode:
+  - type
+  - countryCode
+  - values
+  OuterPackaging:
+  - packageCode
+  - imoPackagingCode
+  - numberOfPackages
+  - description
+  - dangerousGoods
+  DangerousGoods:
+  - codedVariantList
+  - properShippingName
+  - technicalName
+  - imoClass
+  - subsidiaryRisk1
+  - subsidiaryRisk2
+  - isMarinePollutant
+  - packingGroup
+  - isLimitedQuantity
+  - isExceptedQuantity
+  - isSalvagePackings
+  - isEmptyUncleanedResidue
+  - isWaste
+  - isHot
+  - isCompetentAuthorityApprovalRequired
+  - competentAuthorityApproval
+  - segregationGroups
+  - innerPackagings
+  - emergencyContactDetails
+  - EMSNumber
+  - endOfHoldingTime
+  - fumigationDateTime
+  - isReportableQuantity
+  - inhalationZone
+  - grossWeight
+  - netWeight
+  - netExplosiveContent
+  - netVolume
+  - limits
+  - specialCertificateNumber
+  - additionalContainerCargoHandling
+  GrossWeight:
+  - value
+  - unit
+  NetWeight:
+  - value
+  - unit
+  NetExplosiveContent:
+  - value
+  - unit
+  NetVolume:
+  - value
+  - unit
+  InnerPackaging:
+  - quantity
+  - material
+  - description
+  - innerPackagings
+  EmergencyContactDetails:
+  - contact
+  - provider
+  - phone
+  - referenceNumber
+  Limits:
+  - temperatureUnit
+  - flashPoint
+  - transportControlTemperature
+  - transportEmergencyTemperature
+  - SADT
+  - SAPT
+  ConfirmedEquipment:
+  - ISOEquipmentCode
+  - units
+  - containerPositionings
+  - emptyContainerPickup
+  - originEmptyContainerPickup
+  EmptyContainerPickup:
+  - dateTime
+  - depotReleaseLocation
+  OriginEmptyContainerPickup:
+  - dateTime
+  - depotReleaseLocation
+  Transport:
+  - transportPlanStage
+  - transportPlanStageSequenceNumber
+  - loadLocation
+  - dischargeLocation
+  - plannedDepartureDate
+  - plannedArrivalDate
+  - modeOfTransport
+  - vesselName
+  - vesselIMONumber
+  - carrierServiceCode
+  - universalServiceReference
+  - carrierImportVoyageNumber
+  - universalImportVoyageReference
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  LoadLocation:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  DischargeLocation:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  ShipmentCutOffTime:
+  - cutOffDateTimeCode
+  - cutOffDateTime
+  AdvanceManifestFiling:
+  - manifestTypeCode
+  - countryCode
+  Charge:
+  - chargeName
+  - extendedChargeName
+  - currencyAmount
+  - currencyCode
+  - paymentTermCode
+  - calculationBasis
+  - unitPrice
+  - quantity
+  OriginChargesPaymentTerm:
+  - haulageChargesPaymentTermCode
+  - portChargesPaymentTermCode
+  - otherChargesPaymentTermCode
+  DestinationChargesPaymentTerm:
+  - haulageChargesPaymentTermCode
+  - portChargesPaymentTermCode
+  - otherChargesPaymentTermCode
+  Vessel:
+  - name
+  - vesselIMONumber
+  PlaceOfReceipt:
+  - facilityTypeCode
+  - location
+  - dateTime
+  PlaceOfDelivery:
+  - facilityTypeCode
+  - location
+  - dateTime
+  PlaceOfArrival:
+  - transportCallReference
+  - facilityTypeCode
+  - location
+  - dateTime
+  PlaceOfDeparture:
+  - transportCallReference
+  - facilityTypeCode
+  - location
+  - dateTime
+  PointToPoint:
+  - placeOfReceipt
+  - placeOfDelivery
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cutOffTimes
+  - solutionNumber
+  - routingReference
+  - transitTime
+  - solutionFootprint
+  - legs
+  PortSchedule:
+  - location
+  - vesselSchedules
+  Schedule:
+  - universalServiceReference
+  - servicePartners
+  - vessel
+  - isDummyVessel
+  - universalImportVoyageReference
+  - universalExportVoyageReference
+  - timestamps
+  - cutOffTimes
+  TransportCall:
+  - portVisitReference
+  - transportCallReference
+  - carrierImportVoyageNumber
+  - carrierExportVoyageNumber
+  - universalImportVoyageReference
+  - universalExportVoyageReference
+  - cutOffTimes
+  - location
+  - timestamps
+  Timestamp:
+  - eventTypeCode
+  - eventClassifierCode
+  - eventDateTime
+  ServiceSchedule:
+  - carrierServiceName
+  - carrierServiceCode
+  - universalServiceReference
+  - vesselSchedules
+  VesselSchedule:
+  - vessel
+  - isDummyVessel
+  - transportCalls
+  CutOffTime:
+  - cutOffDateTimeCode
+  - cutOffDateTime
+  Barge:
+  - vesselIMONumber
+  - MMSINumber
+  - name
+  - flag
+  - callSign
+  - operatorCarrierCode
+  - operatorCarrierCodeListProvider
+  VesselTransport:
+  - modeOfTransport
+  - portVisitReference
+  - transportCallReference
+  - servicePartners
+  - universalServiceReference
+  - universalExportVoyageReference
+  - universalImportVoyageReference
+  - vessel
+  BargeTransport:
+  - modeOfTransport
+  - portVisitReference
+  - transportCallReference
+  - servicePartners
+  - universalServiceReference
+  - universalExportVoyageReference
+  - universalImportVoyageReference
+  - barge
+  OtherTransport:
+  - modeOfTransport
+  ServicePartner:
+  - carrierCode
+  - carrierCodeListProvider
+  - carrierServiceName
+  - carrierServiceCode
+  - carrierImportVoyageNumber
+  - carrierExportVoyageNumber
+  ServicePartnerSchedule:
+  - carrierCode
+  - carrierCodeListProvider
+  - carrierServiceName
+  - carrierServiceCode
+  - carrierImportVoyageNumber
+  - carrierExportVoyageNumber
+  IntermediateCall:
+  - transportCallReference
+  - facilityTypeCode
+  - location
+  - arrivalDateTime
+  - departureDateTime
+  Leg:
+  - sequenceNumber
+  - transport
+  - departure
+  - intermediateCalls
+  - arrival
+  - footprint
+  - cutOffTimes
+  TransportCallLocation:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - UNLocationCode
+  - facilitySMDGCode
+  PortScheduleLocation:
+  - locationName
+  - facilityName
+  - UNLocationCode
+  - facilitySMDGCode
+  CreateShippingInstructionsResponse:
+  - shippingInstructionsReference
+  ApproveTransportDocument:
+  - transportDocumentStatus
+  ShippingInstructionsNotification:
+  - specversion
+  - id
+  - source
+  - type
+  - time
+  - datacontenttype
+  - subscriptionReference
+  - data
+  ShippingInstructionsData:
+  - shippingInstructionsStatus
+  - updatedShippingInstructionsStatus
+  - shippingInstructionsReference
+  - transportDocumentReference
+  - transportDocumentSubReference
+  - feedbacks
+  - shippingInstructions
+  - updatedShippingInstructions
+  ShippingInstructionsFullNotification:
+  - shippingInstructionsReference
+  - shippingInstructionsRevisionNumber
+  - transportDocumentReference
+  - shippingInstructionsStatus
+  - updatedShippingInstructionsStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - carrierCode
+  - carrierCodeListProvider
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - isCarriersAgentAtDestinationRequired
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - advanceManifestFilings
+  - isHouseBillOfLadingsIssued
+  - houseBillOfLadings
+  - requestedCarrierCertificates
+  - requestedCarrierClauses
+  - feedbacks
+  UpdatedShippingInstructionsFullNotification:
+  - shippingInstructionsReference
+  - shippingInstructionsRevisionNumber
+  - transportDocumentReference
+  - shippingInstructionsStatus
+  - updatedShippingInstructionsStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - carrierCode
+  - carrierCodeListProvider
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - isCarriersAgentAtDestinationRequired
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - advanceManifestFilings
+  - isHouseBillOfLadingsIssued
+  - houseBillOfLadings
+  - requestedCarrierCertificates
+  - requestedCarrierClauses
+  - feedbacks
+  TransportDocumentNotification:
+  - specversion
+  - id
+  - source
+  - type
+  - time
+  - datacontenttype
+  - subscriptionReference
+  - data
+  TransportDocumentData:
+  - transportDocumentStatus
+  - amendedTransportDocumentStatus
+  - shippingInstructionsReference
+  - transportDocumentReference
+  - transportDocumentSubReference
+  - feedbacks
+  - transportDocument
+  - amendedTransportDocument
+  TransportDocumentFullNotification:
+  - transportDocumentReference
+  - transportDocumentSubReference
+  - shippingInstructionsReference
+  - transportDocumentStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - shippedOnBoardDate
+  - displayedShippedOnBoardReceivedForShipment
+  - termsAndConditions
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - issueDate
+  - receivedForShipmentDate
+  - serviceContractReference
+  - contractQuotationReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - carrierClauses
+  - numberOfRiderPages
+  - transports
+  - charges
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - documentParties
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - feedbacks
+  AmendedTransportDocumentFullNotification:
+  - transportDocumentReference
+  - transportDocumentSubReference
+  - shippingInstructionsReference
+  - transportDocumentStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - shippedOnBoardDate
+  - displayedShippedOnBoardReceivedForShipment
+  - termsAndConditions
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - issueDate
+  - receivedForShipmentDate
+  - serviceContractReference
+  - contractQuotationReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - carrierClauses
+  - numberOfRiderPages
+  - transports
+  - charges
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - documentParties
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - feedbacks
+  CreateShippingInstructions:
+  - shippingInstructionsRevisionNumber
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - carrierCode
+  - carrierCodeListProvider
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - isCarriersAgentAtDestinationRequired
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - advanceManifestFilings
+  - isHouseBillOfLadingsIssued
+  - houseBillOfLadings
+  - requestedCarrierCertificates
+  - requestedCarrierClauses
+  UpdateShippingInstructions:
+  - shippingInstructionsReference
+  - shippingInstructionsRevisionNumber
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - carrierCode
+  - carrierCodeListProvider
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - isCarriersAgentAtDestinationRequired
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - advanceManifestFilings
+  - isHouseBillOfLadingsIssued
+  - houseBillOfLadings
+  - requestedCarrierCertificates
+  - requestedCarrierClauses
+  ShippingInstructions:
+  - shippingInstructionsReference
+  - shippingInstructionsRevisionNumber
+  - transportDocumentReference
+  - shippingInstructionsStatus
+  - updatedShippingInstructionsStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - originChargesPaymentTerm
+  - destinationChargesPaymentTerm
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - carrierCode
+  - carrierCodeListProvider
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - isCarriersAgentAtDestinationRequired
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - advanceManifestFilings
+  - isHouseBillOfLadingsIssued
+  - houseBillOfLadings
+  - requestedCarrierCertificates
+  - requestedCarrierClauses
+  - feedbacks
+  AddressHBL:
+  - street
+  - streetNumber
+  - floor
+  - postCode
+  - POBox
+  - city
+  - stateRegion
+  - countryCode
+  City:
+  - city
+  - stateRegion
+  - countryCode
+  OtherDocumentPartyShippingInstructions:
+  - party
+  - partyFunction
+  OtherDocumentPartyHBL:
+  - party
+  - partyFunction
+  ShipperShipper:
+  - partyName
+  - eblPlatform
+  - typeOfPerson
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  - purchaseOrderReferences
+  OnBehalfOfShipper:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  OnBehalfOfShipperShipper:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  ShipperHBL:
+  - partyName
+  - typeOfPerson
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  OnBehalfOfConsignee:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  OnBehalfOfConsigneeShipper:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  ConsigneeShipper:
+  - partyName
+  - eblPlatform
+  - typeOfPerson
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  - purchaseOrderReferences
+  ConsigneeHBL:
+  - partyName
+  - typeOfPerson
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  Endorsee:
+  - partyName
+  - eblPlatform
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  EndorseeShipper:
+  - partyName
+  - eblPlatform
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  CarriersAgentAtDestination:
+  - partyName
+  - address
+  - addressLines
+  - partyContactDetails
+  NotifyParty:
+  - partyName
+  - typeOfPerson
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  NotifyPartyShipper:
+  - partyName
+  - typeOfPerson
+  - address
+  - addressLines
+  - displayedAddress
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  NotifyPartyHBL:
+  - partyName
+  - typeOfPerson
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  Seller:
+  - partyName
+  - typeOfPerson
+  - address
+  - addressLines
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  SellerHBL:
+  - partyName
+  - typeOfPerson
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  Buyer:
+  - partyName
+  - typeOfPerson
+  - address
+  - addressLines
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  BuyerHBL:
+  - partyName
+  - typeOfPerson
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  PartyShipper:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  PartyHBL:
+  - partyName
+  - address
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  - reference
+  IssuingParty:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  - taxLegalReferences
+  - partyContactDetails
+  ShippingInstructionsRequestor:
+  - partyName
+  - address
+  - addressLines
+  - identifyingCodes
+  - partyContactDetails
+  PartyContactDetailHBL:
+  - name
+  PartyContactDetailWithPattern:
+  - name
+  ReferenceConsignmentItem:
+  - type
+  - values
+  ConsignmentItem:
+  - carrierBookingReference
+  - descriptionOfGoods
+  - HSCodes
+  - extendedHSCodes
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - shippingMarks
+  - cargoItems
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  ConsignmentItemShipper:
+  - carrierBookingReference
+  - commoditySubReference
+  - descriptionOfGoods
+  - descriptionOfGoodsForCustoms
+  - HSCodes
+  - extendedHSCodes
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - shippingMarks
+  - shippingMarksForCustoms
+  - cargoItems
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  ConsignmentItemHBL:
+  - descriptionOfGoods
+  - nationalCommodityCode
+  - extendedNationalCommodityCodes
+  - cargoItems
+  - customsReferences
+  CargoItem:
+  - equipmentReference
+  - cargoGrossWeight
+  - cargoGrossVolume
+  - cargoNetWeight
+  - cargoNetVolume
+  - exportLicense
+  - importLicense
+  - outerPackaging
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - customsReferences
+  CargoItemShipper:
+  - equipmentReference
+  - cargoGrossWeight
+  - cargoGrossVolume
+  - cargoNetWeight
+  - cargoNetVolume
+  - exportLicense
+  - importLicense
+  - outerPackaging
+  - nationalCommodityCodes
+  - extendedNationalCommodityCodes
+  - houseBillOfLadingReference
+  - customsReferences
+  CargoItemHBL:
+  - equipmentReference
+  - cargoGrossWeight
+  - outerPackaging
+  OuterPackagingShipper:
+  - packageCode
+  - numberOfPackages
+  - description
+  - woodDeclaration
+  OuterPackagingHBL:
+  - packageCode
+  - numberOfPackages
+  - shippingMarks
+  - UNNumber
+  UtilizedTransportEquipment:
+  - equipment
+  - isShipperOwned
+  - isNonOperatingReefer
+  - activeReeferSettings
+  - shippingMarks
+  - seals
+  - references
+  - customsReferences
+  UtilizedTransportEquipmentShipper:
+  - shippingMarks
+  - seals
+  - emptyIndicatorCode
+  - references
+  - customsReferences
+  UtilizedTransportEquipmentHBL:
+  - seals
+  - emptyIndicatorCode
+  - isShipperOwned
+  - equipmentReference
+  - ISOEquipmentCode
+  UTEquipment:
+  - isShipperOwned
+  - equipment
+  UTEquipmentReference:
+  - isShipperOwned
+  - equipmentReference
+  Equipment:
+  - equipmentReference
+  - ISOEquipmentCode
+  - tareWeight
+  RequiredEquipment:
+  - equipmentReference
+  - ISOEquipmentCode
+  - tareWeight
+  Seal:
+  - number
+  - source
+  HouseBillOfLading:
+  - houseBillOfLadingReference
+  - isToOrder
+  - placeOfAcceptance
+  - placeOfFinalDelivery
+  - methodOfPayment
+  - documentParties
+  - isCargoDeliveredInICS2Zone
+  - routingOfConsignmentCountries
+  - consignmentItems
+  - utilizedTransportEquipments
+  PlaceOfAcceptance:
+  - locationName
+  - countryCode
+  - UNLocationCode
+  PlaceOfFinalDelivery:
+  - locationName
+  - countryCode
+  - UNLocationCode
+  TransportDocument:
+  - transportDocumentReference
+  - transportDocumentSubReference
+  - shippingInstructionsReference
+  - transportDocumentStatus
+  - transportDocumentTypeCode
+  - isShippedOnBoardType
+  - freightPaymentTermCode
+  - isElectronic
+  - isToOrder
+  - numberOfCopiesWithCharges
+  - numberOfCopiesWithoutCharges
+  - numberOfOriginalsWithCharges
+  - numberOfOriginalsWithoutCharges
+  - displayedNameForPlaceOfReceipt
+  - displayedNameForPortOfLoad
+  - displayedNameForPortOfDischarge
+  - displayedNameForPlaceOfDelivery
+  - shippedOnBoardDate
+  - displayedShippedOnBoardReceivedForShipment
+  - termsAndConditions
+  - receiptTypeAtOrigin
+  - deliveryTypeAtDestination
+  - cargoMovementTypeAtOrigin
+  - cargoMovementTypeAtDestination
+  - issueDate
+  - receivedForShipmentDate
+  - serviceContractReference
+  - contractQuotationReference
+  - declaredValue
+  - declaredValueCurrency
+  - carrierCode
+  - carrierCodeListProvider
+  - carrierClauses
+  - numberOfRiderPages
+  - transports
+  - charges
+  - placeOfIssue
+  - invoicePayableAt
+  - partyContactDetails
+  - documentParties
+  - consignmentItems
+  - utilizedTransportEquipments
+  - exportLicense
+  - importLicense
+  - references
+  - customsReferences
+  - feedbacks
+  TransportDocumentAmend:
+  - amendedTransportDocumentStatus
+  - amendedTransportDocument
+  Transports:
+  - plannedArrivalDate
+  - plannedDepartureDate
+  - preCarriageBy
+  - onCarriageBy
+  - placeOfReceipt
+  - portOfLoading
+  - portOfDischarge
+  - placeOfDelivery
+  - onwardInlandRouting
+  - vesselVoyages
+  VesselVoyage:
+  - vesselName
+  - carrierExportVoyageNumber
+  - universalExportVoyageReference
+  - role
+  PortOfLoading:
+  - locationName
+  - city
+  - UNLocationCode
+  PortOfDischarge:
+  - locationName
+  - city
+  - UNLocationCode
+  OnwardInlandRouting:
+  - locationName
+  - facilityName
+  - address
+  - addressLines
+  - facility
+  - UNLocationCode
+  PlaceOfIssue:
+  - locationName
+  InvoicePayableAtShippingInstructions:
+  - UNLocationCode
+  DocumentPartiesShippingInstructions:
+  - shipper
+  - onBehalfOfShipper
+  - consignee
+  - onBehalfOfConsignee
+  - endorsee
+  - issueTo
+  - seller
+  - buyer
+  - notifyParties
+  - shippingInstructionsRequestor
+  - other
+  DocumentPartiesHouseBL:
+  - shipper
+  - consignee
+  - notifyParty
+  - seller
+  - buyer
+  - other
+  ExportLicenseShipper:
+  - isRequired
+  - reference
+  - issueDate
+  - expiryDate
+  ImportLicenseShipper:
+  - isRequired
+  - reference
+  - issueDate
+  - expiryDate
+  UNLocationLocation:
+  - locationName
+  - locationType
+  - UNLocationCode
+  FacilitySMDGLocation:
+  - locationName
+  - locationType
+  - UNLocationCode
+  - facilitySMDGCode
+  AddressLocation:
+  - locationName
+  - locationType
+  - address
+  subscriptionBody:
+  - callbackUrl
+  - eventType
+  - shipmentEventTypeCode
+  - documentTypeCode
+  - carrierBookingReference
+  - bookingReference
+  - transportDocumentID
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  - transportEventTypeCode
+  - scheduleID
+  - transportCallID
+  - vesselIMONumber
+  - carrierVoyageNumber
+  - exportVoyageNumber
+  - carrierServiceCode
+  - UNLocationCode
+  - equipmentEventTypeCode
+  - equipmentReference
+  subscriptionBodyWithSecret:
+  - callbackUrl
+  - eventType
+  - shipmentEventTypeCode
+  - documentTypeCode
+  - carrierBookingReference
+  - bookingReference
+  - transportDocumentID
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  - transportEventTypeCode
+  - scheduleID
+  - transportCallID
+  - vesselIMONumber
+  - carrierVoyageNumber
+  - exportVoyageNumber
+  - carrierServiceCode
+  - UNLocationCode
+  - equipmentEventTypeCode
+  - equipmentReference
+  - secret
+  subscription:
+  - subscriptionID
+  - callbackUrl
+  - eventType
+  - shipmentEventTypeCode
+  - documentTypeCode
+  - carrierBookingReference
+  - bookingReference
+  - transportDocumentID
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  - transportEventTypeCode
+  - scheduleID
+  - transportCallID
+  - vesselIMONumber
+  - carrierVoyageNumber
+  - exportVoyageNumber
+  - carrierServiceCode
+  - UNLocationCode
+  - equipmentEventTypeCode
+  - equipmentReference
+  transportEvent:
+  - eventID
+  - eventCreatedDateTime
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  - transportEventTypeCode
+  - delayReasonCode
+  - vesselScheduleChangeRemark
+  - changeRemark
+  - transportCallID
+  - transportCall
+  - eventTypeCode
+  - documentReferences
+  - references
+  operationsTransportEvent:
+  - eventID
+  - eventCreatedDateTime
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  - transportEventTypeCode
+  - delayReasonCode
+  - vesselScheduleChangeRemark
+  - changeRemark
+  - transportCallID
+  - transportCall
+  - eventTypeCode
+  baseEvent:
+  - eventID
+  - eventCreatedDateTime
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  baseEventBody:
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  baseTransportEvent:
+  - eventType
+  - eventClassifierCode
+  - transportEventTypeCode
+  - delayReasonCode
+  - vesselScheduleChangeRemark
+  - changeRemark
+  - transportCallID
+  - transportCall
+  - eventTypeCode
+  transportCall:
+  - transportCallID
+  - carrierServiceCode
+  - carrierVoyageNumber
+  - exportVoyageNumber
+  - importVoyageNumber
+  - transportCallSequenceNumber
+  - UNLocationCode
+  - facilityCode
+  - facilityCodeListProvider
+  - facilityTypeCode
+  - otherFacility
+  - modeOfTransport
+  - location
+  - vessel
+  location:
+  - locationName
+  - latitude
+  - longitude
+  - UNLocationCode
+  - facilityCode
+  - facilityCodeListProvider
+  - address
+  address:
+  - name
+  - street
+  - streetNumber
+  - floor
+  - postCode
+  - city
+  - stateRegion
+  - country
+  vessel:
+  - vesselIMONumber
+  - vesselName
+  - vesselFlag
+  - vesselCallSignNumber
+  - vesselOperatorCarrierCode
+  - vesselOperatorCarrierCodeListProvider
+  references:
+  - references
+  reference:
+  - referenceType
+  - referenceValue
+  shipmentEvent:
+  - eventID
+  - eventCreatedDateTime
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  - shipmentEventTypeCode
+  - documentID
+  - documentTypeCode
+  - shipmentInformationTypeCode
+  - reason
+  - eventTypeCode
+  - shipmentID
+  - references
+  baseShipmentEvent:
+  - eventType
+  - eventDateTime
+  - eventClassifierCode
+  - shipmentEventTypeCode
+  - documentID
+  - documentTypeCode
+  - shipmentInformationTypeCode
+  - reason
+  - eventTypeCode
+  - shipmentID
+  - references
+  equipmentEvent:
+  - eventID
+  - eventCreatedDateTime
+  - eventType
+  - eventClassifierCode
+  - eventDateTime
+  - equipmentEventTypeCode
+  - equipmentReference
+  - ISOEquipmentCode
+  - emptyIndicatorCode
+  - eventLocation
+  - transportCallID
+  - transportCall
+  - documentReferences
+  - references
+  - seals
+  - eventTypeCode
+  baseEquipmentEvent:
+  - eventType
+  - eventClassifierCode
+  - equipmentEventTypeCode
+  - equipmentReference
+  - ISOEquipmentCode
+  - emptyIndicatorCode
+  - eventLocation
+  - transportCallID
+  - transportCall
+  - documentReferences
+  - references
+  - seals
+  - eventTypeCode
+  seals:
+  - seals
+  seal:
+  - sealNumber
+  - sealSource
+  - sealType
+  error:
+  - httpMethod
+  - requestUri
+  - errors
+  - statusCode
+  - statusCodeText
+  - errorDateTime
+  shipmentSubscriptionBody:
+  - shipmentEventTypeCode
+  - documentTypeCode
+  - carrierBookingReference
+  - bookingReference
+  - transportDocumentID
+  - transportDocumentReference
+  - transportDocumentTypeCode
+  transportSubscriptionBody:
+  - transportEventTypeCode
+  - scheduleID
+  - transportCallID
+  - vesselIMONumber
+  - carrierVoyageNumber
+  - exportVoyageNumber
+  - carrierServiceCode
+  - UNLocationCode
+  equipmentSubscriptionBody:
+  - equipmentEventTypeCode
+  - equipmentReference
+  - UNLocationCode

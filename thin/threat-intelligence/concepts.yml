@@ -35,4 +35,5 @@ concepts:
 findings:
   - "Threat intelligence is not published in a common REST shape: in a 135-provider cohort, indicators at 21 readable providers share no property at half (id reaches 38%), because each lookup returns the vendor's own verdict object for an IP, domain or hash. Threat actors and campaigns agree only on id and name. The field already has its common vocabulary in STIX 2.1 and TAXII, and that is the reference to take in a standards pass."
 decisions:
+  - "Measured against STIX and TAXII in the reference context threat-sharing."
   - "Measured and not published: recorded as `thin`, with its findings."

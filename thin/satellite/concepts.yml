@@ -35,4 +35,5 @@ concepts:
 findings:
   - "Earth observation shares its catalog through a standard, not a census: in a 170-provider cohort, scenes at 42 readable providers agree only on name and id, with geometry at 48%, because providers that implement STAC (SpatioTemporal Asset Catalog) and those with their own search APIs shape items differently. Tasking orders agree on id, status and name, but at 7 providers. STAC Item and the OGC API -- Features shape are the reference, and a standards pass should take them."
 decisions:
+  - "Measured against STAC in the reference context imagery-catalogs."
   - "Measured and not published: recorded as `thin`, with its findings."
