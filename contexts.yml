@@ -846,7 +846,7 @@ contexts:
   status: thin
 - context: photos
   name: Photos and Stock Media
-  status: planned
+  status: thin
 - context: pets
   name: Pets and Veterinary
   status: planned
