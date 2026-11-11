@@ -718,7 +718,7 @@ contexts:
   status: thin
 - context: manufacturing
   name: Manufacturing
-  status: planned
+  status: thin
 - context: industrial-automation
   name: Industrial Automation
   status: planned
