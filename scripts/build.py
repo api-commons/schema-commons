@@ -48,12 +48,14 @@ JSON_TYPES = {"string", "integer", "number", "boolean", "object", "array"}
 profile = {"context": CTX, "name": cfg["name"], "generated": TODAY,
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": census["cohort_size"]},
            "thresholds": {"core": CORE, "extended": EXTENDED, "min_providers": MIN_PROVIDERS},
+           "excluded": cfg.get("exclude") or {},
            "concepts": {}}
 crosswalks = collections.defaultdict(dict)
 adopters = collections.defaultdict(dict)
 
 for concept, spec in cfg["concepts"].items():
-    hits = census["concepts"].get(concept, {})
+    excluded = (cfg.get("exclude") or {}).get(concept) or {}
+    hits = {k: v for k, v in census["concepts"].get(concept, {}).items() if k not in excluded}
     alias = {}
     for canon, al in {**cfg.get("common_fields", {}), **(spec.get("aliases") or {})}.items():
         alias[canon] = canon
@@ -167,6 +169,8 @@ Dumper = getattr(yaml, "CSafeDumper", yaml.SafeDumper)
 dump = lambda o, p: yaml.dump(o, open(p, "w"), Dumper=Dumper, sort_keys=False, allow_unicode=True, width=110)
 dump(profile, "profile.yml")
 dump(oas, "openapi.yml")
+import shutil
+shutil.rmtree("crosswalk", ignore_errors=True)
 Path("crosswalk").mkdir(exist_ok=True)
 for slug, cw in crosswalks.items():
     dump({"provider": slug, "apis_io": f"https://apis.io/providers/{slug}/", "context": CTX,

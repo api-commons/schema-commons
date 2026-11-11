@@ -5,7 +5,7 @@ contexts:
 - context: crm
   name: Customer Relationship Management
   repo: api-commons/crm
-  status: built
+  status: published
   tags: [CRM, Customer Relationship Management]
   concepts: [contact, company, deal, lead, activity, task, note, pipeline]
 - context: ticketing

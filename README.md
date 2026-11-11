@@ -65,7 +65,7 @@ market measurably does, and where the market is split it says so and drops to `i
 
 | Context | Repo | Status |
 | --- | --- | --- |
-| Customer Relationship Management | [crm](../crm) | built -- 134 providers, 91 crosswalks |
+| Customer Relationship Management | [crm](../crm) | published -- 134 providers, 91 crosswalks |
 | Help Desk and Ticketing, Commerce, Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
 
 ## Running a context
