@@ -671,7 +671,7 @@ contexts:
   status: thin
 - context: diagnostics
   name: Lab Diagnostics
-  status: planned
+  status: thin
 - context: medical-imaging
   name: Medical Imaging
   status: planned
