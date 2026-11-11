@@ -818,7 +818,7 @@ contexts:
   status: thin
 - context: personalization
   name: Personalization and Recommendations
-  status: planned
+  status: thin
 - context: pricing
   name: Pricing and Price Lists
   status: planned
