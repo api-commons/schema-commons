@@ -549,7 +549,7 @@ contexts:
   status: thin
 - context: nlp
   name: Natural Language Processing
-  status: planned
+  status: thin
 - context: chatbots
   name: Chatbots and Conversational AI
   status: planned
