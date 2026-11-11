@@ -692,10 +692,11 @@ contexts:
   status: thin
 - context: iot-connectivity
   name: IoT Connectivity and SIMs
-  status: planned
+  status: built
+  repo: api-commons/iot-connectivity
 - context: satellite
   name: Satellite and Earth Observation
-  status: planned
+  status: thin
 - context: drones
   name: Drones
   status: planned
