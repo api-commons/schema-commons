@@ -552,19 +552,23 @@ contexts:
   status: thin
 - context: chatbots
   name: Chatbots and Conversational AI
-  status: planned
+  status: built
+  repo: api-commons/chatbots
 - context: vector-search
   name: Vector Search and RAG
-  status: planned
+  status: built
+  repo: api-commons/vector-search
 - context: mlops
   name: MLOps and Model Registry
-  status: planned
+  status: built
+  repo: api-commons/mlops
 - context: ai-inference
   name: AI Inference and Deployments
-  status: planned
+  status: built
+  repo: api-commons/ai-inference
 - context: mcp-servers
   name: MCP Servers and Agent Registries
-  status: planned
+  status: thin
 - context: databases
   name: Databases
   status: planned
