@@ -881,3 +881,6 @@ contexts:
   name: Container Shipping (DCSA)
   status: reference
   repo: api-commons/ocean-shipping
+- context: genomic-data-exchange
+  name: Genomic Data Exchange (GA4GH)
+  status: thin

@@ -1,0 +1,45 @@
+context: genomic-data-exchange
+kind: reference
+standard: ga4gh-2025
+cohort:
+  tags:
+  - Genomics
+  - Bioinformatics
+  - Life Sciences
+  - Genetics
+  - DNA Sequencing
+  - Biotechnology
+  - Precision Medicine
+  - Proteomics
+  - Research
+  - Healthcare
+  - Cloud Computing
+  - Data Science
+  providers_with_harvested_openapi: 473
+implementers: 1
+publishers: []
+mentioned_by: 2
+mentioned_by_providers:
+- broad-institute
+- seqera-labs
+apis:
+  drs:
+    release: https://github.com/ga4gh/data-repository-service-schemas/tree/drs-1.5.0
+    providers: 0
+    operations:
+    - GET /objects/{object_id}
+    - GET /objects/{object_id}/access/{access_id}
+  wes:
+    release: https://github.com/ga4gh/workflow-execution-service-schemas/tree/1.1.0
+    providers: 1
+    operations:
+    - POST /runs
+    - GET /runs
+    - GET /runs/{run_id}
+    - GET /service-info
+  tes:
+    release: https://github.com/ga4gh/task-execution-schemas/tree/v1.1
+    providers: 0
+    operations:
+    - POST /tasks
+    - GET /tasks/{id}

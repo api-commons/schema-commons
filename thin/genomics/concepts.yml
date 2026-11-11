@@ -48,5 +48,6 @@ findings:
     datasets only on a name. Research genomics is exchanged through GA4GH protocols and file
     formats (VCF, BAM) more than through resource schemas."
 decisions:
+  - "Measured against GA4GH DRS, WES and TES in the reference context genomic-data-exchange (thin: one implementer)."
   - "Measured and not published: recorded as `thin`, with its findings."
   - "A GA4GH standards pass (Beacon, htsget, DRS) is the better route than a market census here."

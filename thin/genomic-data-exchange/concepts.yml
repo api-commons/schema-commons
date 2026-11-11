@@ -1,0 +1,42 @@
+context: genomic-data-exchange
+name: Genomic Data Exchange (GA4GH)
+kind: reference
+intro: >-
+  How genomic data and the analyses run on it are shared across platforms -- data objects resolved by
+  ID (DRS), workflow runs submitted to an execution service (WES) and the tasks they run (TES). The shape
+  is owned by the Global Alliance for Genomics and Health (GA4GH) Cloud standards, so this context
+  publishes GA4GH's own objects and measures who implements them.
+tags: [Genomics, Bioinformatics, Life Sciences, Genetics, DNA Sequencing, Biotechnology, Precision Medicine, Proteomics, Research, Healthcare, Cloud Computing, Data Science]
+reference:
+  standard: ga4gh-2025
+  home: https://www.ga4gh.org/
+  license: Apache-2.0
+  mentions: '\bga4gh\b'
+  publishers: []
+  objects: [DrsObject, AccessMethod, RunRequest, RunLog, tesTask]
+  apis:
+    - api: drs
+      name: ga4gh
+      release: https://github.com/ga4gh/data-repository-service-schemas/tree/drs-1.5.0
+      signature: ["GET /objects/{object_id}"]
+      operations:
+        - {op: "GET /objects/{object_id}", response: DrsObject}
+        - {op: "GET /objects/{object_id}/access/{access_id}", response: AccessURL}
+    - api: wes
+      name: ga4gh
+      release: https://github.com/ga4gh/workflow-execution-service-schemas/tree/1.1.0
+      operations:
+        - {op: POST /runs, request: RunRequest, response: RunId}
+        - {op: GET /runs, response: RunListResponse}
+        - {op: "GET /runs/{run_id}", response: RunLog}
+        - {op: GET /service-info}
+    - api: tes
+      name: ga4gh
+      release: https://github.com/ga4gh/task-execution-schemas/tree/v1.1
+      operations:
+        - {op: POST /tasks, request: tesTask, response: tesCreateTaskResponse}
+        - {op: "GET /tasks/{id}", response: tesTask}
+findings:
+  - "GA4GH Cloud standards are implemented by research platforms that are mostly absent from the catalog's harvested specs: in a 473-provider genomics, life-sciences and research cohort, 2 providers name GA4GH in a harvested spec and one (seqera-labs) publishes the Workflow Execution Service at /ga4gh/wes/v1, carrying 78-100% of its fields. No provider publishes DRS or TES. The GA4GH objects are extracted in standards/ga4gh-2025.yml for when the implementing platforms' specs are in the catalog."
+decisions:
+  - "Measured as a reference context and recorded as thin, below the three-implementer bar."

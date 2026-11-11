@@ -1,0 +1,186 @@
+standard: ga4gh-2025
+source: https://github.com/ga4gh (DRS drs-1.5.0, WES 1.1.0, TES v1.1)
+format: openapi
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  AccessMethod:
+  - access_id
+  - access_url
+  - authorizations
+  - available
+  - cloud
+  - region
+  - type
+  AccessURL:
+  - headers
+  - url
+  Checksum:
+  - checksum
+  - type
+  ContentsObject:
+  - contents
+  - drs_uri
+  - id
+  - name
+  DrsObject:
+  - access_methods
+  - aliases
+  - checksums
+  - contents
+  - created_time
+  - description
+  - id
+  - mime_type
+  - name
+  - self_uri
+  - size
+  - updated_time
+  - version
+  ServiceInfo:
+  - workflow_type_versions
+  - supported_wes_versions
+  - supported_filesystem_protocols
+  - workflow_engine_versions
+  - default_workflow_engine_parameters
+  - system_state_counts
+  - auth_instructions_url
+  - tags
+  RunId:
+  - run_id
+  RunStatus:
+  - run_id
+  - state
+  RunSummary:
+  - run_id
+  - state
+  - start_time
+  - end_time
+  - tags
+  RunRequest:
+  - workflow_params
+  - workflow_type
+  - workflow_type_version
+  - tags
+  - workflow_engine_parameters
+  - workflow_engine
+  - workflow_engine_version
+  - workflow_url
+  RunLog:
+  - run_id
+  - request
+  - state
+  - run_log
+  - task_logs_url
+  - task_logs
+  - outputs
+  Log:
+  - name
+  - cmd
+  - start_time
+  - end_time
+  - stdout
+  - stderr
+  - exit_code
+  - system_logs
+  DefaultWorkflowEngineParameter:
+  - name
+  - type
+  - default_value
+  WorkflowTypeVersion:
+  - workflow_type_version
+  TaskListResponse:
+  - task_logs
+  - next_page_token
+  TaskLog:
+  - name
+  - cmd
+  - start_time
+  - end_time
+  - stdout
+  - stderr
+  - exit_code
+  - system_logs
+  - id
+  - tes_uri
+  WorkflowEngineVersion:
+  - workflow_engine_version
+  RunListResponse:
+  - runs
+  - next_page_token
+  ErrorResponse:
+  - msg
+  - status_code
+  tesCreateTaskResponse:
+  - id
+  tesExecutor:
+  - image
+  - command
+  - workdir
+  - stdin
+  - stdout
+  - stderr
+  - env
+  - ignore_error
+  tesExecutorLog:
+  - start_time
+  - end_time
+  - stdout
+  - stderr
+  - exit_code
+  tesInput:
+  - name
+  - description
+  - url
+  - path
+  - type
+  - content
+  - streamable
+  tesListTasksResponse:
+  - tasks
+  - next_page_token
+  tesOutput:
+  - name
+  - description
+  - url
+  - path
+  - path_prefix
+  - type
+  tesOutputFileLog:
+  - url
+  - path
+  - size_bytes
+  tesResources:
+  - cpu_cores
+  - preemptible
+  - ram_gb
+  - disk_gb
+  - zones
+  - backend_parameters
+  - backend_parameters_strict
+  tesServiceType:
+  - artifact
+  tesServiceInfo:
+  - storage
+  - tesResources_backend_parameters
+  - type
+  tesTask:
+  - id
+  - state
+  - name
+  - description
+  - inputs
+  - outputs
+  - resources
+  - executors
+  - volumes
+  - tags
+  - logs
+  - creation_time
+  tesTaskLog:
+  - logs
+  - metadata
+  - start_time
+  - end_time
+  - outputs
+  - system_logs
