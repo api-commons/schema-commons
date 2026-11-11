@@ -50,6 +50,7 @@ def concept_for(seg, parents):
         return c
     return None
 PARAM = re.compile(r"^\{.*\}$")
+ACTIONS = {"send", "batch", "bulk", "send-batch", "send_batch", "sendbatch"}
 METHODS = ("get", "post", "put", "patch", "delete")
 
 
@@ -67,12 +68,33 @@ def case_of(name):
     return "other"
 
 
+# YAML's "=" value key (tag:yaml.org,2002:value) appears unquoted in some providers' enums.
+for _L in {Loader, yaml.SafeLoader}:
+    _L.add_constructor("tag:yaml.org,2002:value", lambda loader, node: loader.construct_scalar(node))
+UNREADABLE = []
+CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
 def load(p):
-    try:
-        t = p.read_text(errors="ignore")
-        return json.loads(t) if p.suffix == ".json" else yaml.load(t, Loader=Loader)
-    except Exception:
-        return None
+    """Parse a harvested spec. A provider's file sometimes carries a stray control character
+    that strict YAML rejects (Resend's did); retry in memory with them stripped -- the file
+    on disk is never touched -- and record anything that still fails, so a lost provider is
+    visible in census.json rather than silently absent."""
+    t = p.read_text(errors="ignore")
+    for attempt in (t, CONTROL.sub("", t)):
+        try:
+            if p.suffix == ".json":
+                return json.loads(attempt, strict=False)
+            return yaml.load(attempt, Loader=Loader)
+        except Exception as e:
+            err = str(e).splitlines()[0][:160]
+        if p.suffix == ".json":            # JSON with trailing commas is still valid YAML
+            try:
+                return yaml.load(attempt, Loader=Loader)
+            except Exception:
+                pass
+    UNREADABLE.append({"spec": str(p.relative_to(ALL)), "error": err})
+    return None
 
 
 def resolve(doc, node, depth=0):
@@ -185,6 +207,10 @@ for prov in cohort:
                 if under and not any(s in under for _, s in lits if _ < i):
                     continue
                 rest = segs[i + 1:]
+                # An action verb after a collection (/mail/send, /messages/batch) is the
+                # collection being written to: POST /messages/send creates messages.
+                if len(rest) == 1 and rest[0].lower() in ACTIONS:
+                    rest = []
                 if len(rest) > 1 or (rest and not PARAM.match(rest[0])): continue
                 shape = "item" if rest else "collection"
                 h = concept_hits[concept].setdefault(slug, {"segments": collections.Counter(), "operations": set(),
@@ -199,7 +225,7 @@ for prov in cohort:
                         h["properties"].setdefault(name, typ)
                         naming["property"][case_of(name)].add(slug)
 
-out = {"cohort_size": len(cohort), "concepts": {}, "naming": {}}
+out = {"cohort_size": len(cohort), "unreadable": UNREADABLE, "concepts": {}, "naming": {}}
 for c, provs in concept_hits.items():
     out["concepts"][c] = {slug: {"segments": [s for s, _ in h["segments"].most_common()], "operations": sorted(h["operations"]),
                                  "properties": h["properties"], "evidence": sorted(h["evidence"])[:12]}
@@ -208,5 +234,6 @@ for dim, vals in naming.items():
     out["naming"][dim] = {v: sorted(s) for v, s in sorted(vals.items(), key=lambda kv: -len(kv[1]))}
 Path(a.out).parent.mkdir(parents=True, exist_ok=True)
 json.dump(out, open(a.out, "w"), indent=1)
+print(f"{len(UNREADABLE)} harvested specs could not be parsed (listed in census.json)", file=sys.stderr)
 for c, provs in out["concepts"].items():
     print(f"{c:12} {len(provs):4} providers  {sum(1 for p in provs.values() if p['properties']):4} with a readable schema", file=sys.stderr)

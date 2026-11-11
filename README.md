@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing: 1383 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat): 1651 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 1328; multi-word kebab 787 / snake 420 / camel 302 | warn |
-| timestamps end in `_at` | `_at` 380 / bare `created` 152 / `_time`, `_date`, `on` 109 | warn |
-| collections are plural | plural 922 / singular 471 | info |
-| properties snake_case | multi-word snake 453 / camel 478 | info |
-| references `<resource>_id` | `_id` 371 / `...Id` 419 | info |
-| path params snake_case | `{id}` 798; multi-word camel 637 / snake 476 | info |
-| query params snake_case | snake 581 / camel 607 | info |
-| paging is `limit` + `cursor` | limit 534, page 438, offset 278, cursor 161 | info |
+| path segments kebab-case | lowercase 1586; multi-word kebab 928 / snake 503 / camel 370 | warn |
+| timestamps end in `_at` | `_at` 444 / bare `created` 173 / `_time`, `_date`, `on` 131 | warn |
+| collections are plural | plural 1079 / singular 536 | info |
+| properties snake_case | multi-word snake 541 / camel 561 | info |
+| references `<resource>_id` | `_id` 444 / `...Id` 485 | info |
+| path params snake_case | `{id}` 960; multi-word camel 761 / snake 574 | info |
+| query params snake_case | snake 697 / camel 732 | info |
+| paging is `limit` + `cursor` | limit 655, page 517, offset 342, cursor 196 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -80,10 +80,11 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published | 77 | 48 |
 | Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 252 |
 | Payments | [api-commons/payments](https://github.com/api-commons/payments) | published | 692 | 431 |
-| Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | published | 740 | 64 |
-| Billing and Invoicing | [api-commons/billing](https://github.com/api-commons/billing) | built | 837 | 269 |
+| Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | published | 740 | 65 |
+| Billing and Invoicing | [api-commons/billing](https://github.com/api-commons/billing) | published | 837 | 269 |
+| Messaging (Email, SMS, Chat) | [api-commons/messaging](https://github.com/api-commons/messaging) | built | 365 | 194 |
 
-Planned, in order: Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
+Planned, in order: Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
 <!-- /commons:contexts -->
 
 ## Running a context
@@ -122,7 +123,14 @@ in one place as it matures.
    the context README's Decisions section, with the numbers that informed it. The default:
    follow the measured majority unless the majority word is ambiguous across contexts.
 
-Then re-run `naming-evidence.py` and bring the ruleset's counts up to date.
+Then re-run `naming-evidence.py`: it re-measures naming, renders the ruleset and the tables
+in this README, and writes [evidence/unreadable-specs.yml](evidence/unreadable-specs.yml) --
+every harvested spec the census could not parse even after tolerating control characters,
+JSON trailing commas and YAML's `=` tag. That file is a work list for re-profiling those
+providers, not a finding about the market.
+
+The census also reads an action verb after a collection (`/mail/send`, `/email/batch`) as a
+write to that collection.
 
 ## Decisions that cross contexts
 

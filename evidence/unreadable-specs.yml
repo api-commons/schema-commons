@@ -1,0 +1,27 @@
+generated: '2026-11-10'
+count: 4
+specs:
+  novopayment/openapi/_original/novopayment-issuer-tokenization-openapi.yml:
+    error: while scanning a block scalar
+    contexts:
+    - payments
+    - card-issuing
+    - billing
+  novopayment/openapi/_original/novopayment-issuer-tokenization.yaml:
+    error: while scanning a block scalar
+    contexts:
+    - payments
+    - card-issuing
+    - billing
+  novopayment/openapi/_original/novopayment-payment-authorizer-openapi.yml:
+    error: while scanning a block scalar
+    contexts:
+    - payments
+    - card-issuing
+    - billing
+  novopayment/openapi/_original/novopayment-payment-authorizer.yaml:
+    error: while scanning a block scalar
+    contexts:
+    - payments
+    - card-issuing
+    - billing

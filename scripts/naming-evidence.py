@@ -117,3 +117,14 @@ for dim, a, b in (("property", "camelCase", "snake_case"), ("foreign_key", "Id",
     lead = a if x > y else b
     print(f"{dim}: {lead} {share:.0%} of multi-word providers"
           + ("  ** REVISIT the snake_case decision (>= 60%) **" if share >= 0.6 else ""), file=sys.stderr)
+
+# Every harvested spec the census could not parse, across contexts: the work list for
+# re-profiling those providers. A provider absent for this reason is a catalog gap, not a
+# finding about the market.
+unreadable = {}
+for c in ctxs:
+    for u in json.load(open(HUB.parent / c["context"] / "census" / "census.json")).get("unreadable", []):
+        unreadable.setdefault(u["spec"], {"error": u["error"], "contexts": []})["contexts"].append(c["context"])
+yaml.safe_dump({"generated": date.today().isoformat(), "count": len(unreadable),
+                "specs": dict(sorted(unreadable.items()))},
+               open(HUB / "evidence" / "unreadable-specs.yml", "w"), sort_keys=False, width=200)

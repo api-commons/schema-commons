@@ -6,63 +6,64 @@ contexts:
 - payments
 - card-issuing
 - billing
-providers: 1383
+- messaging
+providers: 1651
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 922
-    singular: 471
+    plural: 1079
+    singular: 536
   foreign_key:
-    Id: 419
-    _id: 371
+    Id: 485
+    _id: 444
   pagination_param:
-    limit: 534
-    page: 438
-    offset: 278
-    page_size: 262
-    cursor: 161
-    per_page: 131
-    size: 99
-    count: 67
-    start: 65
-    skip: 62
-    after: 59
-    before: 45
-    page_token: 40
-    starting_after: 32
-    top: 21
-    max_results: 19
-    next: 10
+    limit: 655
+    page: 517
+    offset: 342
+    page_size: 309
+    cursor: 196
+    per_page: 154
+    size: 124
+    start: 87
+    count: 87
+    after: 81
+    before: 72
+    skip: 68
+    page_token: 63
+    starting_after: 39
+    max_results: 30
+    top: 28
+    next: 17
   path_param:
-    lower: 798
-    camelCase: 637
-    snake_case: 476
-    PascalCase: 75
-    kebab-case: 54
-    other: 38
+    lower: 960
+    camelCase: 761
+    snake_case: 574
+    PascalCase: 90
+    kebab-case: 71
+    other: 52
   path_segment:
-    lower: 1328
-    kebab-case: 787
-    snake_case: 420
-    camelCase: 302
-    other: 256
-    PascalCase: 120
+    lower: 1586
+    kebab-case: 928
+    snake_case: 503
+    camelCase: 370
+    other: 324
+    PascalCase: 145
   property:
-    lower: 894
-    camelCase: 478
-    snake_case: 453
-    PascalCase: 87
-    other: 79
-    kebab-case: 7
+    lower: 1051
+    camelCase: 561
+    snake_case: 541
+    other: 97
+    PascalCase: 94
+    kebab-case: 9
   query_param:
-    lower: 1048
-    camelCase: 607
-    snake_case: 581
-    other: 251
-    PascalCase: 78
-    kebab-case: 49
+    lower: 1266
+    camelCase: 732
+    snake_case: 697
+    other: 298
+    PascalCase: 99
+    kebab-case: 66
   timestamp:
-    _at: 380
-    bare: 152
-    _date/_time/on: 109
+    _at: 444
+    bare: 173
+    _date/_time/on: 131

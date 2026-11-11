@@ -37,14 +37,15 @@ contexts:
 - context: billing
   name: Billing and Invoicing
   repo: api-commons/billing
-  status: built
+  status: published
   tags: [Billing, Invoicing, Subscription, Recurring Billing, Usage-Based Billing, Accounts Receivable, Payments]
   concepts: [invoice, invoice_line, subscription, plan, price, credit_note, coupon, usage_record]
 - context: messaging
   name: Messaging (Email, SMS, Chat)
-  status: planned
-  tags: [Email, SMS, Messaging, Communications]
-  concepts: [message, recipient, template, conversation, attachment]
+  repo: api-commons/messaging
+  status: built
+  tags: [Messaging, Email, SMS, WhatsApp, CPaaS, Omnichannel, Push Notifications, Transactional Email]
+  concepts: [message, template, conversation, phone_number, sender, suppression]
 - context: scheduling
   name: Calendars and Scheduling
   status: planned
