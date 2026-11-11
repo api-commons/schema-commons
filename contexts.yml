@@ -856,3 +856,7 @@ contexts:
 - context: churches
   name: Churches and Congregations
   status: thin
+- context: network-apis
+  name: Operator Network APIs (CAMARA)
+  status: reference
+  repo: api-commons/network-apis

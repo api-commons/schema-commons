@@ -108,11 +108,13 @@ def _resolve(token, concepts, prof):
 def check(ctx):
     repo = COMMONS / ctx
     cfg = yaml.safe_load(open(repo / "concepts.yml"))
-    prof = yaml.safe_load(open(repo / "profile.yml"))["concepts"]
+    # A reference context has no measured concepts, only implementers: its findings get the
+    # provider-name check below and nothing else.
+    prof = yaml.safe_load(open(repo / "profile.yml")).get("concepts") or {}
     crosswalk = {Path(p).stem for p in glob.glob(str(repo / "crosswalk" / "*.yml"))}
     ALIASES.clear()
     # Aliases are per concept (a concept's own win over the common ones), as in build.py.
-    for cname, cdef in cfg["concepts"].items():
+    for cname, cdef in (cfg.get("concepts") or {}).items():
         amap = {}
         for group in (cfg.get("common_fields") or {}, cdef.get("aliases") or {}):
             for canon, al in group.items():
@@ -128,6 +130,8 @@ def check(ctx):
     for f in cfg.get("findings") or []:
         text = " ".join(f.split())
         named = concepts_named(text, prof)
+        if not prof:
+            named = []
         core = {c: {p["name"] for p in prof[c]["properties"] if p["tier"] == "core"} for c in prof}
         share = {c: {p["name"]: p["share"] for p in prof[c]["properties"]} for c in prof}
 
@@ -149,7 +153,7 @@ def check(ctx):
                 continue
             # The claim holds if ANY concept the sentence names satisfies it.
             ok = [c for c in named if listed <= core[c] and (not only or not (core[c] - listed - {"id"}))]
-            if not ok:
+            if not ok and named:
                 best = max(named, key=lambda c: len(listed & core[c]))
                 what = "ONLY " if only else ""
                 problems.append(f"says `{best}` agrees {what}on {sorted(listed)}; core is {sorted(core[best])}")
@@ -172,7 +176,7 @@ def check(ctx):
             cohort = yaml.safe_load(open(repo / "profile.yml"))["cohort"]["providers_with_harvested_openapi"]
             if n in (cohort, len(crosswalk)):
                 continue
-            if not any(abs(prof[c]["providers_exposing"] - n) <= 1 for c in named):
+            if named and not any(abs(prof[c]["providers_exposing"] - n) <= 1 for c in named):
                 problems.append(f"({n} providers) -- concepts named expose {[prof[c]['providers_exposing'] for c in named]}")
 
         # Capitalised names that are catalog providers must be in this context's crosswalks

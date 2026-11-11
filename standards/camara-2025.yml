@@ -1,0 +1,212 @@
+standard: camara-2025
+source: https://github.com/camaraproject (NumberVerification r4.2, SimSwap r4.3, DeviceLocation r3.2, DeviceStatus r2.2, KnowYourCustomer
+  r2.2, QualityOnDemand r3.2)
+format: openapi
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  NumberVerificationRequestBody:
+  - phoneNumber
+  - hashedPhoneNumber
+  NumberVerificationMatchResponse:
+  - devicePhoneNumberVerified
+  NumberVerificationShareResponse:
+  - devicePhoneNumber
+  ErrorInfo:
+  - status
+  - code
+  - message
+  SimSwapInfo:
+  - latestSimChange
+  - monitoredPeriod
+  CheckSimSwapInfo:
+  - swapped
+  CreateCheckSimSwap:
+  - phoneNumber
+  - maxAge
+  CreateSimSwapDate:
+  - phoneNumber
+  Area:
+  - areaType
+  Circle:
+  - areaType
+  - center
+  - radius
+  Point:
+  - latitude
+  - longitude
+  VerifyLocationRequest:
+  - device
+  - area
+  - maxAge
+  VerifyLocationResponse:
+  - verificationResult
+  - lastLocationTime
+  - matchRate
+  - device
+  Device:
+  - phoneNumber
+  - networkAccessIdentifier
+  - ipv4Address
+  - ipv6Address
+  DeviceIpv4Addr:
+  - publicAddress
+  - privateAddress
+  - publicPort
+  DeviceResponse:
+  - phoneNumber
+  - networkAccessIdentifier
+  - ipv4Address
+  - ipv6Address
+  RetrievalLocationRequest:
+  - device
+  - maxAge
+  - maxSurface
+  Location:
+  - lastLocationTime
+  - area
+  - device
+  Polygon:
+  - areaType
+  - boundary
+  ReachabilityStatusResponse:
+  - lastStatusTime
+  - reachable
+  - connectivity
+  RequestReachabilityStatus:
+  - device
+  RoamingStatusResponse:
+  - lastStatusTime
+  - roaming
+  - countryCode
+  - countryName
+  RoamingStatusRequest:
+  - device
+  KYC_MatchRequestBody:
+  - phoneNumber
+  - idDocument
+  - name
+  - givenName
+  - familyName
+  - nameKanaHankaku
+  - nameKanaZenkaku
+  - middleNames
+  - familyNameAtBirth
+  - address
+  - streetName
+  - streetNumber
+  - postalCode
+  - region
+  - locality
+  - country
+  - houseNumberExtension
+  - birthdate
+  - email
+  - gender
+  KYC_MatchResponse:
+  - idDocumentMatch
+  - nameMatch
+  - nameMatchScore
+  - givenNameMatch
+  - givenNameMatchScore
+  - familyNameMatch
+  - familyNameMatchScore
+  - nameKanaHankakuMatch
+  - nameKanaHankakuMatchScore
+  - nameKanaZenkakuMatch
+  - nameKanaZenkakuMatchScore
+  - middleNamesMatch
+  - middleNamesMatchScore
+  - familyNameAtBirthMatch
+  - familyNameAtBirthMatchScore
+  - addressMatch
+  - addressMatchScore
+  - streetNameMatch
+  - streetNameMatchScore
+  - streetNumberMatch
+  - streetNumberMatchScore
+  - postalCodeMatch
+  - regionMatch
+  - regionMatchScore
+  - localityMatch
+  - localityMatchScore
+  - countryMatch
+  - houseNumberExtensionMatch
+  - birthdateMatch
+  - emailMatch
+  - emailMatchScore
+  - genderMatch
+  BaseSessionInfo:
+  - applicationServer
+  - devicePorts
+  - applicationServerPorts
+  - qosProfile
+  - sink
+  - sinkCredential
+  SessionInfo:
+  - device
+  - applicationServer
+  - devicePorts
+  - applicationServerPorts
+  - qosProfile
+  - sink
+  - sinkCredential
+  - sessionId
+  - duration
+  - startedAt
+  - expiresAt
+  - qosStatus
+  - statusInfo
+  CreateSession:
+  - device
+  - applicationServer
+  - devicePorts
+  - applicationServerPorts
+  - qosProfile
+  - sink
+  - sinkCredential
+  - duration
+  PortsSpec:
+  - ranges
+  - ports
+  SinkCredential:
+  - credentialType
+  PlainCredential:
+  - credentialType
+  - identifier
+  - secret
+  AccessTokenCredential:
+  - credentialType
+  - accessToken
+  - accessTokenExpiresUtc
+  - accessTokenType
+  RefreshTokenCredential:
+  - credentialType
+  - accessToken
+  - accessTokenExpiresUtc
+  - accessTokenType
+  - refreshToken
+  - refreshTokenEndpoint
+  ExtendSessionDuration:
+  - requestedAdditionalDuration
+  CloudEvent:
+  - id
+  - source
+  - type
+  - specversion
+  - datacontenttype
+  - data
+  - time
+  EventQosStatusChanged:
+  - id
+  - source
+  - type
+  - specversion
+  - datacontenttype
+  - data
+  - time
+  ApplicationServer:
+  - ipv4Address
+  - ipv6Address
+  RetrieveSessionsInput:
+  - device

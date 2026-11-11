@@ -8,6 +8,7 @@ standard's published source (not from any provider's spec). One reader per sourc
   cap   XML Schema (OASIS CAP 1.2): alert and info elements
   reso  OData EDMX (RESO Data Dictionary 2.0): entity type properties
   jsonschema  JSON Schema files, one object per file (DCAT-US 1.1)
+  openapi  OpenAPI component schemas, allOf and $refs followed (CAMARA)
 
 Usage: extract-standard.py <format> <out-name> <source-url> <file> [<file> ...]"""
 import re, sys
@@ -51,6 +52,23 @@ elif fmt == "jsonschema":
     for f in files:
         d = json.load(open(f))
         objects[Path(f).stem.split("-")[-1]] = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
+elif fmt == "openapi":
+    # A standard published as OpenAPI (CAMARA): each component schema's properties, with
+    # allOf parts and local $refs followed, so a request body lists what a caller sends.
+    for f in files:
+        d = yaml.safe_load(open(f))
+        schemas = (d.get("components") or {}).get("schemas") or {}
+        def props(s, seen=()):
+            if "$ref" in s:
+                ref = s["$ref"].split("/")[-1]
+                return [] if ref in seen else props(schemas.get(ref, {}), seen + (ref,))
+            out = list((s.get("properties") or {}))
+            for part in s.get("allOf") or []:
+                out += [p for p in props(part, seen) if p not in out]
+            return out
+        for k, s in schemas.items():
+            if k not in objects and props(s):
+                objects[k] = props(s)
 elif fmt == "reso":
     text = Path(files[0]).read_text()
     for m in re.finditer(r'<EntityType Name="([^"]+)"(.*?)</EntityType>', text, re.S):

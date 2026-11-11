@@ -36,3 +36,4 @@ findings:
   - "Telecom operators publish one shared shape, and it is a standard rather than market agreement: the network checks at 19 readable providers (number verification, SIM swap, location; phone_number, device_phone_number_verified, max_age) are the GSMA CAMARA APIs, which each operator republishes. Counted once, as a shared standard, nothing else is common: subscribers are readable at 2 providers in a 95-provider cohort, and quality-on-demand sessions at none. CAMARA is the reference; a standards pass should measure it directly."
 decisions:
   - "Measured and not published: recorded as `thin`, with its findings."
+  - "The CAMARA network APIs are published as the reference context network-apis, which measures each operator's implementation against the pinned CAMARA releases."
