@@ -593,10 +593,11 @@ contexts:
   status: thin
 - context: web-scraping
   name: Web Scraping and Crawling
-  status: planned
+  status: built
+  repo: api-commons/web-scraping
 - context: seo
   name: SEO
-  status: planned
+  status: thin
 - context: testing
   name: Software Testing
   status: planned
