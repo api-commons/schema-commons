@@ -10,6 +10,7 @@ standard's published source (not from any provider's spec). One reader per sourc
   jsonschema  JSON Schema files, one object per file (DCAT-US 1.1)
   openapi  OpenAPI component schemas, allOf and $refs followed (CAMARA)
   oci   OCI Distribution spec.md endpoint table: the standard's operations
+  schemaorg  schema.org JSON-LD release: properties of each type in SCHEMAORG_TYPES, inherited ones included
 
 Usage: extract-standard.py <format> <out-name> <source-url> <file> [<file> ...]"""
 import re, sys
@@ -105,6 +106,28 @@ elif fmt == "oci":
                 if op not in ops:
                     ops.append(op)
     objects["endpoints"] = ops
+elif fmt == "schemaorg":
+    # schema.org JSON-LD release: for each type named in SCHEMAORG_TYPES, every property whose
+    # domainIncludes is the type or one of its supertypes (JobPosting inherits Thing's name, url).
+    import json, os
+    graph = json.load(open(files[0]))["@graph"]
+    sid = lambda x: x.split(":")[-1] if isinstance(x, str) else x.get("@id", "").split(":")[-1]
+    as_list = lambda v: v if isinstance(v, list) else ([v] if v else [])
+    parents = {sid(n["@id"]): [sid(p) for p in as_list(n.get("rdfs:subClassOf"))]
+               for n in graph if n.get("@type") == "rdfs:Class"}
+    domains = {}
+    for n in graph:
+        if n.get("@type") == "rdf:Property" and "schema:supersededBy" not in n:
+            for d in as_list(n.get("schema:domainIncludes")):
+                domains.setdefault(sid(d), []).append(sid(n["@id"]))
+    def lineage(t, seen=()):
+        out = [t]
+        for p in parents.get(t, []):
+            if p not in seen:
+                out += [x for x in lineage(p, seen + (t,)) if x not in out]
+        return out
+    for t in os.environ["SCHEMAORG_TYPES"].split(","):
+        objects[t] = [p for a in lineage(t) for p in sorted(domains.get(a, []))]
 elif fmt == "reso":
     text = Path(files[0]).read_text()
     for m in re.finditer(r'<EntityType Name="([^"]+)"(.*?)</EntityType>', text, re.S):

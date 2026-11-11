@@ -16,6 +16,10 @@ case "$1" in
     echo "-- duplicates"; python3 "$HUB/scripts/duplicates.py" 2>&1 | grep -v "already merged" | grep -v -E "^(aib|bank-of-ireland)" | head -12
     echo "-- review"; python3 "$HUB/scripts/review.py" --max "${MAX:-25}" ;;
   finish)
+    # The first contexts have hand-written READMEs and no intro: finish would delete schema/
+    # before readme.py refused. Refuse first.
+    python3 -c "import yaml,sys;sys.exit(0 if yaml.safe_load(open('concepts.yml')).get('intro') else 1)" \
+      || { echo "no intro in concepts.yml: a hand-written context -- run standard-pass.py and overlay.py directly"; exit 1; }
     # Always re-census: a renamed concept is otherwise silently empty in the build.
     python3 "$HUB/scripts/census.py" --cohort census/cohort.json 2>&1 | grep -E "Traceback|Error" || true
     rm -rf schema
