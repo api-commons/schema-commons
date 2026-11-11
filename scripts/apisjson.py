@@ -28,6 +28,7 @@ doc = {"aid": f"common-{ctx}", "name": name, "type": "Common",
                  "properties": [{"type": "OpenAPI", "url": f"{R}/openapi.yml"},
                                 {"type": "Profile", "url": f"{R}/profile.yml"},
                                 {"type": "Adopters", "url": f"{R}/adopters.yml"},
+                               ] + ([{"type": "Arazzo", "url": f"{R}/arazzo.yml"}] if __import__("os").path.exists("arazzo.yml") else []) + [
                                 {"type": "Rules", "url": "https://raw.githubusercontent.com/api-commons/schema-commons/main/ruleset/schema-commons-naming.yaml"}]
                                + [{"type": "JSONSchema", "name": c, "url": f"{R}/schema/{c}.json"} for c in profile["concepts"]]}],
        "common": [{"type": "License", "url": f"{R}/LICENSE"}],

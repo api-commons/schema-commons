@@ -49,7 +49,7 @@ text += f"""
 - [openapi.yml](openapi.yml) -- OpenAPI 3.1 of the shared operations. No one serves it; it
   is the shape to map to. Lints clean against the
   [naming ruleset](https://github.com/api-commons/schema-commons/blob/main/ruleset/schema-commons-naming.yaml).
-- [schema/](schema) -- JSON Schema 2020-12 per concept; each property carries
+{"- [arazzo.yml](arazzo.yml) -- reference workflows composed only of the shared operations (compositions, not measurements)." + chr(10) if __import__("os").path.exists("arazzo.yml") else ""}- [schema/](schema) -- JSON Schema 2020-12 per concept; each property carries
   `x-commons-tier`, `x-commons-share`, `x-commons-providers` and the spellings seen.
 - [crosswalk/](crosswalk) -- one per provider, common name -> their name, with the harvested
   spec and operations each mapping was read from.

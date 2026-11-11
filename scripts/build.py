@@ -207,7 +207,7 @@ for concept, c in profile["concepts"].items():
         m, verb, Verb = VERB[o["operation"]]
         item = o["operation"].endswith("item")
         path = f"{base}/{{{concept}_id}}" if item else base
-        op = {"operationId": f"{verb}{(plural if verb == 'list' else concept).title().replace('_', '').replace('-', '')}",
+        op = {"operationId": f"{verb}{(base.rstrip('/').split('/')[-1] if verb == 'list' else concept).replace('_', '-').title().replace('-', '')}",
               "summary": f"{Verb} {base.rstrip('/').split('/')[-1].replace('-', ' ') if verb == 'list' else ('an ' if concept[0] in 'aeiou' else 'a ') + concept.replace('_', ' ')}",
               "tags": [plural.replace("-", " ").title()], "x-commons-tier": o["tier"], "x-commons-share": o["share"],
               "responses": {"200": {"description": "OK", "content": {"application/json": {"schema":
