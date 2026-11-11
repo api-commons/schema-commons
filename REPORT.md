@@ -2652,6 +2652,7 @@ Findings:
 
 Decisions:
 
+- Measured against GA4GH DRS, WES and TES in the reference context genomic-data-exchange (thin: one implementer).
 - Measured and not published: recorded as `thin`, with its findings.
 - A GA4GH standards pass (Beacon, htsget, DRS) is the better route than a market census here.
 
@@ -3051,6 +3052,7 @@ Findings:
 
 Decisions:
 
+- Measured against OCI Distribution in the reference context registry-protocol.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Serverless Functions (`serverless`)
@@ -3101,6 +3103,7 @@ Findings:
 
 Decisions:
 
+- Measured against STIX and TAXII in the reference context threat-sharing.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Threat Detection and SIEM (`threat-detection`)
@@ -3460,6 +3463,7 @@ Findings:
 Decisions:
 
 - Measured and not published: recorded as `thin`, with its findings.
+- The CAMARA network APIs are published as the reference context network-apis, which measures each operator's implementation against the pinned CAMARA releases.
 
 ### IoT Connectivity and SIMs (`iot-connectivity`)
 
@@ -3492,6 +3496,7 @@ Findings:
 
 Decisions:
 
+- Measured against STAC in the reference context imagery-catalogs.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Drones (`drones`)
@@ -3524,6 +3529,7 @@ Findings:
 
 Decisions:
 
+- Measured against DCSA in the reference context ocean-shipping.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Aviation and Flights (`aviation`)
@@ -3639,6 +3645,7 @@ Findings:
 
 Decisions:
 
+- Measured against DCSA in the reference context ocean-shipping.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Inventory Management (`inventory`)
@@ -3781,6 +3788,7 @@ Findings:
 
 Decisions:
 
+- Measured against OCDS in the reference context open-contracting.
 - Measured and not published: recorded as `thin`, with its findings.
 
 ### Legislation (`legislation`)
@@ -4283,4 +4291,163 @@ Findings:
 Decisions:
 
 - Measured and not published: recorded as `thin`, with its findings.
+
+### Operator Network APIs (CAMARA) (`network-apis`)
+
+282 providers measured, 12 crosswalks, [api-commons/network-apis](https://github.com/api-commons/network-apis).
+
+- reference context for `camara-2025`: 8 providers implement it, 16 name it
+  - `number-verification` (6 implementers)
+  - `sim-swap` (7 implementers)
+  - `location-verification` (2 implementers)
+  - `location-retrieval` (1 implementers)
+  - `device-reachability-status` (1 implementers)
+  - `device-roaming-status` (2 implementers)
+  - `kyc-match` (3 implementers)
+  - `quality-on-demand` (2 implementers)
+
+Findings:
+
+- Eight operators and communications platforms implement CAMARA in their own published OpenAPI, out of 282 telecom, identity and fraud providers measured. Number verification (6) and SIM swap (7) lead; location, device status and quality on demand are each implemented by one or two.
+- Implementers that publish CAMARA carry its fields intact: the best-matching operation for number verification, SIM swap and KYC match reaches 100% coverage at most of them.
+
+Decisions:
+
+- A reference context publishes the standard's objects under the standard's own names (camelCase), and the commons naming ruleset does not apply to them: renaming a standard's fields would fork it.
+- The standard body's own catalog listings (camara-project, gsma, global-system-for-mobile-communications, open-gateway) are listed as publishers and not counted, because they carry the specification verbatim.
+- Pinned to the latest release of each CAMARA API repository at measurement time, not to main, which carries work-in-progress versions.
+
+### Imagery Catalogs (STAC) (`imagery-catalogs`)
+
+215 providers measured, 6 crosswalks, [api-commons/imagery-catalogs](https://github.com/api-commons/imagery-catalogs).
+
+- reference context for `stac-1.1`: 6 providers implement it, 17 name it
+  - `stac` (6 implementers)
+
+Findings:
+
+- Six imagery providers and agencies implement the STAC API search in their own published OpenAPI, out of 215 satellite, earth-observation and geospatial providers measured. Their search requests carry the STAC search fields (bbox, datetime, intersects, collections, ids, limit) at 67-100%.
+- The census of the same field (the satellite context) found scenes agreeing only on name and id, because STAC implementers and providers with their own search APIs were measured together. Measured against the standard instead, the STAC implementers agree almost completely.
+
+Decisions:
+
+- An implementer must expose a STAC-only operation (POST or GET /search, or an item under a collection); /collections alone is OGC API -- Features, which STAC builds on, and is not counted.
+- Vantor is Maxar Intelligence under its new name; the two listings are merged under maxar.
+- STAC objects come from two releases of one standard: the API specification (v1.0.0) for search, and the core specification (v1.1.0) for items and collections.
+
+### Container Registry Protocol (OCI Distribution) (`registry-protocol`)
+
+406 providers measured, 4 crosswalks, [api-commons/registry-protocol](https://github.com/api-commons/registry-protocol).
+
+- reference context for `oci-distribution-1.1`: 3 providers implement it, 9 name it
+  - `oci-distribution` (3 implementers)
+
+Findings:
+
+- Every container registry implements the OCI Distribution protocol, yet only three of the 406 providers measured describe it in their own published OpenAPI (artifactory, google-cloud-container-registry and timoni). The protocol is implemented everywhere and documented in OpenAPI almost nowhere.
+- The registries' own management APIs -- repositories, tags, access -- are what they publish, and the containers census found those agree only on name and description.
+
+Decisions:
+
+- Operations match by path alone, on a template-normalized suffix under /v2/: a repository name may span several path segments, and the protocol has no title or server name to match on.
+- The standard is its endpoints. Manifests and blobs are OCI Image Specification documents carried as bodies, which this context links to rather than restates.
+
+### Threat Intelligence Sharing (STIX and TAXII) (`threat-sharing`)
+
+446 providers measured, 1 crosswalks, measured and recorded as `thin`, not published.
+
+- reference context for `stix-2.1`: 1 providers implement it, 15 name it
+  - `taxii` (0 implementers)
+  - `stix` (0 implementers)
+
+Findings:
+
+- STIX is the format threat intelligence is exchanged in, not a resource providers serve: in a 446-provider cohort, 15 providers name STIX or TAXII in a harvested spec -- mostly import and export endpoints, feed configuration and TAXII client settings -- but one (sumo-logic) publishes a component schema carrying half of a STIX object's fields, and none publishes a TAXII server in OpenAPI. The STIX 2.1 objects are extracted in standards/stix-2.1.yml for the next pass.
+
+Decisions:
+
+- Measured as a reference context and recorded as thin: a reference context is published when at least three providers implement the standard.
+
+### Data Lineage (OpenLineage) (`data-lineage`)
+
+167 providers measured, 2 crosswalks, measured and recorded as `thin`, not published.
+
+- reference context for `openlineage-2.0`: 2 providers implement it, 4 name it
+  - `openlineage` (1 implementers)
+
+Findings:
+
+- OpenLineage is the lineage standard data tools emit, but few publish it as an API: in a 167-provider data-governance and pipeline cohort, 4 providers name OpenLineage in a harvested spec, openmetadata (with collate, the company behind it, merged) accepts OpenLineage run events at POST /v1/openlineage/lineage, and keboola publishes a run-event schema carrying 88% of the standard's fields.
+
+Decisions:
+
+- Measured as a reference context and recorded as thin, below the three-implementer bar. Job and Dataset (namespace, name, facets) are too generic to match on; only the RunEvent is matched.
+
+### Public Contracting (OCDS) (`open-contracting`)
+
+260 providers measured, 0 crosswalks, measured and recorded as `thin`, not published.
+
+- reference context for `ocds-1.1`: 0 providers implement it, 1 name it
+
+Findings:
+
+- Open contracting data is published as files, not APIs: in a 260-provider government and procurement cohort, one provider names OCDS in a harvested spec and none publishes a schema carrying half of an OCDS release, tender or award. OCDS publishers distribute release and record packages as bulk JSON downloads, which a census of OpenAPI cannot see.
+
+Decisions:
+
+- Measured as a reference context and recorded as thin. The OCDS objects are extracted in standards/ocds-1.1.yml for the public-spending context's next pass.
+
+### Container Shipping (DCSA) (`ocean-shipping`)
+
+300 providers measured, 3 crosswalks, [api-commons/ocean-shipping](https://github.com/api-commons/ocean-shipping).
+
+- reference context for `dcsa-2025`: 3 providers implement it, 4 name it
+  - `track-and-trace` (1 implementers)
+  - `booking` (2 implementers)
+  - `ebl` (2 implementers)
+  - `commercial-schedules` (1 implementers)
+  - `operational-vessel-schedules` (1 implementers)
+
+Findings:
+
+- Three carriers and forwarders implement DCSA in their own published OpenAPI, out of 300 maritime, freight and supply-chain providers measured. evergreen-marine implements booking, eBL, commercial schedules and track-and-trace, carrying 71-98% of each object's fields; maersk-line publishes DCSA booking, eBL and schedules under /dcsa/ paths; kuehne-nagel publishes a DCSA equipment event.
+- The maritime and supply-chain census contexts found vessels, positions and tracked shipments agreeing on almost nothing. The carriers that agree do so by implementing DCSA, not by converging on their own.
+
+Decisions:
+
+- An operation is matched when its path or server names DCSA, or, matched on path alone, when it carries at least 30% of the standard object's fields: /bookings and /events are too common to count by path.
+- Pinned to the latest final (non-beta) version of each DCSA API on SwaggerHub at measurement time, fetched resolved so the shared domain components are inlined.
+
+### Genomic Data Exchange (GA4GH) (`genomic-data-exchange`)
+
+473 providers measured, 1 crosswalks, measured and recorded as `thin`, not published.
+
+- reference context for `ga4gh-2025`: 1 providers implement it, 2 name it
+  - `drs` (0 implementers)
+  - `wes` (1 implementers)
+  - `tes` (0 implementers)
+
+Findings:
+
+- GA4GH Cloud standards are rarely published in the catalog's harvested specs: in a 473-provider genomics, life-sciences and research cohort, 2 providers name GA4GH in a harvested spec and one (seqera-labs) publishes the Workflow Execution Service at /ga4gh/wes/v1, carrying 78-100% of its fields. No provider publishes DRS or TES. The GA4GH objects are extracted in standards/ga4gh-2025.yml for when the implementing platforms' specs are in the catalog.
+
+Decisions:
+
+- Measured as a reference context and recorded as thin, below the three-implementer bar.
+
+### Event Envelopes (CloudEvents) (`cloud-events`)
+
+858 providers measured, 3 crosswalks, [api-commons/cloud-events](https://github.com/api-commons/cloud-events).
+
+- reference context for `cloudevents-1.0`: 3 providers implement it, 16 name it
+
+Findings:
+
+- Three providers publish a schema carrying the CloudEvents envelope, specversion included, out of 858 webhook, event-streaming and integration providers measured: apache-event-mesh and azure-event-grid (90-100% of the attributes) and datacrunch, whose audit-log events are CloudEvents-shaped (70%).
+- Sixteen providers name CloudEvents or specversion somewhere in a spec. The gap is expected for this standard: in its HTTP binary mode the attributes travel as ce- headers, which a schema does not show.
+
+Decisions:
+
+- A schema matches only if it carries specversion, the one attribute no other event shape uses; id, source, type, time and data alone describe most events.
+- The webhooks context's event shape stays as measured; this context is where it meets the standard.
 
