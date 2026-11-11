@@ -721,10 +721,11 @@ contexts:
   status: thin
 - context: industrial-automation
   name: Industrial Automation
-  status: planned
+  status: built
+  repo: api-commons/industrial-automation
 - context: supply-chain
   name: Supply Chain Visibility
-  status: planned
+  status: thin
 - context: inventory
   name: Inventory Management
   status: planned
