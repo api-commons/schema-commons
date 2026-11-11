@@ -1,0 +1,55 @@
+# The bounded contexts of the API Commons common schema, in the order they are being
+# distilled. Each one is its own repository under api-commons, built by the scripts in
+# this one. status: published | built (local, not yet public) | planned
+contexts:
+- context: crm
+  name: Customer Relationship Management
+  repo: api-commons/crm
+  status: built
+  tags: [CRM, Customer Relationship Management]
+  concepts: [contact, company, deal, lead, activity, task, note, pipeline]
+- context: ticketing
+  name: Help Desk and Ticketing
+  status: planned
+  tags: [Customer Service, Customer Support, Help Desk, Ticketing]
+  concepts: [ticket, comment, requester, agent, queue, sla]
+- context: commerce
+  name: Commerce
+  status: planned
+  tags: [Ecommerce, E-Commerce, Commerce, Retail]
+  concepts: [product, variant, order, line_item, customer, cart, inventory, fulfillment]
+- context: payments
+  name: Payments
+  status: planned
+  tags: [Payments, Payment Processing]
+  concepts: [payment, refund, customer, payment_method, payout, dispute]
+- context: billing
+  name: Billing and Invoicing
+  status: planned
+  tags: [Billing, Invoicing, Subscriptions, Accounting]
+  concepts: [invoice, subscription, plan, price, credit_note, ledger_account]
+- context: messaging
+  name: Messaging (Email, SMS, Chat)
+  status: planned
+  tags: [Email, SMS, Messaging, Communications]
+  concepts: [message, recipient, template, conversation, attachment]
+- context: scheduling
+  name: Calendars and Scheduling
+  status: planned
+  tags: [Calendar, Scheduling, Appointments]
+  concepts: [event, calendar, attendee, availability, booking]
+- context: hris
+  name: People and HR
+  status: planned
+  tags: [HR, HRIS, Human Resources, Payroll, Recruiting]
+  concepts: [employee, department, time_off, job, candidate, application]
+- context: files
+  name: Files and Documents
+  status: planned
+  tags: [File Storage, Documents, Content Management]
+  concepts: [file, folder, permission, version]
+- context: identity
+  name: Identity and Users (cross-cutting)
+  status: planned
+  tags: [Identity, Authentication, User Management]
+  concepts: [user, organization, team, role, membership]
