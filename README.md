@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce: 620 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments: 1168 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 599; multi-word kebab 330 / snake 203 / camel 142 | warn |
-| timestamps end in `_at` | `_at` 149 / bare `created` 75 / `_time`, `_date`, `on` 49 | warn |
-| collections are plural | plural 376 / singular 189 | info |
-| properties snake_case | multi-word snake 200 / camel 180 | info |
-| references `<resource>_id` | `_id` 165 / `...Id` 162 | info |
-| path params snake_case | `{id}` 366; multi-word camel 282 / snake 235 | info |
-| query params snake_case | snake 286 / camel 265 | info |
-| paging is `limit` + `cursor` | limit 258, page 213, offset 131, cursor 80 | info |
+| path segments kebab-case | lowercase 1122; multi-word kebab 666 / snake 360 / camel 256 | warn |
+| timestamps end in `_at` | `_at` 299 / bare `created` 114 / `_time`, `_date`, `on` 78 | warn |
+| collections are plural | plural 694 / singular 372 | info |
+| properties snake_case | multi-word snake 363 / camel 365 | info |
+| references `<resource>_id` | `_id` 299 / `...Id` 326 | info |
+| path params snake_case | `{id}` 682; multi-word camel 551 / snake 410 | info |
+| query params snake_case | snake 498 / camel 516 | info |
+| paging is `limit` + `cursor` | limit 465, page 378, offset 243, cursor 140 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -73,12 +73,16 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 
 [contexts.yml](contexts.yml) is the registry and the order of work.
 
-| Context | Repo | Status |
-| --- | --- | --- |
-| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published -- 177 providers, 112 crosswalks |
-| Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published -- 77 providers, 48 crosswalks |
-| Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | built -- 401 providers, 256 crosswalks |
-| Payments, Billing, Messaging, Scheduling, People and HR, Files, Identity | -- | planned |
+<!-- commons:contexts -->
+| Context | Repo | Status | Providers measured | Crosswalks |
+| --- | --- | --- | ---: | ---: |
+| Customer Relationship Management | [api-commons/crm](https://github.com/api-commons/crm) | published | 177 | 111 |
+| Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published | 77 | 48 |
+| Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 252 |
+| Payments | [api-commons/payments](https://github.com/api-commons/payments) | built | 692 | 431 |
+
+Planned, in order: Card Issuing, Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
+<!-- /commons:contexts -->
 
 ## Running a context
 
@@ -105,13 +109,32 @@ in one place as it matures.
 3. **Run and read the long tail.** `profile.yml` lists every spelling; collapse the ones that
    mean the same field in `aliases`. That review is the work.
 4. **Review every ambiguous match.** Every provider counted only through an ambiguous segment
-   is looked at by hand. Wrong ones go under `exclude:` with a one-line reason; the same
-   company listed twice goes under `duplicates:` and is merged, not dropped.
+   is looked at by hand. Wrong ones go under `exclude:` with a one-line reason. Run
+   `scripts/duplicates.py`: the same company listed twice goes under `duplicates:` (merged,
+   not dropped); different companies on one standard go under `shared_specs:`.
 5. **Decide in public.** Every naming call that is a choice rather than a count is written in
    the context README's Decisions section, with the numbers that informed it. The default:
    follow the measured majority unless the majority word is ambiguous across contexts.
 
 Then re-run `naming-evidence.py` and bring the ruleset's counts up to date.
+
+## Decisions that cross contexts
+
+- **snake_case.** Measured across every context the market is split down the middle on
+  multi-word names (see the naming table). The count cannot decide it, so the reasons do:
+  snake_case has one spelling for an acronym (`customer_id`, never `customerID` or
+  `customerId`), it is the form the census already normalises every name to, and a camelCase
+  provider loses nothing because the crosswalk keeps its own spelling. Revisit if a clear
+  majority appears as contexts are added.
+- **A concept moves to the context that owns it.** Commerce found `/checkout` to be a
+  payment session and handed `checkout_session` to payments; payments found `/cards` to be
+  issued cards and registered card issuing as a context. Concepts are not duplicated across
+  contexts to make one look complete.
+- **Duplicates merge; shared specifications count once.** One company listed twice is merged
+  (`duplicates:`). Different companies republishing one specification -- the UK Open Banking
+  standard -- each stay an adopter with a crosswalk but are one voice in the vocabulary
+  (`shared_specs:`). `scripts/duplicates.py` finds both by byte-identical specs; a person
+  decides which is which.
 
 ## Versioning
 

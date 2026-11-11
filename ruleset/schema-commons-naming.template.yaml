@@ -26,9 +26,12 @@ rules:
   commons-property-snake-case:
     description: >-
       Property names are snake_case. Single-word names (id, name, email) are the most common
-      form of all and satisfy every convention. Among multi-word names the market is split --
-      snake_case {{property.snake_case}} providers, camelCase {{property.camelCase}} -- so the commons picks one and
-      the crosswalk carries the other. This is a choice, recorded as one.
+      form of all ({{property.lower}} providers) and satisfy every convention. Among multi-word
+      names the market is evenly split -- camelCase {{property.camelCase}} providers,
+      snake_case {{property.snake_case}} -- so the count cannot decide it. The commons uses
+      snake_case because it has one spelling for an acronym (customer_id, never customerID
+      or customerId) and the crosswalk carries camelCase names without loss. A decision,
+      recorded as one.
     message: "{{property}} is not snake_case (the common vocabulary's casing)."
     severity: info
     given: "$..properties[*]~"
@@ -116,9 +119,9 @@ rules:
 
   commons-foreign-key-id-suffix:
     description: >-
-      A reference to another resource is named <resource>_id (company_id, owner_id). snake_case
-      _id is used by {{foreign_key._id}} providers and camelCase ...Id by {{foreign_key.Id}}; the commons keeps snake_case,
-      consistent with commons-property-snake-case.
+      A reference to another resource is named <resource>_id (company_id, owner_id).
+      camelCase ...Id is used by {{foreign_key.Id}} providers and snake_case _id by
+      {{foreign_key._id}}; the commons follows commons-property-snake-case.
     message: "{{property}} is a reference; the common form is <resource>_id."
     severity: info
     given: "$..properties"

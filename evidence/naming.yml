@@ -3,63 +3,64 @@ contexts:
 - crm
 - ticketing
 - commerce
-providers: 620
-note: Counts are providers (catalog duplicates folded), a provider can appear under
-  several forms.
+- payments
+providers: 1168
+note: Counts are providers (catalog duplicates and shared specifications folded),
+  a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 376
-    singular: 189
+    plural: 694
+    singular: 372
   foreign_key:
-    _id: 165
-    Id: 162
+    Id: 326
+    _id: 299
   pagination_param:
-    limit: 258
-    page: 213
-    offset: 131
-    page_size: 124
-    cursor: 80
-    per_page: 71
-    size: 42
-    count: 38
-    skip: 35
-    after: 34
-    start: 32
-    page_token: 26
-    before: 26
-    max_results: 14
-    top: 13
-    starting_after: 12
-    next: 3
+    limit: 465
+    page: 378
+    offset: 243
+    page_size: 221
+    cursor: 140
+    per_page: 113
+    size: 88
+    count: 58
+    start: 56
+    skip: 53
+    after: 52
+    before: 38
+    page_token: 37
+    starting_after: 29
+    max_results: 17
+    top: 15
+    next: 9
   path_param:
-    lower: 366
-    camelCase: 282
-    snake_case: 235
-    kebab-case: 28
-    PascalCase: 25
-    other: 15
+    lower: 682
+    camelCase: 551
+    snake_case: 410
+    PascalCase: 50
+    kebab-case: 49
+    other: 34
   path_segment:
-    lower: 599
-    kebab-case: 330
-    snake_case: 203
-    camelCase: 142
-    other: 123
-    PascalCase: 68
+    lower: 1122
+    kebab-case: 666
+    snake_case: 360
+    camelCase: 256
+    other: 226
+    PascalCase: 100
   property:
-    lower: 367
-    snake_case: 200
-    camelCase: 180
-    other: 35
-    PascalCase: 25
-    kebab-case: 2
+    lower: 702
+    camelCase: 365
+    snake_case: 363
+    other: 58
+    PascalCase: 42
+    kebab-case: 5
   query_param:
-    lower: 493
-    snake_case: 286
-    camelCase: 265
-    other: 123
-    PascalCase: 39
-    kebab-case: 24
+    lower: 897
+    camelCase: 516
+    snake_case: 498
+    other: 210
+    PascalCase: 67
+    kebab-case: 40
   timestamp:
-    _at: 149
-    bare: 75
-    _date/_time/on: 49
+    _at: 299
+    bare: 114
+    _date/_time/on: 78

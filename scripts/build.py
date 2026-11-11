@@ -37,6 +37,14 @@ ENVELOPE = set(cfg.get("envelope", []))
 # One company listed twice in the catalog counts once: its listings are merged under the
 # canonical slug, so neither the count nor the evidence is lost.
 DUPLICATES = {dup: canon for canon, dups in (cfg.get("duplicates") or {}).items() for dup in dups}
+# Different companies publishing ONE specification (a standard such as Open Banking UK) are
+# one voice in the vocabulary: merged under the spec's name for measuring, like duplicates.
+# Unlike duplicates, every member is still an adopter and gets its own crosswalk.
+SHARED = {m: canon for canon, ms in (cfg.get("shared_specs") or {}).items() for m in ms}
+DUPLICATES.update(SHARED)
+MEMBERS = collections.defaultdict(list)
+for m, canon in SHARED.items():
+    MEMBERS[canon].append(m)
 
 
 def snake(n):
@@ -55,6 +63,7 @@ profile = {"context": CTX, "name": cfg["name"], "generated": TODAY, "version": V
            "cohort": {"tags": cfg["tags"], "providers_with_harvested_openapi": census["cohort_size"]},
            "thresholds": {"core": CORE, "extended": EXTENDED, "min_providers": MIN_PROVIDERS},
            "excluded": cfg.get("exclude") or {}, "duplicates": cfg.get("duplicates") or {},
+           "shared_specs": cfg.get("shared_specs") or {},
            "concepts": {}}
 crosswalks = collections.defaultdict(dict)
 import shutil
@@ -139,15 +148,16 @@ for concept, spec in cfg["concepts"].items():
     Path("schema").mkdir(exist_ok=True)
     json.dump(schema, open(f"schema/{concept}.json", "w"), indent=2)
 
-    for slug, h in hits.items():
-        adopters[slug][concept] = {"operations": h["operations"], "segments": h["segments"]}
-        mapped = {p["name"]: fields[p["name"]]["providers"][slug] for p in keep if slug in fields[p["name"]]["providers"]}
-        core = [p["name"] for p in keep if p["tier"] == "core"]
-        crosswalks[slug][concept] = {
-            "path_segment": h["segments"],
-            "properties": {k: (v[0] if len(v) == 1 else v) for k, v in mapped.items()},
-            "core_coverage": round(sum(1 for c in core if c in mapped) / (len(core) or 1), 3) if h["properties"] else None,
-            "evidence": h["evidence"][:5]}
+    core = [p["name"] for p in keep if p["tier"] == "core"]
+    for canon, h in hits.items():
+        mapped = {p["name"]: fields[p["name"]]["providers"][canon] for p in keep if canon in fields[p["name"]]["providers"]}
+        entry = {"path_segment": h["segments"],
+                 "properties": {k: (v[0] if len(v) == 1 else v) for k, v in mapped.items()},
+                 "core_coverage": round(sum(1 for c in core if c in mapped) / (len(core) or 1), 3) if h["properties"] else None,
+                 "evidence": h["evidence"][:5]}
+        for slug in [canon] + MEMBERS.get(canon, []):
+            adopters[slug][concept] = {"operations": h["operations"], "segments": h["segments"]}
+            crosswalks[slug][concept] = dict(entry, **({"shared_spec": canon} if slug != canon else {}))
 
 # OpenAPI: one collection + item path per concept, operations that clear the extended bar.
 def pluralise(c):

@@ -85,8 +85,11 @@ def props_of(doc, schema, depth=0):
             if env in p and len(p) <= 6:
                 inner = props_of(doc, p[env], depth + 1)
                 if inner: return inner
-        if len(p) == 1:
-            inner = props_of(doc, next(iter(p.values())), depth + 1)
+        # A lone wrapper object, ignoring the error and paging keys beside it:
+        # Square's {"errors": [...], "payment": {...}} is a payment.
+        wrap = [k for k in p if k not in ("errors", "error", "warnings", "meta", "links", "_links", "cursor")]
+        if len(wrap) == 1:
+            inner = props_of(doc, p[wrap[0]], depth + 1)
             if len(inner) > 2: return inner
         for k, v in p.items():
             v = resolve(doc, v)

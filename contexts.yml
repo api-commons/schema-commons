@@ -17,15 +17,22 @@ contexts:
 - context: commerce
   name: Commerce
   repo: api-commons/commerce
-  status: built
+  status: published
   tags: [E-Commerce, Commerce, Headless Commerce, Composable Commerce, B2B Commerce, Storefront, Order Management]
   concepts: [product, product_variant, category, customer, cart, order, order_item, shipment, inventory]
 - context: payments
   name: Payments
-  status: planned
+  repo: api-commons/payments
+  status: built
   tags: [Payments, Payment Processing]
   # checkout sessions were handed over from commerce, where /checkout is a hosted payment
   concepts: [payment, checkout_session, refund, customer, payment_method, payout, dispute]
+- context: card-issuing
+  name: Card Issuing
+  status: planned
+  tags: [Card Issuing]
+  # handed over from payments, where /cards and /tokens were issued cards, not payment methods
+  concepts: [card, cardholder, authorization, card_program, spending_control]
 - context: billing
   name: Billing and Invoicing
   status: planned

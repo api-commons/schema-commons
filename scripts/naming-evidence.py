@@ -26,6 +26,8 @@ for c in ctxs:
     repo = HUB.parent / c["context"]
     cfg = yaml.safe_load(open(repo / "concepts.yml"))
     dup = {d: k for k, ds in (cfg.get("duplicates") or {}).items() for d in ds}
+    # A shared specification is one voice in naming too (see build.py).
+    dup.update({m: k for k, ms in (cfg.get("shared_specs") or {}).items() for m in ms})
     census = json.load(open(repo / "census" / "census.json"))
     cohort |= {dup.get(x["slug"], x["slug"]) for x in json.load(open(repo / "census" / "cohort.json"))}
     for dim, vals in census["naming"].items():
@@ -46,7 +48,7 @@ for c in ctxs:
 
 out = {"generated": date.today().isoformat(), "contexts": [c["context"] for c in ctxs],
        "providers": len(cohort),
-       "note": "Counts are providers (catalog duplicates folded), a provider can appear under several forms.",
+       "note": "Counts are providers (catalog duplicates and shared specifications folded), a provider can appear under several forms.",
        "measures": {dim: {v: len(s) for v, s in sorted(vals.items(), key=lambda kv: -len(kv[1]))}
                     for dim, vals in sorted(m.items())}}
 yaml.safe_dump(out, open(HUB / "evidence" / "naming.yml", "w"), sort_keys=False)
@@ -90,3 +92,20 @@ readme = HUB / "README.md"
 t = readme.read_text()
 i, j = t.index("<!-- commons:naming -->"), t.index("<!-- /commons:naming -->")
 readme.write_text(t[:i] + "<!-- commons:naming -->\n" + "\n".join(rows) + "\n" + t[j:])
+
+# The hub README's context table, from contexts.yml and each built context's profile.
+rows = ["| Context | Repo | Status | Providers measured | Crosswalks |", "| --- | --- | --- | ---: | ---: |"]
+planned = []
+for c in yaml.safe_load(open(HUB / "contexts.yml"))["contexts"]:
+    if c["status"] == "planned":
+        planned.append(c["name"])
+        continue
+    repo = HUB.parent / c["context"]
+    prof = yaml.safe_load(open(repo / "profile.yml"))
+    n_cw = len(list((repo / "crosswalk").glob("*.yml")))
+    rows.append(f"| {c['name']} | [{c['repo']}](https://github.com/{c['repo']}) | {c['status']} | "
+                f"{prof['cohort']['providers_with_harvested_openapi']} | {n_cw} |")
+rows += ["", "Planned, in order: " + ", ".join(planned) + "."]
+t = readme.read_text()
+i, j = t.index("<!-- commons:contexts -->"), t.index("<!-- /commons:contexts -->")
+readme.write_text(t[:i] + "<!-- commons:contexts -->\n" + "\n".join(rows) + "\n" + t[j:])
