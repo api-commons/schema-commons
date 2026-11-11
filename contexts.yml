@@ -837,7 +837,7 @@ contexts:
   status: thin
 - context: url-shortening
   name: URL Shortening and Links
-  status: planned
+  status: thin
 - context: qr-codes
   name: QR Codes
   status: planned
