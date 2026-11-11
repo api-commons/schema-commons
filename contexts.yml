@@ -659,7 +659,7 @@ contexts:
   status: thin
 - context: tokenization
   name: Asset Tokenization
-  status: planned
+  status: thin
 - context: agentic-commerce
   name: Agentic Commerce
   status: planned
