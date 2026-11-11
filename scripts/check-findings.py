@@ -44,7 +44,9 @@ def slug(n):
 
 # Capitalised words in findings that are standards, formats or ordinary words, not providers.
 NOT_PROVIDERS = {"OpenAPI", "GraphQL", "RBAC", "RESO", "OSRM", "OTLP", "Open Banking", "Issues", "Questions",
-                 "Current", "Once", "Balance", "Monday", "Wave", "FIX", "SCIM", "FHIR", "NPI", "CAP", "ActivityPub", "LTI", "OneRoster", "OCPI", "OCPP", "CDR"}
+                 "Current", "Once", "Balance", "Monday", "Wave", "FIX", "SCIM", "FHIR", "NPI", "CAP", "ActivityPub", "LTI", "OneRoster", "OCPI", "OCPP", "CDR",
+                 "JSON", "XML", "REST", "HTTP", "SDK", "SDKs", "API", "APIs", "URL", "CSV", "PDF", "HTML", "LLM", "AI", "OCR",
+                 "MCP", "OAuth", "SSO", "SAML", "SIEM", "KMS", "TLS", "DNS", "CDN", "OTLP", "IoT", "EHR", "ERP", "CRM", "POS"}
 SPLIT = re.compile(r",\s*(?:and\s+)?|\s+and\s+|\s*/\s*")
 STOP = {"the", "a", "an", "its", "their", "whether", "when", "which", "what", "dates", "timestamps",
         "it", "them", "both", "one", "two", "three"}
@@ -159,6 +161,10 @@ def check(ctx):
         for m in re.finditer(r"\((\d+) providers?\b", text):
             n = int(m.group(1))
             if any(re.search(rf"\b{re.escape(w)}", text, re.I) for w in dropped_words) or re.search(r"dropped|as a resource|thin", text):
+                continue
+            # the cohort size and the crosswalk count are legitimate counts too
+            cohort = yaml.safe_load(open(repo / "profile.yml"))["cohort"]["providers_with_harvested_openapi"]
+            if n in (cohort, len(crosswalk)):
                 continue
             if not any(abs(prof[c]["providers_exposing"] - n) <= 1 for c in named):
                 problems.append(f"({n} providers) -- concepts named expose {[prof[c]['providers_exposing'] for c in named]}")

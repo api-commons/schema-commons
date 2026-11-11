@@ -333,3 +333,162 @@ contexts:
   name: EV Charging
   status: built
   repo: api-commons/ev-charging
+- context: webhooks
+  name: Webhooks
+  status: built
+  repo: api-commons/webhooks
+- context: audit-logs
+  name: Audit Logs
+  status: built
+  repo: api-commons/audit-logs
+- context: feature-flags
+  name: Feature Flags
+  status: built
+  repo: api-commons/feature-flags
+- context: api-management
+  name: API Management
+  status: built
+  repo: api-commons/api-management
+- context: secrets
+  name: Secrets Management
+  status: built
+  repo: api-commons/secrets
+- context: dns
+  name: DNS and Domains
+  status: built
+  repo: api-commons/dns
+- context: cdn
+  name: CDN and Edge
+  status: built
+  repo: api-commons/cdn
+- context: ai-agents
+  name: AI Agents
+  status: built
+  repo: api-commons/ai-agents
+- context: document-ai
+  name: Document AI
+  status: built
+  repo: api-commons/document-ai
+- context: data-enrichment
+  name: Data Enrichment
+  status: planned
+- context: tax
+  name: Tax
+  status: planned
+- context: legal
+  name: Legal Practice
+  status: planned
+- context: contracts
+  name: Contract Lifecycle
+  status: planned
+- context: expenses
+  name: Expense Management
+  status: planned
+- context: time-tracking
+  name: Time Tracking
+  status: planned
+- context: field-service
+  name: Field Service
+  status: planned
+- context: it-assets
+  name: IT Asset Management
+  status: planned
+- context: cmdb
+  name: ITSM Change and CMDB
+  status: planned
+- context: customer-success
+  name: Customer Success
+  status: planned
+- context: sales-engagement
+  name: Sales Engagement
+  status: planned
+- context: cpq
+  name: Configure, Price, Quote
+  status: planned
+- context: affiliates
+  name: Affiliates and Partners
+  status: planned
+- context: fundraising
+  name: Nonprofit Fundraising
+  status: planned
+- context: membership
+  name: Membership
+  status: planned
+- context: marketplace
+  name: Marketplace
+  status: planned
+- context: returns
+  name: Returns
+  status: planned
+- context: warehouse
+  name: Warehouse Management
+  status: planned
+- context: freight
+  name: Freight and TMS
+  status: planned
+- context: gift-cards
+  name: Gift Cards
+  status: planned
+- context: subscription-commerce
+  name: Subscription Commerce
+  status: planned
+- context: privacy
+  name: Privacy and Consent
+  status: planned
+- context: background-checks
+  name: Background Checks
+  status: planned
+- context: open-data
+  name: Open Data Catalogs
+  status: planned
+- context: research-repositories
+  name: Research Repositories
+  status: planned
+- context: news
+  name: News
+  status: planned
+- context: music
+  name: Music
+  status: planned
+- context: podcasts
+  name: Podcasts
+  status: planned
+- context: books
+  name: Books and Publishing
+  status: planned
+- context: localization
+  name: Translation and Localization
+  status: planned
+- context: speech
+  name: Speech and Transcription
+  status: planned
+- context: energy
+  name: Energy and Utilities
+  status: planned
+- context: solar
+  name: Solar and Energy Storage
+  status: planned
+- context: agriculture
+  name: Agriculture
+  status: planned
+- context: automotive
+  name: Automotive
+  status: planned
+- context: mobility
+  name: Mobility and Ride-Hailing
+  status: planned
+- context: parking
+  name: Parking
+  status: planned
+- context: sports
+  name: Sports Data
+  status: planned
+- context: gaming
+  name: Gaming
+  status: planned
+- context: fitness
+  name: Fitness and Wellness
+  status: planned
+- context: genomics
+  name: Genomics and Clinical Trials
+  status: planned
