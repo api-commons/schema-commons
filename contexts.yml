@@ -610,13 +610,15 @@ contexts:
   status: thin
 - context: serverless
   name: Serverless Functions
-  status: planned
+  status: built
+  repo: api-commons/serverless
 - context: finops
   name: Cloud Cost and FinOps
-  status: planned
+  status: built
+  repo: api-commons/finops
 - context: threat-intelligence
   name: Threat Intelligence
-  status: planned
+  status: thin
 - context: threat-detection
   name: Threat Detection and SIEM
   status: planned
