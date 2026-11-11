@@ -653,7 +653,7 @@ contexts:
   status: thin
 - context: risk-management
   name: Risk and Compliance
-  status: planned
+  status: thin
 - context: esg
   name: ESG and Carbon Accounting
   status: planned
