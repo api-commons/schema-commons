@@ -1,0 +1,38 @@
+context: satellite
+name: Satellite and Earth Observation
+intro: >-
+  The common earth-observation vocabulary -- imagery scenes in a catalog, the tasking orders that
+  capture new ones, and the satellites themselves -- distilled from the APIs that already exist.
+tags: [Satellite, Satellite Imagery, Earth Observation, Space, Remote Sensing, Geospatial, Aerospace]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, context, numberMatched, numberReturned]
+common_fields:
+  id: [uuid, guid, external_id, scene_id, order_id, item_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  scene:
+    segments: [scenes, scene, items, imagery, images@catalog|search|imagery, search, catalog, collections@stac|catalog]
+    aliases:
+      geometry: [footprint, bbox, aoi, area_of_interest]
+      acquired_at: [datetime, acquired, acquisition_date, capture_date, captured_at]
+      cloud_cover: [eo_cloud_cover, cloud_percent, cloud_coverage]
+      resolution: [gsd, ground_sample_distance, spatial_resolution]
+      assets: [links, downloads]
+  tasking_order:
+    path: /tasking-orders
+    segments: [tasking, taskings, orders@tasking|imagery|satellite, orders, requests@tasking]
+    aliases:
+      geometry: [aoi, area_of_interest, footprint]
+      window_start: [start, start_date, start_time]
+      window_end: [end, end_date, end_time]
+  satellite:
+    segments: [satellites, satellite, spacecraft, tles, tle]
+    aliases:
+      norad_id: [norad_cat_id, catalog_number, satnum]
+
+findings:
+  - "Earth observation shares its catalog through a standard, not a census: in a 170-provider cohort, scenes at 42 readable providers agree only on name and id, with geometry at 48%, because providers that implement STAC (SpatioTemporal Asset Catalog) and those with their own search APIs shape items differently. Tasking orders agree on id, status and name, but at 7 providers. STAC Item and the OGC API -- Features shape are the reference, and a standards pass should take them."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

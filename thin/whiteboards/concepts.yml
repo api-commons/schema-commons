@@ -1,0 +1,30 @@
+context: whiteboards
+name: Whiteboards and Collaboration
+intro: >-
+  The common whiteboard vocabulary -- boards and the items on them (sticky notes, shapes, frames,
+  connectors) -- distilled from the APIs that already exist.
+tags: [Whiteboard, Whiteboards, Visual Collaboration, Collaboration, Diagramming, Brainstorming]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, cursor]
+common_fields:
+  id: [uuid, guid, external_id, board_id, item_id, widget_id]
+  created_at: [created, created_date, create_time, created_time]
+  updated_at: [updated, modified_at, update_time, modified_time]
+  name: [title, display_name]
+concepts:
+  board:
+    segments: [boards, board, canvases, canvas, documents@whiteboard, diagrams]
+    aliases:
+      owner: [owner_id, created_by]
+  board_item:
+    path: /board-items
+    requires: [board]
+    segments: [items, widgets, sticky_notes, shapes, frames, cards@boards|board, connectors, elements]
+    aliases:
+      item_type: [type, widget_type, shape_type, kind]
+      position: [geometry, x, coordinates]
+      content: [text, data, body]
+
+findings:
+  - "Whiteboards publish few readable schemas: in a 122-provider cohort (mostly broad collaboration tools), boards are readable at 4 providers and agree on id, name and updated_at, and board items at 3 agree only on a name. Each canvas tool models its items (stickies, shapes, frames, connectors) as its own type hierarchy."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

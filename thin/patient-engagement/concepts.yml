@@ -1,0 +1,36 @@
+context: patient-engagement
+name: Patient Engagement
+intro: >-
+  The common patient-engagement vocabulary -- patients, the care programs and tasks assigned to them,
+  and the remote measurements they submit -- distilled from the APIs that already exist.
+tags: [Patient Engagement, Remote Patient Monitoring, Digital Health, Care Management, Chronic Care, Telehealth, Consumer Health]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, entry]
+common_fields:
+  id: [uuid, guid, external_id, patient_id, program_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  care_program:
+    path: /care-programs
+    segments: [programs, program, care_plans, careplans, care_programs, pathways, protocols]
+  care_task:
+    path: /care-tasks
+    segments: [tasks, task, activities@patients|care_plans|programs, goals@patients]
+    aliases:
+      due_at: [due_date, due]
+      assignee: [assigned_to, owner]
+  remote_measurement:
+    path: /remote-measurements
+    segments: [readings, measurements, vitals, observations, biometrics, devices@rpm]
+    aliases:
+      measurement_type: [type, reading_type, code]
+      value: [result, value_quantity, reading]
+      unit: [units]
+      measured_at: [timestamp, recorded_at, taken_at, effective_date_time]
+
+findings:
+  - "Patient engagement publishes little in a shared shape: in a 57-provider cohort, care tasks at 6 readable providers agree on id, due_at, status, name and priority (the generic task that project-management already holds), care programs are readable at 3, and remote measurements at 5 agree only on an id. Clinical measurements travel as FHIR Observations, which healthcare covers."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

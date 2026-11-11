@@ -1,0 +1,347 @@
+context: mcp-servers
+name: MCP Servers and Agent Registries
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - MCP
+  - Model Context Protocol
+  - A2A
+  - Agent-Native
+  - Agent Registry
+  - MCP Server
+  - Agent Skills
+  providers_with_harvested_openapi: 926
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  mcp_server:
+    segments_seen:
+      servers: 22
+      mcp-servers: 11
+      server: 5
+      connectors: 1
+      mcps: 1
+      mcp_servers: 1
+    providers_exposing: 37
+    providers_with_readable_schema: 28
+    operations:
+    - operation: GET collection
+      providers: 35
+      share: 0.946
+      tier: core
+    - operation: DELETE item
+      providers: 19
+      share: 0.514
+      tier: core
+    - operation: GET item
+      providers: 17
+      share: 0.459
+      tier: extended
+    - operation: POST collection
+      providers: 17
+      share: 0.459
+      tier: extended
+    - operation: UPDATE item
+      providers: 17
+      share: 0.459
+      tier: extended
+    - operation: POST item
+      providers: 1
+      share: 0.027
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.027
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 21
+      share: 0.75
+      type: string
+      spellings:
+      - name
+      - display_name
+      - displayName
+      - title
+      - Name
+    - name: id
+      tier: core
+      providers: 19
+      share: 0.679
+      type: string
+      spellings:
+      - id
+      - server_id
+      - Id
+      - agent_id
+    - name: created_at
+      tier: extended
+      providers: 13
+      share: 0.464
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - created
+      - create_time
+    - name: description
+      tier: extended
+      providers: 12
+      share: 0.429
+      type: string
+      spellings:
+      - description
+    - name: url
+      tier: extended
+      providers: 11
+      share: 0.393
+      type: string
+      spellings:
+      - url
+      - remotes
+      - server_url
+    - name: type
+      tier: extended
+      providers: 7
+      share: 0.25
+      type: string
+      spellings:
+      - type
+      - Type
+    - name: updated_at
+      tier: extended
+      providers: 7
+      share: 0.25
+      type: string
+      spellings:
+      - updated_at
+      - modified_at
+      - updatedAt
+      - update_time
+    - name: status
+      tier: extended
+      providers: 6
+      share: 0.214
+      type: string
+      spellings:
+      - status
+      - State
+    - name: version
+      tier: extended
+      providers: 6
+      share: 0.214
+      type: string
+      spellings:
+      - version
+    long_tail_count: 238
+    long_tail_sample:
+    - icon_url
+    - prompts
+    - resources
+    - slug
+    - connections
+    - homepage
+    - organization_id
+    - qualified_name
+    - server_name
+    - tools
+    - use_count
+    - verified
+    - allowed_tools
+    - args
+    - auth_type
+    - backlink_url
+    - by_smithery
+    - client_secret
+    - command
+    - config
+    - created_by
+    - deleted_at
+    - deployment_url
+    - env
+    - error
+    - headers
+    - instructions
+    - is_deployed
+    - is_remote
+    - keywords
+    - license
+    - mcp_url
+    - namespace
+    - owner
+    - packages
+    - provider
+    - remote
+    - repository
+    - repository_url
+    - score
+  registered_agent:
+    segments_seen:
+      agents: 2
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 19
+    long_tail_sample:
+    - agent
+    - cartao
+    - chave
+    - conforme
+    - creditos
+    - descricao
+    - dominio
+    - fontes
+    - nome
+    - ok
+    - protocolo
+    - publicador
+    - saudavel
+    - skills_n
+    - tags
+    - uptime
+    - url
+    - verificado
+    - visto_em
+  mcp_tool:
+    segments_seen:
+      tools: 10
+    providers_exposing: 10
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 10
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.6
+      tier: core
+    - operation: DELETE item
+      providers: 5
+      share: 0.5
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.5
+      tier: core
+    - operation: DELETE collection
+      providers: 2
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 8
+      share: 0.889
+      type: string
+      spellings:
+      - id
+      - server_id
+      - serverID
+      - toolID
+    - name: name
+      tier: core
+      providers: 8
+      share: 0.889
+      type: string
+      spellings:
+      - name
+      - title
+      - display_name
+    - name: description
+      tier: core
+      providers: 7
+      share: 0.778
+      type: string
+      spellings:
+      - description
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - created_at
+    - name: input_schema
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: object
+      spellings:
+      - parameters
+      - input_schema
+      - inputSchema
+    - name: tags
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: array
+      spellings:
+      - tags
+    long_tail_count: 95
+    long_tail_sample:
+    - tool_type
+    - updated_at
+    - agent_count
+    - annotations
+    - api
+    - args_json_schema
+    - attributes_excluded_mode
+    - attributes_excluded_parameters
+    - attributes_included_mode
+    - attributes_included_parameters
+    - available_versions
+    - avg_latency_ms
+    - capacidades
+    - category
+    - client_side_tool
+    - created_by
+    - created_by_id
+    - default_requires_approval
+    - deprecated
+    - document_mode
+    - document_parameters
+    - enable_parallel_execution
+    - enabled
+    - exported_to
+    - exported_to_count
+    - ferramentas
+    - function
+    - handle
+    - handoff
+    - headers
+    - human_description
+    - input_parameters
+    - instrucoes
+    - invite
+    - is_deprecated
+    - json_schema
+    - last_updated_by_id
+    - last_used
+    - limit
+    - method

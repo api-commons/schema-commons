@@ -1,0 +1,390 @@
+context: supply-chain
+name: Supply Chain Visibility
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Supply Chain
+  - Supply Chain Visibility
+  - Supply Chain Management
+  - Logistics
+  - Traceability
+  - Supplier Management
+  providers_with_harvested_openapi: 280
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  tracked_shipment:
+    segments_seen:
+      tracking: 20
+      containers: 6
+      trackers: 4
+      trackings: 4
+      shipments: 3
+    providers_exposing: 35
+    providers_with_readable_schema: 31
+    operations:
+    - operation: GET item
+      providers: 21
+      share: 0.6
+      tier: core
+    - operation: GET collection
+      providers: 19
+      share: 0.543
+      tier: core
+    - operation: POST collection
+      providers: 16
+      share: 0.457
+      tier: extended
+    - operation: UPDATE item
+      providers: 4
+      share: 0.114
+      tier: long-tail
+    - operation: DELETE item
+      providers: 3
+      share: 0.086
+      tier: long-tail
+    properties:
+    - name: status
+      tier: core
+      providers: 16
+      share: 0.516
+      type: string
+      spellings:
+      - status
+      - state
+    - name: id
+      tier: extended
+      providers: 12
+      share: 0.387
+      type: string
+      spellings:
+      - id
+      - trackingId
+      - GUID
+      - shipmentId
+      - shipment_id
+      - _id
+      - externalId
+    - name: reference
+      tier: extended
+      providers: 9
+      share: 0.29
+      type: string
+      spellings:
+      - tracking_number
+      - trackingNumber
+      - bookingNumber
+      - reference
+      - containerNumber
+    - name: created_at
+      tier: extended
+      providers: 7
+      share: 0.226
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+    - name: updated_at
+      tier: extended
+      providers: 7
+      share: 0.226
+      type: string
+      spellings:
+      - updated_at
+      - lastUpdated
+      - updatedAt
+    long_tail_count: 272
+    long_tail_sample:
+    - carrier
+    - events
+    - code
+    - location
+    - description
+    - eta
+    - name
+    - note
+    - attributes
+    - courier_code
+    - customer_name
+    - destination
+    - destination_country
+    - details
+    - event_type
+    - info
+    - latitude
+    - longitude
+    - metadata
+    - order_id
+    - order_number
+    - recipient
+    - signature_required
+    - source_id
+    - status_code
+    - tag
+    - tracking_code
+    - weight
+    - accepted
+    - account_code
+    - account_number
+    - actual_arrival
+    - actual_service_date
+    - additional_info
+    - adh_id
+    - announced_at
+    - attended_delivery
+    - authorized_to_load
+    - authorized_to_transport
+    - bag_activities
+  milestone_event:
+    segments_seen:
+      events: 6
+      milestones: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.5
+      tier: core
+    properties:
+    - name: event_type
+      tier: core
+      providers: 5
+      share: 1.0
+      type: string
+      spellings:
+      - event-type
+      - eventCode
+      - type
+      - eventType
+      - event_type
+    - name: location
+      tier: core
+      providers: 4
+      share: 0.8
+      type: object
+      spellings:
+      - location
+    - name: occurred_at
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - event-time
+      - eventTime
+      - eventDateTime
+      - timestamp
+    long_tail_count: 74
+    long_tail_sample:
+    - activity
+    - adh_id
+    - aircraft_parking_position
+    - aircraft_registration
+    - aircraft_type
+    - authorized_to_load
+    - authorized_to_transport
+    - bag_activities
+    - bag_id
+    - bag_segments
+    - bag_type
+    - baggage_claim_units
+    - bill_to_reference_number
+    - caption
+    - carrier
+    - check_in_desks
+    - class_of_travel
+    - codeshare_strings
+    - codeshares
+    - container_id
+    - correlation_id
+    - customer
+    - customer_reference_number
+    - date_time
+    - departure_or_arrival
+    - direction
+    - enriched
+    - equipment_reference
+    - event_classifier_code
+    - event_id
+    - exception
+    - flight_id
+    - flight_pax
+    - flight_segments
+    - flight_state
+    - identifier
+    - identifier_string
+    - inbound_segment
+    - is_international
+    - is_rush_bag
+  supplier:
+    segments_seen:
+      suppliers: 20
+      supplier: 3
+    providers_exposing: 22
+    providers_with_readable_schema: 21
+    operations:
+    - operation: GET collection
+      providers: 20
+      share: 0.909
+      tier: core
+    - operation: GET item
+      providers: 14
+      share: 0.636
+      tier: core
+    - operation: POST collection
+      providers: 12
+      share: 0.545
+      tier: core
+    - operation: UPDATE item
+      providers: 12
+      share: 0.545
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.182
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 18
+      share: 0.857
+      type: string
+      spellings:
+      - id
+      - supplierId
+      - external_id
+      - externalId
+      - uuid
+      - GUID
+    - name: name
+      tier: core
+      providers: 18
+      share: 0.857
+      type: string
+      spellings:
+      - name
+      - title
+      - display-name
+    - name: status
+      tier: extended
+      providers: 10
+      share: 0.476
+      type: string
+      spellings:
+      - status
+      - state
+    - name: created_at
+      tier: extended
+      providers: 9
+      share: 0.429
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - createdDate
+      - created
+      - created-at
+      - created_date
+    - name: country
+      tier: extended
+      providers: 7
+      share: 0.333
+      type: string
+      spellings:
+      - country
+      - country_code
+      - countryCode
+    - name: address
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: object
+      spellings:
+      - address
+    - name: updated_at
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: string
+      spellings:
+      - updated_at
+      - updated-at
+      - modified_at
+      - updated
+      - updatedAt
+    - name: website
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: string
+      spellings:
+      - website
+    - name: description
+      tier: extended
+      providers: 5
+      share: 0.238
+      type: string
+      spellings:
+      - description
+      - Description
+    - name: email
+      tier: extended
+      providers: 5
+      share: 0.238
+      type: string
+      spellings:
+      - email
+    long_tail_count: 433
+    long_tail_sample:
+    - primary_contact
+    - type
+    - category
+    - city
+    - contacts
+    - currency
+    - number_of_employees
+    - tax_id
+    - zip
+    - annual_revenue
+    - certifications
+    - code
+    - commodity_codes
+    - company
+    - created_by
+    - diversity_classifications
+    - doing_business_as
+    - duns
+    - duns_number
+    - first_name
+    - incoterms
+    - last_modified_date
+    - last_name
+    - payment_method
+    - phone
+    - phone_number
+    - priority
+    - qualification_status
+    - registration_status
+    - risk_score
+    - sku
+    - supplier_type
+    - tags
+    - warehouse_id
+    - warehouses
+    - year_established
+    - account_form_required
+    - account_number
+    - account_status
+    - activity_type

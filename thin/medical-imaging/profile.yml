@@ -1,0 +1,80 @@
+context: medical-imaging
+name: Medical Imaging
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Medical Imaging
+  - Radiology
+  - DICOM
+  - PACS
+  - Imaging AI
+  providers_with_harvested_openapi: 11
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  imaging_study:
+    segments_seen:
+      studies: 2
+      study: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 4
+    long_tail_sample:
+    - detailed_info
+    - messages
+    - series_instance_uids
+    - status
+  series:
+    segments_seen:
+      series: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 0
+    operations:
+    - operation: DELETE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  imaging_report:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

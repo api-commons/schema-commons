@@ -1,0 +1,198 @@
+context: pricing
+name: Pricing and Price Lists
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Pricing
+  - Price Optimization
+  - Dynamic Pricing
+  - Price Monitoring
+  - Revenue Management
+  - Monetization
+  providers_with_harvested_openapi: 66
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  price:
+    segments_seen:
+      prices: 9
+      price: 4
+      rates: 1
+    providers_exposing: 11
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 10
+      share: 0.909
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.273
+      tier: extended
+    - operation: GET item
+      providers: 3
+      share: 0.273
+      tier: extended
+    - operation: POST collection
+      providers: 2
+      share: 0.182
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.182
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.182
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.091
+      tier: long-tail
+    properties:
+    - name: currency
+      tier: core
+      providers: 6
+      share: 0.667
+      type: string
+      spellings:
+      - currency
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - createdDate
+    - name: id
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - id
+      - priceListId
+      - price_id
+    - name: unit
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - unit
+    - name: product
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - itemId
+      - product_id
+      - productId
+    long_tail_count: 83
+    long_tail_sample:
+    - metadata
+    - name
+    - period
+    - resolution
+    - updated_at
+    - attributes
+    - available_from
+    - available_until
+    - bidding_zone
+    - billing_scheme
+    - buy
+    - cache_read_usd_per_million
+    - cache_write_usd_per_million
+    - channel_id
+    - country
+    - created_by
+    - deleted
+    - deprecated
+    - effective_from
+    - effective_value
+    - end_at
+    - endpoint
+    - from
+    - generated_at
+    - input_usd_per_million
+    - interval
+    - interval_minutes
+    - is_active
+    - is_deleted
+    - is_out_of_range
+    - item_sku
+    - items
+    - license
+    - license_info
+    - list
+    - meter_event_name
+    - meter_event_payload_key
+    - meter_id
+    - min_quantity
+    - modified_by
+  price_list:
+    segments_seen:
+      pricelists: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: DELETE collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 15
+    long_tail_sample:
+    - assignments
+    - created_at
+    - created_by
+    - currency
+    - description
+    - from
+    - id
+    - modified_by
+    - modified_date
+    - name
+    - op
+    - outer_id
+    - path
+    - prices
+    - priority
+  competitor_price:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

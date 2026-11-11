@@ -3,6 +3,7 @@
 # One context, end to end, after its concepts.yml is written:
 #   context.sh run <ctx>      cohort -> census -> build -> lint, then duplicates + review
 #   context.sh finish <ctx>   README from concepts.yml, rebuild, index, lint, local commit
+#   context.sh thin <ctx>     findings checked, measurement recorded in the hub (thin/), no repo
 set -euo pipefail
 HUB="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$HUB/../$2"
@@ -36,4 +37,17 @@ s = re.sub(rf"(- context: {re.escape(ctx)}\n  name: [^\n]*\n  status:) planned",
 open(p, "w").write(s)
 PY
     ;;
+  thin)
+    # Measured and not published: no repo. The record lives in the hub (thin/<ctx>/), because
+    # a context folder outside git is lost with the machine. Findings are checked like any other.
+    python3 "$HUB/scripts/check-findings.py" "$2" --strict || { echo "findings drifted -- fix concepts.yml findings, then thin again"; exit 1; }
+    mkdir -p "$HUB/thin/$2" && cp concepts.yml profile.yml "$HUB/thin/$2/"
+    python3 - "$HUB/contexts.yml" "$2" <<'PY'
+import sys, re
+p, ctx = sys.argv[1], sys.argv[2]
+s = open(p).read()
+s = re.sub(rf"(- context: {re.escape(ctx)}\n  name: [^\n]*\n  status:) planned", r"\1 thin", s)
+open(p, "w").write(s)
+PY
+    echo "thin: $2 (recorded in thin/$2)" ;;
 esac

@@ -1,0 +1,28 @@
+context: content-moderation
+name: Content Moderation
+intro: >-
+  The common content-moderation vocabulary -- a moderation check of text, an image or a video, the
+  categories and scores it returns, and the review decisions taken on it -- distilled from the APIs that already exist.
+tags: [Content Moderation, Trust and Safety, Moderation, Brand Safety, Online Safety]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, request_id, check_id]
+  created_at: [created, created_date, create_time, timestamp]
+  status: [state]
+concepts:
+  moderation_check:
+    path: /moderation-checks
+    segments: [moderations, moderation, moderate, check, checks, classify, screen, scan, analyze, text@moderation|moderate, image@moderation|moderate]
+    aliases:
+      flagged: [is_flagged, blocked, safe, is_safe, unsafe]
+      categories: [labels, classes, category, moderation_labels]
+      scores: [category_scores, confidence, score, probabilities]
+      content: [text, input, url, image_url, media_url]
+  review_decision:
+    path: /review-decisions
+    segments: [decisions, decision, reviews@moderation|queue, queue, queues, reports@moderation, appeals]
+
+findings:
+  - "Content moderation is not published in a common shape: in a 32-provider cohort, moderation checks at 7 readable providers agree only on status and user_id; the categories and scores they return are each vendor's own taxonomy. Review decisions are readable at 4 providers. The flagged-categories-scores response that many LLM moderation endpoints copy belongs to the inference interface in api-commons/models."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

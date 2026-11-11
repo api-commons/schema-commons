@@ -1,0 +1,412 @@
+context: personalization
+name: Personalization and Recommendations
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Personalization
+  - Recommendations
+  - Recommendation Engine
+  - A/B Testing
+  - Experimentation
+  - Customer Data Platform
+  providers_with_harvested_openapi: 107
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  recommendation:
+    segments_seen:
+      recommendations: 11
+      related: 5
+      similar: 5
+      recommendation: 2
+    providers_exposing: 20
+    providers_with_readable_schema: 17
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.55
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 0.35
+      tier: extended
+    - operation: GET item
+      providers: 1
+      share: 0.05
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.05
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 9
+      share: 0.529
+      type: string
+      spellings:
+      - id
+      - experiment_id
+      - user_id
+      - externalId
+    - name: name
+      tier: extended
+      providers: 6
+      share: 0.353
+      type: string
+      spellings:
+      - name
+      - title
+    - name: status
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: string
+      spellings:
+      - status
+    long_tail_count: 148
+    long_tail_sample:
+    - locale
+    - sort
+    - type
+    - country
+    - description
+    - displays
+    - dsid
+    - error
+    - filters
+    - language
+    - market
+    - merchant
+    - metadata
+    - overview
+    - popularity
+    - query
+    - score
+    - session_id
+    - tenant
+    - updated_at
+    - variant
+    - ab_test_id
+    - ab_test_variant_id
+    - adult
+    - algorithm
+    - all_user_actions
+    - applied_rules
+    - around_lat_lng
+    - artists
+    - automatic_insights
+    - automatic_radius
+    - available_countries
+    - available_translations
+    - backdrop_path
+    - catalog
+    - category
+    - certification
+    - client_id
+    - comment_count
+    - computed_at
+  interaction:
+    segments_seen:
+      interactions: 4
+      feedback: 3
+      ratings: 1
+    providers_exposing: 8
+    providers_with_readable_schema: 7
+    operations:
+    - operation: POST collection
+      providers: 7
+      share: 0.875
+      tier: core
+    - operation: GET collection
+      providers: 5
+      share: 0.625
+      tier: core
+    - operation: UPDATE item
+      providers: 2
+      share: 0.25
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    properties:
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - createdAt
+      - timestamp
+      - createdDate
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - name
+    long_tail_count: 51
+    long_tail_sample:
+    - event_type
+    - user_id
+    - activities
+    - agent_id
+    - anonymous_id
+    - areas_for_improvement
+    - category
+    - comment
+    - context
+    - default_locale
+    - description
+    - difficulty_score
+    - distribution
+    - duration
+    - episodes
+    - exits
+    - feedback_id
+    - given
+    - goals
+    - ids
+    - inference_id
+    - key
+    - message_id
+    - miso_id
+    - model
+    - modified_date
+    - movies
+    - never_show
+    - notes
+    - organization_id
+    - position
+    - positive
+    - product_group_ids
+    - product_ids
+    - rating
+    - score
+    - seasons
+    - shows
+    - stats
+    - status
+  experiment:
+    segments_seen:
+      experiments: 12
+      experiment: 2
+    providers_exposing: 13
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 12
+      share: 0.923
+      tier: core
+    - operation: POST collection
+      providers: 12
+      share: 0.923
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.769
+      tier: core
+    - operation: UPDATE item
+      providers: 7
+      share: 0.538
+      tier: core
+    - operation: DELETE item
+      providers: 5
+      share: 0.385
+      tier: extended
+    - operation: DELETE collection
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 11
+      share: 0.917
+      type: string
+      spellings:
+      - id
+      - experimentId
+      - _id
+      - experiment_id
+      - uuid
+    - name: name
+      tier: core
+      providers: 11
+      share: 0.917
+      type: string
+      spellings:
+      - name
+      - title
+    - name: status
+      tier: core
+      providers: 11
+      share: 0.917
+      type: string
+      spellings:
+      - status
+      - state
+    - name: description
+      tier: core
+      providers: 8
+      share: 0.667
+      type: string
+      spellings:
+      - description
+    - name: created_at
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - created
+      - created_at
+    - name: type
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - type
+    - name: variations
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: array
+      spellings:
+      - variations
+      - variants
+    - name: metrics
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: array
+      spellings:
+      - metrics
+    - name: tags
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: array
+      spellings:
+      - tags
+    - name: created_by
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - createdBy
+      - created_by
+    - name: end_date
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - endDate
+      - end_date
+    - name: hypothesis
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - hypothesis
+    - name: key
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - key
+    - name: start_date
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - startDate
+      - start_date
+    - name: updated_at
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - updated_at
+      - updated
+    long_tail_count: 216
+    long_tail_sample:
+    - archived
+    - deleted
+    - holdout_id
+    - metadata
+    - project_id
+    - secondary_metrics
+    - traffic_allocation
+    - access
+    - activated
+    - activation_metric
+    - additional_details
+    - allocation_policy
+    - allow_unknown_events
+    - analysis
+    - analysis_config
+    - annotations
+    - api_version
+    - application_id
+    - archived_date
+    - assignment_query
+    - assignment_query_id
+    - attribute_scope_all_projects
+    - attribution_model
+    - audience_conditions
+    - auto_refresh
+    - bandit_burn_in_unit
+    - bandit_burn_in_value
+    - bandit_conversion_window_unit
+    - bandit_conversion_window_value
+    - bandit_schedule_unit
+    - bandit_schedule_value
+    - bucket_version
+    - bucketing_key
+    - bucketing_salt
+    - bypass_duplicate_key_check
+    - campaign
+    - campaign_id
+    - changes
+    - comment
+    - completed_on

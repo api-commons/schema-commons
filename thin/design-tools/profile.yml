@@ -1,0 +1,187 @@
+context: design-tools
+name: Design Tools
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Design
+  - Design Tools
+  - UI Design
+  - Graphic Design
+  - Prototyping
+  - Design Systems
+  providers_with_harvested_openapi: 27
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  design:
+    segments_seen:
+      files: 2
+      templates: 1
+      designs: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - key
+    - name: name
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - name
+      - title
+    - name: updated_at
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - modifiedAt
+      - updated_at
+      - last_modified
+    long_tail_count: 19
+    long_tail_sample:
+    - created_at
+    - owner
+    - thumbnail_url
+    - asset_id
+    - channels
+    - description
+    - design_type
+    - from
+    - labels
+    - modified_by
+    - op
+    - page_count
+    - parent_folder_id
+    - path
+    - self
+    - source
+    - sub_type
+    - template_type
+    - urls
+  design_component:
+    segments_seen:
+      components: 3
+      styles: 3
+      assets: 1
+      component_sets: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - id
+    long_tail_count: 18
+    long_tail_sample:
+    - created_at
+    - description
+    - updated_at
+    - content_type
+    - credits
+    - error
+    - format
+    - image
+    - journey_id
+    - latest_version
+    - metadata
+    - name
+    - section
+    - source
+    - status
+    - type
+    - user_id
+    - variant_properties
+  design_comment:
+    segments_seen:
+      comments: 3
+    providers_exposing: 3
+    providers_with_readable_schema: 2
+    operations:
+    - operation: POST collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    properties: []
+    long_tail_count: 16
+    long_tail_sample:
+    - created_at
+    - id
+    - user
+    - assignee_id
+    - attached_to
+    - client_meta
+    - comment_id
+    - error
+    - mentions
+    - order_id
+    - parent_id
+    - reactions
+    - resolved_at
+    - status
+    - type
+    - updated_at

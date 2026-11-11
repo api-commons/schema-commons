@@ -1,0 +1,252 @@
+context: seo
+name: SEO
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - SEO
+  - Search Engine Optimization
+  - Keyword Research
+  - Backlinks
+  - SERP
+  - Rank Tracking
+  providers_with_harvested_openapi: 51
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  keyword:
+    segments_seen:
+      keywords: 5
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: clicks
+      tier: core
+      providers: 3
+      share: 0.75
+      type: integer
+      spellings:
+      - clicks
+    long_tail_count: 96
+    long_tail_sample:
+    - id
+    - offset
+    - position
+    - top_url
+    - accepted_payment
+    - account_id
+    - blended_rank
+    - blended_rank_diff
+    - blended_rank_diffpercent
+    - city
+    - clicks_diff
+    - clicks_diffpercent
+    - compare_time_range
+    - competition
+    - connection_id
+    - cpc
+    - cpc_high_bid
+    - cpc_low_bid
+    - created_at
+    - ctr
+    - current_domain_filter
+    - device
+    - difficulty
+    - domain_id
+    - domain_presence_filter
+    - domain_presence_product_grids_count
+    - domain_presence_top_grid_rank
+    - domain_presence_top_grid_rank_diff
+    - domain_presence_top_grid_rank_prev
+    - estimate_only
+    - filters
+    - frequency
+    - fresh
+    - funding_source
+    - grid_presence_ratio
+    - group_titles
+    - impressions
+    - intent
+    - is_branded
+    - is_lr_enhancement_enabled
+  serp_ranking:
+    segments_seen:
+      ranking: 1
+      rankings: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 5
+    long_tail_sample:
+    - error
+    - genre_id
+    - ok
+    - period
+    - type
+  backlink:
+    segments_seen:
+      backlinks: 4
+      refdomains: 2
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties: []
+    long_tail_count: 43
+    long_tail_sample:
+    - domain
+    - anchor
+    - cached
+    - cached_until
+    - cg_authority
+    - cg_rank
+    - cost_cents
+    - dofollow_linked_domains
+    - dofollow_links
+    - dofollow_refdomains
+    - domain_rating
+    - domain_source
+    - domain_target
+    - estimate
+    - estimated_cost_cents
+    - first_seen
+    - harmonic_centrality
+    - include_subdomains
+    - ip_source
+    - is_root_domain
+    - is_spam
+    - last_found_date
+    - last_seen
+    - limit
+    - links_to_target
+    - lost_links
+    - new_links
+    - page_authority
+    - payment
+    - payment_options
+    - positions_source_domain
+    - provider
+    - release_id
+    - release_label
+    - returned
+    - sort
+    - target_scope
+    - total_linking_domains
+    - traffic_domain
+    - url
+  site_audit:
+    segments_seen:
+      audit: 3
+      audits: 3
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties: []
+    long_tail_count: 39
+    long_tail_sample:
+    - campaign_id
+    - id
+    - status
+    - audit_id
+    - audit_type
+    - audited_at
+    - campaign_name
+    - campaign_run_id
+    - citation_rank_value
+    - completed_at
+    - cost
+    - country
+    - created_at
+    - fan_query_id
+    - graph_name
+    - group_position
+    - intent
+    - keyword
+    - language
+    - linking_customer_id
+    - linking_id
+    - linking_name
+    - parent_run_id
+    - path
+    - result_count
+    - scope
+    - search_console
+    - siguranta
+    - source_fan_query_run_id
+    - strategii_probleme
+    - strategii_scoruri
+    - tasks_count
+    - tasks_error
+    - teren
+    - time
+    - url
+    - user_url
+    - version
+    - virustotal

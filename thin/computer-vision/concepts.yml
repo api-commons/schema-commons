@@ -1,0 +1,30 @@
+context: computer-vision
+name: Computer Vision
+intro: >-
+  The common computer-vision vocabulary -- an image analysis request and the detections, labels and
+  bounding boxes it returns -- distilled from the APIs that already exist.
+tags: [Computer Vision, Image Recognition, Object Detection, Facial Recognition, Image Analysis, Visual AI, Video Analytics]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, outputs, responses]
+
+common_fields:
+  id: [uuid, guid, external_id, task_id, job_id, request_id]
+  created_at: [created, created_date, create_time, timestamp]
+  status: [state]
+
+concepts:
+  detection:
+    segments: [detect, detections, detection, predict, predictions, analyze, analysis, recognize, recognition, classify, classification, labels, objects, faces, tags@images|image]
+    aliases:
+      label: [name, class, class_name, tag, description, category]
+      confidence: [score, probability, prob]
+      bounding_box: [bbox, box, bounding_poly, region, boundingbox, rectangle, bounds]
+  vision_model:
+    path: /vision-models
+    segments: [models, model, datasets, projects@vision|cv]
+
+findings:
+  - "Computer vision is not published in a common resource shape: in a 73-provider cohort, detections at 14 readable providers agree only on a label (50%), with the bounding box at 36% and the confidence below a third. Results nest inside per-feature response arrays (labels, faces, objects, text), so detections are a response, not a resource. The vision models and datasets the platforms expose are the generic model registry measured under mlops."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

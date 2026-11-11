@@ -1,0 +1,225 @@
+context: climate
+name: Climate and Emissions
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Climate
+  - Climate Tech
+  - Climate Risk
+  - Air Quality
+  - Environmental Data
+  - Emissions
+  - Cleantech
+  providers_with_harvested_openapi: 79
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  air_quality:
+    segments_seen:
+      airquality: 3
+      measurements: 3
+      pollutants: 1
+      air_quality: 1
+      air-quality: 1
+    providers_exposing: 9
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 0.778
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.333
+      tier: extended
+    - operation: POST collection
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    properties:
+    - name: measured_at
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - date
+      - time
+      - timestamp
+    long_tail_count: 71
+    long_tail_sample:
+    - humidity
+    - latitude
+    - longitude
+    - pm25
+    - temperature
+    - timezone
+    - aerosol_550
+    - battery
+    - category
+    - category_color
+    - city_name
+    - co2
+    - co_surface
+    - country_code
+    - current
+    - current_units
+    - day_of_week
+    - day_of_week_abbreviated
+    - dew_point
+    - display_date
+    - display_time
+    - dt
+    - dummy
+    - dust_550nm
+    - dust_mixing_ratio_05
+    - elevation
+    - entity_id
+    - entity_type
+    - error
+    - feels_like
+    - generationtime_ms
+    - hazard_statement
+    - heat_index
+    - hourly
+    - hourly_units
+    - humidex
+    - id
+    - measure_name
+    - measure_value
+    - msid
+  climate_risk:
+    segments_seen:
+      hazards: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 2
+    long_tail_sample:
+    - entities_total_match
+    - entity_items
+  monitoring_station:
+    segments_seen:
+      stations: 6
+      station: 1
+      sensors: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.571
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.286
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 6
+      share: 0.857
+      type: string
+      spellings:
+      - name
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - id
+      - '@id'
+      - external_id
+      - stationId
+    - name: elevation
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: object
+      spellings:
+      - elevation
+    - name: latitude
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: number
+      spellings:
+      - latitude
+      - lat
+    - name: longitude
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: number
+      spellings:
+      - longitude
+      - lng
+    long_tail_count: 38
+    long_tail_sample:
+    - bearing
+    - context
+    - county
+    - distance
+    - fire_weather_zone
+    - forecast
+    - geometry
+    - properties
+    - provider
+    - state
+    - station_identifier
+    - sub_provider
+    - time_zone
+    - type
+    - altitude
+    - begin_date
+    - city
+    - country
+    - county_code
+    - created_at
+    - current
+    - end_date
+    - facility_id
+    - forecasts
+    - history
+    - huc
+    - location
+    - manufacturer
+    - measurement_property
+    - model
+    - network_code
+    - project_id
+    - rank
+    - reference
+    - source
+    - storage_location_id
+    - units
+    - updated_at

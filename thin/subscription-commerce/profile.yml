@@ -1,0 +1,124 @@
+context: subscription-commerce
+name: Subscription Commerce
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Subscription Commerce
+  - Subscription Boxes
+  - Recurring Orders
+  - Subscribe and Save
+  - Subscription
+  - E-Commerce
+  - Shopify
+  providers_with_harvested_openapi: 413
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  scheduled_order:
+    segments_seen:
+      orders: 3
+      charge: 2
+      onetimes: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.833
+      type: integer
+      spellings:
+      - id
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - created_at
+    - name: status
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - status
+    - name: total
+      tier: core
+      providers: 3
+      share: 0.5
+      type: number
+      spellings:
+      - totalPrice
+      - total_amount
+      - price
+    long_tail_count: 51
+    long_tail_sample:
+    - address_id
+    - currency
+    - subscription_id
+    - updated_at
+    - activated
+    - adaptive_currency_fees_inclusive
+    - base_currency
+    - base_to_charged_exchange_rate
+    - billing_cycle
+    - cancel_reason
+    - company
+    - contract
+    - currency_code
+    - current_billing_period
+    - custom_attributes
+    - customer_id
+    - discount
+    - discount_id
+    - embedded
+    - end_date
+    - end_of_discount_date
+    - frequency
+    - is_multi_currency
+    - line_items
+    - next_billed_at
+    - next_billing_date
+    - next_order
+    - one_time_orders
+    - order
+    - order_id
+    - order_lines
+    - parameters
+    - parent_subscription_id
+    - payment_plan
+    - payment_plan_id
+    - placement_time
+    - previous_order
+    - product_price
+    - product_title
+    - quantity

@@ -1,0 +1,129 @@
+context: mobile-attribution
+name: Mobile Attribution
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Attribution
+  - Mobile Attribution
+  - Mobile Measurement
+  - Deep Linking
+  - Mobile Marketing
+  - App Marketing
+  providers_with_harvested_openapi: 39
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  deep_link:
+    segments_seen:
+      shortlinks: 1
+      trackers: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 19
+    long_tail_sample:
+    - ad
+    - ad_group
+    - attribution_window
+    - brand_domain
+    - campaign
+    - cost_amount
+    - cost_currency
+    - cost_model
+    - destination_url
+    - game_id
+    - impression_attribution_window
+    - influencer
+    - name
+    - network
+    - referral_code
+    - shortlink_id
+    - shortlink_url
+    - team_id
+    - ttl
+  attributed_event:
+    segments_seen:
+      conversions: 3
+      postbacks: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: status
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - Status
+      - status
+    long_tail_count: 53
+    long_tail_sample:
+    - queued_uri
+    - action_id
+    - advertiser
+    - android_id
+    - browser
+    - city
+    - click_time
+    - clickid
+    - comment
+    - country
+    - created_at
+    - currency
+    - custom_field_1
+    - custom_field_2
+    - custom_field_3
+    - custom_field_4
+    - custom_field_5
+    - custom_field_6
+    - custom_field_7
+    - decline_reason
+    - device
+    - district
+    - earnings
+    - forced
+    - forensiq
+    - fraud_risk_level
+    - fraud_type
+    - goal
+    - goal_value
+    - hold_date_expire
+    - id
+    - integration_method
+    - ios_idfa
+    - ip
+    - is_paid
+    - media_source
+    - offer
+    - offer_id
+    - os
+    - payment_status

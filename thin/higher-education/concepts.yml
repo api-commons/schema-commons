@@ -1,0 +1,44 @@
+context: higher-education
+name: Higher Education
+intro: >-
+  The common student-information vocabulary -- students, the courses and sections offered each term,
+  enrollments, and applications for admission -- distilled from the APIs that already exist.
+tags: [Higher Education, University, Universities, Student Information Systems, Admissions, College, Education]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, student_id, course_id, section_id, term_id, application_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_modified]
+  status: [state]
+  name: [title, display_name, full_name]
+concepts:
+  student:
+    segments: [students, student, learners@university, persons@sis]
+    aliases:
+      email: [email_address, primary_email]
+      first_name: [given_name, firstname]
+      last_name: [family_name, surname, lastname]
+      student_number: [student_id_number, sis_id, banner_id]
+  course_section:
+    path: /course-sections
+    segments: [sections, section, course_sections, classes, offerings@courses|terms]
+    aliases:
+      term: [term_id, academic_period, semester, session]
+      instructor: [instructors, instructor_id, teacher]
+      capacity: [max_enrollment, enrollment_cap, seats]
+  term:
+    segments: [terms, term, academic_periods, semesters, sessions@academic|university]
+    aliases:
+      start_date: [start, start_on, begin_date]
+      end_date: [end, end_on]
+  admission_application:
+    path: /admission-applications
+    segments: [applications@admissions|students|university|programs, admissions, applicants, applications]
+    aliases:
+      program: [program_id, major, intended_major]
+      decision: [admission_decision, outcome]
+
+findings:
+  - "Higher education publishes little in a common student-information shape: in a 164-provider cohort (mostly universities), students at 7 readable providers agree only on an id; course sections at 9 agree on id and name; terms agree on a name. Student-information systems keep their APIs institution-gated, and learning management is already measured in lms. The 1EdTech standards (OneRoster, LIS) and Ed-Fi are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

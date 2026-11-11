@@ -1,0 +1,33 @@
+context: mobile-attribution
+name: Mobile Attribution
+intro: >-
+  The common mobile-measurement vocabulary -- the apps measured, the attributed installs and in-app
+  events, and the deep links and tracking links that drive them -- distilled from the APIs that already exist.
+tags: [Attribution, Mobile Attribution, Mobile Measurement, Deep Linking, Mobile Marketing, App Marketing]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, app_id, link_id]
+  created_at: [created, created_date, create_time, install_time, event_time, timestamp]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  deep_link:
+    path: /deep-links
+    segments: [links, link, deeplinks, deep_links, deep-links, tracking_links, trackers, shortlinks]
+    aliases:
+      url: [long_url, destination, deep_link_url, short_url, link]
+      campaign: [campaign_name, utm_campaign, ~campaign]
+      channel: [media_source, source, utm_source, ~channel]
+  attributed_event:
+    path: /attributed-events
+    segments: [installs, install, events@apps|app|attribution, conversions, attributions, raw_data, postbacks]
+    aliases:
+      event_name: [event, name, event_type]
+      media_source: [network, partner, channel, source]
+      campaign: [campaign_name]
+
+findings:
+  - "Mobile attribution publishes almost no readable resource schemas: 39 providers with 580 specs, yet deep links are readable at 2 and attributed events at 3. Measurement platforms deliver data as raw-data exports, postbacks and query-parameter reports, not REST resources, and attribution is converging on the platform frameworks (SKAdNetwork, AdAttributionKit, Privacy Sandbox)."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

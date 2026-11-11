@@ -1,0 +1,44 @@
+context: parking
+name: Parking
+intro: >-
+  The common parking vocabulary -- the facilities, their availability, and the parking sessions and
+  reservations made in them -- distilled from the APIs that already exist.
+tags: [Parking, Parking Management, Smart Parking, Parking Payments, EV Charging, Tolling]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links,
+           value, results, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, facility_id, zone_id, location_id]
+  created_at: [created, created_date, date_created, creation_date]
+  updated_at: [updated, modified_at, last_modified, modified]
+  status: [state]
+  start_at: [start, start_time, starts_at, entry_time, arrival]
+  end_at: [end, end_time, ends_at, exit_time, departure, expires_at]
+
+concepts:
+  parking_facility:
+    path: /parking-facilities
+    segments: [facilities, facility, lots, garages, parking_lots, zones@parking, locations@parking, car_parks, carparks, spaces]
+    aliases:
+      latitude: [lat]
+      longitude: [lng, lon]
+      capacity: [total_spaces, spaces, total_capacity]
+  parking_session:
+    path: /parking-sessions
+    segments: [sessions@parking, parking_sessions, parkings, permits, tickets@parking]
+    aliases:
+      license_plate: [plate, plate_number, vrm, lpn]
+      amount: [price, cost, fee, total]
+  parking_reservation:
+    path: /parking-reservations
+    segments: [reservations, reservation, bookings, booking]
+    aliases:
+      license_plate: [plate, plate_number, vrm]
+      amount: [price, cost, total]
+
+findings:
+  - "Parking is not published in a common shape: in a 32-provider cohort, one facility schema is
+    readable, no parking sessions are exposed, and reservations at 4 providers share only a status."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

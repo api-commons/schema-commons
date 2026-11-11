@@ -1,0 +1,295 @@
+context: computer-vision
+name: Computer Vision
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Computer Vision
+  - Image Recognition
+  - Object Detection
+  - Facial Recognition
+  - Image Analysis
+  - Visual AI
+  - Video Analytics
+  providers_with_harvested_openapi: 73
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  detection:
+    segments_seen:
+      labels: 4
+      detect: 4
+      recognize: 3
+      classify: 3
+      classification: 3
+      predictions: 3
+      detection: 2
+      predict: 2
+      tags: 1
+      analyze: 1
+      detections: 1
+    providers_exposing: 15
+    providers_with_readable_schema: 14
+    operations:
+    - operation: POST collection
+      providers: 11
+      share: 0.733
+      tier: core
+    - operation: GET collection
+      providers: 5
+      share: 0.333
+      tier: extended
+    - operation: GET item
+      providers: 2
+      share: 0.133
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.133
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.067
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.067
+      tier: long-tail
+    properties:
+    - name: label
+      tier: core
+      providers: 7
+      share: 0.5
+      type: string
+      spellings:
+      - label
+      - name
+      - class_name
+      - description
+      - class
+    - name: bounding_box
+      tier: extended
+      providers: 5
+      share: 0.357
+      type: object
+      spellings:
+      - box
+      - region
+      - bounding_box
+      - boundingBox
+    - name: confidence
+      tier: extended
+      providers: 4
+      share: 0.286
+      type: number
+      spellings:
+      - confidence
+      - score
+      - probability
+    - name: image
+      tier: extended
+      providers: 4
+      share: 0.286
+      type: string
+      spellings:
+      - image
+    - name: id
+      tier: extended
+      providers: 3
+      share: 0.214
+      type: integer
+      spellings:
+      - id
+      - task_id
+    - name: threshold
+      tier: extended
+      providers: 3
+      share: 0.214
+      type: number
+      spellings:
+      - threshold
+    - name: type
+      tier: extended
+      providers: 3
+      share: 0.214
+      type: string
+      spellings:
+      - type
+    long_tail_count: 180
+    long_tail_sample:
+    - attributes
+    - color
+    - height
+    - model
+    - prediction
+    - prompt
+    - start
+    - status
+    - width
+    - x
+    - y
+    - action
+    - actions
+    - age
+    - all_media
+    - amazon
+    - anomaly_result
+    - anomaly_scores
+    - anti_spoofing
+    - antispoof_score
+    - attributes_as_list
+    - audio
+    - bounding_boxes
+    - boxes
+    - camera_gps
+    - chin_tip_x
+    - chin_tip_y
+    - class_id
+    - classes
+    - coactive_image_id
+    - concept_id
+    - config
+    - construction_zone
+    - construction_zone_elements
+    - context
+    - created_at
+    - created_at_millis
+    - created_dt
+    - created_user_id
+    - credentials
+  vision_model:
+    segments_seen:
+      models: 11
+      datasets: 10
+      model: 1
+    providers_exposing: 17
+    providers_with_readable_schema: 17
+    operations:
+    - operation: GET collection
+      providers: 16
+      share: 0.941
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.588
+      tier: core
+    - operation: POST collection
+      providers: 10
+      share: 0.588
+      tier: core
+    - operation: DELETE item
+      providers: 7
+      share: 0.412
+      tier: extended
+    - operation: UPDATE item
+      providers: 4
+      share: 0.235
+      tier: extended
+    - operation: DELETE collection
+      providers: 2
+      share: 0.118
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.059
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.059
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 13
+      share: 0.765
+      type: string
+      spellings:
+      - id
+      - _id
+    - name: created_at
+      tier: core
+      providers: 11
+      share: 0.647
+      type: string
+      spellings:
+      - created_at
+      - created
+      - createdAt
+      - createdDate
+    - name: name
+      tier: core
+      providers: 10
+      share: 0.588
+      type: string
+      spellings:
+      - name
+    - name: description
+      tier: extended
+      providers: 7
+      share: 0.412
+      type: string
+      spellings:
+      - description
+    - name: status
+      tier: extended
+      providers: 7
+      share: 0.412
+      type: string
+      spellings:
+      - status
+      - state
+    - name: owned_by
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: string
+      spellings:
+      - owned_by
+    long_tail_count: 184
+    long_tail_sample:
+    - created_by
+    - updated_at
+    - capabilities
+    - display_name
+    - metadata
+    - model_id
+    - model_name
+    - progress
+    - source
+    - task
+    - task_type
+    - type
+    - updated_by
+    - url
+    - user_id
+    - address
+    - algorithm_type
+    - alias_of
+    - allowed_asset_types
+    - app_id
+    - author
+    - available
+    - backend_type
+    - billing_type
+    - bookmark_origin
+    - card_data
+    - category
+    - check_consents
+    - class_map
+    - cleanup_attempts
+    - cleanup_error
+    - cleanup_next_retry_at
+    - code
+    - collection
+    - collections
+    - config_location
+    - config_revision
+    - context_length
+    - cost_per_second
+    - created_dt

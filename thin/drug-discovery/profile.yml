@@ -1,0 +1,221 @@
+context: drug-discovery
+name: Drug Discovery
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Drug Discovery
+  - Pharmaceuticals
+  - Cheminformatics
+  - Biotechnology
+  - Therapeutics
+  - Biopharmaceutical
+  - Drug Development
+  providers_with_harvested_openapi: 59
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  compound:
+    segments_seen:
+      molecules: 3
+      compounds: 3
+      structures: 1
+      molecule: 1
+      drugs: 1
+      substances: 1
+      smiles: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.571
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: id
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - id
+      - chembl_id
+    - name: name
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - name
+      - pref_name
+    - name: smiles
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - canonicalSmiles
+      - canonical_smiles
+      - structure
+    long_tail_count: 83
+    long_tail_sample:
+    - created_at
+    - item
+    - token
+    - updated_at
+    - aliases
+    - alogp
+    - api_url
+    - archive_reason
+    - archive_record
+    - archived
+    - atom_chiral_count
+    - atom_chiral_def_count
+    - author_ids
+    - authors
+    - batches
+    - bond_chiral_count
+    - bond_chiral_def_count
+    - bond_chiral_undef_count
+    - canonicalized_smiles
+    - chembl_cmpd_xref
+    - chemical_structure
+    - chirality
+    - cid
+    - cids
+    - class
+    - collections
+    - covalent_unit_count
+    - creator
+    - custom_fields
+    - duplicate_resolution
+    - entity_registry_id
+    - fields
+    - files
+    - finger_print
+    - folder
+    - folder_id
+    - heavy_atoms_count
+    - identifier
+    - inchi_key
+    - isotope_atom_count
+  target:
+    segments_seen:
+      proteins: 3
+      protein: 1
+      targets: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: UPDATE item
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties: []
+    long_tail_count: 46
+    long_tail_sample:
+    - item
+    - token
+    - aliases
+    - archive_reason
+    - archived
+    - author_ids
+    - authors
+    - chains
+    - chromosome
+    - created_at
+    - creator
+    - crossreferences
+    - custom_fields
+    - domains
+    - ec_numbers
+    - entity_registry_id
+    - features
+    - folder
+    - folder_id
+    - format
+    - full_history
+    - full_name
+    - genes
+    - history
+    - id
+    - interactions
+    - length
+    - mass
+    - name
+    - naming_strategy
+    - out_of_sync
+    - out_of_sync_reason
+    - page_meta
+    - project
+    - registration_origin
+    - registry
+    - registry_id
+    - schema
+    - schema_fields
+    - schema_id
+  assay:
+    segments_seen:
+      activities: 1
+      assays: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 13
+    long_tail_sample:
+    - assay_chembl_id
+    - assay_organism
+    - assay_type
+    - confidence_score
+    - data_validity_comment
+    - id
+    - molecule_chembl_id
+    - pchembl_value
+    - standard_flag
+    - standard_relation
+    - target_chembl_id
+    - units
+    - value

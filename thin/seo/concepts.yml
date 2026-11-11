@@ -1,0 +1,47 @@
+context: seo
+name: SEO
+intro: >-
+  The common search-engine-optimization vocabulary -- keywords and their metrics, search rankings,
+  backlinks and site audits -- distilled from the APIs that already exist.
+tags: [SEO, Search Engine Optimization, Keyword Research, Backlinks, SERP, Rank Tracking]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, tasks,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, status_code, status_message]
+
+common_fields:
+  id: [uuid, guid, external_id, project_id, task_id]
+  created_at: [created, created_date, create_time, date_created]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+
+concepts:
+  keyword:
+    segments: [keywords, keyword, keyword_ideas, keyword_suggestions, related_keywords, search_volume, keywords_data]
+    aliases:
+      keyword: [term, query, phrase, kw]
+      search_volume: [volume, monthly_searches, avg_monthly_searches, sv]
+      difficulty: [keyword_difficulty, kd, competition_index, seo_difficulty]
+      cpc: [cost_per_click, avg_cpc]
+      location: [location_code, country, database, location_name]
+  serp_ranking:
+    path: /serp-rankings
+    segments: [rankings, ranking, positions, serp, serps, organic, rank_tracker, ranks]
+    aliases:
+      position: [rank, rank_absolute, rank_group, pos]
+      url: [link, landing_page, page]
+      keyword: [term, query, phrase]
+  backlink:
+    segments: [backlinks, backlink, links@domains|sites|backlinks|site, referring_domains, refdomains]
+    aliases:
+      url_from: [source_url, from, url_from, source, referring_page]
+      url_to: [target_url, to, url_to, target]
+      anchor: [anchor_text, text]
+      domain_rating: [domain_authority, dr, da, domain_rank]
+  site_audit:
+    path: /site-audits
+    segments: [audits, audit, site_audit, on_page, onpage, crawls@seo|audit]
+
+findings:
+  - "SEO data is not published in a common resource shape: in a 51-provider cohort, keywords appear at 4 readable providers, backlinks at 5 and audits at 5, with no shared property beyond clicks. SEO APIs post a task and return a deeply nested result object (task, result, items), so their metrics sit below the depth a resource census reads."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

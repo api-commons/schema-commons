@@ -1,0 +1,42 @@
+context: kubernetes
+name: Kubernetes and Clusters
+intro: >-
+  The common managed-Kubernetes vocabulary -- clusters, their node pools, and the namespaces and
+  workloads in them -- distilled from the platform APIs that already exist.
+tags: [Kubernetes, Containers, Container Orchestration, Cloud-Native, Platform Engineering, Microservices]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, items, kind, api_version]
+
+common_fields:
+  id: [uuid, guid, external_id, cluster_id, node_pool_id]
+  created_at: [created, created_date, create_time, creation_timestamp]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, phase]
+  name: [title, display_name]
+  labels: [tags]
+
+concepts:
+  k8s_cluster:
+    path: /k8s-clusters
+    segments: [clusters, cluster, kubernetes, k8s, kubernetes_clusters]
+    aliases:
+      version: [kubernetes_version, k8s_version, cluster_version]
+      region: [location, zone, datacenter]
+      endpoint: [api_endpoint, server, url]
+  node_pool:
+    requires: [k8s_cluster]
+    segments: [node_pools, nodepools, node-pools, pools@clusters|cluster, nodegroups, node_groups, workers@clusters|cluster]
+    aliases:
+      node_count: [count, size, nodes, desired_size, replicas]
+      instance_type: [size, machine_type, flavor, node_type, type, plan]
+      autoscaling: [auto_scale, autoscale]
+      min_nodes: [min_size, min_count, min_node_count]
+      max_nodes: [max_size, max_count, max_node_count]
+  namespace:
+    segments: [namespaces, namespace]
+
+findings:
+  - "Managed Kubernetes is not published in a common shape above the Kubernetes API itself: in a 296-provider cohort, clusters at 55 readable providers agree only on a name (id and status 46%, version 36%), and cluster is also the word for database and compute clusters in this cohort. Node pools agree on id, name, status and node_count, but at 7 providers. Workloads and namespaces are the Kubernetes API's own objects, a standard every platform passes through unchanged, so a standards pass over the Cluster API would be a better reference than a census."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

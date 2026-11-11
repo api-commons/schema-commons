@@ -1,0 +1,41 @@
+context: drug-discovery
+name: Drug Discovery
+intro: >-
+  The common drug-discovery vocabulary -- compounds and molecules, their biological targets, and the
+  assays and predictions run on them -- distilled from the APIs that already exist.
+tags: [Drug Discovery, Pharmaceuticals, Cheminformatics, Biotechnology, Therapeutics, Biopharmaceutical, Drug Development]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, compound_id, molecule_id, chembl_id, target_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  name: [title, display_name, pref_name, preferred_name]
+
+concepts:
+  compound:
+    segments: [compounds, compound, molecules, molecule, drugs, drug, substances, ligands, smiles, structures]
+    aliases:
+      smiles: [canonical_smiles, isomeric_smiles, structure]
+      inchi_key: [inchikey, standard_inchi_key]
+      molecular_weight: [mw, molecular_weight_freebase, mol_weight, full_mwt]
+      formula: [molecular_formula, full_molformula]
+  target:
+    segments: [targets, target, proteins, protein]
+    aliases:
+      organism: [species]
+      gene: [gene_symbol, gene_name]
+      uniprot_id: [accession, uniprot]
+  assay:
+    segments: [assays, assay, activities, activity@compounds|molecules|targets, bioactivities, experiments@assays]
+    aliases:
+      value: [standard_value, activity_value]
+      units: [standard_units, unit]
+      activity_type: [standard_type, type]
+
+findings:
+  - "Drug discovery publishes few harvested specs: in a 59-provider cohort, compounds are readable at 7 providers (id, name and SMILES each at 43%), targets at 4 and assays at 1. Most companies tagged here are drug developers with no public API. The open chemistry databases (ChEMBL, PubChem) carry the field's shared vocabulary, and their schemas are the reference."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

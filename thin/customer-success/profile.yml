@@ -1,0 +1,223 @@
+context: customer-success
+name: Customer Success
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Customer Success
+  - Customer Retention
+  - Churn
+  - Churn Prevention
+  - Customer Health
+  - NPS
+  - Customer Experience
+  - CSAT
+  providers_with_harvested_openapi: 65
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  health_score:
+    segments_seen:
+      health: 11
+      scorecards: 2
+    providers_exposing: 12
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.917
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.083
+      tier: long-tail
+    properties:
+    - name: status
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - status
+    - name: name
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - name
+    long_tail_count: 42
+    long_tail_sample:
+    - health_check
+    - id
+    - points
+    - version
+    - build_provenance
+    - business_lat
+    - business_lng
+    - business_unit_id
+    - categories
+    - confusion_info
+    - created_at
+    - db
+    - details
+    - environment
+    - evaluation_details
+    - exception_code
+    - flow_version_info
+    - groups
+    - hero_metrics
+    - issue_count
+    - language
+    - language_health
+    - max_points
+    - memory_usage
+    - metric
+    - objective
+    - outlier_info
+    - payload
+    - punctuality_events
+    - redis
+    - runtime_mode
+    - scan
+    - self_uri
+    - static_validation_results
+    - status_message
+    - task_status
+    - text
+    - timestamp
+    - updated_at
+    - uptime
+  nps_response:
+    segments_seen:
+      nps: 1
+      csat: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 20
+    long_tail_sample:
+    - agent_email
+    - agent_name
+    - comment_size
+    - comment_word_count
+    - conversation_channel
+    - conversation_source
+    - conversation_url
+    - csat_answered_at
+    - csat_comment
+    - csat_created_at
+    - csat_drivers
+    - csat_raw_score
+    - csat_reason
+    - customer_email
+    - customer_name
+    - external_ticket_id
+    - helpdesk_tags
+    - language
+    - score
+    - ticket_created_at
+  success_plan:
+    segments_seen:
+      ctas: 2
+      successplans: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 23
+    long_tail_sample:
+    - account_id
+    - closed_date
+    - comments
+    - company_name
+    - created_at
+    - due_date
+    - end_date
+    - id
+    - name
+    - owner_id
+    - owner_name
+    - playbook_id
+    - priority_id
+    - reason_id
+    - reason_name
+    - source
+    - start_date
+    - status
+    - status_id
+    - status_name
+    - type_id
+    - type_name
+    - updated_at
+  playbook:
+    segments_seen:
+      playbooks: 2
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 11
+    long_tail_sample:
+    - created_at
+    - description
+    - id
+    - name
+    - completed_at
+    - cta_type_id
+    - is_active
+    - is_completed
+    - order_index
+    - task_templates
+    - updated_at

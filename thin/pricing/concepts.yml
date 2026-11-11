@@ -1,0 +1,33 @@
+context: pricing
+name: Pricing and Price Lists
+intro: >-
+  The common pricing vocabulary -- price lists, the prices in them for each product, and the
+  competitor prices monitored against them -- distilled from the APIs that already exist.
+tags: [Pricing, Price Optimization, Dynamic Pricing, Price Monitoring, Revenue Management, Monetization]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, price_id, price_list_id, product_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_updated]
+  status: [state]
+  name: [title, display_name]
+  currency: [currency_code, currency_iso]
+concepts:
+  price:
+    segments: [prices, price, product_prices, price_points, rates@pricing]
+    aliases:
+      amount: [unit_amount, value, price, unit_price, list_price]
+      product: [product_id, sku, item_id]
+      valid_from: [start_date, effective_date, starts_at]
+      valid_to: [end_date, expiry_date, ends_at]
+  price_list:
+    path: /price-lists
+    segments: [price_lists, pricelists, price-lists, price_books, pricebooks, price_levels, rate_cards]
+  competitor_price:
+    path: /competitor-prices
+    segments: [competitors, competitor_prices, monitored_products, offers@pricing|monitoring, observations@pricing]
+
+findings:
+  - "Pricing adds no new common shape: in a 66-provider cohort, prices at 9 readable providers agree only on currency, price lists are readable at 1 and competitor prices at none. The price as a product's amount is already measured in billing (prices) and cpq (price books)."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

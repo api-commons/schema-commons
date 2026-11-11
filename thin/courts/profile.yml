@@ -1,0 +1,113 @@
+context: courts
+name: Courts and Case Records
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Courts
+  - Court Records
+  - Litigation
+  - Legal Data
+  - Case Law
+  - Judiciary
+  - Public Records
+  providers_with_harvested_openapi: 22
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  court_case:
+    segments_seen:
+      dockets: 2
+      opinions: 2
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 24
+    long_tail_sample:
+    - absolute_url
+    - author
+    - case_name_short
+    - case_number
+    - cluster
+    - court
+    - created_at
+    - date_last_filing
+    - date_terminated
+    - download_url
+    - html
+    - html_columbia
+    - html_lawbox
+    - html_with_citations
+    - id
+    - local_path
+    - name
+    - nature_of_suit
+    - opinions_cited
+    - pacer_case_id
+    - plain_text
+    - resource_uri
+    - type
+    - updated_at
+  docket_entry:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  court:
+    segments_seen:
+      courts: 1
+      jurisdictions: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 22
+    long_tail_sample:
+    - abbreviation
+    - citation_string
+    - end_date
+    - fjc_court_id
+    - full_name
+    - has_opinion_scraper
+    - has_oral_argument_scraper
+    - id
+    - in_use
+    - jurisdiction
+    - key
+    - laws
+    - name
+    - pacer_court_id
+    - position
+    - postal_abbreviation
+    - resource_uri
+    - short_name
+    - start_date
+    - status
+    - updated_at
+    - url

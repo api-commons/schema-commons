@@ -1,0 +1,38 @@
+context: telecommunications
+name: Telecommunications
+intro: >-
+  The common telecom-operator vocabulary -- the subscribers and their service lines, the network
+  capabilities exposed to developers (location, number verification, quality of service), and usage --
+  distilled from the APIs that already exist, CAMARA included.
+tags: [Telecommunications, Telecom, Mobile Network Operator, 5G, Network APIs, CAMARA, Carrier]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, subscriber_id, session_id, subscription_id]
+  created_at: [created, created_date, create_time, start_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, session_status]
+  phone_number: [msisdn, phonenumber, mdn, number]
+concepts:
+  subscriber:
+    segments: [subscribers, subscriber, customers@telecom|mobile, lines, services@subscribers|accounts]
+    aliases:
+      plan: [plan_id, rate_plan, tariff, product_offering]
+      imsi: [iccid, sim]
+  qos_session:
+    path: /qos-sessions
+    segments: [sessions@qos|quality-on-demand|quality_on_demand, qod, qos-sessions, qos_sessions]
+    aliases:
+      qos_profile: [qos, profile]
+      duration: [duration_seconds]
+      device: [ue_id, device_id]
+  network_check:
+    path: /network-checks
+    segments: [verify, verification@number|location, retrieve@location|sim-swap|sim_swap, check@sim-swap|sim_swap|device-status|roaming, sim-swap, sim_swap, device-status, number-verification, location-verification, location-retrieval, kyc-match]
+    aliases:
+      verification_result: [verified, result, swapped, roaming, matched]
+      max_age: [max_age_seconds]
+
+findings:
+  - "Telecom operators publish one shared shape, and it is a standard rather than market agreement: the network checks at 19 readable providers (number verification, SIM swap, location; phone_number, device_phone_number_verified, max_age) are the GSMA CAMARA APIs, which each operator republishes. Counted once, as a shared standard, nothing else is common: subscribers are readable at 2 providers in a 95-provider cohort, and quality-on-demand sessions at none. CAMARA is the reference; a standards pass should measure it directly."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

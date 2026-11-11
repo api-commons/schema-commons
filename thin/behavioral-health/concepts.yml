@@ -1,0 +1,36 @@
+context: behavioral-health
+name: Behavioral Health
+intro: >-
+  The common behavioral-health vocabulary -- clients, the therapy sessions or appointments held with
+  them, the clinicians who hold them, and the assessments they complete -- distilled from the APIs that already exist.
+tags: [Mental Health, Behavioral Health, Therapy, Teletherapy, Psychiatry, Wellbeing]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, client_id, session_id, clinician_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, full_name]
+concepts:
+  client:
+    segments: [clients, client, patients, patient, members, users@therapy|health]
+    aliases:
+      date_of_birth: [dob, birth_date, birthdate]
+      email: [email_address]
+      phone: [phone_number, mobile]
+  therapy_session:
+    path: /therapy-sessions
+    segments: [sessions, session, appointments, appointment, visits, encounters]
+    aliases:
+      start_at: [start, start_time, starts_at, scheduled_at, date]
+      end_at: [end, end_time, ends_at]
+      clinician: [clinician_id, provider_id, therapist_id, practitioner_id]
+  assessment:
+    segments: [assessments, assessment, questionnaires, screenings, surveys@health]
+    aliases:
+      score: [total_score, result]
+
+findings:
+  - "Behavioral health publishes few harvested specs: the cohort holds 17 providers. Clients at 5 readable providers agree on date_of_birth, name, email and phone -- the patient demographic core healthcare already holds -- and sessions are readable at 3. It is a specialty of healthcare, not a separate vocabulary; revisit as a healthcare extension if more platforms publish."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

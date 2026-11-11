@@ -1,0 +1,44 @@
+context: tokenization
+name: Asset Tokenization
+intro: >-
+  The common real-world-asset tokenization vocabulary -- tokenized assets, the investors who hold them,
+  and the issuances and transfers between them -- distilled from the APIs that already exist.
+tags: [Tokenization, Real World Assets, RWA, Security Tokens, Digital Securities, Stablecoins]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, asset_id, token_id, investor_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+  chain: [network, blockchain, chain_id]
+
+concepts:
+  tokenized_asset:
+    path: /tokenized-assets
+    segments: [assets, asset, tokens, token, securities, funds, offerings, stablecoins]
+    aliases:
+      symbol: [ticker, token_symbol]
+      contract_address: [address, token_address]
+      total_supply: [supply, circulating_supply]
+      decimals: [precision]
+  investor:
+    segments: [investors, investor, holders, shareholders, wallets@investors|holders]
+    aliases:
+      wallet_address: [address, wallet]
+      kyc_status: [verification_status, kyc]
+  token_transfer:
+    path: /token-transfers
+    segments: [transfers, transfer, mints, mint, burns, burn, issuances, redemptions]
+    aliases:
+      amount: [quantity, value]
+      from: [from_address, source]
+      to: [to_address, destination]
+
+findings:
+  - "Real-world-asset tokenization is not published in a common shape: in a 113-provider cohort, tokenized assets at 36 readable providers share nothing at half (an asset is a fund at one issuer, a stablecoin at another and a security token at a third), and investors are readable at 3. Transfers agree on amount, status and id, which is the generic transfer already measured in payouts and blockchain-data, not a tokenization concept. The on-chain standards (ERC-3643, ERC-1400) are the reference to take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

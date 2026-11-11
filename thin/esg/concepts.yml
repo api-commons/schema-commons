@@ -1,0 +1,47 @@
+context: esg
+name: ESG and Carbon Accounting
+intro: >-
+  The common carbon-accounting vocabulary -- emission estimates and the activities they are calculated
+  from, emission factors, and carbon offsets -- distilled from the APIs that already exist.
+tags: [ESG, Carbon Accounting, Carbon Emissions, Carbon Offsets, Sustainability, Climate Tech, Carbon Credits, Emissions]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, estimate_id, activity_id, project_id]
+  created_at: [created, created_date, create_time, estimated_at]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+
+concepts:
+  emission_estimate:
+    path: /emission-estimates
+    segments: [estimates, estimate, emissions, emission, footprint, footprints, calculate, calculations, carbon, co2]
+    aliases:
+      co2e: [co2e_kg, carbon_kg, co2e_mt, carbon_g, emissions, total_co2e, kg_co2e, carbon_mt, co2_kg]
+      co2e_unit: [unit, carbon_unit, co2e_unit]
+      activity_type: [type, activity, category, emission_type]
+      scope: [ghg_scope, emission_scope]
+  emission_factor:
+    path: /emission-factors
+    segments: [emission_factors, emission-factors, factors, activities@climatiq|carbon|emissions]
+    aliases:
+      factor: [value, co2e_factor, emission_factor]
+      unit: [unit_type, factor_unit]
+      source: [source_dataset, dataset, publisher]
+      region: [country, geography, location]
+      year: [year_valid, valid_year]
+  carbon_offset:
+    path: /carbon-offsets
+    segments: [offsets, offset, credits, carbon_credits, retirements, removals, orders@carbon|offsets|removals, projects@carbon|offsets|credits]
+    aliases:
+      amount: [quantity, tonnes, mass_g, amount_kg, volume, credits]
+      project: [project_id, project_name]
+      price: [cost, total_price]
+
+findings:
+  - "Carbon accounting is not published in a common shape: in a 79-provider cohort, emission estimates are readable at 6 providers with no shared property, emission factors at 1 and offsets at 4. Each calculator returns CO2e in its own unit and nesting (co2e_kg, carbon_mt, mass_g), and the reporting frameworks (GHG Protocol, ISSB, ESRS) are documents, not APIs."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

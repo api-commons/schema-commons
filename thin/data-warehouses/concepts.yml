@@ -1,0 +1,36 @@
+context: data-warehouses
+name: Data Warehouses and Query
+intro: >-
+  The common warehouse vocabulary -- the SQL statements or queries submitted, their results, and the
+  warehouses and schemas they run against -- distilled from the APIs that already exist.
+tags: [Data Warehouse, SQL, Big Data, Data Lake, Lakehouse, Query Engine, Data Platform, Analytics Database]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, statement_id, query_id, statement_handle, job_id, warehouse_id]
+  created_at: [created, created_date, create_time, creation_time, submitted_at]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, statement_status]
+
+concepts:
+  sql_statement:
+    path: /sql-statements
+    segments: [statements, statement, queries, query, sql, sql_queries, executions@sql|query]
+    aliases:
+      sql: [query, statement, sql_text, query_text, text]
+      warehouse: [warehouse_id, compute, cluster_id]
+      database: [catalog, database_name]
+      schema: [schema_name]
+      rows: [data, result, results, row_data]
+      columns: [schema@results, columns_metadata, fields, column_metadata]
+  warehouse:
+    segments: [warehouses, warehouse, compute, endpoints@sql]
+    aliases:
+      size: [cluster_size, warehouse_size]
+
+findings:
+  - "Warehouse query APIs do not share a statement shape: in a 112-provider cohort, SQL statements and queries at 33 readable providers agree only on an id (55%). Each engine shapes the request (sql, query, statement), the result (rows, data, a result-set object) and its column metadata its own way, and four providers expose warehouses as a resource. The common interface for warehouses is still a driver protocol (JDBC, ODBC, Arrow Flight SQL), not REST."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

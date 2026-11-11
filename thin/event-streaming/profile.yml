@@ -1,0 +1,506 @@
+context: event-streaming
+name: Event Streaming and Queues
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Event Streaming
+  - Streaming
+  - Message Queue
+  - Kafka
+  - Pub/Sub
+  - Message Broker
+  - Real-Time
+  - Event-Driven
+  providers_with_harvested_openapi: 421
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  topic:
+    segments_seen:
+      topics: 21
+      exchanges: 9
+      streams: 4
+      topic: 2
+      channels: 1
+    providers_exposing: 36
+    providers_with_readable_schema: 31
+    operations:
+    - operation: GET collection
+      providers: 31
+      share: 0.861
+      tier: core
+    - operation: GET item
+      providers: 20
+      share: 0.556
+      tier: core
+    - operation: DELETE item
+      providers: 19
+      share: 0.528
+      tier: core
+    - operation: POST collection
+      providers: 16
+      share: 0.444
+      tier: extended
+    - operation: UPDATE item
+      providers: 10
+      share: 0.278
+      tier: extended
+    - operation: POST item
+      providers: 4
+      share: 0.111
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.028
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 22
+      share: 0.71
+      type: string
+      spellings:
+      - name
+      - topic_name
+      - title
+      - display_name
+    - name: id
+      tier: extended
+      providers: 12
+      share: 0.387
+      type: string
+      spellings:
+      - id
+      - topic_id
+      - _id
+      - topicId
+    - name: type
+      tier: extended
+      providers: 7
+      share: 0.226
+      type: string
+      spellings:
+      - type
+    long_tail_count: 153
+    long_tail_sample:
+    - description
+    - partitions
+    - kind
+    - metadata
+    - replication_factor
+    - url
+    - cluster_id
+    - configs
+    - is_internal
+    - retention
+    - status
+    - acronym
+    - asset_class
+    - authorized_operations
+    - color
+    - country
+    - created_at
+    - internal
+    - key
+    - kms_key_name
+    - labels
+    - locale
+    - message_storage_policy
+    - mic
+    - operating_mic
+    - participant_id
+    - partition_reassignments
+    - satisfies_pzs
+    - schema_settings
+    - updated_at
+    - validate_only
+    - access
+    - account_sid
+    - acknowledged
+    - add_stream
+    - alert_notice
+    - api_endpoint
+    - app_name
+    - arguments
+    - artie_managed
+  queue:
+    segments_seen:
+      queues: 8
+      queue: 5
+    providers_exposing: 13
+    providers_with_readable_schema: 11
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.846
+      tier: core
+    - operation: DELETE item
+      providers: 8
+      share: 0.615
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.538
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 0.538
+      tier: core
+    - operation: UPDATE item
+      providers: 3
+      share: 0.231
+      tier: extended
+    - operation: POST item
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 10
+      share: 0.909
+      type: string
+      spellings:
+      - name
+      - queueName
+      - title
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.545
+      type: string
+      spellings:
+      - id
+      - _id
+    - name: type
+      tier: extended
+      providers: 4
+      share: 0.364
+      type: string
+      spellings:
+      - type
+    - name: message_count
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: integer
+      spellings:
+      - messages
+      - depth
+    - name: status
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: string
+      spellings:
+      - state
+      - status
+    long_tail_count: 89
+    long_tail_sample:
+    - paused
+    - uri
+    - account_sid
+    - album
+    - amqp
+    - announce_hold_time_on_entry
+    - app_id
+    - arguments
+    - artists
+    - auto_delete
+    - available_markets
+    - average_wait_time
+    - caller_id_mode
+    - caller_id_name
+    - channel
+    - concurrency_limit
+    - consumers
+    - created_at_ms
+    - current_concurrency
+    - current_size
+    - data_quality
+    - date_created
+    - date_updated
+    - deadletter
+    - deadletter_id
+    - disc_number
+    - dtmf_hangup_callee_enabled
+    - dtmf_hangup_caller_enabled
+    - dtmf_record_callee_enabled
+    - dtmf_record_caller_enabled
+    - dtmf_record_toggle
+    - dtmf_transfer_callee_enabled
+    - dtmf_transfer_caller_enabled
+    - durable
+    - duration
+    - duration_ms
+    - enabled
+    - exclusive
+    - explicit
+    - extended
+  subscription:
+    segments_seen:
+      consumer-groups: 6
+      subscriptions: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.857
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.286
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - state
+    - name: consumer_group_id
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - consumer_group_id
+    - name: kind
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - kind
+    - name: metadata
+      tier: core
+      providers: 4
+      share: 0.571
+      type: object
+      spellings:
+      - metadata
+    - name: partition_assignor
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - partition_assignor
+    - name: cluster_id
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - cluster_id
+    - name: consumers
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: object
+      spellings:
+      - consumers
+    - name: coordinator
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: object
+      spellings:
+      - coordinator
+    - name: is_simple
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: boolean
+      spellings:
+      - is_simple
+    - name: lag_summary
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: object
+      spellings:
+      - lag_summary
+    - name: type
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - type
+    long_tail_count: 23
+    long_tail_sample:
+    - is_mixed_consumer_group
+    - name
+    - condition
+    - consume_from_where
+    - consume_type
+    - consumer_count
+    - context
+    - context_keys
+    - created_at
+    - enabled
+    - group_id
+    - id
+    - identifier
+    - message_model
+    - preferences
+    - simple
+    - subscriber
+    - subscriber_ids
+    - subscriptions
+    - topic
+    - topics
+    - updated_at
+    - workflow
+  stream_message:
+    segments_seen:
+      publish: 6
+      messages: 4
+      records: 4
+    providers_exposing: 12
+    providers_with_readable_schema: 12
+    operations:
+    - operation: POST collection
+      providers: 11
+      share: 0.917
+      tier: core
+    - operation: GET collection
+      providers: 3
+      share: 0.25
+      tier: extended
+    - operation: POST item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.083
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.083
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - topic_name
+      - name
+      - title
+    - name: timestamp
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - timestamp
+    - name: type
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - type
+    - name: cluster_id
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - cluster_id
+    - name: data
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - body
+      - payload
+    - name: error_code
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: integer
+      spellings:
+      - error_code
+    - name: offset
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: integer
+      spellings:
+      - offset
+    - name: partition_id
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: integer
+      spellings:
+      - partition_id
+    long_tail_count: 49
+    long_tail_sample:
+    - headers
+    - id
+    - key
+    - message_id
+    - metadata
+    - url
+    - account_sid
+    - channel_sid
+    - client_id
+    - connection_id
+    - date_created
+    - date_updated
+    - destination_id
+    - dry_run
+    - eligible_for_retry
+    - encoding
+    - extras
+    - failed
+    - from
+    - include_competitive
+    - include_messaging
+    - include_personas
+    - index
+    - internal
+    - kind
+    - last_updated_by
+    - media
+    - partitions_count
+    - payload_encoding
+    - publisher_map_group_id
+    - push
+    - recipient
+    - resource_type
+    - resources
+    - routed
+    - routing_key
+    - service_sid
+    - sid
+    - skipped
+    - source_environment_id

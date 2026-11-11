@@ -1,0 +1,31 @@
+context: course-catalogs
+name: Course Catalogs
+intro: >-
+  The common course-catalog vocabulary -- the courses or programs offered, their providers, and the
+  sessions they run -- distilled from the APIs that already exist.
+tags: [Course Catalog, Online Learning, MOOCs, E-Learning, Training, Corporate Learning, Learning]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, course_id, program_id]
+  created_at: [created, created_date, create_time, published_at]
+  updated_at: [updated, modified_at, update_time, last_modified]
+  status: [state]
+  name: [title, display_name, course_name]
+  description: [desc, summary, short_description, overview]
+concepts:
+  catalog_course:
+    path: /catalog-courses
+    segments: [courses, course, programs, program, catalog, catalogue, learning_objects, content@learning|courses]
+    aliases:
+      provider: [provider_name, institution, partner, organization, instructor]
+      duration: [duration_minutes, length, estimated_duration, hours]
+      level: [difficulty, difficulty_level]
+      language: [locale, lang]
+      url: [link, course_url, web_url]
+      image_url: [image, thumbnail, thumbnail_url, cover_image]
+      price: [cost, list_price]
+
+findings:
+  - "Course catalogs agree on identity only: in a 91-provider cohort, courses at 26 readable providers agree on id, name and description, and no other property reaches 30% -- not the provider, duration, level, language or URL. That is the course that lms already holds. Course discovery uses schema.org Course and the IEEE LOM and 1EdTech CASE standards, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

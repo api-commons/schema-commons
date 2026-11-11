@@ -1,0 +1,39 @@
+context: url-shortening
+name: URL Shortening and Links
+intro: >-
+  The common short-link vocabulary -- short links, the custom domains they are served from, and the
+  clicks recorded on them -- distilled from the APIs that already exist.
+tags: [URL Shortener, Link Management, Short Links, Branded Links, Link in Bio, QR Codes]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, link_id]
+  created_at: [created, created_date, create_time, date_created]
+  updated_at: [updated, modified_at, update_time]
+  name: [title, display_name]
+  tags: [labels]
+concepts:
+  short_link:
+    path: /short-links
+    segments: [links, link, shortlinks, short_links, urls, url, shorten, bitlinks, shorturls]
+    aliases:
+      short_url: [shortlink, short_link, link, short, shorturl, tiny_url]
+      long_url: [url, destination, original_url, destination_url, target_url, long_link]
+      slug: [key, back_half, alias, path, keyword, short_code, code]
+      domain: [domain_id, custom_domain, hostname]
+      clicks: [click_count, total_clicks, visits]
+      expires_at: [expiration, expire_at, expiry]
+  link_domain:
+    path: /link-domains
+    segments: [domains, domain, custom_domains, bsds]
+  click:
+    requires: [short_link]
+    segments: [clicks, click, analytics@links|link, stats@links|link, events@links|link]
+    aliases:
+      country: [country_code, geo]
+      referrer: [referer, referring_domain, source]
+      device: [device_type, platform]
+
+findings:
+  - "Link management is a small tag in the catalog: 6 providers with harvested specs, short links readable at 3 (agreeing on an id), domains at 2 and clicks at 1. Revisit when the larger link-management platforms' specs are tagged and harvested."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

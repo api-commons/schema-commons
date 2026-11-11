@@ -1,0 +1,36 @@
+context: printing
+name: Print and Mail
+intro: >-
+  The common print-and-mail vocabulary -- letters, postcards and checks sent by physical mail, the
+  addresses they go to, and the print-on-demand orders fulfilled -- distilled from the APIs that already exist.
+tags: [Printing, Print on Demand, Direct Mail, Print and Mail, Postal, Mail]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, letter_id, postcard_id, order_id]
+  created_at: [created, created_date, create_time, date_created]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+  description: [desc]
+  metadata: [meta_data, merge_variables]
+concepts:
+  mail_piece:
+    path: /mail-pieces
+    segments: [letters, letter, postcards, postcard, checks@mail|print, self_mailers, mailings, mailpieces, mail]
+    aliases:
+      to: [recipient, to_address, address_to]
+      from: [sender, from_address, return_address]
+      send_date: [send_at, scheduled_date, mail_date]
+      expected_delivery_date: [estimated_delivery, expected_delivery]
+      tracking_number: [tracking, tracking_id]
+  print_order:
+    path: /print-orders
+    segments: [orders@print|printing|pod, print_orders, orders]
+    aliases:
+      items: [line_items, products]
+      shipping_address: [recipient, address, ship_to]
+
+findings:
+  - "Print and mail publish little in a common shape: in a 31-provider cohort, mail pieces (letters, postcards) are readable at 3 providers, and print-on-demand orders at 13 agree only on id and status -- the commerce order shape with print-specific items."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

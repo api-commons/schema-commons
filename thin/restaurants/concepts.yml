@@ -1,0 +1,42 @@
+context: restaurants
+name: Restaurants and Menus
+intro: >-
+  The common restaurant vocabulary -- restaurants, their menus and menu items, and the table reservations
+  made with them -- distilled from the APIs that already exist.
+tags: [Restaurants, Restaurant Technology, Hospitality, Menus, Reservations, Dining, Food and Beverage]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, restaurant_id, menu_id, item_id, reservation_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_modified]
+  status: [state]
+  name: [title, display_name]
+  description: [desc]
+concepts:
+  restaurant:
+    segments: [restaurants, restaurant, venues@restaurants|dining, locations@restaurants|menus]
+    aliases:
+      cuisine: [cuisines, cuisine_type, categories]
+      address: [location]
+      phone: [phone_number]
+  menu:
+    segments: [menus, menu]
+  menu_item:
+    path: /menu-items
+    segments: [menu_items, menuitems, menu-items, items@menus|menu|restaurants|restaurant, dishes, products@menus|menu]
+    aliases:
+      price: [base_price, price_money, amount]
+      modifiers: [modifier_groups, options, option_groups]
+      category: [category_id, menu_category, section]
+  table_reservation:
+    path: /table-reservations
+    segments: [reservations, reservation, bookings@restaurants|restaurant|dining|tables, waitlist, waitlists]
+    aliases:
+      party_size: [covers, guests, party, num_guests, size]
+      reserved_at: [date_time, time, start_time, datetime, reservation_time]
+      guest: [guest_id, customer, customer_id, diner]
+
+findings:
+  - "Restaurants add little beyond food-ordering and point-of-sale: in a 106-provider cohort, menu items at 10 readable providers agree on name, id and description (price only 30%), and menus on name and id, the menus those contexts already hold. Table reservations at 17 agree on id, status and updated_at; the guest reaches 47% and the party size 35%, because every reservation platform names the booking's details its own way."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

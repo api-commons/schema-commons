@@ -1,0 +1,33 @@
+context: beauty
+name: Beauty and Salons
+intro: >-
+  The common salon-and-spa vocabulary -- the services offered, the staff who perform them, the
+  appointments booked and the clients who book them -- distilled from the APIs that already exist.
+tags: [Beauty, Salons, Spa, Wellness, Cosmetics, Personal Care, Barbershop]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, service_id, staff_id, appointment_id, client_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  salon_service:
+    path: /salon-services
+    segments: [services, service, treatments, offerings]
+    aliases:
+      duration: [duration_minutes, length, time]
+      price: [cost, amount, base_price]
+  salon_appointment:
+    path: /salon-appointments
+    segments: [appointments, appointment, bookings, booking, visits]
+    aliases:
+      start_at: [start, start_time, starts_at, date_time]
+      end_at: [end, end_time, ends_at]
+      staff: [staff_id, employee_id, provider_id, stylist_id]
+      client: [client_id, customer_id, customer]
+
+findings:
+  - "Beauty publishes almost no salon APIs: the 21-provider cohort is mostly cosmetics brands, with services and appointments readable at 2 providers each. Salon booking is the appointment that scheduling already holds."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

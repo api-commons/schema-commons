@@ -1,0 +1,177 @@
+context: beauty
+name: Beauty and Salons
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Beauty
+  - Salons
+  - Spa
+  - Wellness
+  - Cosmetics
+  - Personal Care
+  - Barbershop
+  providers_with_harvested_openapi: 21
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  salon_service:
+    segments_seen:
+      services: 2
+      service: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 49
+    long_tail_sample:
+    - id
+    - name
+    - active
+    - addon_pricing_id
+    - agent_entity_id
+    - agent_name
+    - apply_member_discounts_of_membership_ids
+    - attribute
+    - business_lat
+    - business_lng
+    - created_at
+    - discontinued
+    - entity_id
+    - expiration_length
+    - expiration_type
+    - expiration_unit
+    - external_addon_name
+    - hero_metrics
+    - internal_addon_name
+    - intro_offer_type
+    - is_intro_offer
+    - is_third_party_discount_pricing
+    - membership_id
+    - metadata
+    - online_price
+    - plan_id
+    - points
+    - price
+    - price_money
+    - priority
+    - product_id
+    - program
+    - program_id
+    - quantity
+    - restrict_to_membership_ids
+    - revenue_category
+    - sale_in_contract_only
+    - scan
+    - sell_at_location_ids
+    - sell_online
+  salon_appointment:
+    segments_seen:
+      bookings: 2
+      appointments: 2
+      visits: 1
+      booking: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 48
+    long_tail_sample:
+    - created_at
+    - id
+    - additional_teacher
+    - appointments_visits
+    - attribute
+    - board
+    - bookings_visits
+    - business_lat
+    - business_lng
+    - cancelled_at
+    - capacity
+    - checked_in
+    - currency
+    - deposit_in_currency
+    - duration_in_minutes
+    - end_at
+    - entity_id
+    - hero_metrics
+    - in_person_location
+    - is_deposit_paid
+    - is_in_person
+    - is_paid
+    - is_recurring
+    - member
+    - member_id
+    - metadata
+    - online_stream_password
+    - online_stream_url
+    - open_area_visits
+    - page_size
+    - payments
+    - points
+    - price_in_currency
+    - recurring_booking_id
+    - room_spot_id
+    - sale
+    - scan
+    - service
+    - service_variant
+    - sort_by

@@ -1,0 +1,30 @@
+context: drones
+name: Drones
+intro: >-
+  The common drone-operations vocabulary -- the aircraft in a fleet, the flights and missions they
+  fly, and the media they capture -- distilled from the APIs that already exist.
+tags: [Drones, UAV, Unmanned Aerial Vehicles, Drone Delivery, Aerial Imaging, Robotics]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, drone_id, flight_id, mission_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  aircraft:
+    segments: [drones, drone, aircraft, aircrafts, vehicles@drones|fleet|uav, devices@drones|fleet]
+    aliases:
+      serial_number: [serial, sn]
+      model: [model_name, type]
+  flight:
+    segments: [flights, flight, flight_logs, missions, mission, operations@drones|flights]
+    aliases:
+      start_at: [start_time, takeoff_time, started_at]
+      end_at: [end_time, landing_time, ended_at]
+      pilot: [pilot_id, operator, remote_pilot]
+
+findings:
+  - "Drone platforms publish almost no harvested OpenAPI with readable schemas: in a 30-provider cohort, flights are readable at 1 provider and aircraft at none. Airspace and Remote ID data follow the ASTM F3411 and F3548 (UTM) standards, the reference if this is revisited."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

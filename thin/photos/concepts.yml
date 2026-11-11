@@ -1,0 +1,31 @@
+context: photos
+name: Photos and Stock Media
+intro: >-
+  The common photo vocabulary -- photos and stock images with their dimensions, photographers and
+  license, and the collections that group them -- distilled from the APIs that already exist.
+tags: [Photography, Stock Photos, Stock Media, Images, Image, Photo Sharing, Stock Footage]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, hits, total_hits]
+common_fields:
+  id: [uuid, guid, external_id, photo_id, image_id]
+  created_at: [created, created_date, create_time, date_taken, uploaded_at]
+  updated_at: [updated, modified_at, update_time]
+  name: [title, display_name]
+  description: [desc, alt, alt_description, caption]
+concepts:
+  photo:
+    segments: [photos, photo, images, image, pictures, stock, media@stock]
+    aliases:
+      url: [src, urls, image_url, original_url, download_url, large_image_url, web_format_url]
+      width: [image_width]
+      height: [image_height]
+      photographer: [user, author, photographer_name, contributor, owner]
+      license: [license_type, licence]
+      tags: [keywords, labels]
+  photo_collection:
+    path: /photo-collections
+    segments: [collections, collection, albums, album, galleries, gallery, sets]
+
+findings:
+  - "Photo and stock-media APIs agree only on an id: in a 56-provider cohort, photos at 18 readable providers reach the URL at 44% and description, width and height at 33%, and collections agree on id and name. The media asset in digital-asset-management already holds the shared part of a photo."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

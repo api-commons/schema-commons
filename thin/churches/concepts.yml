@@ -1,0 +1,32 @@
+context: churches
+name: Churches and Congregations
+intro: >-
+  The common church-management vocabulary -- people in a congregation, the households and groups they
+  belong to, the services and events they attend, and the giving they record -- distilled from the APIs that already exist.
+tags: [Church Management, Churches, Faith, Religion, Ministry, Nonprofit]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, included]
+common_fields:
+  id: [uuid, guid, external_id, person_id, household_id, group_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, membership]
+  name: [title, display_name]
+concepts:
+  congregant:
+    path: /congregants
+    segments: [people, person, members, individuals]
+    aliases:
+      first_name: [firstname, given_name]
+      last_name: [lastname, family_name]
+      email: [email_address, emails]
+      birthdate: [birth_date, date_of_birth]
+  household:
+    segments: [households, household, families, family]
+  church_group:
+    path: /church-groups
+    segments: [groups, group, small_groups, ministries]
+
+findings:
+  - "Church management is a small corner of the catalog: 4 providers with harvested specs, people readable at 2, households at 1 and groups at 2. The giving side is the donation already measured in fundraising."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

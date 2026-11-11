@@ -1,0 +1,41 @@
+context: manufacturing
+name: Manufacturing
+intro: >-
+  The common manufacturing vocabulary -- work orders or manufacturing orders, the bills of materials
+  and routings behind them, the parts or items produced and the machines producing them -- distilled
+  from the MES, ERP and shop-floor APIs that already exist.
+tags: [Manufacturing, MES, Industrial, Smart Manufacturing, Industry 4.0, Production Planning, Factory]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, work_order_id, part_id, bom_id, machine_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, updated_on]
+  status: [state]
+  name: [title, display_name]
+  description: [desc]
+concepts:
+  work_order:
+    path: /work-orders
+    segments: [work_orders, workorders, work-orders, manufacturing_orders, production_orders, jobs@manufacturing|production, builds@manufacturing]
+    aliases:
+      quantity: [qty, quantity_ordered, planned_quantity]
+      part: [part_id, item_id, product_id, item]
+      due_date: [due, due_at, required_date]
+  part:
+    segments: [parts, part, items@manufacturing|inventory, materials, components@manufacturing]
+    aliases:
+      part_number: [number, sku, item_number, code]
+      unit: [uom, unit_of_measure]
+      revision: [rev, version]
+  bill_of_materials:
+    path: /bills-of-materials
+    segments: [boms, bom, bill_of_materials, bills_of_materials, billofmaterials]
+    aliases:
+      lines: [items, components, bom_items, lines]
+  machine:
+    segments: [machines, machine, equipment, work_centers, workcenters, workstations, assets@manufacturing|factory]
+
+findings:
+  - "Manufacturing publishes little openly: in an 82-provider cohort, parts at 12 readable providers agree on id, name and part_number, but bills of materials agree only on a name (6 providers). Work orders at 7 carry id, status, dates, location and priority, which is the maintenance work order that property-management already holds, not a production order. Shop-floor data moves over OPC UA and MTConnect, and ISA-95 (B2MML) carries the production-order vocabulary, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,283 @@
+context: mortgages
+name: Mortgages
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Mortgage
+  - Mortgages
+  - Home Loans
+  - Mortgage Technology
+  - Loan Origination
+  - Mortgage Lending
+  - Title Insurance
+  providers_with_harvested_openapi: 44
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  mortgage_loan:
+    segments_seen:
+      loans: 6
+      applications: 3
+      application: 1
+    providers_exposing: 9
+    providers_with_readable_schema: 8
+    operations:
+    - operation: POST collection
+      providers: 7
+      share: 0.778
+      tier: core
+    - operation: DELETE item
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: GET collection
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.556
+      tier: core
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.75
+      type: string
+      spellings:
+      - id
+      - guid
+    - name: loan_amount
+      tier: core
+      providers: 4
+      share: 0.5
+      type: number
+      spellings:
+      - loan_amount
+      - loanAmount
+      - amount
+    - name: loan_number
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - loanNumber
+      - loan_number
+    - name: loan_type
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - loanType
+      - loan_type
+      - _type
+      - type
+    - name: status
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - status
+      - state
+    long_tail_count: 110
+    long_tail_sample:
+    - apr
+    - created_at
+    - email
+    - loan_purpose
+    - property_address
+    - additional_comments
+    - address1
+    - address2
+    - amortization_type
+    - amount_base
+    - amount_financed
+    - amount_total
+    - app_id
+    - application_context
+    - application_envelope_id
+    - application_experience_type
+    - application_source
+    - application_uuid
+    - approved_date
+    - archived
+    - birth_date
+    - borrower
+    - borrower_email
+    - borrower_phone
+    - borrowers
+    - business_name
+    - city
+    - closing_date
+    - coborrower
+    - construction_period_days
+    - contacts
+    - contents
+    - crm_id
+    - current_milestone
+    - debt_to_income_ratio
+    - doc_signing_date
+    - document_count
+    - down_payment_amount
+    - down_payment_pct
+    - dti_high
+  borrower:
+    segments_seen:
+      borrowers: 2
+      applicants: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 49
+    long_tail_sample:
+    - id
+    - marital_status
+    - additional_infos
+    - address
+    - applicant_ref
+    - bank_account
+    - cell_phone
+    - children
+    - contact
+    - contents
+    - created_at
+    - credit_worthiness
+    - current_address
+    - custom_consent
+    - dob
+    - email
+    - embedded
+    - financial_standings
+    - first_name
+    - full_name
+    - home_phone
+    - is_active
+    - last_name
+    - living_addresses
+    - loan_officer_id
+    - mailing_address
+    - marital_property_status
+    - middle_name
+    - mortgage_experience
+    - nationalities
+    - occupational_activity
+    - occupations
+    - pair_index
+    - partner_id
+    - passport_id
+    - person
+    - phone
+    - previous_address
+    - role
+    - self
+  rate_quote:
+    segments_seen:
+      quotes: 4
+      quote: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET item
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties:
+    - name: quote_id
+      tier: core
+      providers: 4
+      share: 1.0
+      type: string
+      spellings:
+      - quoteId
+    - name: property_address
+      tier: core
+      providers: 3
+      share: 0.75
+      type: object
+      spellings:
+      - propertyAddress
+    long_tail_count: 36
+    long_tail_sample:
+    - annual_premium
+    - contacts
+    - coverage_options
+    - coverage_summary
+    - effective_date
+    - monthly_premium
+    - quote_number
+    - status
+    - tenant_info
+    - valid_until
+    - accounts
+    - additional_references
+    - comments
+    - complaint_ratio
+    - completion_time
+    - conveyancer_id
+    - conveyancers
+    - created_at
+    - fee
+    - fee_groups
+    - feedback
+    - fees
+    - location
+    - logo_url
+    - name
+    - overall_rating
+    - persons
+    - product
+    - properties
+    - provider_name
+    - provider_reference_id
+    - quote_status
+    - quote_type
+    - selected_conveyancer
+    - telephone_time
+    - total_fee

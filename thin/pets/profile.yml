@@ -1,0 +1,189 @@
+context: pets
+name: Pets and Veterinary
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Pets
+  - Pet Care
+  - Veterinary
+  - Animal Health
+  - Pet Insurance
+  - Pet Tech
+  providers_with_harvested_openapi: 7
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  pet:
+    segments_seen:
+      animal: 2
+      pets: 2
+      pet: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET item
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: POST collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: GET collection
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: POST item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: integer
+      spellings:
+      - id
+    long_tail_count: 384
+    long_tail_sample:
+    - age
+    - color
+    - date_of_birth
+    - description
+    - sex
+    - species
+    - weight
+    - actual_date_calved
+    - actual_date_embryo_transferred
+    - actual_date_inseminated
+    - age_breakdown
+    - allergies
+    - altitude
+    - animal_attachment_id
+    - animal_attachments
+    - animal_calving_id
+    - animal_calvings
+    - animal_comments
+    - animal_id
+    - animal_logs
+    - animal_turnouts
+    - archive
+    - array_of_changes
+    - assigned_bangs_tag_date
+    - assigned_cattle_tag_date
+    - assigned_eid_tag_date
+    - assigned_lot_number_date
+    - assigned_management_rfid_date
+    - assigned_other_number_date
+    - assigned_ph_number_date
+    - assigned_registration_number_date
+    - assigned_tattoo_left_date
+    - assigned_tattoo_right_date
+    - assigned_tattoo_tag_date
+    - assigned_to_tag_date
+    - association_code
+    - attributes
+    - back_fat
+    - bangs_number
+    - birth_weight
+  pet_owner:
+    segments_seen:
+      owner: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 1
+    long_tail_sample:
+    - ownerid
+  vet_appointment:
+    segments_seen:
+      appointments: 1
+      appointment: 1
+      bookings: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: UPDATE item
+      providers: 3
+      share: 1.0
+      tier: core
+    properties: []
+    long_tail_count: 61
+    long_tail_sample:
+    - id
+    - attributes
+    - cancellation_reason
+    - clinic
+    - clinic_id
+    - confirmation_source
+    - confirmed_by
+    - consent_forms
+    - datetime
+    - datetime_end_utc
+    - datetime_start_utc
+    - drop_off
+    - duration
+    - end_datetime
+    - event
+    - event_id
+    - examination_id
+    - guest
+    - has_google_cal_error
+    - is_cancelable
+    - is_reschedulable
+    - items
+    - last_confirmed_at
+    - name
+    - new_requests
+    - notification_message
+    - observations
+    - occasion
+    - owner_email
+    - owner_name
+    - owner_phone
+    - patient
+    - payment_deposits
+    - pet
+    - pet_parent
+    - pet_parent_email
+    - pet_parent_name
+    - pet_parent_phone
+    - printable_file_ids
+    - reason

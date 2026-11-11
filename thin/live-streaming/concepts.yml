@@ -1,0 +1,28 @@
+context: live-streaming
+name: Live Streaming
+intro: >-
+  The common live-streaming vocabulary -- live streams with their ingest and playback endpoints, the
+  recordings they produce, and the broadcasts scheduled on them -- distilled from the APIs that already exist.
+tags: [Live Streaming, Streaming, Video Streaming, Broadcasting, Real-Time Video, WebRTC, Live Video]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, stream_id, live_stream_id, broadcast_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, modified]
+  status: [state, stream_status]
+  name: [title, display_name]
+concepts:
+  live_stream:
+    path: /live-streams
+    segments: [live_streams, livestreams, live-streams, live_inputs, streams, stream, channels@live|streaming, broadcasts, events@live]
+    aliases:
+      stream_key: [key, streamkey, ingest_key]
+      ingest_url: [rtmp_url, rtmps_url, server_url, ingest, rtmp]
+      playback_url: [playback, hls_url, playback_ids, playback_id, watch_url]
+      recording: [record, recording_enabled, record_enabled, recordings]
+      latency_mode: [latency, low_latency, reduced_latency]
+
+findings:
+  - "Live streams are already a concept in video. Measured on their own in a 170-provider cohort, live streams at 38 readable providers agree only on an id; created_at and name reach 47%, so a separate context adds nothing. The stream key and ingest and playback URLs are spelled differently at every platform, and ingest itself is standardized by RTMP, SRT and WHIP, not REST."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

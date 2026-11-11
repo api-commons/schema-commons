@@ -1,0 +1,42 @@
+context: fraud-prevention
+name: Fraud Prevention
+intro: >-
+  The common fraud-prevention vocabulary -- a risk assessment of an event, the decision it returns,
+  the rules and lists behind it, and the cases opened from it -- distilled from the APIs that already exist.
+tags: [Fraud Prevention, Fraud Detection, Risk Management, Chargebacks, Anti-Fraud, Transaction Monitoring, Device Fingerprinting]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, assessment_id, event_id, decision_id, case_id, transaction_id]
+  created_at: [created, created_date, create_time, timestamp, event_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+
+concepts:
+  risk_assessment:
+    path: /risk-assessments
+    segments: [assessments, assessment, scores, score, risk, evaluate, evaluations, decisions, decision, screen, screenings, checks@fraud|risk, events@fraud|risk, transactions@fraud|risk|screen]
+    aliases:
+      score: [risk_score, fraud_score, risk_level, probability]
+      decision: [action, outcome, recommendation, verdict, result]
+      reasons: [reason_codes, rules_triggered, signals, factors, triggered_rules]
+  fraud_rule:
+    path: /fraud-rules
+    segments: [rules, rule, rulesets, policies@fraud|risk]
+    aliases:
+      condition: [expression, logic, query]
+      action: [outcome, decision]
+      enabled: [active, is_active, disabled]
+  fraud_list:
+    path: /fraud-lists
+    segments: [lists, list, blocklists, blocklist, denylists, allowlists, watchlists]
+    aliases:
+      list_type: [type, kind]
+
+findings:
+  - "Fraud prevention is not published in a common shape: in a 173-provider cohort, risk assessments at 31 readable providers share no property at half -- not even the score, which is spelled risk_score, fraud_score, risk_level or probability -- because each vendor's request is a different event (a payment, a login, a signup) and its response is that vendor's signal set. Rules agree at 6 providers, and lists only on an id."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

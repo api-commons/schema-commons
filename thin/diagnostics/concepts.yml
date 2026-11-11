@@ -1,0 +1,49 @@
+context: diagnostics
+name: Lab Diagnostics
+intro: >-
+  The common lab-diagnostics vocabulary -- lab orders, the tests or panels ordered, the results
+  returned, and the kits shipped for at-home collection -- distilled from the APIs that already exist.
+tags: [Diagnostics, Lab Testing, Laboratory, At-Home Testing, Clinical Laboratory, Medical Diagnostics]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, entry,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, order_id, test_id, result_id, kit_id]
+  created_at: [created, created_date, create_time, ordered_at]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, order_status]
+  name: [title, display_name]
+  patient_id: [patient, user_id, member_id]
+
+concepts:
+  lab_order:
+    path: /lab-orders
+    segments: [orders@lab|labs|diagnostics, lab_orders, laborders, requisitions, orders]
+    aliases:
+      tests: [panels, test_codes, items, line_items]
+      physician: [ordering_physician, provider, doctor_id]
+  lab_test:
+    path: /lab-tests
+    segments: [tests, test, panels, lab_tests, catalog@lab|labs, biomarkers, markers]
+    aliases:
+      code: [test_code, loinc, loinc_code, sku]
+      price: [cost]
+  lab_result:
+    path: /lab-results
+    segments: [results@orders|order|lab|labs|tests, lab_results, reports@lab|orders, observations]
+    aliases:
+      value: [result, result_value, value_quantity]
+      unit: [units]
+      reference_range: [range, ref_range, normal_range]
+      interpretation: [flag, abnormal_flag, abnormal]
+      collected_at: [collection_date, sample_collected_at]
+  kit:
+    segments: [kits, kit]
+    aliases:
+      tracking_number: [tracking, tracking_id]
+
+findings:
+  - "Lab diagnostics publish few harvested specs: the cohort holds 23 providers. Lab orders at 8 readable providers agree on id, status and patient_id. The apparent lab-test core (a_la_carte_enabled, fasting, common_tat_days) is one lab aggregator listed under three catalog names, and results are readable at 3. Clinical results travel as FHIR Observations and HL7 v2 ORU messages, which healthcare already measures."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

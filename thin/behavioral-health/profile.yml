@@ -1,0 +1,263 @@
+context: behavioral-health
+name: Behavioral Health
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Mental Health
+  - Behavioral Health
+  - Therapy
+  - Teletherapy
+  - Psychiatry
+  - Wellbeing
+  providers_with_harvested_openapi: 17
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  client:
+    segments_seen:
+      clients: 3
+      members: 3
+      patient: 2
+      patients: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.857
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.571
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: date_of_birth
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - dob
+      - dateOfBirth
+      - birthdate
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.8
+      type: integer
+      spellings:
+      - id
+      - clientId
+      - externalId
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.8
+      type: object
+      spellings:
+      - name
+      - title
+    - name: email
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - email
+    - name: phone
+      tier: core
+      providers: 3
+      share: 0.6
+      type: object
+      spellings:
+      - phone
+    long_tail_count: 108
+    long_tail_sample:
+    - address
+    - created_at
+    - description
+    - first_name
+    - gender
+    - last_name
+    - mrn
+    - ssn
+    - status
+    - active_treatment_plan_id
+    - activity_types
+    - addresses
+    - admission_date_time
+    - archived_at
+    - auto_send_assignments_to_new_members
+    - avatar
+    - calculation_method
+    - care_team
+    - city
+    - clinical_status
+    - clinical_status_reason
+    - company
+    - contact
+    - country_code
+    - current_period_end
+    - current_period_start
+    - data_source
+    - default_enrollment_time
+    - demographics
+    - diagnoses
+    - discharge_date_time
+    - emails
+    - end
+    - enrollment_method
+    - ethnicity
+    - facility_id
+    - facility_name
+    - file_collection_id
+    - first
+    - first_contact_date
+  therapy_session:
+    segments_seen:
+      sessions: 2
+      appointments: 1
+      encounters: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: integer
+      spellings:
+      - id
+      - clientId
+      - client_id
+    - name: status
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - status
+    long_tail_count: 105
+    long_tail_sample:
+    - created_at
+    - location
+    - start_at
+    - active_treatment_plan_id
+    - address1
+    - address_type_id
+    - appointment_end_date_time
+    - appointment_id
+    - appointment_start_date_time
+    - appointment_status
+    - appointment_type
+    - appointment_with
+    - attendance_type
+    - bay
+    - breaks
+    - client
+    - client_n_lead_id
+    - client_progress
+    - clients
+    - clinical_qa_review
+    - clinical_relationship
+    - created_by
+    - date_guardian_provider_signed
+    - date_provider_signed
+    - date_start
+    - deleted_by
+    - deleted_date
+    - delivery_method
+    - description
+    - detail_description
+    - details
+    - drop_off_address
+    - encounter_type_id
+    - end_at
+    - end_date
+    - end_date_time
+    - ends_after_date
+    - evidence_based_interventions_used
+    - evv_end_captured
+    - evv_required
+  assessment:
+    segments_seen:
+      assessments: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: DELETE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 13
+    long_tail_sample:
+    - clinical_interview_or_summary
+    - date_of_assessment
+    - date_of_reassessment
+    - id
+    - is_diagnostic_reports_reviewed
+    - is_medical_reports_reviewed
+    - is_previous_assessment_reports_reviewed
+    - is_previous_intervention_plans_and_treatment_plans_reviewed
+    - is_reports_by_other_providers_reviewed
+    - is_school_reports_reviewed
+    - summary_assessment_result
+    - summary_observations_during_assessment
+    - summary_priorities_based_on_assessment

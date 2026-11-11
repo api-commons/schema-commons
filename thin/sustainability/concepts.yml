@@ -1,0 +1,41 @@
+context: sustainability
+name: Sustainability Reporting
+intro: >-
+  The common sustainability-reporting vocabulary -- the facilities or sites reported on, their resource
+  consumption (energy, water, waste), and the reporting metrics and disclosures built from them --
+  distilled from the APIs that already exist.
+tags: [Sustainability, Sustainability Reporting, Environmental Management, Waste Management, Water Management, Circular Economy]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, site_id, facility_id, metric_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  reporting_site:
+    path: /reporting-sites
+    segments: [sites, site, facilities, facility, buildings, properties@sustainability|esg]
+    aliases:
+      address: [location]
+      floor_area: [gross_floor_area, area, square_feet]
+  consumption_record:
+    path: /consumption-records
+    segments: [consumption, usage, readings@sites|facilities, waste, water, utility_data, activity_data]
+    aliases:
+      quantity: [value, amount, usage]
+      unit: [units, uom]
+      period_start: [start, start_date, from]
+      period_end: [end, end_date, to]
+  sustainability_metric:
+    path: /sustainability-metrics
+    segments: [metrics, metric, indicators, kpis, disclosures, datapoints]
+    aliases:
+      value: [amount, result]
+      unit: [units, uom]
+      framework: [standard, reporting_framework]
+
+findings:
+  - "Sustainability reporting is not published in a common shape: in a 68-provider cohort, sites at 12 readable providers agree on id and name, consumption records are readable at 3 and metrics at 4 with nothing shared. As with esg, the vocabulary lives in reporting taxonomies (the GRI Standards and the ISSB and ESRS XBRL taxonomies), not in APIs."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

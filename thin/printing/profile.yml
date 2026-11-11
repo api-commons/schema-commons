@@ -1,0 +1,244 @@
+context: printing
+name: Print and Mail
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Printing
+  - Print on Demand
+  - Direct Mail
+  - Print and Mail
+  - Postal
+  - Mail
+  providers_with_harvested_openapi: 31
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  mail_piece:
+    segments_seen:
+      letters: 3
+      postcards: 3
+      self_mailers: 2
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: POST collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    properties:
+    - name: address_city
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - address_city
+    - name: address_country
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - address_country
+    - name: address_state
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - address_state
+    long_tail_count: 67
+    long_tail_sample:
+    - address_line1
+    - address_line2
+    - address_placement
+    - address_zip
+    - back
+    - back_template_id
+    - back_template_version_id
+    - billing_group_id
+    - buckslips
+    - campaign_id
+    - cards
+    - carrier
+    - color
+    - company
+    - created_at
+    - custom_envelope
+    - date_modified
+    - deleted
+    - description
+    - double_sided
+    - email
+    - expected_delivery_date
+    - extra_service
+    - failure_reason
+    - file
+    - from
+    - front
+    - front_template_id
+    - front_template_version_id
+    - fsc
+    - id
+    - inside
+    - inside_template_id
+    - inside_template_version_id
+    - mail_type
+    - metadata
+    - name
+    - next_url
+    - outside
+    - outside_template_id
+  print_order:
+    segments_seen:
+      orders: 14
+    providers_exposing: 14
+    providers_with_readable_schema: 13
+    operations:
+    - operation: POST collection
+      providers: 12
+      share: 0.857
+      tier: core
+    - operation: GET item
+      providers: 8
+      share: 0.571
+      tier: core
+    - operation: GET collection
+      providers: 7
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.286
+      tier: extended
+    - operation: DELETE item
+      providers: 1
+      share: 0.071
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 7
+      share: 0.538
+      type: string
+      spellings:
+      - id
+      - order_id
+      - external_id
+    - name: status
+      tier: core
+      providers: 7
+      share: 0.538
+      type: string
+      spellings:
+      - status
+      - state
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - createdAt
+      - date_created
+      - created_at
+      - created
+    - name: items
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: array
+      spellings:
+      - items
+      - line_items
+    - name: order_items
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: array
+      spellings:
+      - order_items
+      - orderItems
+    - name: quantity
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: integer
+      spellings:
+      - quantity
+    - name: shipping
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: object
+      spellings:
+      - shipping
+    - name: shipping_address
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: object
+      spellings:
+      - recipient
+      - shippingAddress
+    long_tail_count: 130
+    long_tail_sample:
+    - billing_address
+    - currency
+    - order_number
+    - order_reference
+    - product_id
+    - shipping_method
+    - variant_id
+    - accepted_date
+    - account_number
+    - address_control_flag
+    - address_to
+    - annulled_date
+    - apikey
+    - approved_date
+    - attachments
+    - availability_date
+    - awarded_date
+    - branding
+    - buckslip_id
+    - budget_type
+    - buyer
+    - buyer_workgroup
+    - callback_url
+    - cancelled_reason
+    - card_id
+    - change_orders
+    - channel
+    - charges
+    - classification
+    - closed_date
+    - closing_change_orders
+    - comments
+    - completion_date
+    - contract_number
+    - costs
+    - creator_user_id
+    - custom_fields
+    - customer_coclico
+    - customer_reference_id
+    - customer_tax_type

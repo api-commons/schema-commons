@@ -1,0 +1,38 @@
+context: threat-intelligence
+name: Threat Intelligence
+intro: >-
+  The common threat-intelligence vocabulary -- indicators of compromise, their reputation verdicts,
+  and the threat actors and campaigns behind them -- distilled from the APIs that already exist.
+tags: [Threat Intelligence, Cyber Threat Intelligence, Threat Detection, Malware Analysis, IP Reputation, Cybersecurity]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, indicator_id]
+  created_at: [created, created_date, create_time, first_seen, date_added]
+  updated_at: [updated, modified_at, update_time, last_seen, modified]
+  name: [title, display_name]
+  tags: [labels]
+
+concepts:
+  indicator:
+    segments: [indicators, indicator, iocs, ioc, observables, ip, ips, domains@threat|intel|reputation, urls@threat|intel|reputation, hashes, files@intel|malware, reputation, lookup]
+    aliases:
+      value: [indicator, ioc, observable, address, ip_address, domain, hash, sha256]
+      indicator_type: [type, ioc_type, observable_type, kind]
+      score: [risk_score, threat_score, reputation, confidence, malicious_score]
+      verdict: [classification, malicious, is_malicious, disposition, category]
+  threat_actor:
+    path: /threat-actors
+    segments: [actors, threat_actors, threat-actors, adversaries, groups@threat|intel]
+    aliases:
+      aliases: [alias, also_known_as]
+      country: [origin, motivation_country]
+  campaign:
+    segments: [campaigns@threat|intel|threats, reports@threat|intel, malware, threats]
+
+findings:
+  - "Threat intelligence is not published in a common REST shape: in a 135-provider cohort, indicators at 21 readable providers share no property at half (id reaches 38%), because each lookup returns the vendor's own verdict object for an IP, domain or hash. Threat actors and campaigns agree only on id and name. The field already has its common vocabulary in STIX 2.1 and TAXII, and that is the reference to take in a standards pass."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,33 @@
+context: wholesale
+name: Wholesale and B2B Ordering
+intro: >-
+  The common B2B ordering vocabulary -- wholesale buyers or retailers, the price lists and catalogs
+  offered to them, and the purchase orders they place -- distilled from the APIs that already exist.
+tags: [Wholesale, B2B, B2B Commerce, Distribution, B2B Marketplace, Consumer Packaged Goods, EDI]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, retailer_id, buyer_id, order_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, updated_on]
+  status: [state]
+  name: [title, display_name, company_name]
+concepts:
+  wholesale_buyer:
+    path: /wholesale-buyers
+    segments: [retailers, retailer, buyers, buyer, accounts@b2b|wholesale, trading_partners, stores@wholesale]
+  wholesale_order:
+    path: /wholesale-orders
+    segments: [orders@b2b|wholesale|retailers|buyers, purchase_orders, purchaseorders, orders]
+    aliases:
+      po_number: [purchase_order_number, po, reference, order_number]
+      total: [total_amount, amount, order_total]
+      ship_date: [requested_ship_date, ship_by, ship_window_start]
+      line_items: [items, lines, order_lines]
+  price_list:
+    path: /price-lists
+    segments: [price_lists, pricelists, price-lists, catalogs, price_levels, pricing@b2b]
+
+findings:
+  - "B2B ordering adds no new common shape: in a 151-provider cohort, orders at 29 readable providers agree on id, status and line_items, which is the order commerce and procurement (purchase orders) already hold. Wholesale buyers are readable at 3 providers and price lists at 5. B2B trading runs on EDI (X12 850/855/856, EDIFACT ORDERS), which is the reference vocabulary."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

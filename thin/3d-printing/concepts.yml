@@ -1,0 +1,37 @@
+context: 3d-printing
+name: 3D Printing
+intro: >-
+  The common 3D-printing and on-demand manufacturing vocabulary -- the uploaded models, the quotes and
+  orders placed for them, and the printers and print jobs that make them -- distilled from the APIs that already exist.
+tags: [3D Printing, Additive Manufacturing, On-Demand Manufacturing, CNC Machining, Digital Manufacturing, CAD]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, model_id, part_id, quote_id, job_id, printer_id]
+  created_at: [created, created_date, create_time, uploaded_at]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, file_name, filename]
+concepts:
+  model_file:
+    path: /model-files
+    segments: [models, model, files, file, parts, part, uploads, designs]
+    aliases:
+      units: [unit]
+      volume: [volume_cm3, model_volume]
+      file_url: [url, download_url]
+  manufacturing_quote:
+    path: /manufacturing-quotes
+    segments: [quotes, quote, pricing, prices, price]
+    aliases:
+      material: [material_id, materials]
+      quantity: [qty]
+      price: [total, total_price, amount, unit_price]
+      lead_time: [lead_time_days, turnaround, production_time]
+  print_job:
+    path: /print-jobs
+    segments: [jobs, job, print_jobs, prints, orders]
+
+findings:
+  - "3D printing publishes little in a common shape: 19 providers, with model files readable at 4 (agreeing on an id), quotes at 1, and print jobs or orders at 8 agreeing on id and status. Model geometry travels as files (STL, 3MF), with 3MF the standard to take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,42 @@
+context: real-estate
+name: Real Estate Listings
+intro: >-
+  The common real-estate listing vocabulary -- property listings for sale or rent, the agents and
+  offices listing them, and open houses -- distilled from the APIs that already exist, measured against
+  the RESO Data Dictionary.
+tags: [Real Estate, PropTech, Real Estate Listings, MLS, Property Data, Residential Real Estate, Commercial Real Estate]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, "@odata.context", "@odata.nextLink", "@odata.count"]
+common_fields:
+  id: [uuid, guid, external_id, listing_id, listing_key, property_id, zpid, mls_id]
+  created_at: [created, created_date, create_time, listing_date, list_date, original_entry_timestamp]
+  updated_at: [updated, modified_at, update_time, modification_timestamp, last_updated]
+  status: [state, standard_status, mls_status, listing_status]
+concepts:
+  listing:
+    segments: [listings, listing, properties, property, homes, rentals, for_sale]
+    aliases:
+      price: [list_price, listprice, asking_price, rent, current_price]
+      bedrooms: [beds, bedrooms_total, bedroomstotal, bedroom_count]
+      bathrooms: [baths, bathrooms_total, bathrooms_total_integer, bathroom_count]
+      living_area: [square_feet, sqft, living_area_sqft, building_area, area]
+      address: [unparsed_address, full_address, street_address, location]
+      property_type: [type, home_type, property_sub_type]
+      latitude: [lat]
+      longitude: [lng, lon]
+      year_built: [built_year]
+      photos: [media, images, photo_urls]
+  listing_agent:
+    path: /listing-agents
+    segments: [agents, agent, members@mls|reso, member, realtors]
+    aliases:
+      email: [member_email, email_address]
+      phone: [member_phone, phone_number, mobile]
+      license_number: [member_state_license, license]
+  open_house:
+    path: /open-houses
+    segments: [open_houses, openhouses, openhouse, open-houses, showings]
+
+findings:
+  - "Real-estate listings are already a concept in property-management, measured there against the RESO Data Dictionary. In this 131-provider cohort, listings at 45 readable providers agree on address, id and status, with property_type at 49%, and agents agree only on email. A separate context would duplicate that listing, so the findings are kept here and the vocabulary stays in property-management."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

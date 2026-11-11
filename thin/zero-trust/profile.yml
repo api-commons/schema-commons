@@ -1,0 +1,398 @@
+context: zero-trust
+name: Zero Trust and Device Posture
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Zero Trust
+  - Device Management
+  - MDM
+  - Endpoint Management
+  - Network Security
+  - SASE
+  - ZTNA
+  - VPN
+  providers_with_harvested_openapi: 103
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  managed_device:
+    segments_seen:
+      devices: 38
+      device: 17
+      machines: 2
+    providers_exposing: 42
+    providers_with_readable_schema: 37
+    operations:
+    - operation: GET collection
+      providers: 40
+      share: 0.952
+      tier: core
+    - operation: GET item
+      providers: 31
+      share: 0.738
+      tier: core
+    - operation: DELETE item
+      providers: 21
+      share: 0.5
+      tier: core
+    - operation: POST collection
+      providers: 18
+      share: 0.429
+      tier: extended
+    - operation: UPDATE item
+      providers: 18
+      share: 0.429
+      tier: extended
+    - operation: POST item
+      providers: 4
+      share: 0.095
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 3
+      share: 0.071
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 2
+      share: 0.048
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 29
+      share: 0.784
+      type: string
+      spellings:
+      - id
+      - deviceId
+      - uuid
+      - device_id
+      - deviceID
+      - guid
+      - policyId
+      - externalId
+    - name: name
+      tier: core
+      providers: 24
+      share: 0.649
+      type: string
+      spellings:
+      - name
+      - displayName
+      - Name
+      - display_name
+      - title
+    - name: status
+      tier: extended
+      providers: 15
+      share: 0.405
+      type: string
+      spellings:
+      - status
+      - state
+      - Status
+    - name: created_at
+      tier: extended
+      providers: 12
+      share: 0.324
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - create_time
+      - created
+      - createdDate
+      - enrolledAt
+    - name: model
+      tier: extended
+      providers: 12
+      share: 0.324
+      type: string
+      spellings:
+      - model
+      - hardwareModel
+      - hardware_model
+    - name: os
+      tier: extended
+      providers: 11
+      share: 0.297
+      type: string
+      spellings:
+      - platform
+      - operatingSystem
+      - os
+      - osName
+      - os_name
+      - operating_system
+      - osType
+    - name: serial_number
+      tier: extended
+      providers: 11
+      share: 0.297
+      type: string
+      spellings:
+      - serialNumber
+      - serial
+      - serial_number
+    - name: tags
+      tier: extended
+      providers: 11
+      share: 0.297
+      type: array
+      spellings:
+      - tags
+    - name: updated_at
+      tier: extended
+      providers: 11
+      share: 0.297
+      type: string
+      spellings:
+      - lastSeen
+      - update_time
+      - modifiedAt
+      - updated_at
+      - updatedAt
+      - updated
+    - name: device_type
+      tier: extended
+      providers: 10
+      share: 0.27
+      type: string
+      spellings:
+      - deviceType
+      - device_type
+    - name: description
+      tier: extended
+      providers: 8
+      share: 0.216
+      type: string
+      spellings:
+      - description
+    - name: device_name
+      tier: extended
+      providers: 8
+      share: 0.216
+      type: string
+      spellings:
+      - device_name
+      - deviceName
+    long_tail_count: 1050
+    long_tail_sample:
+    - type
+    - user
+    - hostname
+    - ip
+    - notes
+    - os_version
+    - uid
+    - ip_address
+    - location
+    - metadata
+    - software_version
+    - address
+    - blueprint_id
+    - creation_date
+    - domain
+    - interfaces
+    - is_active
+    - lat
+    - lng
+    - location_id
+    - mac_address
+    - product_name
+    - uptime
+    - url
+    - version
+    - agent_version
+    - alias
+    - app_version
+    - category
+    - channel
+    - code
+    - connected
+    - country_code
+    - created_by
+    - details
+    - device_tags
+    - device_type_id
+    - display_version
+    - displays
+    - enabled
+  access_policy:
+    segments_seen:
+      policies: 17
+      policy: 9
+      access_policies: 2
+      rules: 2
+    providers_exposing: 21
+    providers_with_readable_schema: 20
+    operations:
+    - operation: GET collection
+      providers: 19
+      share: 0.905
+      tier: core
+    - operation: POST collection
+      providers: 14
+      share: 0.667
+      tier: core
+    - operation: DELETE item
+      providers: 12
+      share: 0.571
+      tier: core
+    - operation: GET item
+      providers: 12
+      share: 0.571
+      tier: core
+    - operation: UPDATE item
+      providers: 9
+      share: 0.429
+      tier: extended
+    - operation: UPDATE collection
+      providers: 7
+      share: 0.333
+      tier: extended
+    - operation: POST item
+      providers: 3
+      share: 0.143
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 2
+      share: 0.095
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 18
+      share: 0.9
+      type: string
+      spellings:
+      - id
+      - policyId
+      - PolicyId
+      - uuid
+      - deviceId
+      - policy_id
+    - name: name
+      tier: core
+      providers: 12
+      share: 0.6
+      type: string
+      spellings:
+      - name
+    - name: description
+      tier: extended
+      providers: 9
+      share: 0.45
+      type: string
+      spellings:
+      - description
+    - name: enabled
+      tier: extended
+      providers: 8
+      share: 0.4
+      type: boolean
+      spellings:
+      - enabled
+      - disabled
+    - name: created_at
+      tier: extended
+      providers: 7
+      share: 0.35
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+    - name: policy_name
+      tier: extended
+      providers: 7
+      share: 0.35
+      type: string
+      spellings:
+      - policyName
+      - PolicyName
+    - name: type
+      tier: extended
+      providers: 7
+      share: 0.35
+      type: string
+      spellings:
+      - type
+    - name: updated_at
+      tier: extended
+      providers: 6
+      share: 0.3
+      type: string
+      spellings:
+      - updatedAt
+      - updated_at
+      - modifiedAt
+    - name: status
+      tier: extended
+      providers: 5
+      share: 0.25
+      type: string
+      spellings:
+      - state
+      - status
+    - name: destinations
+      tier: extended
+      providers: 4
+      share: 0.2
+      type: object
+      spellings:
+      - destinations
+    - name: sources
+      tier: extended
+      providers: 4
+      share: 0.2
+      type: object
+      spellings:
+      - sources
+    long_tail_count: 243
+    long_tail_sample:
+    - action
+    - creation_date
+    - policy_arn
+    - resource_type
+    - severity
+    - tags
+    - version
+    - created_by
+    - created_on
+    - default_version_id
+    - deleted
+    - error
+    - generation_id
+    - is_applied_directly
+    - is_default
+    - last_modified_date
+    - next_marker
+    - organization_id
+    - policy_document
+    - policy_type
+    - policy_version_id
+    - precedence
+    - protocol
+    - subject
+    - uri
+    - acls
+    - adaptive_policy_id
+    - add_roles
+    - add_tags
+    - admin_groups
+    - agg
+    - alert_count
+    - allowed
+    - android_id
+    - app_action
+    - app_groups
+    - apps
+    - attribute_conflicts
+    - authorized_groups
+    - bidirectional

@@ -1,0 +1,40 @@
+context: zero-trust
+name: Zero Trust and Device Posture
+intro: >-
+  The common zero-trust vocabulary -- managed devices and their posture, the access policies evaluated
+  against them, and the protected applications -- distilled from the APIs that already exist.
+tags: [Zero Trust, Device Management, MDM, Endpoint Management, Network Security, SASE, ZTNA, VPN]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, device_id, policy_id]
+  created_at: [created, created_date, create_time, enrolled_at, enrollment_date]
+  updated_at: [updated, modified_at, update_time, last_seen, last_check_in, last_sync]
+  status: [state]
+  name: [title, display_name]
+
+concepts:
+  managed_device:
+    path: /managed-devices
+    segments: [devices, device, computers, mobile_devices, endpoints@mdm|devices|zt, machines]
+    aliases:
+      serial_number: [serial, serialnumber]
+      os: [platform, os_type, operating_system, os_name]
+      os_version: [platform_version, osversion]
+      model: [model_name, hardware_model, device_model]
+      user: [user_id, owner, assigned_user, email, user_email]
+      compliant: [compliance, is_compliant, compliance_state, posture]
+  access_policy:
+    path: /access-policies
+    segments: [policies, policy, rules@access|zt|firewall|gateway, access_policies, posture@rules|checks]
+    aliases:
+      action: [decision, effect]
+      enabled: [disabled, is_enabled, active]
+      precedence: [priority, order, rank]
+
+findings:
+  - "Zero-trust and device-management platforms agree only on identity: in a 103-provider cohort, managed devices at 37 readable providers agree on id and name; status reaches 40% and the model 32%; serial number and operating system each fall below 30%, spelled several ways. Access policies agree on id and name, with enabled at 40%. A device's posture is each vendor's own check list, and nothing in that list is shared."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

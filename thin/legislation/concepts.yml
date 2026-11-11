@@ -1,0 +1,39 @@
+context: legislation
+name: Legislation
+intro: >-
+  The common legislative vocabulary -- bills, the legislators who sponsor them, the votes cast on them
+  and the committees that hear them -- distilled from the APIs that already exist.
+tags: [Legislation, Government, Policy, Lobbying, Civic Tech, Politics, Regulation]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, pagination]
+common_fields:
+  id: [uuid, guid, external_id, bill_id, member_id, bioguide_id, person_id, vote_id]
+  created_at: [created, created_date, create_time, introduced_date, introduced_at]
+  updated_at: [updated, modified_at, update_time, update_date, latest_action_date]
+  name: [title, display_name, full_name]
+concepts:
+  bill:
+    segments: [bills, bill, legislation, measures]
+    aliases:
+      number: [bill_number, identifier]
+      chamber: [origin_chamber, originating_chamber]
+      session: [congress, legislative_session, session_id]
+      sponsor: [sponsors, sponsor_id, primary_sponsor]
+      latest_action: [last_action, latest_action_text]
+  legislator:
+    segments: [members, member, legislators, legislator, people@legislation|congress|government, representatives, senators, politicians]
+    aliases:
+      party: [party_name, current_party]
+      state: [jurisdiction, state_code]
+      district: [district_number]
+  roll_call_vote:
+    path: /roll-call-votes
+    segments: [votes, vote, roll_calls, rollcalls, votes@bills|bill]
+    aliases:
+      result: [outcome, passed]
+      yes_count: [yeas, yea, yes, ayes]
+      no_count: [nays, nay, no, noes]
+
+findings:
+  - "Legislation has one well-shaped public API, and it is a single source: the bill core (session, number, chamber, latest_action, origin_chamber_code) is the Congress.gov API, listed under three catalog names (congress-gov, loc, us-house-of-representatives). Counted once, bills are readable at 4 providers. Legislators at 10 readable providers agree on state, id, name, chamber and party, a real but small agreement, and votes are readable at 3. Akoma Ntoso and the Open States data model are the references for a standards pass."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

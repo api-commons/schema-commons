@@ -1,0 +1,155 @@
+context: public-spending
+name: Public Spending and Grants
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Federal Government
+  - Government Contracting
+  - Grants
+  - Public Procurement
+  - Government Spending
+  - Open Government
+  - Transparency
+  providers_with_harvested_openapi: 117
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  award:
+    segments_seen:
+      awards: 5
+      award: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET item
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 42
+    long_tail_sample:
+    - acquisition_category
+    - acquisition_type
+    - ai_summary
+    - amounts
+    - attribution_warnings
+    - award_count
+    - award_line_items
+    - award_url
+    - buyer
+    - buying_office
+    - classification
+    - classification_codes
+    - columns
+    - contacts
+    - contract_vehicle
+    - dates
+    - description
+    - ein
+    - external_url
+    - file_format
+    - file_name
+    - filters
+    - funder
+    - funding_office
+    - id
+    - identifier
+    - jurisdiction
+    - name
+    - next_cursor
+    - parent_award
+    - places
+    - program_links
+    - recipient
+    - related_opportunities
+    - search_type
+    - status
+    - sub_awards
+    - sub_awards_count
+    - transactions
+    - treasury_account_ids
+  grant_opportunity:
+    segments_seen:
+      grants: 3
+      opportunities: 2
+      tenders: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: POST collection
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - id
+    long_tail_count: 90
+    long_tail_sample:
+    - metadata
+    - name
+    - slug
+    - status
+    - updated_at
+    - active
+    - address
+    - admin_address
+    - admin_profile
+    - aggregate_attachments
+    - ai_period_of_performance
+    - ai_summary
+    - ai_title
+    - amount
+    - amount_notice
+    - amount_received
+    - application_fee_amount
+    - attribution
+    - attributions
+    - awarded_at
+    - buyer
+    - cancelled_at
+    - cif
+    - collections
+    - complete_bounded_projection
+    - contacts
+    - contract_address
+    - contract_vehicle
+    - coverage
+    - coverage_notice
+    - coverage_status
+    - created_at
+    - data_sources_used
+    - description
+    - designation
+    - disclaimer
+    - donor
+    - donor_account_id
+    - email
+    - estimated_contract_value

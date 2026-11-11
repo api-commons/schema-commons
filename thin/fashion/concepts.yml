@@ -1,0 +1,30 @@
+context: fashion
+name: Fashion and Apparel
+intro: >-
+  The common fashion-catalog vocabulary -- styles, their size and color variants, and the size charts
+  that fit them -- distilled from the APIs that already exist.
+tags: [Fashion, Apparel, Footwear, Luxury, Clothing, Retail]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, product_id, style_id, variant_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, product_name, style_name]
+concepts:
+  style:
+    segments: [products, product, styles, style, items@catalog|fashion]
+    aliases:
+      brand: [brand_name, designer]
+      color: [colour, colors, colour_name]
+      sizes: [size, size_range]
+      price: [retail_price, list_price]
+      images: [image, image_url, media]
+  size_chart:
+    path: /size-charts
+    segments: [size_charts, sizecharts, size-charts, sizes, measurements, fit]
+
+findings:
+  - "Fashion adds no new common shape: in a 157-provider cohort, styles (products) at 70 readable providers agree on name, id, description and images, which is the commerce product; brand reaches 40% and price 39%. Size charts, the one fashion-specific resource, are readable at 1 provider. Color and size live in commerce variants."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

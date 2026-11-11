@@ -1,0 +1,411 @@
+context: defi
+name: DeFi Protocols
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - DeFi
+  - Decentralized Finance
+  - DEX
+  - Liquidity
+  - Yield
+  - Staking
+  - Lending Protocols
+  providers_with_harvested_openapi: 154
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  liquidity_pool:
+    segments_seen:
+      pools: 17
+      vaults: 14
+      pairs: 11
+      pool: 9
+      liquidity: 3
+      pair: 2
+    providers_exposing: 45
+    providers_with_readable_schema: 41
+    operations:
+    - operation: GET collection
+      providers: 40
+      share: 0.889
+      tier: core
+    - operation: GET item
+      providers: 19
+      share: 0.422
+      tier: extended
+    - operation: POST collection
+      providers: 6
+      share: 0.133
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.044
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.022
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.022
+      tier: long-tail
+    properties:
+    - name: address
+      tier: extended
+      providers: 18
+      share: 0.439
+      type: string
+      spellings:
+      - address
+      - poolAddress
+      - contract_address
+    - name: chain
+      tier: extended
+      providers: 14
+      share: 0.341
+      type: string
+      spellings:
+      - chain
+      - chainId
+      - network
+      - chain_id
+      - chainID
+    - name: name
+      tier: extended
+      providers: 14
+      share: 0.341
+      type: string
+      spellings:
+      - name
+    - name: id
+      tier: extended
+      providers: 12
+      share: 0.293
+      type: string
+      spellings:
+      - id
+      - pool_id
+      - protocol_id
+    long_tail_count: 492
+    long_tail_sample:
+    - created_at
+    - symbol
+    - decimals
+    - description
+    - asset
+    - type
+    - updated_at
+    - apy
+    - tvl
+    - asset_decimals
+    - rewards
+    - strategy
+    - token
+    - vault_id
+    - amount
+    - analytics
+    - asset_name
+    - asset_symbol
+    - balance
+    - caps
+    - category
+    - created_at_block
+    - creator
+    - details
+    - fee_bps
+    - fees
+    - kind
+    - kyc
+    - liquidity_in_usd
+    - metadata
+    - platform
+    - pool_apy
+    - pool_name
+    - protocol
+    - share_decimals
+    - share_name
+    - slug
+    - state
+    - stats
+    - strategies
+  swap_quote:
+    segments_seen:
+      quote: 23
+      quotes: 10
+      swap: 7
+      swaps: 6
+      routes: 4
+      route: 3
+      price: 2
+    providers_exposing: 38
+    providers_with_readable_schema: 36
+    operations:
+    - operation: POST collection
+      providers: 24
+      share: 0.632
+      tier: core
+    - operation: GET collection
+      providers: 23
+      share: 0.605
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.105
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.026
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.026
+      tier: long-tail
+    properties:
+    - name: from_amount
+      tier: extended
+      providers: 15
+      share: 0.417
+      type: string
+      spellings:
+      - amountIn
+      - amount
+      - inAmount
+      - fromAmount
+      - sellAmount
+      - srcAmount
+    - name: created_at
+      tier: extended
+      providers: 11
+      share: 0.306
+      type: string
+      spellings:
+      - timestamp
+      - created_at
+      - createdAt
+      - created-at
+    - name: from_token
+      tier: extended
+      providers: 11
+      share: 0.306
+      type: string
+      spellings:
+      - tokenIn
+      - inputMint
+      - sellToken
+      - fromToken
+      - fromTokenAddress
+      - src_token
+    - name: id
+      tier: extended
+      providers: 11
+      share: 0.306
+      type: string
+      spellings:
+      - id
+      - poolId
+    - name: to_token
+      tier: extended
+      providers: 11
+      share: 0.306
+      type: string
+      spellings:
+      - tokenOut
+      - outputMint
+      - buyToken
+      - toToken
+      - toTokenAddress
+      - dst_token
+    - name: to_amount
+      tier: extended
+      providers: 9
+      share: 0.25
+      type: string
+      spellings:
+      - amountOut
+      - outAmount
+      - buyAmount
+      - dstAmount
+    - name: chain
+      tier: extended
+      providers: 8
+      share: 0.222
+      type: string
+      spellings:
+      - chainId
+      - chain
+      - chainName
+      - chain_id
+    long_tail_count: 539
+    long_tail_sample:
+    - type
+    - slippage
+    - fee
+    - quote_id
+    - block_number
+    - expires_at
+    - min_amount_out
+    - price_impact
+    - sender
+    - to
+    - fees
+    - from_address
+    - gas
+    - nonce
+    - price
+    - action
+    - allowance_target
+    - auto_slippage
+    - bid_price
+    - compute_unit_limit
+    - confidence
+    - destination_chain_id
+    - dst_token_address
+    - dst_wallet_address
+    - dynamic_compute_unit_limit
+    - est_fill_time
+    - expiry
+    - fee_token
+    - from
+    - from_chain_id
+    - funder
+    - gas_limit
+    - gas_price
+    - last_used
+    - last_valid_block_height
+    - max_num_quotes
+    - mode
+    - note
+    - other_amount_threshold
+    - price_currency
+  protocol:
+    segments_seen:
+      protocols: 12
+      protocol: 7
+    providers_exposing: 15
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 15
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.267
+      tier: extended
+    properties:
+    - name: name
+      tier: core
+      providers: 7
+      share: 0.538
+      type: string
+      spellings:
+      - name
+    - name: id
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: string
+      spellings:
+      - id
+      - protocol_id
+      - uuid
+    - name: tvl
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: number
+      spellings:
+      - tvl
+      - tvl_usd
+    - name: category
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - category
+      - type
+    - name: chain
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - chain
+    - name: description
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - description
+    - name: chains
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: array
+      spellings:
+      - chains
+    - name: protocol_name
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - protocol_name
+    - name: url
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - url
+    long_tail_count: 90
+    long_tail_sample:
+    - audits
+    - chain_tvls
+    - change_1d
+    - change_7d
+    - logo_url
+    - site_url
+    - slug
+    - symbol
+    - updated_at
+    - address
+    - analytics
+    - apy
+    - asset_usd_value
+    - audit_links
+    - audit_note
+    - chain_ids
+    - change_1h
+    - cmc_id
+    - constants
+    - created_at
+    - current_boost
+    - current_boost_end
+    - current_boost_start
+    - current_chain_tvls
+    - debt_usd_value
+    - defillama_id
+    - deploy_date
+    - deployers
+    - direct_upgrade_url
+    - exploits
+    - extras
+    - faq
+    - fees24h_usdc
+    - first_cycle
+    - first_cycle_level
+    - first_level
+    - forked_from
+    - gecko_id
+    - github
+    - governance_id

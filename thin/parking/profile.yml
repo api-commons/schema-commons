@@ -1,0 +1,131 @@
+context: parking
+name: Parking
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Parking
+  - Parking Management
+  - Smart Parking
+  - Parking Payments
+  - EV Charging
+  - Tolling
+  providers_with_harvested_openapi: 32
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  parking_facility:
+    segments_seen:
+      spaces: 1
+      facilities: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 15
+    long_tail_sample:
+    - address
+    - amenities
+    - capacity
+    - coordinates
+    - description
+    - entry_instructions
+    - exit_instructions
+    - facility_type
+    - hours
+    - id
+    - name
+    - operator
+    - phone
+    - rating
+    - review_count
+  parking_session:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  parking_reservation:
+    segments_seen:
+      reservations: 3
+      bookings: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: POST collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: GET collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties:
+    - name: status
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - status
+    long_tail_count: 31
+    long_tail_sample:
+    - amount
+    - id
+    - reservation_id
+    - vehicle
+    - barcode
+    - barcode_format
+    - confirmation_code
+    - created_at
+    - driver
+    - end_at
+    - ends
+    - expiry_date
+    - facility_name
+    - id_tag
+    - id_token_type
+    - parent_id_tag
+    - parking_pass_id
+    - partner_reference
+    - payment_method_id
+    - port_id
+    - quote_id
+    - rate_id
+    - start_at
+    - starts
+    - type
+    - uid
+    - updated_at
+    - valid_from
+    - valid_to
+    - vehicle_id
+    - visual_number

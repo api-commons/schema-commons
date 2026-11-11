@@ -1,0 +1,42 @@
+context: mcp-servers
+name: MCP Servers and Agent Registries
+intro: >-
+  The common vocabulary of the registries that list MCP servers, agents and their tools -- distilled
+  from the registry and gateway APIs that already exist.
+tags: [MCP, Model Context Protocol, A2A, Agent-Native, Agent Registry, MCP Server, Agent Skills]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, metadata,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, next_cursor]
+
+common_fields:
+  id: [uuid, guid, external_id, server_id, agent_id, tool_id]
+  created_at: [created, created_date, create_time, published_at]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+
+concepts:
+  mcp_server:
+    path: /mcp-servers
+    segments: [servers, server, mcp_servers, mcp-servers, mcps, integrations@mcp, connectors@mcp]
+    aliases:
+      url: [endpoint, server_url, remote_url, remotes]
+      version: [version_detail]
+      repository: [repo, source_url, github_url]
+  registered_agent:
+    path: /registered-agents
+    segments: [agents@registry|a2a|directory|discover|registry, agent_cards, agent-cards, agentcards]
+    aliases:
+      url: [endpoint, agent_url, card_url]
+      skills: [capabilities]
+  mcp_tool:
+    path: /mcp-tools
+    requires_any: [mcp_server]
+    segments: [tools]
+    aliases:
+      input_schema: [inputschema, parameters, schema, input]
+
+findings:
+  - "The MCP tag marks the 926 providers that offer an MCP server, not providers that list servers, so a census is the wrong instrument here. Servers at 28 readable providers agree only on name and id (many of those are hosting, game or cloud servers), tools on id, name and description, and agent cards appear at one provider. The shape is set by the protocol and the official MCP registry's server.json, which should be taken in a standards pass, not a market census."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

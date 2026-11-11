@@ -1,0 +1,48 @@
+context: risk-management
+name: Risk and Compliance
+intro: >-
+  The common governance-risk-and-compliance vocabulary -- risks in a register, the controls that
+  mitigate them, the compliance frameworks they map to, and the evidence collected for them -- distilled
+  from the APIs that already exist.
+tags: [Risk Management, Compliance, GRC, Governance Risk and Compliance, Compliance Automation, Vendor Risk, Third-Party Risk, SOC 2]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, risk_id, control_id, vendor_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, updated_on, last_updated]
+  status: [state]
+  name: [title, display_name]
+  description: [desc, summary]
+  owner: [owner_id, assignee, owners, responsible]
+
+concepts:
+  risk:
+    segments: [risks, risk, risk_register, risk-register]
+    aliases:
+      likelihood: [probability]
+      impact: [severity, consequence]
+      score: [risk_score, inherent_risk, residual_risk, rating]
+      category: [type, risk_category]
+  control:
+    segments: [controls, control]
+    aliases:
+      framework: [frameworks, standard]
+      control_number: [ref_id, reference, control_id_ref, code]
+  compliance_framework:
+    path: /compliance-frameworks
+    segments: [frameworks, framework, standards@compliance|grc, programs@compliance]
+  evidence:
+    segments: [evidence, evidences, documents@compliance|controls|grc, artifacts@compliance]
+  vendor_assessment:
+    path: /vendor-assessments
+    segments: [vendors@risk|grc|compliance|tprm, vendors, third_parties, third-parties, assessments@vendors|vendor, questionnaires]
+    aliases:
+      risk_level: [risk, tier, criticality, inherent_risk]
+
+findings:
+  - "Governance, risk and compliance platforms agree on identity and little else: in a 336-provider cohort, risks at 19 readable providers share nothing at half (likelihood, impact and score are each a platform's own scale), controls and frameworks agree on id, name and description, and vendors on id and name. The shared vocabulary of controls and frameworks is NIST OSCAL, which a standards pass should take instead of a census."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,157 @@
+context: live-streaming
+name: Live Streaming
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Live Streaming
+  - Streaming
+  - Video Streaming
+  - Broadcasting
+  - Real-Time Video
+  - WebRTC
+  - Live Video
+  providers_with_harvested_openapi: 170
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  live_stream:
+    segments_seen:
+      stream: 19
+      streams: 18
+      live-streams: 4
+      broadcasts: 4
+      live_streams: 4
+      livestreams: 2
+    providers_exposing: 43
+    providers_with_readable_schema: 38
+    operations:
+    - operation: GET collection
+      providers: 33
+      share: 0.767
+      tier: core
+    - operation: GET item
+      providers: 25
+      share: 0.581
+      tier: core
+    - operation: POST collection
+      providers: 25
+      share: 0.581
+      tier: core
+    - operation: DELETE item
+      providers: 22
+      share: 0.512
+      tier: core
+    - operation: UPDATE item
+      providers: 18
+      share: 0.419
+      tier: extended
+    - operation: POST item
+      providers: 3
+      share: 0.07
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 2
+      share: 0.047
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.047
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 28
+      share: 0.737
+      type: string
+      spellings:
+      - id
+      - streamId
+      - liveStreamId
+      - _id
+      - stream-id
+      - broadcast_id
+    - name: created_at
+      tier: extended
+      providers: 18
+      share: 0.474
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - createTime
+    - name: name
+      tier: extended
+      providers: 18
+      share: 0.474
+      type: string
+      spellings:
+      - name
+      - title
+      - displayName
+    - name: status
+      tier: extended
+      providers: 15
+      share: 0.395
+      type: string
+      spellings:
+      - status
+      - state
+    - name: updated_at
+      tier: extended
+      providers: 8
+      share: 0.211
+      type: string
+      spellings:
+      - updatedAt
+      - updateTime
+      - updated_at
+      - modifiedAt
+    long_tail_count: 426
+    long_tail_sample:
+    - stream_key
+    - description
+    - playback_url
+    - type
+    - recording
+    - text
+    - username
+    - ingest_url
+    - speed
+    - url
+    - application
+    - attachments
+    - audio
+    - author_id
+    - community_id
+    - context_annotations
+    - conversation_id
+    - created_at_ms
+    - delete
+    - details
+    - display_text_range
+    - edit_controls
+    - entities
+    - error
+    - event_at
+    - event_type
+    - event_uuid
+    - extended_details_url
+    - filter
+    - geo
+    - in_reply_to_user_id
+    - label_title
+    - lang
+    - liked_tweet_id
+    - non_public_metrics
+    - organic_metrics
+    - payload
+    - possibly_sensitive
+    - promoted_metrics
+    - public_metrics

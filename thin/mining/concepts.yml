@@ -1,0 +1,25 @@
+context: mining
+name: Mining
+intro: >-
+  The common mining vocabulary -- mine sites, the equipment working them and the production or
+  tonnage they report -- distilled from the APIs that already exist.
+tags: [Mining, Metals, Minerals, Critical Minerals, Mining Technology]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, site_id, equipment_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  mine_site:
+    path: /mine-sites
+    segments: [mines, mine, sites, site, projects@mining, deposits]
+  mining_equipment:
+    path: /mining-equipment
+    segments: [equipment, machines, assets@mining|sites|site, trucks, fleet]
+
+findings:
+  - "Mining publishes almost no harvested OpenAPI: 10 providers with 23 specs, and no readable mine-site or equipment schema. Mining companies are operators, not API providers; their fleet and equipment data sits in vendor telematics (measured in fleet and iot) and in ISO 15143-3 (AEMP 2.0), the reference if this is revisited."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

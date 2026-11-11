@@ -1,0 +1,259 @@
+context: solar
+name: Solar and Distributed Energy
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Solar
+  - Solar Energy
+  - Renewable Energy
+  - Energy Storage
+  - Batteries
+  - Distributed Energy
+  - Inverters
+  - Clean Energy
+  - Photovoltaics
+  providers_with_harvested_openapi: 53
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  site:
+    segments_seen:
+      sites: 6
+      site: 1
+      installations: 1
+      systems: 1
+    providers_exposing: 9
+    providers_with_readable_schema: 8
+    operations:
+    - operation: GET collection
+      providers: 8
+      share: 0.889
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: POST collection
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.556
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.333
+      tier: extended
+    properties:
+    - name: id
+      tier: core
+      providers: 7
+      share: 0.875
+      type: string
+      spellings:
+      - id
+      - siteId
+      - system_id
+    - name: address
+      tier: core
+      providers: 5
+      share: 0.625
+      type: object
+      spellings:
+      - address
+      - location
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.625
+      type: string
+      spellings:
+      - status
+      - state
+    - name: name
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - name
+    - name: timezone
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - timezone
+    long_tail_count: 84
+    long_tail_sample:
+    - city
+    - created_at
+    - peak_power
+    - site_code
+    - site_name
+    - updated_at
+    - account_count
+    - account_id
+    - active_from
+    - address_issue_type
+    - amenities
+    - area
+    - asset_ids
+    - attachment_type
+    - building_type
+    - building_type_group
+    - business_units_intersection
+    - business_units_union
+    - channels
+    - closed_on
+    - connection_date
+    - connection_type
+    - country
+    - created_by
+    - deletion_target_id
+    - dispatch_methods
+    - email
+    - energy_lifetime
+    - energy_today
+    - entries
+    - ev_charging
+    - ev_charging_points
+    - facility_type
+    - file_count
+    - fuel_types
+    - full_address
+    - gave_boundary_meter_consent_at
+    - geo_location
+    - heating_fuel
+    - hvac_cool_type
+  device:
+    segments_seen:
+      devices: 2
+      battery: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 16
+    long_tail_sample:
+    - id
+    - end_at
+    - entries
+    - granularity
+    - intervals
+    - items
+    - kind
+    - last_reported_aggregate_soc
+    - manufacturer
+    - model
+    - properties
+    - serial_number
+    - start_at
+    - synth_id
+    - total_devices
+    - type
+  energy_production:
+    segments_seen:
+      overview: 3
+      energy: 2
+      telemetry: 2
+      readings: 1
+      power: 1
+      energy_lifetime: 1
+    providers_exposing: 8
+    providers_with_readable_schema: 8
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 0.875
+      tier: core
+    - operation: POST collection
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.5
+      type: string
+      spellings:
+      - id
+      - system_id
+    - name: country
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - country
+    long_tail_count: 140
+    long_tail_sample:
+    - name
+    - power
+    - serial_number
+    - status
+    - updated_at
+    - accepted
+    - actual_end_date
+    - actual_planned_quantity
+    - actual_planned_revenue
+    - actual_planned_revenue_aud
+    - actual_planned_revenue_eur
+    - actual_planned_revenue_usd
+    - actual_start_date
+    - added_to_invoice_revenue
+    - added_to_invoice_revenue_aud
+    - added_to_invoice_revenue_eur
+    - added_to_invoice_revenue_usd
+    - approved_charges
+    - approved_charges_aud
+    - approved_charges_eur
+    - approved_charges_usd
+    - asset_id
+    - batch_components
+    - batch_qualified
+    - batch_step_variables
+    - battery
+    - blade_count
+    - blades
+    - categories
+    - client
+    - closure_date
+    - code
+    - consumption
+    - country_code
+    - created_at
+    - currency
+    - current_a
+    - data_is_subset
+    - date
+    - dedicated_contact_for_scope_change

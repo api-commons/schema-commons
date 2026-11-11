@@ -1,0 +1,40 @@
+context: pets
+name: Pets and Veterinary
+intro: >-
+  The common pet-care vocabulary -- pets (patients), their owners (clients), veterinary appointments and
+  the vaccinations and records kept for them -- distilled from the APIs that already exist.
+tags: [Pets, Pet Care, Veterinary, Animal Health, Pet Insurance, Pet Tech]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, pet_id, patient_id, client_id, appointment_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, pet_name]
+concepts:
+  pet:
+    segments: [pets, pet, patients, patient, animals, animal]
+    aliases:
+      species: [animal_type, type, kind]
+      breed: [breed_name, breeds]
+      date_of_birth: [birth_date, dob, birthday]
+      sex: [gender]
+      weight: [weight_kg, weight_lbs]
+      owner: [owner_id, client_id, client]
+  pet_owner:
+    path: /pet-owners
+    segments: [clients, client, owners, owner, customers@vet|veterinary]
+    aliases:
+      email: [email_address]
+      phone: [phone_number, mobile]
+  vet_appointment:
+    path: /vet-appointments
+    segments: [appointments, appointment, visits, bookings]
+    aliases:
+      start_at: [start, start_time, scheduled_at, date_time]
+      reason: [reason_for_visit, appointment_type, type]
+
+findings:
+  - "Pets and veterinary publish almost no harvested OpenAPI: 7 providers with 12 specs, pets readable at 5 and agreeing only on an id, owners at 1 and appointments at 3. Veterinary practice-management systems keep their APIs partner-gated."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

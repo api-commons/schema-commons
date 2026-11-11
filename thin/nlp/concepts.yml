@@ -1,0 +1,39 @@
+context: nlp
+name: Natural Language Processing
+intro: >-
+  The common text-analysis vocabulary -- the entities, sentiment, classifications and embeddings
+  extracted from text -- distilled from the APIs that already exist.
+tags: [Natural Language Processing, NLP, Text Analytics, Sentiment Analysis, Entity Extraction, Embeddings, Text Classification]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, usage]
+
+common_fields:
+  id: [uuid, guid, external_id, request_id]
+  created_at: [created, timestamp]
+
+concepts:
+  entity:
+    segments: [entities, entity, ner, extract, extraction]
+    aliases:
+      text: [name, value, mention, word, surface_form]
+      entity_type: [type, label, category, entity_group]
+      confidence: [score, relevance, salience, probability]
+      start: [offset, begin, start_offset, start_char]
+      end: [end_offset, end_char]
+  sentiment:
+    segments: [sentiment, sentiments, emotion, emotions]
+    aliases:
+      label: [sentiment, polarity, type, classification]
+      score: [confidence, magnitude, probability, value]
+  embedding:
+    segments: [embeddings, embedding, embed, vectors@embed|embeddings]
+    aliases:
+      embedding: [vector, values, embeddings]
+      model: [model_id, model_name]
+      index: [position]
+
+findings:
+  - "Text analysis is not published in a common resource shape: in a 91-provider cohort, entities at 8 readable providers agree on text and entity_type; sentiment appears at 3. Embeddings are the exception: 24 readable providers agree on model, input, encoding_format and index, which is the OpenAI-compatible interface that api-commons/models already standardizes. They belong there, not in a separate vocabulary."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

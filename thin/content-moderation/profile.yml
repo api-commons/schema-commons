@@ -1,0 +1,150 @@
+context: content-moderation
+name: Content Moderation
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Content Moderation
+  - Trust and Safety
+  - Moderation
+  - Brand Safety
+  - Online Safety
+  providers_with_harvested_openapi: 32
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  moderation_check:
+    segments_seen:
+      check: 6
+      moderation: 1
+      moderate: 1
+    providers_exposing: 8
+    providers_with_readable_schema: 7
+    operations:
+    - operation: POST collection
+      providers: 7
+      share: 0.875
+      tier: core
+    - operation: GET collection
+      providers: 3
+      share: 0.375
+      tier: extended
+    properties:
+    - name: status
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - status
+    - name: user_id
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - user_id
+      - $user_id
+    long_tail_count: 49
+    long_tail_sample:
+    - checked_at
+    - code
+    - config
+    - config_key
+    - config_team
+    - content_published_at
+    - duration
+    - entity_creator_id
+    - entity_id
+    - entity_type
+    - error_message
+    - file_url
+    - id
+    - item
+    - moderation_payload
+    - options
+    - recommended_action
+    - sent_at
+    - task_id
+    - test_mode
+    - triggered_rule
+    - user
+    - action
+    - cached
+    - categories
+    - classification_job_id
+    - content
+    - content_type
+    - cost
+    - decision_id
+    - error
+    - flagged
+    - flagged_checks
+    - judge
+    - latency
+    - media_type
+    - metadata
+    - mime_type
+    - mode
+    - moderation_job_id
+  review_decision:
+    segments_seen:
+      appeals: 2
+      decisions: 2
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: POST collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties:
+    - name: entity_type
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - entity_type
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - id
+    long_tail_count: 23
+    long_tail_sample:
+    - analyst
+    - appeal_reason
+    - attachments
+    - created_at
+    - decision_id
+    - decision_reason
+    - description
+    - entity
+    - entity_content
+    - entity_id
+    - filter
+    - limit
+    - prev
+    - sort
+    - source
+    - status
+    - time
+    - updated_at
+    - user
+    - user_id
+    - abuse_type
+    - category
+    - name

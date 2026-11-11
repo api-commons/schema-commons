@@ -1,0 +1,380 @@
+context: fraud-prevention
+name: Fraud Prevention
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Fraud Prevention
+  - Fraud Detection
+  - Risk Management
+  - Chargebacks
+  - Anti-Fraud
+  - Transaction Monitoring
+  - Device Fingerprinting
+  providers_with_harvested_openapi: 173
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  risk_assessment:
+    segments_seen:
+      risk: 9
+      score: 6
+      assessments: 5
+      evaluate: 4
+      decisions: 4
+      decision: 3
+      evaluations: 2
+      assessment: 2
+      scores: 2
+      screen: 1
+      screenings: 1
+    providers_exposing: 32
+    providers_with_readable_schema: 31
+    operations:
+    - operation: POST collection
+      providers: 25
+      share: 0.781
+      tier: core
+    - operation: GET item
+      providers: 13
+      share: 0.406
+      tier: extended
+    - operation: GET collection
+      providers: 12
+      share: 0.375
+      tier: extended
+    - operation: UPDATE item
+      providers: 4
+      share: 0.125
+      tier: long-tail
+    - operation: DELETE item
+      providers: 3
+      share: 0.094
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.062
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.031
+      tier: long-tail
+    properties:
+    - name: id
+      tier: extended
+      providers: 13
+      share: 0.419
+      type: string
+      spellings:
+      - id
+      - decision_id
+      - Id
+      - eventId
+      - external_id
+    - name: status
+      tier: extended
+      providers: 12
+      share: 0.387
+      type: string
+      spellings:
+      - status
+      - state
+    - name: description
+      tier: extended
+      providers: 9
+      share: 0.29
+      type: string
+      spellings:
+      - description
+    long_tail_count: 526
+    long_tail_sample:
+    - name
+    - created_at
+    - error_message
+    - score
+    - decision
+    - metadata
+    - tags
+    - address
+    - category
+    - email
+    - entity
+    - event
+    - last_updated
+    - reason
+    - type
+    - address_line_1
+    - address_line_2
+    - analyst
+    - callback_url
+    - carrier
+    - country_code
+    - creation_time
+    - device
+    - entity_type
+    - generic
+    - latest_labels
+    - location
+    - merchant
+    - options
+    - order
+    - phone_number
+    - phone_type
+    - request_id
+    - risk_insights
+    - risk_type
+    - rule_id
+    - severity
+    - shipping
+    - source
+    - source_id
+  fraud_rule:
+    segments_seen:
+      rules: 6
+    providers_exposing: 6
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET item
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: GET collection
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - name
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - created_at
+      - createdDate
+    - name: description
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - description
+    - name: enabled
+      tier: core
+      providers: 3
+      share: 0.5
+      type: boolean
+      spellings:
+      - enabled
+      - active
+    long_tail_count: 68
+    long_tail_sample:
+    - action
+    - rule_id
+    - tags
+    - type
+    - updated_at
+    - action_ids
+    - arn
+    - attack_types
+    - audited_by_display
+    - audited_date
+    - authors
+    - auto_review_auto_share
+    - auto_review_classification
+    - comment
+    - condition
+    - conditions
+    - created_by
+    - created_time
+    - data_categories
+    - destinations
+    - detection_methods
+    - detector_id
+    - edited_by
+    - edited_date
+    - error_code
+    - false_positives
+    - flow
+    - internal_type
+    - label
+    - language
+    - last_activated_at
+    - last_hit
+    - last_updated_time
+    - matcher
+    - maturity
+    - max_results
+    - merchant_account_id
+    - mode
+    - monitored_products
+    - next_token
+  fraud_list:
+    segments_seen:
+      list: 13
+      lists: 4
+      blocklist: 1
+      watchlists: 1
+      blocklists: 1
+    providers_exposing: 19
+    providers_with_readable_schema: 18
+    operations:
+    - operation: GET collection
+      providers: 15
+      share: 0.789
+      tier: core
+    - operation: POST collection
+      providers: 11
+      share: 0.579
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.368
+      tier: extended
+    - operation: DELETE item
+      providers: 5
+      share: 0.263
+      tier: extended
+    - operation: POST item
+      providers: 4
+      share: 0.211
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.158
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.053
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 9
+      share: 0.5
+      type: string
+      spellings:
+      - id
+      - guid
+      - assessmentId
+      - transactionId
+      - uuid
+    - name: created_at
+      tier: extended
+      providers: 8
+      share: 0.444
+      type: string
+      spellings:
+      - created_at
+      - createdDate
+      - createdAt
+      - created
+    - name: status
+      tier: extended
+      providers: 8
+      share: 0.444
+      type: string
+      spellings:
+      - status
+      - state
+    - name: description
+      tier: extended
+      providers: 6
+      share: 0.333
+      type: string
+      spellings:
+      - description
+    - name: name
+      tier: extended
+      providers: 6
+      share: 0.333
+      type: string
+      spellings:
+      - name
+      - title
+      - displayName
+    - name: list_type
+      tier: extended
+      providers: 4
+      share: 0.222
+      type: string
+      spellings:
+      - type
+      - $type
+    long_tail_count: 1077
+    long_tail_sample:
+    - created_by
+    - updated_at
+    - accounts
+    - asset_id
+    - category
+    - date_due
+    - email
+    - expiration_date
+    - file_name
+    - instance_id
+    - is_custom
+    - notes
+    - number
+    - order_id
+    - reason
+    - target_risk_score
+    - abbreviation
+    - accepts_list
+    - access_level
+    - account_count
+    - account_created_date
+    - account_history_id
+    - account_id
+    - account_id_that_does_paying
+    - account_managers
+    - account_name
+    - account_number
+    - account_start_date
+    - account_start_value
+    - account_status
+    - account_status_icon
+    - account_status_id
+    - account_type
+    - account_value
+    - acct_start_date
+    - action
+    - active
+    - active_schedule_count
+    - additional_accounts
+    - additional_clients

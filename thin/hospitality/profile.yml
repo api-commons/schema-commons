@@ -1,0 +1,629 @@
+context: hospitality
+name: Hotels and Property Systems
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Hospitality
+  - Hotels
+  - Hotel Management
+  - Property Management System
+  - Channel Manager
+  - Vacation Rentals
+  - Short-Term Rentals
+  providers_with_harvested_openapi: 86
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  hotel:
+    segments_seen:
+      hotels: 15
+      hotel: 4
+    providers_exposing: 18
+    providers_with_readable_schema: 16
+    operations:
+    - operation: GET collection
+      providers: 13
+      share: 0.722
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.389
+      tier: extended
+    - operation: POST collection
+      providers: 5
+      share: 0.278
+      tier: extended
+    - operation: DELETE collection
+      providers: 1
+      share: 0.056
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.056
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.056
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 12
+      share: 0.75
+      type: string
+      spellings:
+      - id
+      - hotelId
+      - hotel_id
+      - propertyId
+    - name: name
+      tier: core
+      providers: 11
+      share: 0.688
+      type: string
+      spellings:
+      - name
+      - Name
+    - name: address
+      tier: core
+      providers: 10
+      share: 0.625
+      type: object
+      spellings:
+      - address
+      - location
+      - Address
+    - name: amenities
+      tier: extended
+      providers: 7
+      share: 0.438
+      type: array
+      spellings:
+      - amenities
+      - Amenities
+    - name: currency
+      tier: extended
+      providers: 6
+      share: 0.375
+      type: string
+      spellings:
+      - currency
+      - currency_code
+      - currencyCode
+    - name: description
+      tier: extended
+      providers: 6
+      share: 0.375
+      type: string
+      spellings:
+      - description
+    - name: images
+      tier: extended
+      providers: 5
+      share: 0.312
+      type: array
+      spellings:
+      - images
+      - Images
+    - name: city
+      tier: extended
+      providers: 4
+      share: 0.25
+      type: string
+      spellings:
+      - city
+    - name: latitude
+      tier: extended
+      providers: 4
+      share: 0.25
+      type: number
+      spellings:
+      - latitude
+    - name: longitude
+      tier: extended
+      providers: 4
+      share: 0.25
+      type: number
+      spellings:
+      - longitude
+    long_tail_count: 210
+    long_tail_sample:
+    - property_type
+    - rating
+    - star_rating
+    - brand
+    - brand_name
+    - chain_code
+    - chain_name
+    - check_in
+    - check_out
+    - checkin
+    - checkout
+    - child_policy
+    - country
+    - end_date
+    - guests
+    - hotel_close_date
+    - hotel_code
+    - hotel_type
+    - housing_event
+    - integrated
+    - min_rate
+    - phone
+    - proximity
+    - reservation_access_date
+    - reward_programs
+    - room_types
+    - start_date
+    - timezone
+    - a_ri_enabled
+    - access_code
+    - accommodation_details
+    - account_id
+    - account_type
+    - active_date
+    - active_records_only
+    - add_on_license
+    - additional_details
+    - adults
+    - alternate
+    - alternate_hotels
+  room_type:
+    segments_seen:
+      room-types: 2
+      units: 1
+      accommodations: 1
+      roomtypes: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties:
+    - name: description
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - description
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.75
+      type: integer
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - name
+    - name: room_category
+      tier: core
+      providers: 3
+      share: 0.75
+      type: object
+      spellings:
+      - roomCategory
+    long_tail_count: 106
+    long_tail_sample:
+    - attendee_types
+    - custom_order
+    - hotel
+    - housing_event
+    - images
+    - max_occupancy
+    - number_of_units
+    - warnings
+    - accessible
+    - accommodation
+    - accommodation_details
+    - accommodation_order_references
+    - action
+    - active
+    - active_date
+    - allocation_grid_dates
+    - auto_checkin
+    - auto_populate
+    - auto_room_assign
+    - bed_type
+    - booker
+    - cancellation_details
+    - category_id
+    - checkin
+    - checkout
+    - code
+    - commission
+    - components
+    - configuration
+    - credit_slip
+    - credit_slip_number
+    - currency
+    - default_occupancy
+    - extra_beds_configuration
+    - extras
+    - features
+    - flexfields
+    - floor_numbers_located_on
+    - generic
+    - hotel_room_type
+  stay:
+    segments_seen:
+      reservations: 6
+      bookings: 5
+      booking: 1
+    providers_exposing: 12
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 9
+      share: 0.75
+      tier: core
+    - operation: GET item
+      providers: 9
+      share: 0.75
+      tier: core
+    - operation: POST collection
+      providers: 8
+      share: 0.667
+      tier: core
+    - operation: DELETE item
+      providers: 6
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.417
+      tier: extended
+    - operation: POST item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.083
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - id
+      - reservation_id
+      - property_id
+      - hotelId
+      - propertyId
+    - name: status
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - status
+      - reservationStatus
+      - Status
+      - bookingStatus
+    - name: check_in
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - startDate
+      - checkin
+      - CheckIn
+      - checkInDate
+    - name: check_out
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - endDate
+      - checkout
+      - CheckOut
+      - checkOutDate
+    - name: booking_id
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - bookingId
+    - name: adults
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: integer
+      spellings:
+      - numberOfAdults
+      - adults
+    - name: confirmation_number
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - confirmationNumber
+      - ConfirmationNumber
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - created
+      - createdAt
+    - name: hotel
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - hotel
+    - name: hotel_confirmation_number
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - hotelConfirmationNumber
+      - HotelConfirmationNumber
+    - name: updated_at
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - lastModified
+      - updatedAt
+    long_tail_count: 168
+    long_tail_sample:
+    - accessible
+    - add_ons
+    - attendee_type
+    - attendee_type_code
+    - block_code
+    - booking_contact
+    - booking_site
+    - call_center
+    - cancelled
+    - created_by
+    - currency
+    - custom_fields
+    - guests
+    - hotel_code
+    - hotel_confirmation_code
+    - housing_event
+    - is_canceled
+    - is_cancelled
+    - is_modified
+    - is_wait_listed
+    - last_modified_by
+    - membership_id
+    - modifiers
+    - nights
+    - no_show
+    - number_of_children
+    - reservation_request
+    - reward_program
+    - room_type
+    - rooms
+    - send_acknowledgement
+    - special_request
+    - split_folio
+    - total
+    - total_charges
+    - travel_details
+    - api_key
+    - availability_hold_reference
+    - block_id
+    - booked_rooms
+  rate_plan:
+    segments_seen:
+      rates: 7
+      availability: 6
+      inventory: 2
+      rate-plans: 1
+      rateplans: 1
+    providers_exposing: 13
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 9
+      share: 0.692
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.385
+      tier: extended
+    - operation: GET item
+      providers: 3
+      share: 0.231
+      tier: extended
+    - operation: UPDATE collection
+      providers: 3
+      share: 0.231
+      tier: extended
+    - operation: DELETE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - hotelId
+      - id
+      - ratePlanId
+    - name: currency_code
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - currencyCode
+    - name: end_date
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - endDate
+      - EndDate
+    - name: rate_code
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - rateCode
+    - name: available
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: integer
+      spellings:
+      - available
+    - name: currency
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - currency
+    - name: date
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - date
+      - Date
+    - name: hotel_code
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - hotelCode
+    - name: rate
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - rate
+    - name: room_type
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - roomType
+    - name: room_types
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: array
+      spellings:
+      - roomTypes
+    - name: start_date
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - startDate
+      - StartDate
+    long_tail_count: 280
+    long_tail_sample:
+    - allocation
+    - cancellation_policy
+    - checkin
+    - checkout
+    - current_block
+    - description
+    - distribution
+    - final_pickup
+    - free_sell
+    - hide_rates
+    - hotel
+    - housing_event
+    - inventory
+    - language
+    - max_guests
+    - meal_plan
+    - min_length_of_stay
+    - name
+    - original_block
+    - pickup
+    - price
+    - rate_plan_code
+    - rate_plan_name
+    - room_code
+    - room_rate
+    - rooms
+    - unassigned
+    - wait_list_requests
+    - access_exclusions
+    - accommodation
+    - accommodations
+    - active
+    - additions_chosen
+    - adjustments
+    - adults
+    - advanced_daily_base
+    - advanced_daily_rate
+    - age_bands
+    - allow_rate_update
+    - allow_rates_to_gds

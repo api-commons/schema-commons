@@ -1,0 +1,433 @@
+context: higher-education
+name: Higher Education
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Higher Education
+  - University
+  - Universities
+  - Student Information Systems
+  - Admissions
+  - College
+  - Education
+  providers_with_harvested_openapi: 164
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  student:
+    segments_seen:
+      students: 7
+      student: 2
+    providers_exposing: 9
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 9
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.556
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.444
+      tier: extended
+    - operation: UPDATE item
+      providers: 2
+      share: 0.222
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.571
+      type: integer
+      spellings:
+      - id
+      - courseId
+    - name: first_name
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - first_name
+      - firstName
+    - name: last_name
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - last_name
+      - lastName
+    long_tail_count: 53
+    long_tail_sample:
+    - email
+    - middle_name
+    - name
+    - suffix
+    - active
+    - addresses
+    - admit_level
+    - admit_quarter
+    - birth_date
+    - branch_id
+    - branch_name
+    - current_grade
+    - demographics
+    - enrolled_at
+    - enrollment_date
+    - first_census_quarter
+    - first_name_legal
+    - gender
+    - grad_year
+    - imsx_code_major
+    - imsx_code_minor
+    - imsx_description
+    - imsx_message_ref_identifier
+    - imsx_operation_ref_identifier
+    - imsx_severity
+    - institute_id
+    - institute_name
+    - international_student_code
+    - last_census_quarter
+    - last_name_legal
+    - last_registered_quarter
+    - local_id
+    - middle_name_legal
+    - mobile_number
+    - nfr
+    - nick_name
+    - perm
+    - phones
+    - preferred_last_name
+    - preferred_name
+  course_section:
+    segments_seen:
+      classes: 7
+      sections: 6
+      section: 2
+      offerings: 1
+    providers_exposing: 14
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 14
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 8
+      share: 0.571
+      tier: core
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.556
+      type: string
+      spellings:
+      - id
+      - section_id
+      - course_id
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.556
+      type: string
+      spellings:
+      - name
+      - Title
+    - name: term
+      tier: extended
+      providers: 4
+      share: 0.444
+      type: string
+      spellings:
+      - term_id
+      - Term
+      - semester
+    - name: description
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - description
+    - name: instructor
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - teacher
+      - Instructors
+      - instructors
+    - name: status
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - state
+      - Status
+      - status
+    long_tail_count: 135
+    long_tail_sample:
+    - class_id
+    - course
+    - course_code
+    - created_at
+    - credits
+    - ext
+    - meetings
+    - offering_id
+    - page_size
+    - school_id
+    - section_number
+    - teachers
+    - abbreviation
+    - academic_session
+    - activity
+    - addresses
+    - advisors
+    - all_departments
+    - areas
+    - associated_sections
+    - block
+    - block_name
+    - building
+    - capacity
+    - class
+    - consumers
+    - course_prefix
+    - course_quality
+    - course_title
+    - cumulative_grade
+    - current
+    - custom_fields
+    - department
+    - difficulty
+    - district
+    - dow
+    - dow_sort
+    - duration
+    - duration_id
+    - end_date
+  term:
+    segments_seen:
+      terms: 7
+      semesters: 3
+      term: 3
+    providers_exposing: 12
+    providers_with_readable_schema: 10
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.917
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.583
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.5
+      type: string
+      spellings:
+      - name
+      - title
+      - Name
+    - name: id
+      tier: extended
+      providers: 4
+      share: 0.4
+      type: string
+      spellings:
+      - id
+      - uuid
+    - name: end_date
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: string
+      spellings:
+      - end_date
+      - endDate
+    - name: start_date
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: string
+      spellings:
+      - begin_date
+      - start_date
+      - beginDate
+    long_tail_count: 79
+    long_tail_sample:
+    - active
+    - created_at
+    - created_by
+    - education
+    - identifiers
+    - link
+    - modified_by
+    - modified_date
+    - portal_url
+    - pretty_url_identifiers
+    - previous_uuids
+    - pure_id
+    - system_name
+    - term_code
+    - version
+    - a_term_last_day
+    - academic_catalog
+    - academic_sessions
+    - academic_year
+    - associated_academic_year
+    - b_term_first_day
+    - census_day
+    - description
+    - district
+    - enroll_dates_pk
+    - enroll_end
+    - enroll_start
+    - fifth_day
+    - financial_aid_year
+    - first_day
+    - first_day_med_school
+    - grade_submission_deadline
+    - grading_period_close
+    - grading_period_open
+    - grading_period_open_a_term
+    - imsx_code_major
+    - imsx_code_minor
+    - imsx_description
+    - imsx_message_ref_identifier
+    - imsx_operation_ref_identifier
+  admission_application:
+    segments_seen:
+      applications: 4
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: UPDATE item
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - uuid
+    - name: name
+      tier: core
+      providers: 4
+      share: 1.0
+      type: string
+      spellings:
+      - name
+      - title
+    - name: version
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - version
+    long_tail_count: 48
+    long_tail_sample:
+    - acronym
+    - application_date
+    - awards
+    - budget_applied_amount_difference
+    - cluster
+    - co_managing_organizations
+    - collaborators
+    - created_at
+    - created_by
+    - custom_defined_fields
+    - descriptions
+    - expected_period
+    - external_organizations
+    - funding_opportunity
+    - fundings
+    - identifiers
+    - keyword_groups
+    - managing_organization
+    - modified_by
+    - modified_date
+    - nature_types
+    - organizations
+    - portal_url
+    - pretty_url_identifiers
+    - previous_uuids
+    - pure_id
+    - short_title
+    - system_name
+    - total_academic_ownership
+    - total_applied_amount
+    - type
+    - type_discriminator
+    - visibility
+    - workflow
+    - application_descriptors
+    - dependencies
+    - deployment
+    - description
+    - entitlements
+    - identifier

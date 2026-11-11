@@ -1,0 +1,50 @@
+context: solar
+name: Solar and Distributed Energy
+intro: >-
+  The common vocabulary for distributed energy resources -- the sites, the devices on them (inverters,
+  batteries, chargers) and the production telemetry they report -- distilled from the APIs that already exist.
+tags: [Solar, Solar Energy, Renewable Energy, Energy Storage, Batteries, Distributed Energy, Inverters, Clean Energy, Photovoltaics]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links,
+           value, results, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, site_id, system_id, device_id, external_id]
+  created_at: [created, created_date, date_created, creation_date, installation_date]
+  updated_at: [updated, modified_at, last_modified, last_update_time, last_report_at]
+  status: [state, device_status, site_status]
+  start_at: [start, start_date, start_time, from, period_start]
+  end_at: [end, end_date, end_time, to, period_end]
+  unit: [units, uom]
+
+concepts:
+  site:
+    segments: [sites, site, systems, system, installations, plants, power_plants, projects@solar|pv]
+    aliases:
+      peak_power: [capacity, system_size, kw, system_size_kw, peak_power_kw, nameplate_capacity]
+      timezone: [time_zone, tz]
+      address: [location]
+  device:
+    requires_any: [site]
+    path: /devices
+    segments: [devices, device, inverters, inverter, batteries, battery, equipment, components, microinverters]
+    aliases:
+      serial_number: [serial, sn, serial_num]
+      model: [model_name, product_model]
+      manufacturer: [make, brand, vendor]
+  energy_production:
+    requires_any: [site, device]
+    path: /energy-production
+    segments: [energy, production, power, telemetry, energy_lifetime, stats, readings, power_flow, overview, energy_details]
+    aliases:
+      energy: [wh, kwh, energy_wh, production, value, total_energy]
+      power: [watts, w, current_power, power_w]
+
+findings:
+  - "Distributed energy is not yet published in a common shape: in a 53-provider cohort, sites
+    agree on id, address and status at 8 readable providers, production telemetry shares nothing
+    but an id, and devices appear at two. Each monitoring platform reports energy in its own
+    time-series form."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."
+  - "Revisit when the catalog carries the larger inverter and battery platforms' specs."

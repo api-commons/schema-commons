@@ -1,0 +1,139 @@
+context: oil-and-gas
+name: Oil and Gas
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Oil and Gas
+  - Natural Gas
+  - Petroleum
+  - Upstream
+  - Oilfield Services
+  - LNG
+  providers_with_harvested_openapi: 19
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  well:
+    segments_seen:
+      wells: 3
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - wellId
+      - apiNumber
+    - name: name
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - wellName
+      - leaseName
+      - name
+    - name: state
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - state
+    - name: status
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - status
+    long_tail_count: 389
+    long_tail_sample:
+    - county
+    - latitude
+    - longitude
+    - spud_date
+    - well_type
+    - abstract
+    - acre_spacing
+    - allocation_type
+    - alternative_names
+    - alternative_wellbore_names
+    - api10
+    - api12
+    - api14
+    - area
+    - aries_id
+    - attributes
+    - azimuth
+    - basin
+    - bg
+    - block
+    - bo
+    - bubble_point_press
+    - casing_id
+    - choke_size
+    - chosen_id
+    - chosen_key_id
+    - completion_date
+    - completion_design
+    - completion_end_date
+    - completion_start_date
+    - copied
+    - copied_from
+    - country
+    - created_at
+    - cum_boe
+    - cum_boe_per_perforated_interval
+    - cum_gas
+    - cum_gas_per_perforated_interval
+    - cum_gor
+    - cum_mmcfge
+  production:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

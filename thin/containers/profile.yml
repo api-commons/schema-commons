@@ -1,0 +1,411 @@
+context: containers
+name: Container Registries
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Containers
+  - Container Registry
+  - Docker
+  - OCI
+  - Container Security
+  - Artifact Registry
+  providers_with_harvested_openapi: 104
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  container_repository:
+    segments_seen:
+      repositories: 14
+      repository: 3
+      images: 1
+    providers_exposing: 16
+    providers_with_readable_schema: 15
+    operations:
+    - operation: GET collection
+      providers: 15
+      share: 0.938
+      tier: core
+    - operation: DELETE item
+      providers: 10
+      share: 0.625
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.625
+      tier: core
+    - operation: POST collection
+      providers: 8
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.312
+      tier: extended
+    - operation: POST item
+      providers: 1
+      share: 0.062
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 10
+      share: 0.667
+      type: string
+      spellings:
+      - name
+      - Title
+      - Name
+    - name: description
+      tier: core
+      providers: 8
+      share: 0.533
+      type: string
+      spellings:
+      - description
+      - Description
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: string
+      spellings:
+      - created_at
+      - createTime
+    - name: id
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: integer
+      spellings:
+      - id
+      - Id
+    - name: status
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: string
+      spellings:
+      - status
+      - Status
+    - name: type
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: string
+      spellings:
+      - type
+      - Type
+    - name: updated_at
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: string
+      spellings:
+      - updateTime
+      - last_updated
+      - update_time
+    - name: url
+      tier: extended
+      providers: 4
+      share: 0.267
+      type: string
+      spellings:
+      - url
+      - URL
+    - name: format
+      tier: extended
+      providers: 3
+      share: 0.2
+      type: string
+      spellings:
+      - format
+    - name: labels
+      tier: extended
+      providers: 3
+      share: 0.2
+      type: object
+      spellings:
+      - labels
+    - name: namespace
+      tier: extended
+      providers: 3
+      share: 0.2
+      type: string
+      spellings:
+      - namespace
+      - Namespace
+    - name: size
+      tier: extended
+      providers: 3
+      share: 0.2
+      type: integer
+      spellings:
+      - size
+    - name: visibility
+      tier: extended
+      providers: 3
+      share: 0.2
+      type: boolean
+      spellings:
+      - is_private
+      - visibility
+    long_tail_count: 172
+    long_tail_sample:
+    - done
+    - error
+    - mode
+    - password
+    - project_id
+    - pull_count
+    - registry
+    - response
+    - username
+    - additional_files
+    - affiliation
+    - artifact_count
+    - attributes
+    - author
+    - auto_update
+    - azure_active_directory_endpoint
+    - azure_service_principal_client_id
+    - azure_service_principal_client_secret
+    - azure_service_principal_tenant_id
+    - base_image
+    - base_os
+    - bearer_token
+    - blacked_out
+    - categories
+    - child_count
+    - cleanup_policy_started_at
+    - collaborator_count
+    - compose_file
+    - compose_file_path_in_repository
+    - compose_format
+    - connection_state
+    - content_types
+    - controls_info
+    - controls_stats
+    - count_fields
+    - created_by
+    - created_by_user_id
+    - creation_date
+    - creation_time
+    - cvedb_create_time
+  image_tag:
+    segments_seen:
+      tags: 3
+      artifacts: 2
+      versions: 2
+      manifests: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.667
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: DELETE collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - name
+      - repository_name
+    long_tail_count: 60
+    long_tail_sample:
+    - artifact_type
+    - created_at
+    - digest
+    - id
+    - labels
+    - revision
+    - size
+    - accessibility
+    - accessories
+    - addition_links
+    - annotations
+    - artifact_format
+    - commands
+    - commit
+    - creator
+    - direct_vulnerabilities_count
+    - expire_in
+    - extra_attrs
+    - file
+    - icon
+    - images
+    - inherited_accessories
+    - last_updater
+    - last_updater_username
+    - licenses
+    - location
+    - manifest_media_type
+    - media_type
+    - metadata
+    - modules
+    - namespace
+    - path
+    - project_id
+    - protected
+    - published
+    - pull_time
+    - ref
+    - references
+    - release
+    - repository
+  registry:
+    segments_seen:
+      registries: 7
+      registry: 2
+    providers_exposing: 9
+    providers_with_readable_schema: 9
+    operations:
+    - operation: GET collection
+      providers: 8
+      share: 0.889
+      tier: core
+    - operation: DELETE item
+      providers: 7
+      share: 0.778
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: POST collection
+      providers: 6
+      share: 0.667
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.556
+      tier: core
+    - operation: POST item
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.667
+      type: string
+      spellings:
+      - id
+      - Id
+      - uuid
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.556
+      type: string
+      spellings:
+      - name
+      - Name
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - createdAt
+      - createdDate
+      - created_at
+    - name: password
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - password
+      - Password
+    - name: status
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - status
+    - name: type
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - type
+      - Type
+    - name: username
+      tier: extended
+      providers: 3
+      share: 0.333
+      type: string
+      spellings:
+      - username
+      - Username
+    long_tail_count: 89
+    long_tail_sample:
+    - auth
+    - region
+    - registry_type
+    - url
+    - access_key
+    - access_secret
+    - access_token
+    - access_token_expiry
+    - address
+    - auth_token
+    - auth_with_token
+    - authentication
+    - authorized_teams
+    - authorized_users
+    - aws_key
+    - base_url
+    - ca_certificate
+    - connector_id
+    - created_by
+    - creation_time
+    - credential
+    - credential_type
+    - cvedb_create_time
+    - cvedb_version
+    - description
+    - docker_hub_org_name
+    - domain
+    - domains
+    - ecr
+    - error_detail
+    - error_message
+    - failed
+    - filters
+    - gcr_key
+    - github
+    - gitlab
+    - gitlab_external_url
+    - gitlab_private_token
+    - ibm_cloud_account
+    - ibm_cloud_token_url

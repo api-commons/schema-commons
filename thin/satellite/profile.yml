@@ -1,0 +1,367 @@
+context: satellite
+name: Satellite and Earth Observation
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Satellite
+  - Satellite Imagery
+  - Earth Observation
+  - Space
+  - Remote Sensing
+  - Geospatial
+  - Aerospace
+  providers_with_harvested_openapi: 170
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  scene:
+    segments_seen:
+      search: 45
+      items: 9
+      collections: 3
+      catalog: 2
+      imagery: 2
+      scene: 1
+    providers_exposing: 51
+    providers_with_readable_schema: 42
+    operations:
+    - operation: GET collection
+      providers: 41
+      share: 0.804
+      tier: core
+    - operation: POST collection
+      providers: 25
+      share: 0.49
+      tier: extended
+    - operation: GET item
+      providers: 8
+      share: 0.157
+      tier: long-tail
+    - operation: DELETE item
+      providers: 2
+      share: 0.039
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.039
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.02
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.02
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 25
+      share: 0.595
+      type: string
+      spellings:
+      - name
+      - title
+      - Name
+      - display_name
+    - name: id
+      tier: core
+      providers: 22
+      share: 0.524
+      type: string
+      spellings:
+      - id
+      - itemId
+      - orderId
+    - name: geometry
+      tier: extended
+      providers: 20
+      share: 0.476
+      type: object
+      spellings:
+      - geometry
+      - bbox
+      - aoi
+    - name: limit
+      tier: extended
+      providers: 13
+      share: 0.31
+      type: integer
+      spellings:
+      - limit
+    - name: type
+      tier: extended
+      providers: 13
+      share: 0.31
+      type: string
+      spellings:
+      - type
+    - name: acquired_at
+      tier: extended
+      providers: 11
+      share: 0.262
+      type: string
+      spellings:
+      - datetime
+      - acquisitionDate
+    - name: description
+      tier: extended
+      providers: 11
+      share: 0.262
+      type: string
+      spellings:
+      - description
+    - name: query
+      tier: extended
+      providers: 9
+      share: 0.214
+      type: object
+      spellings:
+      - query
+    long_tail_count: 563
+    long_tail_sample:
+    - collections
+    - created_at
+    - intersects
+    - region
+    - ids
+    - resolution
+    - country
+    - locality
+    - platform
+    - properties
+    - sortby
+    - status
+    - constellation
+    - end_date
+    - fields
+    - filter
+    - instruments
+    - label
+    - license
+    - start_date
+    - distance
+    - filter_crs
+    - filter_lang
+    - gid
+    - lat
+    - layer
+    - location
+    - mission
+    - providers
+    - sort_by
+    - source
+    - updated_at
+    - accuracy
+    - borough
+    - categories
+    - cloud_cover
+    - conf
+    - confidence
+    - country_code
+    - country_gid
+  tasking_order:
+    segments_seen:
+      orders: 8
+      taskings: 1
+    providers_exposing: 8
+    providers_with_readable_schema: 7
+    operations:
+    - operation: POST collection
+      providers: 8
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.875
+      tier: core
+    - operation: GET collection
+      providers: 6
+      share: 0.75
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.375
+      tier: extended
+    - operation: POST item
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 7
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - orderId
+      - order:id
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - status
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - name
+      - title
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+    - name: items
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: array
+      spellings:
+      - items
+    long_tail_count: 79
+    long_tail_sample:
+    - account_id
+    - collection_id
+    - created_by
+    - currency
+    - geometry
+    - item_ids
+    - order_status
+    - products
+    - total_amount
+    - transaction_id
+    - updated_at
+    - user_id
+    - area_km2
+    - bandset
+    - basket_id
+    - bbox
+    - billable_area_km2
+    - bounds
+    - callback
+    - catalog_id
+    - cloud_cover
+    - cloud_delivery
+    - collection
+    - contract_id
+    - cost
+    - costs
+    - crs_code
+    - customer
+    - customer_reference
+    - delivery
+    - delivery_speed
+    - discount_percentage
+    - discount_value
+    - documents
+    - end_users
+    - features
+    - granule_id
+    - harmonize_to
+    - input
+    - item_format
+  satellite:
+    segments_seen:
+      satellite: 5
+      tle: 4
+      satellites: 2
+      tles: 1
+      spacecraft: 1
+    providers_exposing: 10
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET item
+      providers: 7
+      share: 0.7
+      tier: core
+    - operation: GET collection
+      providers: 6
+      share: 0.6
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.2
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - id
+      - satelliteId
+    long_tail_count: 66
+    long_tail_sample:
+    - name
+    - object_name
+    - status
+    - apogee
+    - bands
+    - collections
+    - comment
+    - commentcode
+    - completed_at
+    - country
+    - created_at
+    - current
+    - current_ephemeris
+    - decay
+    - description
+    - end_time
+    - ephemeris_id
+    - fastest_turnaround
+    - file
+    - flights
+    - flights_count
+    - forces
+    - ground_stations
+    - image
+    - in_space
+    - inclination
+    - info
+    - intldes
+    - is_placeholder
+    - launch
+    - launch_num
+    - launch_piece
+    - launch_year
+    - line1
+    - line2
+    - maneuver_count
+    - maneuvers
+    - mission_ends_count
+    - next_token
+    - norad_id

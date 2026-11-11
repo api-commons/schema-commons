@@ -1,0 +1,35 @@
+context: medical-devices
+name: Medical Devices
+intro: >-
+  The common medical-device vocabulary -- registered devices, their regulatory listings and recalls,
+  and the readings connected devices send -- distilled from the APIs that already exist.
+tags: [Medical Devices, Medical Technology, MedTech, Connected Health, Wearable Medical Devices]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, device_id, udi, di]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, device_name, brand_name]
+concepts:
+  medical_device:
+    path: /medical-devices
+    segments: [devices, device, udi, gudid, products@device|devices]
+    aliases:
+      serial_number: [serial, sn]
+      model: [model_number, version_model_number]
+      manufacturer: [company_name, labeler, manufacturer_name]
+  device_reading:
+    path: /device-readings
+    requires: [medical_device]
+    segments: [readings, measurements, data@devices|device, events@devices|device, telemetry]
+    aliases:
+      value: [reading, result]
+      measured_at: [timestamp, recorded_at, time]
+  recall:
+    segments: [recalls, recall, enforcement, adverse_events, events@device|fda]
+
+findings:
+  - "Medical devices publish almost no harvested OpenAPI: 18 providers, with devices readable at 3 and readings at 1. Device identity is the FDA's GUDID and UDI, and device data travels through IEEE 11073 and FHIR Device and Observation resources, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,36 @@
+context: public-spending
+name: Public Spending and Grants
+intro: >-
+  The common public-spending vocabulary -- contract awards, grants and grant opportunities, and the
+  recipients and agencies on each side -- distilled from the APIs that already exist.
+tags: [Federal Government, Government Contracting, Grants, Public Procurement, Government Spending, Open Government, Transparency]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object, page_metadata]
+common_fields:
+  id: [uuid, guid, external_id, award_id, generated_internal_id, opportunity_id, notice_id]
+  created_at: [created, created_date, create_time, posted_date, publish_date]
+  updated_at: [updated, modified_at, update_time, last_modified_date]
+  status: [state]
+  name: [title, display_name]
+  description: [desc, synopsis]
+concepts:
+  award:
+    segments: [awards, award, contracts@spending|awards|federal, spending, transactions@awards|award]
+    aliases:
+      recipient: [recipient_name, awardee, vendor, recipient_id]
+      agency: [awarding_agency, funding_agency, awarding_agency_name, agency_name]
+      amount: [total_obligation, award_amount, obligated_amount, value, federal_action_obligation]
+      award_type: [type, award_type_description, category]
+      start_date: [period_of_performance_start_date, start]
+      end_date: [period_of_performance_current_end_date, end]
+  grant_opportunity:
+    path: /grant-opportunities
+    segments: [opportunities, opportunity, grants, grant, funding_opportunities, notices, solicitations, tenders]
+    aliases:
+      agency: [agency_name, agency_code, funder, organization]
+      close_date: [closing_date, response_deadline, deadline, due_date]
+      amount: [award_ceiling, estimated_total_funding, funding_amount]
+
+findings:
+  - "Public spending is published by a handful of government systems, each in its own shape: in a 117-provider cohort, awards are readable at 3 providers and grant opportunities at 5, agreeing only on an id. The shared vocabularies are the Open Contracting Data Standard (OCDS) and the 360Giving and IATI standards, which a standards pass should take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,305 @@
+context: patient-engagement
+name: Patient Engagement
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Patient Engagement
+  - Remote Patient Monitoring
+  - Digital Health
+  - Care Management
+  - Chronic Care
+  - Telehealth
+  - Consumer Health
+  providers_with_harvested_openapi: 57
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  care_program:
+    segments_seen:
+      careplans: 1
+      care_plans: 1
+      programs: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    properties:
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: integer
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - name
+      - title
+    long_tail_count: 24
+    long_tail_sample:
+    - updated_at
+    - appointment
+    - client
+    - code
+    - code_system
+    - completed_at
+    - completed_by
+    - created_by
+    - description
+    - diagnoses
+    - end_date
+    - facility
+    - facility_id
+    - goals
+    - instructions
+    - interventions
+    - level_of_care
+    - patient
+    - plan_type
+    - program_type
+    - scheduled_date
+    - start_date
+    - status
+    - updated_by
+  care_task:
+    segments_seen:
+      tasks: 5
+      task: 3
+    providers_exposing: 8
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET collection
+      providers: 8
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 0.625
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.625
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.5
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - patient_id
+      - patientId
+    - name: due_at
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - due_date
+      - due_at
+      - dueDate
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - status
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - title
+      - name
+    - name: priority
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - priority
+    - name: updated_at
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+    - name: description
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - description
+    long_tail_count: 99
+    long_tail_sample:
+    - assignee_id
+    - client_id
+    - created_by
+    - tags
+    - task_id
+    - archived
+    - assigned_by
+    - assigned_to_group
+    - assigned_to_user
+    - assignee_group
+    - assignee_type
+    - assignee_user
+    - associated_items
+    - base_profile
+    - binary_option
+    - branch
+    - branch_id
+    - bucketing
+    - category
+    - client_name
+    - completed_at
+    - contexts
+    - create_date_time
+    - create_user_id
+    - create_user_name
+    - created_by_id
+    - current_priority
+    - custom_icon
+    - de_identified
+    - de_identify_hash_fields
+    - de_identify_remove_fields
+    - deployment_id
+    - deployment_ids
+    - details
+    - do_translate
+    - employee_id
+    - employee_name
+    - end_date_time
+    - exclude_fields
+    - exclude_minors
+  remote_measurement:
+    segments_seen:
+      vitals: 3
+      observations: 2
+      measurements: 2
+    providers_exposing: 7
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.571
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.429
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.429
+      tier: extended
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - id
+      - patient_id
+    long_tail_count: 54
+    long_tail_sample:
+    - created_at
+    - measured_at
+    - measurement_type
+    - unit
+    - bfm
+    - bmi
+    - bmi_percentile
+    - bodyfat
+    - bp
+    - category
+    - chart_date
+    - client_id
+    - comments
+    - custom_observations
+    - date
+    - deleted_date
+    - device_id
+    - display
+    - dlm
+    - document_date
+    - document_ids
+    - encounter_id
+    - external_client_id
+    - group
+    - hc
+    - height
+    - hr
+    - issued_at
+    - ketone
+    - length_for_weight_percentile
+    - name
+    - non_visit_note
+    - note
+    - options
+    - oxygen
+    - pain
+    - patient
+    - practice
+    - practitioner_id
+    - rr

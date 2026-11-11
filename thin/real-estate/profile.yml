@@ -1,0 +1,500 @@
+context: real-estate
+name: Real Estate Listings
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Real Estate
+  - PropTech
+  - Real Estate Listings
+  - MLS
+  - Property Data
+  - Residential Real Estate
+  - Commercial Real Estate
+  providers_with_harvested_openapi: 131
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  listing:
+    segments_seen:
+      properties: 22
+      property: 21
+      listings: 13
+      listing: 6
+      rentals: 3
+      homes: 2
+    providers_exposing: 49
+    providers_with_readable_schema: 45
+    operations:
+    - operation: GET collection
+      providers: 36
+      share: 0.735
+      tier: core
+    - operation: GET item
+      providers: 34
+      share: 0.694
+      tier: core
+    - operation: POST collection
+      providers: 20
+      share: 0.408
+      tier: extended
+    - operation: UPDATE item
+      providers: 9
+      share: 0.184
+      tier: long-tail
+    - operation: DELETE item
+      providers: 7
+      share: 0.143
+      tier: long-tail
+    - operation: POST item
+      providers: 2
+      share: 0.041
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.02
+      tier: long-tail
+    properties:
+    - name: address
+      tier: core
+      providers: 30
+      share: 0.667
+      type: object
+      spellings:
+      - address
+      - UnparsedAddress
+      - Address
+      - location
+      - street_address
+      - streetAddress
+      - fullAddress
+    - name: id
+      tier: core
+      providers: 30
+      share: 0.667
+      type: string
+      spellings:
+      - id
+      - propertyId
+      - ListingKey
+      - ListingId
+      - listingId
+      - PropertyId
+      - Id
+      - guid
+    - name: status
+      tier: core
+      providers: 23
+      share: 0.511
+      type: string
+      spellings:
+      - status
+      - state
+      - StandardStatus
+      - listingStatus
+      - ListingStatus
+    - name: property_type
+      tier: extended
+      providers: 22
+      share: 0.489
+      type: string
+      spellings:
+      - type
+      - propertyType
+      - PropertySubType
+      - property_type
+      - PropertyType
+      - homeType
+    - name: bathrooms
+      tier: extended
+      providers: 13
+      share: 0.289
+      type: integer
+      spellings:
+      - bathrooms
+      - BathroomsTotalInteger
+      - Bathrooms
+      - baths
+    - name: bedrooms
+      tier: extended
+      providers: 13
+      share: 0.289
+      type: integer
+      spellings:
+      - bedrooms
+      - BedroomsTotal
+      - Bedrooms
+      - beds
+    - name: photos
+      tier: extended
+      providers: 13
+      share: 0.289
+      type: array
+      spellings:
+      - images
+      - Media
+      - photos
+      - media
+    - name: price
+      tier: extended
+      providers: 12
+      share: 0.267
+      type: number
+      spellings:
+      - price
+      - ListPrice
+      - asking_price
+    - name: updated_at
+      tier: extended
+      providers: 11
+      share: 0.244
+      type: string
+      spellings:
+      - ModificationTimestamp
+      - updatedAt
+      - updated_at
+      - updated
+    - name: year_built
+      tier: extended
+      providers: 11
+      share: 0.244
+      type: integer
+      spellings:
+      - yearBuilt
+      - YearBuilt
+      - year_built
+    - name: city
+      tier: extended
+      providers: 10
+      share: 0.222
+      type: string
+      spellings:
+      - city
+      - City
+    - name: description
+      tier: extended
+      providers: 10
+      share: 0.222
+      type: string
+      spellings:
+      - description
+      - Description
+    - name: created_at
+      tier: extended
+      providers: 9
+      share: 0.2
+      type: string
+      spellings:
+      - created_at
+      - OriginalEntryTimestamp
+      - createdDate
+      - createdAt
+      - created
+      - created_date
+    - name: living_area
+      tier: extended
+      providers: 9
+      share: 0.2
+      type: number
+      spellings:
+      - LivingArea
+      - sqft
+      - buildingArea
+      - living_area
+      - Area
+      - livingArea
+      - area
+    long_tail_count: 1108
+    long_tail_sample:
+    - latitude
+    - longitude
+    - name
+    - country
+    - postal_code
+    - rooms
+    - attributes
+    - unit_number
+    - features
+    - list_agent_key
+    - list_office_key
+    - lot_size_area
+    - originating_system_name
+    - slug
+    - street_name
+    - street_number
+    - title
+    - zoning
+    - amenities
+    - car_spaces
+    - close_price
+    - currency
+    - display_address
+    - epc
+    - headline
+    - history
+    - land_area
+    - listing_url
+    - living_area_units
+    - lot_size_units
+    - odata_context
+    - parcel_number
+    - parking_total
+    - photos_change_timestamp
+    - rental
+    - state_or_province
+    - stories
+    - street
+    - street_suffix
+    - taxes
+  listing_agent:
+    segments_seen:
+      member: 9
+      agents: 8
+      agent: 3
+    providers_exposing: 17
+    providers_with_readable_schema: 17
+    operations:
+    - operation: GET collection
+      providers: 14
+      share: 0.824
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.588
+      tier: core
+    - operation: POST collection
+      providers: 6
+      share: 0.353
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.176
+      tier: long-tail
+    - operation: DELETE item
+      providers: 2
+      share: 0.118
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.059
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.059
+      tier: long-tail
+    properties:
+    - name: email
+      tier: core
+      providers: 9
+      share: 0.529
+      type: string
+      spellings:
+      - email
+      - MemberEmail
+      - EmailAddress
+    - name: id
+      tier: extended
+      providers: 8
+      share: 0.471
+      type: string
+      spellings:
+      - id
+      - Id
+      - externalId
+      - external_id
+      - zpid
+    - name: member_first_name
+      tier: extended
+      providers: 5
+      share: 0.294
+      type: string
+      spellings:
+      - MemberFirstName
+    - name: member_key
+      tier: extended
+      providers: 5
+      share: 0.294
+      type: string
+      spellings:
+      - MemberKey
+    - name: member_last_name
+      tier: extended
+      providers: 5
+      share: 0.294
+      type: string
+      spellings:
+      - MemberLastName
+    - name: updated_at
+      tier: extended
+      providers: 5
+      share: 0.294
+      type: string
+      spellings:
+      - ModificationTimestamp
+    - name: member_status
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: string
+      spellings:
+      - MemberStatus
+    - name: office_key
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: string
+      spellings:
+      - OfficeKey
+    - name: phone
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: string
+      spellings:
+      - phone
+      - mobile
+      - phoneNumber
+    long_tail_count: 158
+    long_tail_sample:
+    - created_at
+    - first_name
+    - last_name
+    - member_address1
+    - member_city
+    - member_middle_name
+    - member_mls_id
+    - member_office_phone
+    - member_postal_code
+    - member_state_or_province
+    - odata_context
+    - status
+    - attributes
+    - job_title
+    - license_number
+    - media
+    - member_address2
+    - member_aor
+    - member_aor_key
+    - member_country
+    - member_designation
+    - member_email_yn
+    - member_fax
+    - member_languages
+    - member_name_prefix
+    - member_name_suffix
+    - member_national_association_id
+    - member_nickname
+    - member_office_phone_ext
+    - member_pager
+    - member_social_media
+    - member_toll_free_phone
+    - member_type
+    - office_national_association_id
+    - originating_system_name
+    - type
+    - active
+    - address
+    - agency_id
+    - agent_email
+  open_house:
+    segments_seen:
+      openhouse: 6
+      openhouses: 1
+      showings: 1
+      open-houses: 1
+    providers_exposing: 8
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 0.875
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.25
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.25
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - ListingKey
+      - ListingId
+      - id
+    - name: open_house_key
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - OpenHouseKey
+    - name: odata_context
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - '@odata.context'
+    - name: open_house_end_time
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - OpenHouseEndTime
+    - name: open_house_start_time
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - OpenHouseStartTime
+    long_tail_count: 35
+    long_tail_sample:
+    - end_time
+    - livestream_open_house_url
+    - open_house_date
+    - open_house_remarks
+    - open_house_status
+    - open_house_type
+    - start_time
+    - updated_at
+    - attendee_email
+    - attendee_name
+    - bundle
+    - fsa_name
+    - fsa_photo
+    - gclid
+    - is_group
+    - is_virtual
+    - job_id
+    - location
+    - market_contact_email
+    - odata_next_link
+    - originating_system_name
+    - property
+    - showing_duration
+    - showing_start_time
+    - status
+    - user_email
+    - user_name
+    - user_phonenumber
+    - user_short_bio
+    - utm_campaign
+    - utm_content
+    - utm_medium
+    - utm_source
+    - utm_term
+    - video_link

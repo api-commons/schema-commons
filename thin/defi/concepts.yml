@@ -1,0 +1,47 @@
+context: defi
+name: DeFi Protocols
+intro: >-
+  The common decentralized-finance vocabulary -- liquidity pools, swap quotes, protocols and their
+  yields -- distilled from the DEX, aggregator and analytics APIs that already exist.
+tags: [DeFi, Decentralized Finance, DEX, Liquidity, Yield, Staking, Lending Protocols]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, status, code]
+
+common_fields:
+  id: [uuid, guid, external_id, pool_id, protocol_id]
+  created_at: [created, timestamp, created_timestamp]
+  updated_at: [updated, last_updated]
+  chain: [network, blockchain, chain_id, chain_name]
+
+concepts:
+  liquidity_pool:
+    path: /liquidity-pools
+    segments: [pools, pool, pairs, pair, markets@defi|dex|protocols|chains|chain, vaults, liquidity]
+    aliases:
+      address: [pool_address, pair_address, contract_address]
+      tvl: [tvl_usd, total_value_locked, liquidity_usd, liquidity, reserve_usd]
+      apy: [apr, yield, apy_base]
+      volume_24h: [volume, volume_usd, volume_24h_usd]
+      token0: [base_token, token_a]
+      token1: [quote_token, token_b]
+  swap_quote:
+    path: /swap-quotes
+    segments: [quote, quotes, swap, swaps, route, routes, price@swap]
+    aliases:
+      from_token: [sell_token, input_mint, src_token, from_token_address, token_in, sell_token_address]
+      to_token: [buy_token, output_mint, dst_token, to_token_address, token_out, buy_token_address]
+      from_amount: [sell_amount, in_amount, amount_in, src_amount, amount]
+      to_amount: [buy_amount, out_amount, amount_out, dst_amount]
+      price_impact: [price_impact_pct, estimated_price_impact]
+      slippage: [slippage_bps, slippage_percentage]
+  protocol:
+    segments: [protocols, protocol]
+    aliases:
+      tvl: [total_value_locked, tvl_usd]
+      category: [type]
+
+findings:
+  - "DeFi is widely exposed but not in a common shape: in a 154-provider cohort, liquidity pools (41 readable providers) and swap quotes (36) reach no property at half the providers -- pool address is at 44% and the amount in at 42%. Every aggregator names the sell and buy sides its own way (sell_token, input_mint, src_token, token_in). Protocols agree only on a name. Revisit after a standards pass over the 0x and 1inch quote shapes, which many aggregators copy."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

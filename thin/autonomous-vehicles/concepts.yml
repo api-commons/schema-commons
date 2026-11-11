@@ -1,0 +1,25 @@
+context: autonomous-vehicles
+name: Autonomous Vehicles
+intro: >-
+  The common autonomous-vehicle vocabulary -- the vehicles in an autonomous fleet, the trips or
+  deliveries they run, and the scenes and drives logged for development -- distilled from the APIs that already exist.
+tags: [Autonomous Vehicles, Self-Driving, Autonomous Driving, ADAS, Robotaxi, Autonomous Trucking]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, vehicle_id, trip_id, scene_id, drive_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  av_trip:
+    path: /av-trips
+    segments: [trips, trip, rides, deliveries, missions, orders@av|autonomous]
+  drive_log:
+    path: /drive-logs
+    segments: [drives, logs@vehicles|drives, scenes, scenarios, runs@simulation|sim, recordings]
+
+findings:
+  - "Autonomous vehicles publish no harvested OpenAPI with these resources: 6 providers with 11 specs, and no trip or drive-log schema. Simulation scenarios are standardized by ASAM OpenSCENARIO and OpenDRIVE, the references if this is revisited."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

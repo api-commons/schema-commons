@@ -1,0 +1,479 @@
+context: restaurants
+name: Restaurants and Menus
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Restaurants
+  - Restaurant Technology
+  - Hospitality
+  - Menus
+  - Reservations
+  - Dining
+  - Food and Beverage
+  providers_with_harvested_openapi: 106
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  restaurant:
+    segments_seen:
+      restaurants: 6
+    providers_exposing: 6
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - id
+      - MenuId
+      - guid
+    long_tail_count: 94
+    long_tail_sample:
+    - address
+    - created_at
+    - name
+    - order_by
+    - restaurant_name
+    - admin_user_id
+    - asset
+    - attributes
+    - category
+    - city
+    - cohort
+    - comments
+    - commission
+    - country
+    - courier_pickup_instructions
+    - created_by_email_address
+    - cuisine
+    - currency_code
+    - deleted
+    - delivery
+    - delivery_code
+    - delivery_id
+    - distance
+    - email
+    - external_establishment_id
+    - external_establishment_name
+    - external_group_ref
+    - external_location_id
+    - external_restaurant_ref
+    - flipdish_stripe_custom_connected_accounts
+    - general
+    - has_printer
+    - hotel_id
+    - hours
+    - ids
+    - instagram_url
+    - integrations
+    - is_archived
+    - is_deleted
+    - is_published
+  menu:
+    segments_seen:
+      menus: 7
+      menu: 5
+    providers_exposing: 9
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 9
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 0.556
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.333
+      tier: extended
+    - operation: POST item
+      providers: 3
+      share: 0.333
+      tier: extended
+    - operation: DELETE item
+      providers: 2
+      share: 0.222
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.111
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - name
+      - Name
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.571
+      type: integer
+      spellings:
+      - MenuId
+      - menu_id
+      - id
+      - guid
+      - externalId
+    long_tail_count: 74
+    long_tail_sample:
+    - description
+    - acf
+    - active
+    - app_id
+    - auto_add
+    - average_price
+    - business_date
+    - categories
+    - code
+    - config_offer_entries
+    - day_parts
+    - discount_amount
+    - display_section_links
+    - end_business_date
+    - entity_type
+    - entries
+    - excluded_restaurant_ids
+    - flexfields
+    - gross_sales_amount
+    - group_by
+    - groups
+    - image_name
+    - image_url
+    - images
+    - is_integrated
+    - items
+    - last_updated
+    - limit
+    - locations
+    - locked
+    - menu_group_guid
+    - menu_group_name
+    - menu_guid
+    - menu_item_guid
+    - menu_item_name
+    - menu_name
+    - menu_section_behaviour
+    - menu_sections
+    - menu_url
+    - modified_time
+  menu_item:
+    segments_seen:
+      menuitems: 4
+      items: 3
+      dishes: 2
+      products: 1
+      menu_items: 1
+      menu-items: 1
+    providers_exposing: 11
+    providers_with_readable_schema: 10
+    operations:
+    - operation: GET collection
+      providers: 10
+      share: 0.909
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.545
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.182
+      tier: long-tail
+    - operation: POST item
+      providers: 2
+      share: 0.182
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.091
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.091
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.091
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 8
+      share: 0.8
+      type: string
+      spellings:
+      - name
+      - title
+    - name: id
+      tier: core
+      providers: 7
+      share: 0.7
+      type: integer
+      spellings:
+      - id
+      - item_id
+      - menu_id
+      - guid
+      - externalId
+    - name: description
+      tier: core
+      providers: 6
+      share: 0.6
+      type: string
+      spellings:
+      - description
+    - name: category
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: integer
+      spellings:
+      - category_id
+      - categoryId
+    - name: price
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: number
+      spellings:
+      - price
+    long_tail_count: 75
+    long_tail_sample:
+    - calories
+    - status
+    - type
+    - acf
+    - active
+    - allergens
+    - attr_title
+    - available
+    - badges
+    - breadcrumbs
+    - classes
+    - code
+    - comments_enabled
+    - contains_alcohol
+    - customizations
+    - entity_type
+    - flexfields
+    - future_cycle
+    - generated_text
+    - image_type
+    - image_url
+    - images
+    - img
+    - inherit_option_groups
+    - inherit_unit_of_measure
+    - invalid
+    - is_available
+    - item_img
+    - labels
+    - likes
+    - location
+    - location_id
+    - location_name
+    - master_system_id
+    - meal_period_id
+    - meal_period_name
+    - menu_item_ids
+    - menu_order
+    - menus
+    - metas
+  table_reservation:
+    segments_seen:
+      reservations: 17
+      reservation: 1
+    providers_exposing: 18
+    providers_with_readable_schema: 17
+    operations:
+    - operation: GET collection
+      providers: 16
+      share: 0.889
+      tier: core
+    - operation: GET item
+      providers: 15
+      share: 0.833
+      tier: core
+    - operation: POST collection
+      providers: 10
+      share: 0.556
+      tier: core
+    - operation: UPDATE item
+      providers: 9
+      share: 0.5
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.222
+      tier: extended
+    - operation: POST item
+      providers: 3
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.111
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.056
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 15
+      share: 0.882
+      type: string
+      spellings:
+      - id
+      - reservation_id
+      - reservationId
+      - restaurant_id
+    - name: status
+      tier: core
+      providers: 13
+      share: 0.765
+      type: string
+      spellings:
+      - status
+      - state
+    - name: updated_at
+      tier: core
+      providers: 9
+      share: 0.529
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+      - lastModified
+      - modified_at
+    - name: created_at
+      tier: extended
+      providers: 8
+      share: 0.471
+      type: string
+      spellings:
+      - created_at
+      - created
+      - createdAt
+    - name: guest
+      tier: extended
+      providers: 8
+      share: 0.471
+      type: object
+      spellings:
+      - guest
+      - customer
+      - customerId
+      - customer_id
+    - name: party_size
+      tier: extended
+      providers: 6
+      share: 0.353
+      type: integer
+      spellings:
+      - guests
+      - partySize
+    - name: currency
+      tier: extended
+      providers: 5
+      share: 0.294
+      type: string
+      spellings:
+      - currency
+    - name: custom_fields
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: object
+      spellings:
+      - customFields
+    - name: nights
+      tier: extended
+      providers: 4
+      share: 0.235
+      type: integer
+      spellings:
+      - nights
+    long_tail_count: 341
+    long_tail_sample:
+    - number_of_adults
+    - number_of_children
+    - special_request
+    - type
+    - accessible
+    - add_ons
+    - attendee_type
+    - attendee_type_code
+    - attributes
+    - bill_amount
+    - block_code
+    - booking_contact
+    - booking_site
+    - call_center
+    - cancelled
+    - channel
+    - check_in
+    - check_out
+    - checkin_date
+    - checkout_date
+    - code
+    - confirmation_code
+    - confirmation_number
+    - created_by
+    - customer_note
+    - customer_uuid
+    - end_date
+    - hotel
+    - hotel_confirmation_number
+    - housing_event
+    - is_canceled
+    - is_cancelled
+    - is_modified
+    - is_wait_listed
+    - last_modified_by
+    - limit
+    - meal_date
+    - meal_status
+    - membership_id
+    - modifiers

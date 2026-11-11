@@ -1,0 +1,46 @@
+context: wealth-management
+name: Wealth and Asset Management
+intro: >-
+  The common wealth-management vocabulary -- investment portfolios, the holdings or positions in them,
+  and the investment transactions that change them -- distilled from the APIs that already exist.
+tags: [Wealth Management, Asset Management, Investment, Investments, Portfolio Management, Robo-Advisor, WealthTech]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, portfolio_id, account_id, holding_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, as_of, as_of_date]
+  status: [state]
+  name: [title, display_name]
+  currency: [currency_code, iso_currency_code, base_currency]
+
+concepts:
+  portfolio:
+    segments: [portfolios, portfolio, investment_accounts, accounts@investments|wealth|brokerage|advisor, households]
+    aliases:
+      market_value: [value, total_value, balance, net_asset_value, nav]
+      owner: [client_id, client, household_id, investor_id]
+  holding:
+    requires_any: [portfolio]
+    segments: [holdings, holding, positions@portfolios|portfolio|accounts|account|investments, allocations]
+    aliases:
+      symbol: [ticker, security_id, cusip, isin, instrument_id]
+      quantity: [units, shares, qty]
+      market_value: [value, institution_value, current_value]
+      cost_basis: [book_value, cost, average_cost]
+  investment_transaction:
+    path: /investment-transactions
+    requires_any: [portfolio]
+    segments: [transactions@portfolios|portfolio|investments|investment, investment_transactions, activities@accounts|portfolios]
+    aliases:
+      transaction_type: [type, activity_type, subtype]
+      quantity: [units, shares, qty]
+      price: [unit_price, trade_price]
+      amount: [net_amount, value, gross_amount]
+
+findings:
+  - "Wealth management publishes little openly: in an 85-provider cohort, portfolios at 16 readable providers agree only on an id. Holdings agree on quantity, symbol, market_value and cost_basis, but at 5 providers, and investment transactions are readable at one. Advisor platforms keep their APIs partner-gated, and the holding shape that is public is the one already measured in trading (positions)."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,52 @@
+context: genomics
+name: Genomics and Life Sciences
+intro: >-
+  The common genomics vocabulary -- genes, variants, the samples sequenced and the sequencing runs and
+  files they produce -- distilled from the APIs that already exist, research consortia standards included.
+tags: [Genomics, Bioinformatics, Life Sciences, Genetics, DNA Sequencing, Biotechnology, Precision Medicine, Proteomics]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, hits, response, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, warnings, pagination]
+
+common_fields:
+  id: [uuid, guid, external_id, accession, accession_id, stable_id]
+  created_at: [created, created_date, date_created, creation_date, create_time, time_created]
+  updated_at: [updated, modified_at, last_modified, modified, update_time, time_modified]
+  status: [state]
+  name: [display_name, title, label]
+
+concepts:
+  gene:
+    segments: [genes, gene]
+    aliases:
+      symbol: [gene_symbol, hgnc_symbol, gene_name]
+      chromosome: [chr, chrom, seq_region_name]
+      start: [start_position, begin]
+      end: [end_position, stop]
+      biotype: [gene_type, type]
+  variant:
+    segments: [variants, variant, variations, variation, mutations, snps, alleles]
+    aliases:
+      chromosome: [chr, chrom, seq_region_name, reference_name]
+      position: [pos, start, start_position]
+      reference_allele: [ref, reference_bases, ref_allele]
+      alternate_allele: [alt, alternate_bases, alt_allele]
+      rsid: [rs_id, dbsnp_id]
+  sample:
+    segments: [samples, sample, biosamples, specimens, specimen]
+    aliases:
+      organism: [species, taxon, taxonomy_id]
+  sequencing_run:
+    path: /sequencing-runs
+    segments: [runs@sequencing|projects|samples, sequencing_runs, reads, readsets, read_groups, libraries]
+  dataset:
+    segments: [datasets, dataset, files@samples|datasets|projects, studies, study]
+
+findings:
+  - "Genomics is not published in a common shape: in a 101-provider cohort, genes and variants
+    appear at 5 providers each with no shared property, samples agree only on timestamps, and
+    datasets only on a name. Research genomics is exchanged through GA4GH protocols and file
+    formats (VCF, BAM) more than through resource schemas."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."
+  - "A GA4GH standards pass (Beacon, htsget, DRS) is the better route than a market census here."

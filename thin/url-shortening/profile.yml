@@ -1,0 +1,168 @@
+context: url-shortening
+name: URL Shortening and Links
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - URL Shortener
+  - Link Management
+  - Short Links
+  - Branded Links
+  - Link in Bio
+  - QR Codes
+  providers_with_harvested_openapi: 6
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  short_link:
+    segments_seen:
+      links: 2
+      bitlinks: 1
+      shorten: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: POST collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - link_id
+      - externalId
+    long_tail_count: 96
+    long_tail_sample:
+    - archived
+    - created_at
+    - domain
+    - name
+    - slug
+    - tags
+    - action
+    - add_tags
+    - android
+    - archive
+    - bitlink_id
+    - campaign_ids
+    - cf_link_id
+    - clicks
+    - client_id
+    - comments
+    - conversions
+    - created_by
+    - custom_bitlinks
+    - customer_details
+    - deeplinks
+    - deleted_count
+    - description
+    - disabled_at
+    - do_index
+    - dynamic_routing
+    - expiration_at
+    - expired_url
+    - expires_at
+    - folder_id
+    - force_new_link
+    - geo
+    - group_guid
+    - image
+    - ios
+    - is_deleted
+    - key_length
+    - last_clicked
+    - launchpad_ids
+    - leads
+  link_domain:
+    segments_seen:
+      bsds: 1
+      domains: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 14
+    long_tail_sample:
+    - apple_app_site_association
+    - archived
+    - asset_links
+    - created_at
+    - expired_url
+    - id
+    - logo
+    - not_found_url
+    - placeholder
+    - primary
+    - registered_domain
+    - slug
+    - updated_at
+    - verified
+  click:
+    segments_seen:
+      clicks: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 5
+    long_tail_sample:
+    - link_clicks
+    - ts
+    - unit
+    - unit_reference
+    - units

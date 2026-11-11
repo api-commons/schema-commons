@@ -1,0 +1,360 @@
+context: wealth-management
+name: Wealth and Asset Management
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Wealth Management
+  - Asset Management
+  - Investment
+  - Investments
+  - Portfolio Management
+  - Robo-Advisor
+  - WealthTech
+  providers_with_harvested_openapi: 85
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  portfolio:
+    segments_seen:
+      portfolio: 11
+      portfolios: 6
+      households: 3
+      accounts: 1
+    providers_exposing: 18
+    providers_with_readable_schema: 16
+    operations:
+    - operation: GET collection
+      providers: 18
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 8
+      share: 0.444
+      tier: extended
+    - operation: POST collection
+      providers: 8
+      share: 0.444
+      tier: extended
+    - operation: DELETE item
+      providers: 5
+      share: 0.278
+      tier: extended
+    - operation: UPDATE item
+      providers: 5
+      share: 0.278
+      tier: extended
+    - operation: POST item
+      providers: 1
+      share: 0.056
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 8
+      share: 0.5
+      type: string
+      spellings:
+      - id
+      - external_id
+      - accountId
+      - portfolioId
+      - account_id
+    - name: name
+      tier: extended
+      providers: 7
+      share: 0.438
+      type: string
+      spellings:
+      - name
+    - name: currency
+      tier: extended
+      providers: 6
+      share: 0.375
+      type: string
+      spellings:
+      - currency
+      - currency_code
+    - name: status
+      tier: extended
+      providers: 6
+      share: 0.375
+      type: string
+      spellings:
+      - status
+      - state
+    - name: updated_at
+      tier: extended
+      providers: 5
+      share: 0.312
+      type: string
+      spellings:
+      - updatedAt
+      - updated_at
+      - as_of_date
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.25
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+    long_tail_count: 149
+    long_tail_sample:
+    - description
+    - account_number
+    - account_restricted
+    - actual_value
+    - allocations
+    - base_wallet_balance
+    - benchmark_id
+    - carrot_held_value
+    - cash
+    - currency_name
+    - currency_symbol
+    - dollar_balance
+    - dollar_cash
+    - extended_hours_status
+    - first_name
+    - last_name
+    - naira_to_usd
+    - open_date
+    - pending_deposit
+    - price
+    - processing_gift_received
+    - processing_gift_sent
+    - processing_withdrawal
+    - referral_cashback_blocked_value
+    - rep_id
+    - reserved_cash
+    - residence_country
+    - shares
+    - ticker
+    - total_cash
+    - total_market_value
+    - type
+    - unsettled_cash
+    - usd_to_naira
+    - usd_to_user_currency
+    - user_currency_symbol
+    - user_currency_to_usd
+    - value_change
+    - value_percent_change
+    - withdraw_details
+  holding:
+    segments_seen:
+      allocations: 4
+      positions: 4
+      holdings: 3
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: quantity
+      tier: core
+      providers: 5
+      share: 1.0
+      type: number
+      spellings:
+      - quantity
+      - qty
+      - shares
+    - name: updated_at
+      tier: core
+      providers: 5
+      share: 1.0
+      type: string
+      spellings:
+      - asOfDate
+      - updated
+      - updated_at
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - id
+      - portfolioId
+      - accountID
+      - accountId
+      - account_id
+    - name: cost_basis
+      tier: core
+      providers: 3
+      share: 0.6
+      type: number
+      spellings:
+      - costBasis
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - createdAt
+      - createdDate
+      - created_at
+    - name: currency
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - currency
+    - name: market_value
+      tier: core
+      providers: 3
+      share: 0.6
+      type: number
+      spellings:
+      - marketValue
+      - currentValue
+    - name: price
+      tier: core
+      providers: 3
+      share: 0.6
+      type: number
+      spellings:
+      - price
+    - name: symbol
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - cusip
+      - symbol
+      - ticker
+      - securityId
+      - instrument_id
+    long_tail_count: 188
+    long_tail_sample:
+    - account_number
+    - asset_class
+    - name
+    - security_description
+    - status
+    - unrealized_gain_loss
+    - unrealized_gain_loss_pct
+    - weight
+    - access_person
+    - access_person_id
+    - account
+    - account_name
+    - account_nick_name
+    - account_no
+    - account_number_to_show
+    - accounts
+    - acct_code
+    - allocation
+    - allocations_completed
+    - allocations_requested
+    - ask
+    - asset_class_id
+    - asset_type
+    - assets
+    - average_buy_in_price
+    - bid
+    - brokerage_account
+    - cash_perc
+    - cash_tol
+    - change
+    - change_reason
+    - class
+    - client_list_id
+    - client_performance_include
+    - close
+    - color
+    - comment
+    - commission
+    - community_model
+    - community_model_id
+  investment_transaction:
+    segments_seen:
+      transactions: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 66
+    long_tail_sample:
+    - account_number
+    - account_status_id
+    - account_type
+    - advisor_notes
+    - asset_id
+    - asset_status_id
+    - avg_price
+    - block_id
+    - broker_code
+    - client_id
+    - contribution_code_id
+    - contribution_code_name
+    - created_at
+    - created_by
+    - cusip
+    - custodian
+    - custodian_name
+    - distribution_code_id
+    - distribution_code_name
+    - edited_by
+    - edited_date
+    - execution_time
+    - file_tran_code
+    - financial_type
+    - fund_family
+    - fund_family_name
+    - household_id
+    - household_name
+    - id
+    - management_style
+    - model_id
+    - model_name
+    - nav_price
+    - no_units
+    - notes
+    - order_created_by
+    - order_id
+    - payee
+    - performance_fee_break
+    - product_id

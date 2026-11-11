@@ -1,0 +1,379 @@
+context: threat-intelligence
+name: Threat Intelligence
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Threat Intelligence
+  - Cyber Threat Intelligence
+  - Threat Detection
+  - Malware Analysis
+  - IP Reputation
+  - Cybersecurity
+  providers_with_harvested_openapi: 135
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  indicator:
+    segments_seen:
+      ip: 11
+      ips: 7
+      lookup: 6
+      indicators: 5
+      indicator: 2
+      reputation: 2
+      observables: 1
+      iocs: 1
+      hashes: 1
+    providers_exposing: 25
+    providers_with_readable_schema: 21
+    operations:
+    - operation: GET collection
+      providers: 21
+      share: 0.84
+      tier: core
+    - operation: GET item
+      providers: 11
+      share: 0.44
+      tier: extended
+    - operation: POST collection
+      providers: 10
+      share: 0.4
+      tier: extended
+    - operation: DELETE collection
+      providers: 4
+      share: 0.16
+      tier: long-tail
+    - operation: DELETE item
+      providers: 3
+      share: 0.12
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 3
+      share: 0.12
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.08
+      tier: long-tail
+    properties:
+    - name: id
+      tier: extended
+      providers: 8
+      share: 0.381
+      type: integer
+      spellings:
+      - id
+      - Id
+    - name: created_at
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: string
+      spellings:
+      - created_at
+      - created
+      - firstSeen
+      - first_seen
+    - name: name
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: string
+      spellings:
+      - name
+      - title
+      - Name
+    - name: updated_at
+      tier: extended
+      providers: 6
+      share: 0.286
+      type: string
+      spellings:
+      - updated_at
+      - modified
+      - lastSeen
+      - last_seen
+    - name: tags
+      tier: extended
+      providers: 5
+      share: 0.238
+      type: array
+      spellings:
+      - labels
+      - tags
+    long_tail_count: 264
+    long_tail_sample:
+    - description
+    - severity
+    - sources
+    - value
+    - as
+    - domains
+    - indicator_type
+    - location
+    - url
+    - as_name
+    - asn
+    - categories
+    - country
+    - error
+    - external_references
+    - geo
+    - kill_chain_phases
+    - network
+    - notes
+    - owner
+    - risk_level
+    - score
+    - status_id
+    - tlp
+    - type_id
+    - verdict
+    - account_id
+    - actions_taken
+    - active_files
+    - actors
+    - as_num
+    - assigned_to
+    - attack_patterns
+    - attributes
+    - authorized_groups
+    - authorized_users
+    - automated_score
+    - background_color
+    - batch_count
+    - billable
+  threat_actor:
+    segments_seen:
+      threat-actors: 4
+      actors: 1
+      adversaries: 1
+    providers_exposing: 6
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.333
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - first_seen
+      - created_at
+      - date_added
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.75
+      type: integer
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - name
+    long_tail_count: 28
+    long_tail_sample:
+    - country
+    - updated_at
+    - aka
+    - aliases
+    - associated_campaigns
+    - associated_capecs
+    - associated_cwes
+    - associated_mitre_attack_techniques
+    - attributes
+    - cve_references
+    - description
+    - goals
+    - malpedia_url
+    - misp_id
+    - misp_threat_actor
+    - mitre_attack_group
+    - mitre_group_cti
+    - mitre_id
+    - primary_motivation
+    - resource_level
+    - sophistication
+    - sources
+    - tactics
+    - threat_actor_name
+    - tools
+    - touched_at
+    - vendor_names_for_threat_actors
+    - vendors_and_products_targeted
+  campaign:
+    segments_seen:
+      threats: 11
+      malware: 5
+    providers_exposing: 14
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 13
+      share: 0.929
+      tier: core
+    - operation: GET item
+      providers: 8
+      share: 0.571
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.357
+      tier: extended
+    - operation: UPDATE item
+      providers: 5
+      share: 0.357
+      tier: extended
+    - operation: DELETE item
+      providers: 4
+      share: 0.286
+      tier: extended
+    - operation: DELETE collection
+      providers: 1
+      share: 0.071
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.071
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.071
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 9
+      share: 0.692
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 7
+      share: 0.538
+      type: string
+      spellings:
+      - name
+      - title
+    - name: created_at
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: string
+      spellings:
+      - first_seen
+      - created_at
+      - created
+      - create_time
+    - name: description
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: string
+      spellings:
+      - description
+    - name: updated_at
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: string
+      spellings:
+      - modified
+      - last_seen
+      - updated_at
+    - name: severity
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - severity
+    - name: type
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - type
+    - name: tags
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: array
+      spellings:
+      - labels
+      - tags
+    long_tail_count: 131
+    long_tail_sample:
+    - action
+    - attributes
+    - external_references
+    - kill_chain_phases
+    - md5
+    - mitre_attack
+    - sha256
+    - status
+    - threat_id
+    - timestamp
+    - tlp
+    - abstraction_level
+    - added_at
+    - affected_host_count
+    - affected_os
+    - affected_platforms
+    - affected_products
+    - aggregation_key
+    - aliases
+    - allowed
+    - applicable_agent_types
+    - architecture_execution_envs
+    - asset_id
+    - asset_value
+    - attack_categories
+    - attack_modules
+    - authorized_groups
+    - authorized_users
+    - aux_info
+    - capabilities
+    - category
+    - category_id
+    - checked_at
+    - client_id
+    - completed_at
+    - created_by_ref
+    - custom_properties
+    - cve
+    - date
+    - default_action

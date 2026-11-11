@@ -1,0 +1,399 @@
+context: maritime
+name: Maritime and Vessels
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Maritime
+  - Shipping
+  - Ocean Freight
+  - Ports
+  - Vessel Tracking
+  - AIS
+  - Logistics
+  providers_with_harvested_openapi: 228
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  vessel:
+    segments_seen:
+      ship: 5
+      vessel: 4
+      vessels: 4
+    providers_exposing: 13
+    providers_with_readable_schema: 11
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 0.462
+      tier: extended
+    - operation: POST collection
+      providers: 6
+      share: 0.462
+      tier: extended
+    - operation: GET item
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    properties:
+    - name: id
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: string
+      spellings:
+      - uuid
+      - vessel_id
+    - name: imo
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: string
+      spellings:
+      - imo
+      - imoNumber
+      - imo_number
+    - name: name
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: string
+      spellings:
+      - name
+      - vesselName
+    - name: vessel_type
+      tier: extended
+      providers: 3
+      share: 0.273
+      type: string
+      spellings:
+      - type
+      - shipType
+    long_tail_count: 102
+    long_tail_sample:
+    - carrier
+    - items
+    - label
+    - mmsi
+    - parcel
+    - rate
+    - tracking_number
+    - voyage
+    - address_from
+    - address_to
+    - ais
+    - ais_type_of_ship
+    - ais_type_of_ship_str
+    - attributes
+    - beam
+    - build_year
+    - call_sign
+    - carrier_export_voyage_number
+    - carrier_import_voyage_number
+    - class_notation
+    - class_status
+    - cn_iso2
+    - cn_name
+    - code
+    - contents_type
+    - country_iso
+    - course
+    - currency
+    - cut_off_times
+    - datasheet
+    - deadweight_tonnage
+    - destination
+    - destination_location
+    - distance_miles
+    - donor
+    - draught
+    - duty
+    - external_order_id
+    - facility_id
+    - flag_state
+  vessel_position:
+    segments_seen:
+      track: 6
+      positions: 4
+      position: 3
+      tracks: 1
+    providers_exposing: 13
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 0.538
+      tier: core
+    - operation: POST collection
+      providers: 6
+      share: 0.462
+      tier: extended
+    - operation: GET item
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: latitude
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: number
+      spellings:
+      - latitude
+    - name: longitude
+      tier: extended
+      providers: 6
+      share: 0.462
+      type: number
+      spellings:
+      - longitude
+    - name: status
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - status
+      - nav_status
+    - name: updated_at
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - timestamp
+      - updatedAt
+    - name: destination
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - destination
+    - name: name
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - name
+      - vesselName
+      - title
+    - name: course
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: number
+      spellings:
+      - heading
+      - course
+    - name: eta
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - eta
+    - name: speed
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: number
+      spellings:
+      - speed
+    - name: tracking_number
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - tracking_number
+      - trackingNumber
+    long_tail_count: 305
+    long_tail_sample:
+    - carrier
+    - created_at
+    - delivery_date
+    - id
+    - metadata
+    - order_number
+    - source
+    - tracking_url
+    - account_name
+    - account_no
+    - accounting_dimensions
+    - address_from
+    - address_to
+    - agent_mode
+    - allow_third_party_item
+    - approved_invoiced_quantity
+    - assigned_at
+    - available
+    - awb
+    - booking_response
+    - bunker
+    - c_o2
+    - callsign
+    - candidate_devices
+    - carrier_guid
+    - carrier_no
+    - carrier_position_type
+    - certificate
+    - city
+    - class_name
+    - class_no
+    - classification
+    - client_tracker_id
+    - closeout_mode
+    - code
+    - company_name
+    - company_no
+    - completed_at
+    - completion_source
+    - completion_type
+  port:
+    segments_seen:
+      port: 2
+      ports: 2
+    providers_exposing: 4
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties: []
+    long_tail_count: 38
+    long_tail_sample:
+    - create_date
+    - create_user_name
+    - create_user_no
+    - current_price
+    - current_price_standard_currency
+    - cut_off_times
+    - deleted
+    - density
+    - edge_count
+    - guid_for_referenced_object
+    - id
+    - inactive
+    - is_dummy_vessel
+    - item_no
+    - item_supplier_description
+    - item_supplier_guid
+    - item_supplier_no
+    - key_port
+    - latest_history_guid
+    - live_object_guid
+    - name
+    - port_code_no
+    - prices
+    - request_limit_info
+    - service_partners
+    - standard_port
+    - supplier_no
+    - timestamps
+    - total_cost
+    - total_distance
+    - unit_guid
+    - universal_export_voyage_reference
+    - universal_import_voyage_reference
+    - universal_service_reference
+    - update_date
+    - update_user_name
+    - update_user_no
+    - vessel
+  port_call:
+    segments_seen:
+      portcalls: 3
+      schedules: 1
+      arrivals: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 0.75
+      tier: core
+    - operation: GET item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - vesselName
+      - name
+      - SHIPNAME
+      - PORT_NAME
+    long_tail_count: 39
+    long_tail_sample:
+    - country
+    - id
+    - imo
+    - locode
+    - mmsi
+    - voyage
+    - ais
+    - ata
+    - atd
+    - callsign
+    - carrier_code
+    - carrier_name
+    - cn_iso2
+    - cn_name
+    - direct_service
+    - event
+    - imo_number
+    - latitude
+    - longitude
+    - market
+    - mmsi_number
+    - move_type
+    - port
+    - port_country_code
+    - port_unlocode
+    - position
+    - route
+    - schedule_id
+    - ship_id
+    - timestamp_lt
+    - timestamp_utc
+    - transit_days
+    - type
+    - type_coarse
+    - type_code
+    - type_name
+    - updated_at
+    - vessel_imo
+    - voyage_number

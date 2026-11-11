@@ -1,0 +1,55 @@
+context: gift-cards
+name: Gift Cards
+intro: >-
+  The common gift-card vocabulary -- the gift cards issued, the balance each holds, the
+  redemptions and loads that move it, and the catalog of brands available to send -- distilled
+  from the APIs that already exist. Issued payment cards belong to card issuing.
+tags: [Gift Cards, Gift Card, Stored Value, Digital Gift Cards, Rewards, Incentives, Prepaid Cards]
+
+envelope: [_links, _pagination, _results, data, success, errors, warnings, count, total, page, meta, links,
+           value, results, next, previous, has_more, message, status_code, ids, next_page, previous_page,
+           page_info, cursor, total_count, per_page, total_pages, current_page, object, url]
+
+common_fields:
+  id: [uuid, guid, object_id, record_id, external_id, card_id]
+  created_at: [created, created_date, date_created, create_time, creation_date, created_on, issued_at]
+  updated_at: [updated, updated_date, modified_at, last_modified, date_modified, update_time, modified_date, modified]
+  metadata: [meta_data, custom_fields, custom, attributes, properties]
+  status: [state, card_status, active, is_active]
+  currency: [currency_code]
+  amount: [value, face_value, denomination, amount_cents]
+
+concepts:
+  gift_card:
+    path: /gift-cards
+    segments: [gift_cards, gift-cards, giftcards, gift_card, giftcard, cards@gift|gifts, codes@gift|rewards, rewards@orders]
+    aliases:
+      code: [card_number, number, gift_card_code, redemption_code, pin, claim_code]
+      balance: [current_balance, remaining_balance, balance_amount, value_remaining]
+      expires_at: [expiration_date, expiry_date, expires]
+      recipient_email: [recipient, email, to_email]
+      brand_id: [brand, brand_code, product_id, utid, catalog_item_id]
+  gift_card_activity:
+    requires: [gift_card]
+    path: /gift-cards/{gift_card_id}/activities
+    segments: ["activities@gift_cards|giftcards|gift-cards", "transactions@gift_cards|giftcards|gift-cards", redemptions, redeem, loads@gift_cards, adjustments@gift_cards]
+    aliases:
+      type: [activity_type, transaction_type, kind]
+      balance_after: [balance, new_balance, remaining_balance]
+  gift_card_brand:
+    requires: [gift_card]
+    path: /gift-card-brands
+    segments: [brands, brand, catalog@gift|rewards, catalogs, merchants@gift, products@gift|giftcards]
+    aliases:
+      denominations: [values, face_values, amounts, value_type]
+      countries: [country, country_codes, regions]
+      image_url: [logo, image, logo_url, card_image]
+
+findings:
+  - "Gift cards are not published in a common shape: 54 providers in the cohort, 4 with a readable
+    gift-card resource, agreeing only on id, status and created_at. Gift-card platforms expose a
+    brand catalog and an order flow; loyalty platforms expose redemptions -- the card itself is
+    rarely a resource."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."
+  - "Redemptions are loyalty's where they spend points, and payments' where they spend money."

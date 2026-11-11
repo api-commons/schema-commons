@@ -1,0 +1,61 @@
+context: construction
+name: Construction
+intro: >-
+  The common construction-management vocabulary -- projects, the RFIs and submittals exchanged on them,
+  daily logs, punch-list items and change orders -- distilled from the APIs that already exist.
+tags: [Construction, Construction Technology, Construction Management, ConTech, Building, AEC, Architecture]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, project_id, rfi_id, submittal_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, updated_on]
+  status: [state]
+  name: [title, display_name, subject]
+  description: [desc, details, question]
+  assignee: [assigned_to, assignees, ball_in_court, responsible]
+  due_date: [due_at, due, required_by]
+concepts:
+  construction_project:
+    path: /construction-projects
+    segments: [projects, project, jobs@construction, sites@construction]
+    aliases:
+      address: [location, site_address]
+      start_date: [start, start_at]
+      completion_date: [end_date, finish_date, completion]
+      project_number: [number, job_number, code]
+  rfi:
+    requires: [construction_project]
+    segments: [rfis, rfi, requests_for_information]
+    aliases:
+      number: [rfi_number, ref]
+      answer: [response, responses, official_response]
+  submittal:
+    requires: [construction_project]
+    segments: [submittals, submittal]
+    aliases:
+      number: [submittal_number, ref]
+      spec_section: [specification_section, spec]
+  punch_item:
+    path: /punch-items
+    requires: [construction_project]
+    segments: [punch_items, punch_list, punchlist, punch-items, issues@projects|project, observations@projects|project, defects, snags]
+    aliases:
+      location: [location_id, area]
+  change_order:
+    path: /change-orders
+    requires: [construction_project]
+    segments: [change_orders, change-orders, changeorders, change_events]
+    aliases:
+      amount: [cost, value, total]
+  daily_log:
+    path: /daily-logs
+    requires: [construction_project]
+    segments: [daily_logs, daily-logs, dailylogs, daily_reports, diaries]
+    aliases:
+      date: [log_date, report_date]
+      weather: [weather_conditions]
+
+findings:
+  - "Construction publishes its projects and little else: in a 54-provider cohort, projects at 25 readable providers agree on name, id, status, created_at and updated_at; address reaches 48% and project_number 40%. The construction-specific resources are barely readable: RFIs at 1 provider, submittals at 2, punch items at 1, change orders at 3 and daily logs at none. A context of projects alone would duplicate project-management. Revisit when the large construction-management platforms' specs are in the catalog."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

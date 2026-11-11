@@ -1,0 +1,81 @@
+context: medical-devices
+name: Medical Devices
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Medical Devices
+  - Medical Technology
+  - MedTech
+  - Connected Health
+  - Wearable Medical Devices
+  providers_with_harvested_openapi: 18
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  medical_device:
+    segments_seen:
+      devices: 4
+    providers_exposing: 4
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 20
+    long_tail_sample:
+    - id
+    - serial_number
+    - status
+    - assigned_subject_id
+    - battery
+    - battery_voltage
+    - device_type
+    - firmware_version
+    - has_sensor
+    - icon_url
+    - imei
+    - interface_type
+    - last_seen
+    - model
+    - model_name
+    - name
+    - provisioned
+    - signal_strength
+    - type
+    - version
+  device_reading:
+    segments_seen:
+      measurements: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 2
+    long_tail_sample:
+    - id
+    - measured_at
+  recall:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

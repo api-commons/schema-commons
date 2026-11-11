@@ -1,0 +1,38 @@
+context: clinical-trials
+name: Clinical Trials
+intro: >-
+  The common clinical-trial vocabulary -- studies, the sites running them, the subjects enrolled and the
+  visits and forms captured for each -- distilled from the registry and trial-management APIs that already exist.
+tags: [Clinical Trials, Clinical Research, Clinical Stage, eClinical, EDC, Drug Development, CRO]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object, next_page_token]
+
+common_fields:
+  id: [uuid, guid, external_id, study_id, trial_id, nct_id, site_id, subject_id]
+  created_at: [created, created_date, create_time, date_created]
+  updated_at: [updated, modified_at, update_time, last_update_post_date, last_updated]
+  status: [state, overall_status, recruitment_status]
+  name: [title, display_name, brief_title, official_title]
+
+concepts:
+  study:
+    segments: [studies, study, trials, trial, clinical_trials, clinicaltrials, protocols]
+    aliases:
+      phase: [phases, trial_phase]
+      sponsor: [lead_sponsor, sponsors, sponsor_name]
+      conditions: [condition, indication, indications, diseases]
+      start_date: [study_start_date, start]
+      enrollment: [enrollment_count, target_enrollment]
+  trial_site:
+    path: /trial-sites
+    requires_any: [study]
+    segments: [sites, site, locations@studies|study|trials|trial, facilities]
+  subject:
+    requires_any: [study]
+    segments: [subjects, subject, participants, patients@studies|study|trials|trial|sites, enrollments]
+
+findings:
+  - "Clinical trials publish one public shape: the ClinicalTrials.gov v2 study record (protocol_section, derived_section, has_results), republished by the 3 providers that wrap it. Studies are readable at 4 providers in a 40-provider cohort, sites at 1 and subjects at none; trial-management (EDC, CTMS) APIs are partner-gated. The reference is the ClinicalTrials.gov data model and CDISC, not a census."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,40 @@
+context: mortgages
+name: Mortgages
+intro: >-
+  The common mortgage vocabulary -- loan applications, the borrowers on them, the rate quotes or
+  pricing offered, and the loans serviced afterwards -- distilled from the APIs that already exist.
+tags: [Mortgage, Mortgages, Home Loans, Mortgage Technology, Loan Origination, Mortgage Lending, Title Insurance]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, loan_id, application_id, borrower_id]
+  created_at: [created, created_date, create_time, application_date]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, loan_status, milestone]
+concepts:
+  mortgage_loan:
+    path: /mortgage-loans
+    segments: [loans, loan, applications, application, mortgages, mortgage, deals@mortgage]
+    aliases:
+      loan_amount: [amount, base_loan_amount, principal]
+      interest_rate: [rate, note_rate]
+      loan_purpose: [purpose, loan_purpose_type]
+      loan_type: [type, mortgage_type, product]
+      property_address: [property, subject_property, address]
+  borrower:
+    segments: [borrowers, borrower, applicants, co_borrowers]
+    aliases:
+      first_name: [firstname, given_name]
+      last_name: [lastname, surname]
+      email: [email_address]
+  rate_quote:
+    path: /rate-quotes
+    segments: [rates, rate, pricing, quotes, quote, products@pricing]
+    aliases:
+      apr: [annual_percentage_rate]
+      interest_rate: [rate, note_rate]
+      points: [discount_points]
+
+findings:
+  - "Mortgages publish little openly: in a 44-provider cohort, loans at 8 readable providers agree on id and loan_amount; borrowers are readable at 2 and rate quotes at 4. Loan-origination systems keep their APIs partner-gated, and the industry's shared vocabulary is the MISMO reference model, the reference to take. Consumer and business lending are already measured in lending."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

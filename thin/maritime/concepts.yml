@@ -1,0 +1,47 @@
+context: maritime
+name: Maritime and Vessels
+intro: >-
+  The common maritime vocabulary -- vessels, their AIS positions, the ports they call at and the port
+  calls themselves -- distilled from the APIs that already exist.
+tags: [Maritime, Shipping, Ocean Freight, Ports, Vessel Tracking, AIS, Logistics]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, vessel_id, port_id, call_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_update, timestamp]
+  status: [state, navigational_status, nav_status]
+  name: [title, display_name, vessel_name, shipname, port_name]
+concepts:
+  vessel:
+    segments: [vessels, vessel, ships, ship, fleet@maritime]
+    aliases:
+      imo: [imo_number, imo_no]
+      mmsi: [mmsi_number]
+      call_sign: [callsign]
+      flag: [flag_country, country, flag_code]
+      vessel_type: [type, ship_type, vessel_type_name]
+  vessel_position:
+    path: /vessel-positions
+    segments: [positions, position, ais, locations@vessels|vessel, tracks, track, latest@vessels|vessel]
+    aliases:
+      latitude: [lat]
+      longitude: [lon, lng]
+      speed: [sog, speed_over_ground]
+      course: [cog, course_over_ground, heading]
+  port:
+    segments: [ports, port, terminals@maritime]
+    aliases:
+      unlocode: [locode, un_locode, port_code]
+      country: [country_code]
+  port_call:
+    path: /port-calls
+    segments: [port_calls, portcalls, port-calls, calls@ports|port|vessels|vessel, voyages, arrivals, schedules@vessels|ports]
+    aliases:
+      eta: [estimated_arrival, arrival_estimated]
+      ata: [actual_arrival, arrival]
+      etd: [estimated_departure]
+
+findings:
+  - "Maritime data is not published in a common shape: in a 228-provider cohort (mostly shipping and logistics companies), vessels at 11 readable providers share no property at half, and positions at 13 reach latitude and longitude at 46%. Ports and port calls are readable at 3 and 4. The shared vocabularies are the AIS message fields and the DCSA (Digital Container Shipping Association) standards for port calls and track-and-trace, which a standards pass should take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

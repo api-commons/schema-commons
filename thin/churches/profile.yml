@@ -1,0 +1,145 @@
+context: churches
+name: Churches and Congregations
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Church Management
+  - Churches
+  - Faith
+  - Religion
+  - Ministry
+  - Nonprofit
+  providers_with_harvested_openapi: 4
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  congregant:
+    segments_seen:
+      people: 2
+      members: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 10
+    long_tail_sample:
+    - attributes
+    - church_name
+    - first_name
+    - id
+    - last_name
+    - mm_user_id
+    - mm_user_ids
+    - profile_picture
+    - relationships
+    - type
+  household:
+    segments_seen:
+      households: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 4
+    long_tail_sample:
+    - attributes
+    - id
+    - relationships
+    - type
+  church_group:
+    segments_seen:
+      groups: 2
+      group: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 68
+    long_tail_sample:
+    - id
+    - access_key
+    - amount
+    - attendee_code
+    - attendee_count
+    - attendee_display
+    - attendee_display_lines
+    - attendee_number
+    - attendee_type_id
+    - attendees
+    - attributes
+    - checkins
+    - city
+    - community_id
+    - community_name
+    - community_partition
+    - country
+    - dont_follow_rules
+    - email
+    - event_id
+    - event_number
+    - field_values
+    - fields
+    - first_name
+    - flex_pass
+    - flex_pass_checkins
+    - generates_ticket
+    - gift_last_sent_at
+    - group_email
+    - group_fields
+    - group_name
+    - group_number
+    - is_addon
+    - is_anonymized
+    - is_completed
+    - is_flex_pass
+    - is_gift
+    - is_pre_registered
+    - is_printed
+    - join_code

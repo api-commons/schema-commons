@@ -1,0 +1,247 @@
+context: telecommunications
+name: Telecommunications
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Telecommunications
+  - Telecom
+  - Mobile Network Operator
+  - 5G
+  - Network APIs
+  - CAMARA
+  - Carrier
+  providers_with_harvested_openapi: 95
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  subscriber:
+    segments_seen:
+      subscribers: 1
+      subscriber: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 38
+    long_tail_sample:
+    - id
+    - status
+    - account_number
+    - activation_date
+    - address_detail
+    - asset_detail
+    - comments
+    - context_name
+    - contracts
+    - create_date
+    - creation_date
+    - description
+    - effective_date
+    - email
+    - employee_number
+    - first_name
+    - fixed_number
+    - gender
+    - grip_user
+    - group_id
+    - identification_detail
+    - last_name
+    - location
+    - mobile_number
+    - operation
+    - path
+    - personal_detail
+    - preferred_language
+    - prefix
+    - reference_number
+    - service_number
+    - subscriber_type
+    - surname
+    - surname_prefix
+    - user
+    - user_additional_info
+    - valid_for
+    - vip
+  qos_session:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  network_check:
+    segments_seen:
+      verify: 19
+      check: 3
+      kyc-match: 1
+    providers_exposing: 19
+    providers_with_readable_schema: 19
+    operations:
+    - operation: POST collection
+      providers: 18
+      share: 0.947
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.105
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.053
+      tier: long-tail
+    properties:
+    - name: phone_number
+      tier: core
+      providers: 11
+      share: 0.579
+      type: string
+      spellings:
+      - phoneNumber
+      - msisdn
+      - phone_number
+    - name: device_phone_number_verified
+      tier: core
+      providers: 10
+      share: 0.526
+      type: boolean
+      spellings:
+      - devicePhoneNumberVerified
+    - name: verification_result
+      tier: core
+      providers: 10
+      share: 0.526
+      type: boolean
+      spellings:
+      - verificationResult
+      - swapped
+      - verified
+    - name: max_age
+      tier: extended
+      providers: 8
+      share: 0.421
+      type: integer
+      spellings:
+      - maxAge
+    - name: hashed_phone_number
+      tier: extended
+      providers: 7
+      share: 0.368
+      type: string
+      spellings:
+      - hashedPhoneNumber
+    - name: area
+      tier: extended
+      providers: 6
+      share: 0.316
+      type: object
+      spellings:
+      - area
+    - name: device
+      tier: extended
+      providers: 6
+      share: 0.316
+      type: object
+      spellings:
+      - device
+    - name: last_location_time
+      tier: extended
+      providers: 6
+      share: 0.316
+      type: string
+      spellings:
+      - lastLocationTime
+    - name: match_rate
+      tier: extended
+      providers: 6
+      share: 0.316
+      type: integer
+      spellings:
+      - matchRate
+    - name: status
+      tier: extended
+      providers: 5
+      share: 0.263
+      type: string
+      spellings:
+      - status
+      - state
+    - name: email
+      tier: extended
+      providers: 4
+      share: 0.211
+      type: string
+      spellings:
+      - email
+    - name: id
+      tier: extended
+      providers: 4
+      share: 0.211
+      type: string
+      spellings:
+      - id
+    long_tail_count: 129
+    long_tail_sample:
+    - birthdate
+    - created_at
+    - family_name
+    - family_name_at_birth
+    - given_name
+    - id_document
+    - middle_names
+    - name
+    - accuracy
+    - age_check
+    - age_threshold
+    - code
+    - content_lock
+    - dkim
+    - dns_records
+    - domain
+    - gender
+    - identity_match_score
+    - include_content_lock
+    - include_parental_control
+    - latitude
+    - longitude
+    - parental_control
+    - token
+    - type
+    - ue_id
+    - ue_port
+    - updated_at
+    - verified_at
+    - verified_status
+    - accountholderids
+    - additional_info
+    - address
+    - address_match
+    - attempts_remaining
+    - backup_job_name
+    - binary_attachment
+    - birthdate_match
+    - callback_url
+    - capabilities

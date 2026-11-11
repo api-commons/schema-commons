@@ -1,0 +1,36 @@
+context: grocery
+name: Grocery
+intro: >-
+  The common grocery vocabulary -- stores, the products they stock with their prices, shopping lists
+  and grocery orders -- distilled from the APIs that already exist.
+tags: [Grocery, Supermarkets, Food Retail, Grocery Delivery, Quick Commerce]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, store_id, product_id, list_id, order_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  grocery_product:
+    path: /grocery-products
+    segments: [products, product, items@grocery|stores|store, catalog]
+    aliases:
+      upc: [gtin, barcode, ean, upc_code]
+      brand: [brand_name, manufacturer]
+      price: [regular_price, current_price, sale_price, prices]
+      size: [package_size, unit_size, quantity]
+  store:
+    segments: [stores, store, locations@grocery, retailers]
+    aliases:
+      address: [location]
+      latitude: [lat]
+      longitude: [lng, lon]
+  shopping_list:
+    path: /shopping-lists
+    segments: [lists, list, shopping_lists, shopping-lists, carts, cart]
+
+findings:
+  - "Grocery publishes almost no harvested OpenAPI: 11 providers, with products readable at 2, stores at 1 and lists at 2. Grocers sell through commerce and delivery platforms, which are measured in commerce and food-ordering."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

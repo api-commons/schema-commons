@@ -1,0 +1,101 @@
+context: drones
+name: Drones
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Drones
+  - UAV
+  - Unmanned Aerial Vehicles
+  - Drone Delivery
+  - Aerial Imaging
+  - Robotics
+  providers_with_harvested_openapi: 30
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  aircraft:
+    segments_seen:
+      aircraft: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 0
+    operations:
+    - operation: DELETE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  flight:
+    segments_seen:
+      flights: 3
+      missions: 2
+    providers_exposing: 4
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 20
+    long_tail_sample:
+    - bounds
+    - cluster_ids
+    - created_at
+    - deleted_at
+    - description
+    - detail_level
+    - due_date
+    - estimated_completion_time
+    - estimated_cost
+    - id
+    - name
+    - organization_id
+    - recurrence
+    - scheduled_for
+    - sensors
+    - site_count
+    - site_geometries
+    - site_ids
+    - status
+    - updated_at

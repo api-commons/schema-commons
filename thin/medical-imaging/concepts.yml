@@ -1,0 +1,31 @@
+context: medical-imaging
+name: Medical Imaging
+intro: >-
+  The common medical-imaging vocabulary -- imaging studies, their series and instances, and the reports
+  read from them -- distilled from the APIs that already exist.
+tags: [Medical Imaging, Radiology, DICOM, PACS, Imaging AI]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, study_id, study_instance_uid, series_instance_uid, sop_instance_uid]
+  created_at: [created, created_date, create_time, study_date]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+concepts:
+  imaging_study:
+    path: /imaging-studies
+    segments: [studies, study, exams, imaging_studies]
+    aliases:
+      modality: [modalities, modalities_in_study]
+      patient_id: [patient, patient_name]
+      accession_number: [accession]
+  series:
+    requires: [imaging_study]
+    segments: [series]
+  imaging_report:
+    path: /imaging-reports
+    segments: [reports, report, findings, reads, inferences, predictions]
+
+findings:
+  - "Medical imaging publishes almost no harvested OpenAPI: 11 providers, with imaging studies readable at one. Imaging is exchanged through DICOMweb (QIDO-RS, WADO-RS, STOW-RS), a standard every PACS implements, and that is the reference to take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

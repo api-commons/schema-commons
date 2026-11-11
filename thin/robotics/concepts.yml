@@ -1,0 +1,30 @@
+context: robotics
+name: Robotics
+intro: >-
+  The common robot-fleet vocabulary -- robots, the missions or tasks they are sent on, and the maps and
+  locations they navigate -- distilled from the APIs that already exist.
+tags: [Robotics, Robots, Autonomous Mobile Robots, Warehouse Robotics, Industrial Robots, Humanoid Robots]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, robot_id, mission_id, task_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_seen]
+  status: [state, robot_status]
+  name: [title, display_name]
+concepts:
+  robot:
+    segments: [robots, robot, agents@robotics|fleet, devices@robots|robotics]
+    aliases:
+      battery_level: [battery, battery_percentage, charge]
+      position: [pose, location]
+      model: [robot_model, type]
+  robot_mission:
+    path: /robot-missions
+    segments: [missions, mission, tasks@robots|robot|fleet, jobs@robots|robot, actions@robots|robot]
+    aliases:
+      robot: [robot_id, assigned_robot]
+
+findings:
+  - "Robotics publishes almost no harvested OpenAPI: of the companies tagged robotics, 25 have harvested specs, with robots readable at none and missions at 1. Robot fleets are driven through ROS 2 and the VDA 5050 and MassRobotics interoperability standards, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

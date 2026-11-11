@@ -1,0 +1,41 @@
+context: inventory
+name: Inventory Management
+intro: >-
+  The common inventory vocabulary -- the items or SKUs stocked, the stock levels held at each location,
+  and the adjustments and transfers that change them -- distilled from the APIs that already exist.
+tags: [Inventory, Inventory Management, Stock Management, Multichannel, Order Management, Omnichannel]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, item_id, sku_id, location_id, variant_id]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, updated_on, last_modified]
+  status: [state]
+  name: [title, display_name, item_name]
+concepts:
+  inventory_item:
+    path: /inventory-items
+    segments: [items, item, skus, sku, products@inventory, inventory_items, inventoryitems, stock_items]
+    aliases:
+      sku: [item_code, code, sku_code, product_code]
+      barcode: [upc, ean, gtin]
+      unit: [uom, unit_of_measure]
+      cost: [unit_cost, cost_price, purchase_price]
+  stock_level:
+    path: /stock-levels
+    segments: [inventory, inventories, stock, stocks, stock_levels, levels, quantities, inventory_levels, availability, on_hand]
+    aliases:
+      quantity: [qty, available, on_hand, quantity_on_hand, available_quantity, qty_available, stock]
+      location: [location_id, warehouse_id, warehouse, store_id, site_id]
+      sku: [item_code, sku_code, item_id]
+      reserved: [committed, allocated, quantity_reserved]
+  stock_adjustment:
+    path: /stock-adjustments
+    segments: [adjustments, adjustment, stock_adjustments, movements, stock_movements, transfers@inventory|stock]
+    aliases:
+      quantity: [qty, quantity_change, delta, adjustment]
+      reason: [reason_code, note, notes, type]
+
+findings:
+  - "Inventory adds no new common shape: in a 122-provider cohort, items at 36 readable providers agree on id and name; stock levels at 24 share nothing at half (quantity reaches 38%, spelled available, on_hand, qty_available or stock), and adjustments agree on reason and id. Stock is already measured as /inventory in commerce and as stock in warehouse. Inventory is a view across those two, not a separate vocabulary."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

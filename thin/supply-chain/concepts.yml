@@ -1,0 +1,39 @@
+context: supply-chain
+name: Supply Chain Visibility
+intro: >-
+  The common supply-chain visibility vocabulary -- tracked shipments or containers, the milestone
+  events recorded against them, and the suppliers in the chain -- distilled from the APIs that already exist.
+tags: [Supply Chain, Supply Chain Visibility, Supply Chain Management, Logistics, Traceability, Supplier Management]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, shipment_id, tracking_id, supplier_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_updated]
+  status: [state]
+  name: [title, display_name, legal_name]
+concepts:
+  tracked_shipment:
+    path: /tracked-shipments
+    segments: [trackers, tracker, trackings, tracking, containers, shipments@visibility|tracking, tracked_shipments]
+    aliases:
+      reference: [tracking_number, container_number, bill_of_lading, bl_number, booking_number, mbl_number]
+      carrier: [carrier_code, scac, shipping_line, carrier_name]
+      eta: [estimated_arrival, estimated_delivery, predicted_arrival]
+  milestone_event:
+    path: /milestone-events
+    requires: [tracked_shipment]
+    segments: [events, event, milestones, milestone, checkpoints, statuses]
+    aliases:
+      event_type: [type, code, event_code, status, description]
+      occurred_at: [timestamp, event_time, date, event_date_time, datetime]
+      location: [location_name, port, place, unlocode]
+  supplier:
+    segments: [suppliers, supplier, vendors@supply-chain|supply_chain|scm]
+    aliases:
+      country: [country_code]
+      risk_score: [risk, score, risk_rating]
+
+findings:
+  - "Supply-chain visibility adds nothing common beyond what shipping and freight already hold: in a 280-provider cohort, tracked shipments at 31 readable providers agree only on status; suppliers agree on id and name. Milestone events agree on event_type, location and occurred_at, but at 5 providers. Container tracking follows the DCSA Track and Trace standard, and supply-chain events follow GS1 EPCIS, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

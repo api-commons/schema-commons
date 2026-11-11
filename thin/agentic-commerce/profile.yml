@@ -1,0 +1,235 @@
+context: agentic-commerce
+name: Agentic Commerce
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Agentic Commerce
+  - Universal Commerce Protocol
+  - x402
+  - Agent Payments
+  - Agentic Payments
+  - AI Shopping
+  providers_with_harvested_openapi: 160
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  checkout_session:
+    segments_seen:
+      checkout: 16
+      checkouts: 5
+      cart: 4
+      carts: 3
+      sessions: 2
+      checkout-sessions: 1
+    providers_exposing: 28
+    providers_with_readable_schema: 22
+    operations:
+    - operation: POST collection
+      providers: 26
+      share: 0.929
+      tier: core
+    - operation: GET item
+      providers: 11
+      share: 0.393
+      tier: extended
+    - operation: GET collection
+      providers: 5
+      share: 0.179
+      tier: long-tail
+    - operation: DELETE item
+      providers: 3
+      share: 0.107
+      tier: long-tail
+    - operation: POST item
+      providers: 3
+      share: 0.107
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 3
+      share: 0.107
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.036
+      tier: long-tail
+    properties:
+    - name: id
+      tier: extended
+      providers: 9
+      share: 0.409
+      type: string
+      spellings:
+      - id
+      - checkout_id
+      - checkoutId
+    - name: currency
+      tier: extended
+      providers: 7
+      share: 0.318
+      type: string
+      spellings:
+      - currency
+      - currency_code
+    - name: line_items
+      tier: extended
+      providers: 7
+      share: 0.318
+      type: array
+      spellings:
+      - items
+      - lineItems
+      - line_items
+      - products
+    - name: created_at
+      tier: extended
+      providers: 6
+      share: 0.273
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+      - created
+    - name: status
+      tier: extended
+      providers: 6
+      share: 0.273
+      type: string
+      spellings:
+      - status
+      - state
+    long_tail_count: 229
+    long_tail_sample:
+    - email
+    - expires_at
+    - order_id
+    - total
+    - billing_address
+    - buyer
+    - fulfillment
+    - metadata
+    - price
+    - quantity
+    - updated_at
+    - url
+    - cart_id
+    - client_reference_id
+    - customer_email
+    - customer_id
+    - description
+    - key
+    - ok
+    - package
+    - payment_method
+    - payment_token
+    - payments
+    - plan
+    - promotions
+    - return_url
+    - store
+    - accepted_terms
+    - actions
+    - additional_data
+    - addresses
+    - adjustments
+    - after_expiration
+    - allow_promotion_codes
+    - amount_subtotal
+    - amount_usd
+    - api_version
+    - applied_coupons
+    - attributes
+    - auto_refill
+  payment_mandate:
+    segments_seen:
+      mandates: 5
+      vault: 3
+      mandate: 2
+      intents: 1
+    providers_exposing: 10
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET item
+      providers: 7
+      share: 0.7
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 0.7
+      tier: core
+    - operation: GET collection
+      providers: 5
+      share: 0.5
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    properties:
+    - name: expires_at
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - expires_at
+      - expiresAt
+    - name: metadata
+      tier: core
+      providers: 3
+      share: 0.5
+      type: object
+      spellings:
+      - metadata
+    long_tail_count: 64
+    long_tail_sample:
+    - amount
+    - approved_at
+    - budget
+    - created_at
+    - id
+    - idempotency_key
+    - label
+    - signature
+    - status
+    - action
+    - action_hash
+    - agent_id
+    - allowed_actions
+    - allowed_capability_card_refs
+    - allowed_rails
+    - approval_redirect
+    - asset
+    - attestation
+    - attesting_keys
+    - authorization_id
+    - buyer_agent_id
+    - canceled_at
+    - capability_card_id
+    - certificate
+    - cited_by
+    - currency
+    - customer_display
+    - deployment_id
+    - description
+    - envelope
+    - error
+    - external_reference_id
+    - how_to_verify
+    - instruction
+    - instruction_hash
+    - mandate_tier
+    - mandate_url
+    - merchant
+    - next_page_token
+    - onchain_transactions

@@ -1,0 +1,397 @@
+context: legislation
+name: Legislation
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Legislation
+  - Government
+  - Policy
+  - Lobbying
+  - Civic Tech
+  - Politics
+  - Regulation
+  providers_with_harvested_openapi: 129
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  bill:
+    segments_seen:
+      bills: 5
+      bill: 3
+      legislation: 2
+    providers_exposing: 6
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.667
+      tier: core
+    properties:
+    - name: session
+      tier: core
+      providers: 6
+      share: 1.0
+      type: integer
+      spellings:
+      - congress
+      - session
+    - name: updated_at
+      tier: core
+      providers: 6
+      share: 1.0
+      type: string
+      spellings:
+      - updateDate
+      - updatedAt
+      - updated_at
+      - latest_action_date
+      - updateTime
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - title
+    - name: number
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - number
+      - identifier
+    - name: url
+      tier: core
+      providers: 5
+      share: 0.833
+      type: string
+      spellings:
+      - url
+    - name: chamber
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - originChamber
+      - chamber
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - introducedDate
+      - createdAt
+      - created_at
+    - name: latest_action
+      tier: core
+      providers: 4
+      share: 0.667
+      type: object
+      spellings:
+      - latestAction
+      - lastAction
+    - name: type
+      tier: core
+      providers: 4
+      share: 0.667
+      type: string
+      spellings:
+      - type
+    - name: action_date
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - actionDate
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - id
+      - billID
+    - name: origin_chamber_code
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - originChamberCode
+    long_tail_count: 43
+    long_tail_sample:
+    - jurisdiction
+    - relationship_type
+    - update_date_including_text
+    - abstracts
+    - actions
+    - classification
+    - committees
+    - ctid
+    - documents
+    - extras
+    - first_action_date
+    - from_organization
+    - full_text_url
+    - last_action_date
+    - latest_action_description
+    - latest_passage_date
+    - lobbying_amounts
+    - lobbying_counts
+    - lobbyists
+    - openstates_url
+    - other_identifiers
+    - other_titles
+    - page_link
+    - politician_amounts
+    - politician_counts
+    - politician_roles
+    - politician_stocks
+    - politician_trade_dates
+    - politician_trades
+    - politicians
+    - related_bills
+    - short_title
+    - sources
+    - sponsor
+    - sponsorships
+    - status
+    - subject
+    - subjects
+    - summary
+    - update
+  legislator:
+    segments_seen:
+      members: 8
+      member: 3
+      representatives: 2
+      legislators: 1
+      politicians: 1
+    providers_exposing: 12
+    providers_with_readable_schema: 10
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.917
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.5
+      tier: core
+    - operation: DELETE collection
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: DELETE item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.167
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.083
+      tier: long-tail
+    properties:
+    - name: state
+      tier: core
+      providers: 7
+      share: 0.7
+      type: string
+      spellings:
+      - state
+      - jurisdiction
+      - State
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.6
+      type: string
+      spellings:
+      - bioguideId
+      - id
+      - bioguideID
+    - name: name
+      tier: core
+      providers: 6
+      share: 0.6
+      type: string
+      spellings:
+      - name
+      - fullName
+      - title
+      - Name
+    - name: chamber
+      tier: core
+      providers: 5
+      share: 0.5
+      type: string
+      spellings:
+      - chamber
+      - Chamber
+    - name: party
+      tier: core
+      providers: 5
+      share: 0.5
+      type: string
+      spellings:
+      - party
+      - partyName
+      - Party
+    - name: updated_at
+      tier: core
+      providers: 5
+      share: 0.5
+      type: string
+      spellings:
+      - updateDate
+      - updatedAt
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.4
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+      - created
+    - name: url
+      tier: extended
+      providers: 4
+      share: 0.4
+      type: string
+      spellings:
+      - url
+    - name: first_name
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: string
+      spellings:
+      - firstName
+    - name: last_name
+      tier: extended
+      providers: 3
+      share: 0.3
+      type: string
+      spellings:
+      - lastName
+    long_tail_count: 96
+    long_tail_sample:
+    - birth_year
+    - congress
+    - cosponsored_legislation
+    - depiction
+    - direct_order_name
+    - district
+    - honorific_name
+    - identifier
+    - inverted_order_name
+    - lastname
+    - leadership
+    - legislation_number
+    - legislation_type
+    - legislation_url
+    - party_history
+    - role
+    - roll_call_number
+    - session_number
+    - source_data_url
+    - sponsored_legislation
+    - start_date
+    - terms
+    - vote_cast
+    - vote_party
+    - vote_state
+    - vote_type
+    - access_level
+    - active
+    - amount_high
+    - amount_low
+    - amount_range
+    - asset
+    - bio_guide_id
+    - biography
+    - buys
+    - candidate_id
+    - citation
+    - committee_id
+    - committee_name
+    - contact_info
+  roll_call_vote:
+    segments_seen:
+      votes: 3
+      rollcalls: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 26
+    long_tail_sample:
+    - id
+    - bill_title
+    - chamber
+    - position
+    - roll_call_event_item_id
+    - roll_call_guid
+    - roll_call_id
+    - roll_call_last_modified_utc
+    - roll_call_person_id
+    - roll_call_person_name
+    - roll_call_result
+    - roll_call_row_version
+    - roll_call_sort
+    - roll_call_value_id
+    - roll_call_value_name
+    - vote_date
+    - vote_event_item_id
+    - vote_guid
+    - vote_last_modified_utc
+    - vote_person_id
+    - vote_person_name
+    - vote_result
+    - vote_row_version
+    - vote_sort
+    - vote_value_id
+    - vote_value_name

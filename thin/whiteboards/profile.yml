@@ -1,0 +1,207 @@
+context: whiteboards
+name: Whiteboards and Collaboration
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Whiteboard
+  - Whiteboards
+  - Visual Collaboration
+  - Collaboration
+  - Diagramming
+  - Brainstorming
+  providers_with_harvested_openapi: 122
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  board:
+    segments_seen:
+      diagrams: 2
+      board: 2
+      boards: 2
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: DELETE item
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: GET collection
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 1.0
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - name
+    - name: updated_at
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+      - modifiedAt
+    long_tail_count: 72
+    long_tail_sample:
+    - created_at
+    - deleted
+    - team_id
+    - boundary_visibility
+    - chair_count
+    - closed
+    - code
+    - creation_method
+    - current_user_membership
+    - date_last_activity
+    - date_last_view
+    - date_plugin_disable
+    - desc
+    - desc_data
+    - description
+    - diagram_type
+    - diagram_url
+    - end_datetime
+    - enterprise_owned
+    - event_id
+    - external_diagram_id
+    - external_event_id
+    - file_url
+    - floor_elements
+    - floor_plan
+    - groups
+    - guestlist_id
+    - id_member_creator
+    - id_organization
+    - id_tags
+    - ix_update
+    - label_names
+    - last_opened_at
+    - last_opened_by
+    - legacy_event_id
+    - length
+    - limit
+    - limits
+    - memberships
+    - modified_by
+  board_item:
+    segments_seen:
+      cards: 2
+      elements: 1
+      items: 1
+      shapes: 1
+      connectors: 1
+      sticky_notes: 1
+      frames: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - title
+      - name
+    long_tail_count: 64
+    long_tail_sample:
+    - id
+    - action_time
+    - action_type
+    - actor
+    - assignee_id
+    - background
+    - badges
+    - captions
+    - closed
+    - content
+    - content_id
+    - cover
+    - create_eraser_file_url
+    - created_at
+    - created_by
+    - date_last_activity
+    - desc
+    - description
+    - due
+    - due_complete
+    - due_date
+    - end_item
+    - file_options
+    - file_url
+    - fill_color
+    - format
+    - icon_shape
+    - icon_url
+    - id_attachment_cover
+    - id_board
+    - id_checklists
+    - id_labels
+    - id_list
+    - id_members
+    - id_short
+    - image_quality
+    - image_url
+    - is_supported
+    - item_type
+    - labels

@@ -1,0 +1,422 @@
+context: kubernetes
+name: Kubernetes and Clusters
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Kubernetes
+  - Containers
+  - Container Orchestration
+  - Cloud-Native
+  - Platform Engineering
+  - Microservices
+  providers_with_harvested_openapi: 296
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  k8s_cluster:
+    segments_seen:
+      clusters: 43
+      cluster: 18
+      kubernetes: 5
+      k8s: 1
+    providers_exposing: 59
+    providers_with_readable_schema: 55
+    operations:
+    - operation: GET collection
+      providers: 57
+      share: 0.966
+      tier: core
+    - operation: GET item
+      providers: 40
+      share: 0.678
+      tier: core
+    - operation: POST collection
+      providers: 35
+      share: 0.593
+      tier: core
+    - operation: DELETE item
+      providers: 34
+      share: 0.576
+      tier: core
+    - operation: UPDATE item
+      providers: 26
+      share: 0.441
+      tier: extended
+    - operation: UPDATE collection
+      providers: 6
+      share: 0.102
+      tier: long-tail
+    - operation: POST item
+      providers: 4
+      share: 0.068
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.017
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 44
+      share: 0.8
+      type: string
+      spellings:
+      - name
+      - display_name
+      - title
+      - Name
+      - displayName
+    - name: id
+      tier: extended
+      providers: 25
+      share: 0.455
+      type: string
+      spellings:
+      - id
+      - uuid
+      - guid
+      - clusterId
+      - _id
+      - externalId
+    - name: status
+      tier: extended
+      providers: 25
+      share: 0.455
+      type: string
+      spellings:
+      - status
+      - state
+    - name: version
+      tier: extended
+      providers: 20
+      share: 0.364
+      type: string
+      spellings:
+      - version
+      - kubernetesVersion
+      - k8s_version
+      - kubernetes_version
+      - k8sVersion
+      - clusterVersion
+    - name: created_at
+      tier: extended
+      providers: 15
+      share: 0.273
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+      - createTime
+      - CreateTime
+      - created
+      - creation_timestamp
+      - creationTimestamp
+    - name: labels
+      tier: extended
+      providers: 14
+      share: 0.255
+      type: object
+      spellings:
+      - tags
+      - labels
+      - Tags
+    - name: region
+      tier: extended
+      providers: 13
+      share: 0.236
+      type: string
+      spellings:
+      - region
+      - location
+      - zone
+    - name: type
+      tier: extended
+      providers: 12
+      share: 0.218
+      type: string
+      spellings:
+      - type
+    long_tail_count: 895
+    long_tail_sample:
+    - description
+    - endpoint
+    - cluster_name
+    - metadata
+    - nodes
+    - updated_at
+    - config
+    - network
+    - cloud_provider
+    - enabled
+    - namespace
+    - namespaces
+    - node_count
+    - project
+    - provider
+    - annotations
+    - auto_scaler
+    - capacity
+    - cluster_certificate
+    - cluster_type
+    - connection_state
+    - deleted_at
+    - end_time
+    - error
+    - health
+    - info
+    - node_groups
+    - node_pools
+    - operation_type
+    - project_id
+    - self_link
+    - server_name
+    - shard
+    - spec
+    - start_time
+    - available_kubernetes_upgrades
+    - aws_region
+    - certificate_authority
+    - cloud
+    - cloud_account_id
+  node_pool:
+    segments_seen:
+      nodepools: 4
+      node-pools: 2
+      pools: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 7
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 6
+      share: 0.857
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.857
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.714
+      tier: core
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.857
+      type: string
+      spellings:
+      - id
+      - clusterId
+      - cluster_id
+    - name: name
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - name
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - status
+      - state
+      - phase
+    - name: node_count
+      tier: core
+      providers: 4
+      share: 0.571
+      type: array
+      spellings:
+      - nodes
+    - name: instance_type
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - type
+      - plan
+    long_tail_count: 97
+    long_tail_sample:
+    - compartment_id
+    - created_at
+    - kubernetes_version
+    - label
+    - lifecycle_state
+    - node_config_details
+    - node_image_id
+    - node_shape
+    - node_source
+    - quantity_per_subnet
+    - ssh_public_key
+    - subnet_ids
+    - updated_at
+    - action
+    - auto_scaler
+    - autoscaler
+    - autoscaling
+    - cluster_name
+    - completed_at
+    - config
+    - created_by
+    - date_created
+    - date_updated
+    - defined_tags
+    - deleted_at
+    - deleted_by
+    - disk_encryption
+    - disks
+    - effect
+    - end_time
+    - ephemeral_storage_for_containerd
+    - firewall_id
+    - freeform_tags
+    - gpu_network_acceleration_detection
+    - gpu_network_acceleration_label_key
+    - gpu_resource_optimization
+    - ib_partition_id
+    - image_id
+    - initial_node_count
+    - initial_node_labels
+  namespace:
+    segments_seen:
+      namespaces: 19
+      namespace: 3
+    providers_exposing: 19
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 19
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.526
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 0.368
+      tier: extended
+    - operation: DELETE item
+      providers: 6
+      share: 0.316
+      tier: extended
+    - operation: UPDATE collection
+      providers: 4
+      share: 0.211
+      tier: extended
+    - operation: UPDATE item
+      providers: 4
+      share: 0.211
+      tier: extended
+    - operation: DELETE collection
+      providers: 2
+      share: 0.105
+      tier: long-tail
+    - operation: POST item
+      providers: 2
+      share: 0.105
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 7
+      share: 0.538
+      type: string
+      spellings:
+      - name
+      - Name
+      - title
+    - name: id
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - id
+      - namespace_id
+      - uuid
+      - Id
+    - name: status
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - status
+      - Status
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - created_at
+    - name: description
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - description
+      - Description
+    long_tail_count: 67
+    long_tail_sample:
+    - creation_date
+    - metadata
+    - namespace_name
+    - quota
+    - type
+    - updated_at
+    - activate_vpc_integration
+    - annotations
+    - app_id
+    - class
+    - cluster_name
+    - clusters
+    - comment
+    - config_count
+    - create_index
+    - created_by
+    - created_on
+    - data_change_created_by
+    - data_change_created_time
+    - data_change_last_modified_by
+    - data_change_last_modified_time
+    - environment_variables
+    - error_message
+    - filter
+    - format
+    - is_default
+    - is_public
+    - is_system
+    - jurisdiction
+    - labels
+    - last_updated
+    - messages
+    - mode
+    - modified_by
+    - modified_on
+    - modify_index
+    - namespace_desc
+    - namespace_owner
+    - namespace_show_name
+    - namespace_uuid

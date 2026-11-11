@@ -1,0 +1,515 @@
+context: manufacturing
+name: Manufacturing
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Manufacturing
+  - MES
+  - Industrial
+  - Smart Manufacturing
+  - Industry 4.0
+  - Production Planning
+  - Factory
+  providers_with_harvested_openapi: 82
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  work_order:
+    segments_seen:
+      work-orders: 4
+      workorders: 3
+      manufacturing_orders: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 7
+    operations:
+    - operation: POST collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 6
+      share: 0.857
+      tier: core
+    - operation: GET collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.571
+      tier: core
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.857
+      type: string
+      spellings:
+      - id
+      - work_order_id
+      - externalId
+      - workOrderId
+    - name: status
+      tier: core
+      providers: 5
+      share: 0.714
+      type: string
+      spellings:
+      - status
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - name
+      - title
+    - name: updated_at
+      tier: core
+      providers: 4
+      share: 0.571
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+    - name: completed_at
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - completed_at
+      - completedAt
+    - name: description
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - description
+    - name: due_date
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - dueDate
+    - name: location
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: object
+      spellings:
+      - location
+    - name: location_id
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: integer
+      spellings:
+      - location_id
+      - locationId
+    - name: priority
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - priority
+    - name: start_date
+      tier: extended
+      providers: 3
+      share: 0.429
+      type: string
+      spellings:
+      - startDate
+    long_tail_count: 193
+    long_tail_sample:
+    - actual_quantity
+    - customer_id
+    - number
+    - quantity
+    - type
+    - activities
+    - activities_completed
+    - activities_count
+    - activities_duration_min
+    - activities_total
+    - additional_info
+    - additional_instructions
+    - anomalies
+    - anomaly_ids
+    - asset
+    - asset_id
+    - assigned_contact_ids
+    - assigned_group_ids
+    - assigned_worker
+    - assignee
+    - assignee_ids
+    - assignee_user_id
+    - assignees
+    - assignment
+    - attachments
+    - available_resources
+    - available_robot_sets
+    - batch_status_id
+    - batch_status_name
+    - batch_transactions
+    - campaign_id
+    - cancellation_reason
+    - cancelled_by_name
+    - cancelled_on_utc
+    - categories
+    - closed_at
+    - color_id
+    - comment_count
+    - completed_at_debug
+    - completed_date
+  part:
+    segments_seen:
+      parts: 10
+      materials: 4
+      items: 1
+    providers_exposing: 13
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 11
+      share: 0.846
+      tier: core
+    - operation: GET item
+      providers: 9
+      share: 0.692
+      tier: core
+    - operation: POST collection
+      providers: 8
+      share: 0.615
+      tier: core
+    - operation: DELETE item
+      providers: 6
+      share: 0.462
+      tier: extended
+    - operation: UPDATE item
+      providers: 6
+      share: 0.462
+      tier: extended
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 9
+      share: 0.75
+      type: string
+      spellings:
+      - id
+      - partID
+      - externalId
+      - uuid
+      - partId
+    - name: name
+      tier: core
+      providers: 8
+      share: 0.667
+      type: string
+      spellings:
+      - name
+    - name: part_number
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - partNumber
+      - number
+      - itemNumber
+      - part_number
+    - name: description
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - description
+    - name: created_at
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+    - name: revision
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - revision
+      - version
+    - name: type
+      tier: extended
+      providers: 4
+      share: 0.333
+      type: string
+      spellings:
+      - type
+    - name: quantity
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: number
+      spellings:
+      - quantity
+    long_tail_count: 201
+    long_tail_sample:
+    - location_id
+    - organization_id
+    - price
+    - unit
+    - unit_cost
+    - updated_at
+    - vendors
+    - active
+    - additional_data
+    - additional_info
+    - allergens
+    - alternate_part_id
+    - area
+    - asset_id
+    - asset_ids
+    - assigned_quantity
+    - association_type
+    - attachments
+    - available_quantity
+    - available_stock
+    - barcode
+    - batch_tracked
+    - bom_substitution_allow
+    - building_code
+    - category
+    - category_id
+    - category_name
+    - committed_quantities
+    - configs
+    - create_info
+    - created_by_id
+    - created_date_time
+    - custom_field_collection_id
+    - custom_name
+    - custom_property_values
+    - cycle_code_id
+    - dataset_id
+    - default_supplier_id
+    - deleted_at
+    - density_units
+  bill_of_materials:
+    segments_seen:
+      bom: 5
+      boms: 4
+      bills_of_materials: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 6
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.429
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.429
+      tier: extended
+    - operation: DELETE item
+      providers: 2
+      share: 0.286
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.5
+      type: string
+      spellings:
+      - name
+    long_tail_count: 82
+    long_tail_sample:
+    - id
+    - part_number
+    - active
+    - active_date
+    - attachments
+    - attribute
+    - auto_deplete
+    - bom_ids
+    - class
+    - component_id
+    - component_part_id
+    - component_part_number
+    - component_part_number_revision
+    - component_part_revision
+    - component_supply_item_id
+    - component_supply_item_number
+    - component_unit_of_measure
+    - contributions
+    - cost_currency
+    - country_of_origin
+    - created_at
+    - custom_fields
+    - custom_id
+    - delta_bom
+    - depletion_conversion_factor
+    - depletion_unit_of_measure
+    - description
+    - drawing_number
+    - enabled
+    - esgs
+    - expiration_date
+    - facilities
+    - files_queued
+    - group
+    - import_id
+    - key
+    - last_updated_at
+    - level
+    - lines
+    - mapping
+  machine:
+    segments_seen:
+      equipment: 3
+      machines: 2
+      workcenters: 2
+    providers_exposing: 6
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties:
+    - name: description
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - description
+    - name: id
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - name
+    - name: status
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - status
+    long_tail_count: 114
+    long_tail_sample:
+    - location
+    - type
+    - work_center_id
+    - active
+    - add_by
+    - add_date_time
+    - batches
+    - brand
+    - building
+    - building_code
+    - building_id
+    - can_run_unattended
+    - champion
+    - code
+    - deleted
+    - department
+    - departments
+    - dept_id
+    - equipment_attributes
+    - equipment_category
+    - equipment_group
+    - equipment_id
+    - equipment_priority
+    - equipment_type
+    - equipment_type_id
+    - ip_address
+    - job_id
+    - job_number
+    - job_operation_id
+    - job_operation_quantity
+    - location_id
+    - lot_id
+    - manufacturer
+    - model_no
+    - model_number
+    - notes
+    - operation_code
+    - operation_number
+    - operators
+    - over_head_rate

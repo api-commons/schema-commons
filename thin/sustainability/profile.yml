@@ -1,0 +1,269 @@
+context: sustainability
+name: Sustainability Reporting
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Sustainability
+  - Sustainability Reporting
+  - Environmental Management
+  - Waste Management
+  - Water Management
+  - Circular Economy
+  providers_with_harvested_openapi: 68
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  reporting_site:
+    segments_seen:
+      sites: 5
+      buildings: 4
+      facilities: 3
+      site: 2
+    providers_exposing: 13
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 13
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 9
+      share: 0.692
+      tier: core
+    - operation: POST collection
+      providers: 9
+      share: 0.692
+      tier: core
+    - operation: DELETE item
+      providers: 5
+      share: 0.385
+      tier: extended
+    - operation: UPDATE item
+      providers: 5
+      share: 0.385
+      tier: extended
+    - operation: DELETE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 10
+      share: 0.833
+      type: string
+      spellings:
+      - id
+      - facilityId
+      - GUID
+      - facility_id
+      - external_id
+    - name: name
+      tier: core
+      providers: 6
+      share: 0.5
+      type: string
+      spellings:
+      - name
+      - Name
+    - name: address
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - address
+      - location
+    - name: city
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - city
+    - name: country
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - country
+    - name: facility_type
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - facilityType
+      - facility_type
+    - name: postal_code
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - postalCode
+    - name: type
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - type
+    long_tail_count: 225
+    long_tail_sample:
+    - areas
+    - attributes
+    - building_type
+    - code
+    - region
+    - relationships
+    - status
+    - tags
+    - url
+    - access_times
+    - account_count
+    - address_issue_type
+    - address_line1
+    - address_line2
+    - aggregate_net_metering
+    - analysis_code
+    - areas_guid_filter
+    - areas_related_location_guid_filter
+    - asset_ids
+    - boundary_indicator
+    - bu_id
+    - building
+    - building_id
+    - building_type_group
+    - business_units_intersection
+    - business_units_union
+    - capacity
+    - capacity_unit
+    - client_metadata
+    - cmty_application_number
+    - co_c_number
+    - colocated_facility
+    - comment_box
+    - company_outlet_list_item
+    - construction_activities_completion_date
+    - contact_methods
+    - contact_name
+    - contact_phone
+    - content
+    - control
+  consumption_record:
+    segments_seen:
+      usage: 1
+      consumption: 1
+      readings: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 26
+    long_tail_sample:
+    - date
+    - co2emission
+    - code
+    - cost
+    - elements
+    - estimated_from
+    - export
+    - fuel
+    - full_lambda_name
+    - import
+    - is_ondemand
+    - measurement
+    - meter_reading
+    - meter_reading_date_taken
+    - meter_reading_status
+    - meter_readings_id
+    - period_end
+    - period_start
+    - price
+    - production
+    - resolution
+    - resource_id
+    - resource_type
+    - unit
+    - url
+    - values
+  sustainability_metric:
+    segments_seen:
+      metrics: 4
+      datapoints: 2
+    providers_exposing: 6
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: DELETE collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.167
+      tier: long-tail
+    properties: []
+    long_tail_count: 25
+    long_tail_sample:
+    - name
+    - alert_definition_id
+    - alert_definition_name
+    - budget
+    - campaign_id
+    - campaign_name
+    - cumulative_offset_credit_amount
+    - cumulative_paid_credit_amount
+    - description
+    - id
+    - inventory_source_id
+    - locked_status
+    - management
+    - measured_at
+    - media_buy_id
+    - media_buys
+    - packages
+    - project_id
+    - quantity
+    - source_ids
+    - status
+    - supplier_reference_id
+    - ts
+    - type
+    - uncertainty_justification

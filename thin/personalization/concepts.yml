@@ -1,0 +1,35 @@
+context: personalization
+name: Personalization and Recommendations
+intro: >-
+  The common recommendation vocabulary -- the items in a catalog, the user interactions or events that
+  train on them, and the recommendations returned -- distilled from the APIs that already exist.
+tags: [Personalization, Recommendations, Recommendation Engine, A/B Testing, Experimentation, Customer Data Platform]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, item_id, user_id, experiment_id]
+  created_at: [created, created_date, create_time, timestamp]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  recommendation:
+    segments: [recommendations, recommendation, recommend, recs, personalize, predictions@recs|recommend, similar, related]
+    aliases:
+      items: [recomms, item_list, results, products]
+      score: [relevance, probability]
+  interaction:
+    segments: [interactions, interaction, events@personalization|recommendations|tracking, user_events, feedback, ratings, purchases@users|recombee, views@users|recombee]
+    aliases:
+      event_type: [type, interaction_type, event, action]
+      item_id: [item, product_id, content_id]
+      user_id: [user, visitor_id, customer_id]
+  experiment:
+    segments: [experiments, experiment, tests@ab|experimentation, campaigns@personalization|experimentation]
+    aliases:
+      variations: [variants, arms, treatments]
+      traffic_allocation: [traffic, allocation, percentage]
+
+findings:
+  - "Personalization adds nothing common beyond what other contexts hold: in a 107-provider cohort, recommendations at 17 readable providers agree only on an id (the returned list is each engine's own shape), and interactions at 7 on id and created_at. Experiments agree well -- id, name, status, description and created_at, with variations at 42% -- but feature-flags already holds the experiment. The events that train recommenders are the tracked events product-analytics measures."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

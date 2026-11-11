@@ -1,0 +1,113 @@
+context: qr-codes
+name: QR Codes
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - QR Codes
+  - QR Code
+  - Barcodes
+  - Barcode
+  - Dynamic QR Codes
+  providers_with_harvested_openapi: 11
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  qr_code:
+    segments_seen:
+      qr: 2
+      qr-codes: 1
+      barcode: 1
+      generate: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: POST collection
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: data
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - destination
+      - url
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - name
+      - title
+    long_tail_count: 69
+    long_tail_sample:
+    - status
+    - tags
+    - action
+    - add_tags
+    - archive
+    - archived
+    - async
+    - bitlink_id
+    - brand
+    - calories_kcal
+    - carbs_g
+    - category
+    - cholesterol_mg
+    - confidence
+    - country_exclude
+    - country_match
+    - created_at
+    - created_by
+    - credits
+    - decorationimage
+    - device_exclude
+    - device_match
+    - domain
+    - duration
+    - dynamic_routing
+    - expiration
+    - expiration_at
+    - fat_g
+    - fiber_g
+    - folder
+    - format
+    - group_guid
+    - gs1
+    - id
+    - image_thumb_url
+    - image_url
+    - inline
+    - is_customized
+    - is_gs1
+    - job_id

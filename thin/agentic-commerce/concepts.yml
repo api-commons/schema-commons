@@ -1,0 +1,40 @@
+context: agentic-commerce
+name: Agentic Commerce
+intro: >-
+  The common vocabulary of commerce made for agents -- the checkout sessions an agent opens, the
+  payment mandates or delegated tokens it pays with, and the products it buys -- distilled from the
+  APIs that already exist.
+tags: [Agentic Commerce, Universal Commerce Protocol, x402, Agent Payments, Agentic Payments, AI Shopping]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, session_id, checkout_id, mandate_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  metadata: [meta_data]
+
+concepts:
+  checkout_session:
+    path: /checkout-sessions
+    segments: [checkout_sessions, checkout-sessions, checkouts, checkout, carts, cart, sessions@checkout|commerce|acp|ucp]
+    aliases:
+      line_items: [items, products, lines]
+      total: [totals, amount, amount_total, total_amount]
+      currency: [currency_code]
+      buyer: [customer, buyer_info, shopper]
+      fulfillment: [shipping, fulfillment_address, shipping_address, fulfillment_options]
+  payment_mandate:
+    path: /payment-mandates
+    segments: [mandates, mandate, delegated_payments, delegate_payment, vault, payment_tokens, allowances, intents@payments|agent]
+    aliases:
+      max_amount: [limit, amount_limit, allowance, spending_limit, max_spend]
+      expires_at: [expiry, expiration, valid_until]
+      merchant: [merchant_id, payee]
+
+findings:
+  - "Agentic commerce is new enough that its shape is set by protocols, not by the market: in a 160-provider cohort, checkout sessions at 22 readable providers share nothing at half (id 41%, currency and line_items 32%), and payment mandates appear at 6. The vocabulary that is forming lives in the Agentic Commerce Protocol, the Universal Commerce Protocol and x402. Take those in a standards pass, and re-measure once implementations have shipped."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

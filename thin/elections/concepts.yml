@@ -1,0 +1,29 @@
+context: elections
+name: Elections
+intro: >-
+  The common elections vocabulary -- elections, the contests and candidates on the ballot, polling
+  places and results -- distilled from the APIs that already exist.
+tags: [Elections, Voting, Civic Tech, Politics, Campaigns, Voter Data]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, election_id, candidate_id, contest_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  name: [title, display_name, full_name]
+concepts:
+  election:
+    segments: [elections, election]
+    aliases:
+      election_date: [date, election_day]
+  candidate:
+    segments: [candidates, candidate]
+    aliases:
+      party: [party_name, party_affiliation]
+      office: [office_name, office_sought, race]
+  contest:
+    segments: [contests, contest, races, race, measures@elections|ballot]
+
+findings:
+  - "Elections publish almost no common harvested shape: in a 39-provider cohort, elections are readable at 2 providers, candidates at 4 and contests at 2, with no shared property. Election data is standardized by NIST SP 1500-100 (the Election Results Common Data Format) and the Voting Information Project spec, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

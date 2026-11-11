@@ -1,0 +1,203 @@
+context: gift-cards
+name: Gift Cards
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Gift Cards
+  - Gift Card
+  - Stored Value
+  - Digital Gift Cards
+  - Rewards
+  - Incentives
+  - Prepaid Cards
+  providers_with_harvested_openapi: 54
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  gift_card:
+    segments_seen:
+      gift-cards: 2
+      gift_cards: 2
+      giftcards: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: DELETE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - uuid
+      - gift_card_id
+    - name: created_at
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - created_at
+      - issued_at
+    - name: status
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - status
+      - state
+    long_tail_count: 35
+    long_tail_sample:
+    - balance
+    - code
+    - amount
+    - auto_reload_enabled
+    - balance_money
+    - card_background_image
+    - client
+    - currency
+    - customer_ids
+    - default_amount
+    - design_id
+    - epin
+    - gan
+    - gan_source
+    - gc_user_auto_reload_default_amount
+    - gc_user_auto_reload_preferred_payment
+    - gc_user_auto_reload_threshold_amount
+    - greeting_url
+    - idempotency_key
+    - is_partner_issued
+    - last_fetched_amount
+    - last_fetched_at
+    - location_id
+    - name
+    - order_id
+    - passcode
+    - payment_card_id
+    - preferred
+    - sender_name
+    - threshold_amount
+    - type
+    - updated_at
+    - usb_scannable_card_number
+    - user_id
+    - users
+  gift_card_activity:
+    segments_seen:
+      redeem: 2
+      redemptions: 1
+      activities: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: POST collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 88
+    long_tail_sample:
+    - created_at
+    - location_id
+    - accumulate_points
+    - accumulate_promotion_points
+    - activate_activity_details
+    - adjust_decrement_activity_details
+    - adjust_increment_activity_details
+    - adjust_points
+    - amount
+    - authentication_token
+    - block_activity_details
+    - campaign_name
+    - card_number
+    - category
+    - cc_last4
+    - channel
+    - clear_balance_activity_details
+    - client
+    - code
+    - create_reward
+    - deactivate_activity_details
+    - delete_reward
+    - discount_distribution_items
+    - discount_type
+    - email
+    - employee_id
+    - employee_name
+    - expire_points
+    - expiring_at
+    - expiry_hours
+    - external_uid
+    - gift_card_activity
+    - gift_card_balance_money
+    - gift_card_gan
+    - gift_card_id
+    - gps_accuracy
+    - id
+    - idempotency_key
+    - import_activity_details
+    - import_reversal_activity_details
+  gift_card_brand:
+    segments_seen:
+      brands: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 5
+    long_tail_sample:
+    - image_url
+    - name
+    - name_he
+    - product_count
+    - slug

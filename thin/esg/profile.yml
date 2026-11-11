@@ -1,0 +1,175 @@
+context: esg
+name: ESG and Carbon Accounting
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - ESG
+  - Carbon Accounting
+  - Carbon Emissions
+  - Carbon Offsets
+  - Sustainability
+  - Climate Tech
+  - Carbon Credits
+  - Emissions
+  providers_with_harvested_openapi: 79
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  emission_estimate:
+    segments_seen:
+      estimate: 3
+      estimates: 2
+      emissions: 2
+      calculate: 1
+    providers_exposing: 7
+    providers_with_readable_schema: 6
+    operations:
+    - operation: POST collection
+      providers: 5
+      share: 0.714
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.286
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.143
+      tier: long-tail
+    properties: []
+    long_tail_count: 63
+    long_tail_sample:
+    - location
+    - parameters
+    - activity_data
+    - city
+    - co2e
+    - co2e_calculation_method
+    - co2e_calculation_origin
+    - co2e_unit
+    - company
+    - company_id
+    - concrete_volume
+    - configuration
+    - constituent_gases
+    - consumption
+    - costs
+    - creator
+    - date
+    - distance_miles
+    - donor
+    - emission_factor
+    - estimate_type
+    - eval_status_code
+    - eval_status_code_description
+    - facility_name
+    - fiscal_end_quarter
+    - fiscal_end_year
+    - fiscal_start_quarter
+    - fiscal_start_year
+    - id
+    - intervals
+    - is_metric
+    - items
+    - label
+    - labels
+    - match_uuid
+    - mixes
+    - mon_plan_id
+    - my_cc_estimate_id
+    - nonprofit
+    - num_periods_backward
+  emission_factor:
+    segments_seen:
+      emission-factors: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 2
+    long_tail_sample:
+    - id
+    - name
+  carbon_offset:
+    segments_seen:
+      credits: 3
+      removals: 1
+      retirements: 1
+      offset: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties: []
+    long_tail_count: 56
+    long_tail_sample:
+    - code
+    - id
+    - account
+    - add_components
+    - beneficiary
+    - beneficiary_organisation_id
+    - category
+    - cd_nation
+    - co2e_net_removed_kg
+    - co2e_net_removed_standard_deviation_kg
+    - co2e_net_removed_without_discount_kg
+    - completed_on
+    - credit_batch_quantities
+    - credit_batch_size_total
+    - credits_remaining
+    - credits_used
+    - delete_component_ids
+    - delivery_type
+    - description
+    - electives
+    - email
+    - end_date
+    - events
+    - feedstock_type_id
+    - ghg_statement_id
+    - history
+    - hours
+    - instructions
+    - items
+    - limit
+    - name
+    - notes
+    - offset_list
+    - owner
+    - owner_organisation_id
+    - pre_req
+    - price
+    - process_key
+    - project
+    - purposes

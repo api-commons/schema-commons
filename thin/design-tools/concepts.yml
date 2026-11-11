@@ -1,0 +1,38 @@
+context: design-tools
+name: Design Tools
+intro: >-
+  The common design-tool vocabulary -- design files, the pages and frames inside them, components,
+  and the comments left on them -- distilled from the APIs that already exist.
+tags: [Design, Design Tools, UI Design, Graphic Design, Prototyping, Design Systems]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, file_id, design_id, file_key, key]
+  created_at: [created, created_date, create_time, created_on]
+  updated_at: [updated, modified_at, update_time, last_modified]
+  name: [title, display_name]
+  thumbnail_url: [thumbnail, thumbnail_uri, preview_url, preview, thumb]
+
+concepts:
+  design:
+    segments: [designs, design, files@design|projects|teams, documents@design, templates]
+    aliases:
+      owner: [owner_id, created_by, author]
+      folder: [project_id, folder_id, project]
+  design_component:
+    path: /design-components
+    segments: [components, component, component_sets, styles, assets@design|designs|files|brand, brand_templates]
+  design_comment:
+    path: /design-comments
+    requires_any: [design]
+    segments: [comments, comment]
+    aliases:
+      message: [text, body, content]
+      user: [author, user_id, created_by]
+
+findings:
+  - "Design tools publish too few harvested specs to measure: the cohort holds 27 providers, design files are readable at 3 (agreeing on id, name and updated_at), components at 5 and comments at 2. Revisit when more design platforms publish OpenAPI."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

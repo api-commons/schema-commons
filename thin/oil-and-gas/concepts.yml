@@ -1,0 +1,35 @@
+context: oil-and-gas
+name: Oil and Gas
+intro: >-
+  The common upstream oil-and-gas vocabulary -- wells, their production volumes and the permits and
+  leases behind them -- distilled from the APIs that already exist.
+tags: [Oil and Gas, Natural Gas, Petroleum, Upstream, Oilfield Services, LNG]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, well_id, api_number, uwi]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state, well_status]
+  name: [title, display_name, well_name, lease_name]
+concepts:
+  well:
+    segments: [wells, well, wellbores]
+    aliases:
+      operator: [operator_name, company]
+      latitude: [lat, surface_latitude]
+      longitude: [lon, lng, surface_longitude]
+      county: [county_name]
+      state: [state_code, province]
+  production:
+    requires: [well]
+    segments: [production, productions, volumes, monthly_production]
+    aliases:
+      oil: [oil_bbl, oil_volume, liquids]
+      gas: [gas_mcf, gas_volume]
+      water: [water_bbl, water_volume]
+      period: [month, production_date, date]
+
+findings:
+  - "Oil and gas publish almost no harvested OpenAPI: 19 providers, with wells readable at 3 and production volumes at none. Upstream data is exchanged through the Energistics standards (WITSML, PRODML, RESQML) and state regulators' bulk files, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,42 @@
+context: mining
+name: Mining
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Mining
+  - Metals
+  - Minerals
+  - Critical Minerals
+  - Mining Technology
+  providers_with_harvested_openapi: 10
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  mine_site:
+    segments_seen:
+      site: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 0
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []
+  mining_equipment:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

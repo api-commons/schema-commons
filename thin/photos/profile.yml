@@ -1,0 +1,296 @@
+context: photos
+name: Photos and Stock Media
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Photography
+  - Stock Photos
+  - Stock Media
+  - Images
+  - Image
+  - Photo Sharing
+  - Stock Footage
+  providers_with_harvested_openapi: 56
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  photo:
+    segments_seen:
+      images: 13
+      image: 4
+      photos: 4
+      photo: 1
+    providers_exposing: 21
+    providers_with_readable_schema: 18
+    operations:
+    - operation: GET collection
+      providers: 15
+      share: 0.714
+      tier: core
+    - operation: GET item
+      providers: 13
+      share: 0.619
+      tier: core
+    - operation: POST collection
+      providers: 9
+      share: 0.429
+      tier: extended
+    - operation: DELETE item
+      providers: 5
+      share: 0.238
+      tier: extended
+    - operation: POST item
+      providers: 3
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 3
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.095
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.048
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 12
+      share: 0.667
+      type: string
+      spellings:
+      - id
+      - photo_id
+    - name: url
+      tier: extended
+      providers: 8
+      share: 0.444
+      type: string
+      spellings:
+      - url
+      - image_url
+      - urls
+      - imageUrl
+    - name: description
+      tier: extended
+      providers: 6
+      share: 0.333
+      type: string
+      spellings:
+      - caption
+      - description
+      - alt_description
+    - name: height
+      tier: extended
+      providers: 6
+      share: 0.333
+      type: integer
+      spellings:
+      - height
+      - imageHeight
+    - name: width
+      tier: extended
+      providers: 6
+      share: 0.333
+      type: integer
+      spellings:
+      - width
+      - imageWidth
+    - name: name
+      tier: extended
+      providers: 5
+      share: 0.278
+      type: string
+      spellings:
+      - title
+    - name: tags
+      tier: extended
+      providers: 5
+      share: 0.278
+      type: array
+      spellings:
+      - keywords
+      - tags
+    - name: photographer
+      tier: extended
+      providers: 4
+      share: 0.222
+      type: object
+      spellings:
+      - contributor
+      - user
+    - name: source
+      tier: extended
+      providers: 4
+      share: 0.222
+      type: string
+      spellings:
+      - source
+    long_tail_count: 161
+    long_tail_sample:
+    - created_at
+    - orientation
+    - status
+    - allowed_use
+    - alternative_ids
+    - artist
+    - artist_title
+    - aspect_ratio
+    - asset_family
+    - asset_type
+    - attribution
+    - auto_corrections
+    - blur_hash
+    - call_for_image
+    - categories
+    - city
+    - collection_code
+    - collection_id
+    - collection_name
+    - color_type
+    - copyright
+    - country
+    - credit_line
+    - date_camera_shot
+    - date_created
+    - date_submitted
+    - deleted
+    - destination_url
+    - display_sizes
+    - download_notes
+    - download_product
+    - download_sizes
+    - editorial_segments
+    - editorial_source
+    - event_ids
+    - facets
+    - file_name
+    - graphical_style
+    - is_ai_editable
+    - istock_collection
+  photo_collection:
+    segments_seen:
+      collections: 7
+      album: 3
+      albums: 3
+      collection: 2
+      gallery: 1
+    providers_exposing: 14
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 13
+      share: 0.929
+      tier: core
+    - operation: GET item
+      providers: 11
+      share: 0.786
+      tier: core
+    - operation: DELETE item
+      providers: 7
+      share: 0.5
+      tier: core
+    - operation: POST collection
+      providers: 7
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 5
+      share: 0.357
+      tier: extended
+    - operation: POST item
+      providers: 1
+      share: 0.071
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 12
+      share: 0.923
+      type: string
+      spellings:
+      - id
+      - photo_id
+    - name: name
+      tier: core
+      providers: 11
+      share: 0.846
+      type: string
+      spellings:
+      - name
+      - title
+    - name: description
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - description
+    - name: updated_at
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - updated_at
+      - updated
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - created
+      - created_at
+    long_tail_count: 95
+    long_tail_sample:
+    - asset_family
+    - code
+    - cover_photo
+    - deleted
+    - event_id
+    - license_model
+    - private
+    - product_types
+    - published_at
+    - slug
+    - status
+    - type
+    - added_at
+    - admin_url
+    - adult
+    - artist
+    - attributes
+    - author_image
+    - author_url
+    - author_username
+    - backdrop_path
+    - base
+    - category
+    - classification
+    - classification_url
+    - client_url
+    - cover_image
+    - cover_item
+    - cover_photo_base_url
+    - cover_photo_id
+    - cover_photo_media_item_id
+    - created_time
+    - event_date
+    - expiration_date
+    - external_mappings
+    - featured
+    - featured_artists
+    - headline
+    - hidden
+    - image

@@ -1,0 +1,342 @@
+context: wholesale
+name: Wholesale and B2B Ordering
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Wholesale
+  - B2B
+  - B2B Commerce
+  - Distribution
+  - B2B Marketplace
+  - Consumer Packaged Goods
+  - EDI
+  providers_with_harvested_openapi: 151
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  wholesale_buyer:
+    segments_seen:
+      retailers: 1
+      buyer: 1
+      retailer: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - id
+    long_tail_count: 31
+    long_tail_sample:
+    - address1
+    - address2
+    - attributes
+    - churned
+    - city
+    - credit_rating
+    - doing_business_as
+    - eligible
+    - engaged
+    - first_name
+    - is_archived
+    - is_on_marketplace
+    - last_name
+    - licenses
+    - name
+    - never_engaged
+    - parent_organization_id
+    - parent_organization_name
+    - partially_engaged
+    - previous_credit_rating
+    - previous_credit_rating_date
+    - previously_engaged
+    - seller_permit_link
+    - status
+    - tax_identification_number
+    - territory_description
+    - territory_region_number
+    - type
+    - username
+    - w9_link
+    - zip
+  wholesale_order:
+    segments_seen:
+      orders: 30
+      purchase_orders: 1
+      purchaseorders: 1
+    providers_exposing: 31
+    providers_with_readable_schema: 29
+    operations:
+    - operation: GET collection
+      providers: 29
+      share: 0.935
+      tier: core
+    - operation: GET item
+      providers: 26
+      share: 0.839
+      tier: core
+    - operation: POST collection
+      providers: 22
+      share: 0.71
+      tier: core
+    - operation: UPDATE item
+      providers: 12
+      share: 0.387
+      tier: extended
+    - operation: DELETE item
+      providers: 7
+      share: 0.226
+      tier: extended
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.065
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 23
+      share: 0.793
+      type: string
+      spellings:
+      - id
+      - orderId
+      - order_id
+      - externalId
+    - name: status
+      tier: core
+      providers: 21
+      share: 0.724
+      type: string
+      spellings:
+      - status
+      - state
+    - name: line_items
+      tier: core
+      providers: 15
+      share: 0.517
+      type: array
+      spellings:
+      - items
+      - lineItems
+      - line_items
+      - LineItems
+      - order_lines
+    - name: created_at
+      tier: extended
+      providers: 12
+      share: 0.414
+      type: string
+      spellings:
+      - createdDate
+      - createdAt
+      - created_at
+      - created_on
+      - created_date
+      - created
+    - name: currency
+      tier: extended
+      providers: 10
+      share: 0.345
+      type: string
+      spellings:
+      - currency
+      - Currency
+    - name: quantity
+      tier: extended
+      providers: 9
+      share: 0.31
+      type: integer
+      spellings:
+      - quantity
+    - name: po_number
+      tier: extended
+      providers: 8
+      share: 0.276
+      type: string
+      spellings:
+      - orderNumber
+      - PONumber
+      - order_number
+      - purchaseOrderNumber
+      - PurchaseOrderNumber
+      - OrderNumber
+      - po_number
+    - name: type
+      tier: extended
+      providers: 8
+      share: 0.276
+      type: string
+      spellings:
+      - type
+    - name: customer
+      tier: extended
+      providers: 6
+      share: 0.207
+      type: object
+      spellings:
+      - customer
+    - name: total
+      tier: extended
+      providers: 6
+      share: 0.207
+      type: number
+      spellings:
+      - totalAmount
+      - orderTotal
+      - amount
+    - name: total_price
+      tier: extended
+      providers: 6
+      share: 0.207
+      type: number
+      spellings:
+      - total_price
+      - totalPrice
+    long_tail_count: 631
+    long_tail_sample:
+    - customer_id
+    - name
+    - product_id
+    - subtotal
+    - updated_at
+    - attributes
+    - description
+    - metadata
+    - number
+    - order_date
+    - unit_price
+    - billing_address
+    - buyer
+    - closed_date
+    - code
+    - comments
+    - currency_code
+    - delivery_address
+    - payment_terms
+    - payments
+    - relationships
+    - shipping
+    - tax
+    - tax_amount
+    - tax_code
+    - unit_of_measure
+    - account_category
+    - account_id
+    - accountings
+    - bill_to
+    - billing_info
+    - booking
+    - buyer_part_number
+    - channel
+    - commodity_code
+    - company_code
+    - contract_id
+    - created_by
+    - custom_attributes
+    - date_created
+  price_list:
+    segments_seen:
+      catalogs: 3
+      price_lists: 1
+      price-lists: 1
+      pricelists: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: POST collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: UPDATE item
+      providers: 4
+      share: 0.8
+      tier: core
+    properties:
+    - name: id
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - id
+      - priceListId
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - name
+    long_tail_count: 43
+    long_tail_sample:
+    - attributes
+    - description
+    - relationships
+    - type
+    - ancestors
+    - audit_info
+    - category_ids
+    - code
+    - countries
+    - created_at
+    - currency
+    - customer_groups
+    - default_for_sites
+    - descendants
+    - enabled
+    - filtered_in_store_front
+    - filtered_in_storefront
+    - image
+    - indexed_sites
+    - is_indexed
+    - is_site_default
+    - legal_entity_id
+    - mapped_customer_segments
+    - metadata
+    - mixins
+    - parent_price_list_code
+    - parent_price_list_name
+    - price_list_code
+    - price_list_sequence
+    - published_sites
+    - rank
+    - regions
+    - resolvable
+    - site_code
+    - status
+    - subcategories
+    - updated_at
+    - url
+    - valid_for_all_sites
+    - valid_sites

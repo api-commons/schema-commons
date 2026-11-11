@@ -1,0 +1,652 @@
+context: diagnostics
+name: Lab Diagnostics
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Diagnostics
+  - Lab Testing
+  - Laboratory
+  - At-Home Testing
+  - Clinical Laboratory
+  - Medical Diagnostics
+  providers_with_harvested_openapi: 23
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  lab_order:
+    segments_seen:
+      orders: 8
+    providers_exposing: 8
+    providers_with_readable_schema: 8
+    operations:
+    - operation: GET collection
+      providers: 6
+      share: 0.75
+      tier: core
+    - operation: POST collection
+      providers: 4
+      share: 0.5
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.25
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.125
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 6
+      share: 0.75
+      type: string
+      spellings:
+      - id
+      - orderId
+      - kit_id
+      - test_id
+    - name: status
+      tier: core
+      providers: 6
+      share: 0.75
+      type: string
+      spellings:
+      - status
+    - name: patient_id
+      tier: core
+      providers: 5
+      share: 0.625
+      type: string
+      spellings:
+      - user_id
+      - patientId
+      - patient
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.5
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+    - name: physician
+      tier: core
+      providers: 4
+      share: 0.5
+      type: object
+      spellings:
+      - physician
+    - name: updated_at
+      tier: core
+      providers: 4
+      share: 0.5
+      type: string
+      spellings:
+      - updated_at
+    - name: activate_by
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - activate_by
+    - name: billing_type
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - billing_type
+    - name: clinical_notes
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - clinical_notes
+    - name: details
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - details
+    - name: events
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: array
+      spellings:
+      - events
+    - name: expected_result_by_date
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - expected_result_by_date
+    - name: has_abn
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: boolean
+      spellings:
+      - has_abn
+    - name: has_missing_results
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - has_missing_results
+    - name: health_insurance_id
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - health_insurance_id
+    - name: icd_codes
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - icd_codes
+    - name: interpretation
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - interpretation
+    - name: lab_account_id
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - lab_account_id
+    - name: lab_test
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: object
+      spellings:
+      - lab_test
+    - name: last_event
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: object
+      spellings:
+      - last_event
+    - name: notes
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - notes
+    - name: order_transaction
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - order_transaction
+    - name: origin
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - origin
+    - name: passthrough
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - passthrough
+    - name: patient_address
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - patient_address
+    - name: patient_details
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - patient_details
+    - name: priority
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: boolean
+      spellings:
+      - priority
+    - name: requisition_form_url
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - requisition_form_url
+    - name: sample_id
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - sample_id
+    - name: shipping_details
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - shipping_details
+    - name: team_id
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - team_id
+    - name: worst_case_result_by_date
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: null
+      spellings:
+      - worst_case_result_by_date
+    long_tail_count: 46
+    long_tail_sample:
+    - ordering_provider
+    - test
+    - accession_id
+    - address
+    - amount_of_samples
+    - assay
+    - can_request_pdf
+    - client_id
+    - client_name
+    - custom_data_1
+    - custom_data_2
+    - custom_data_3
+    - date_placed
+    - documents
+    - execution_time
+    - fill_request_id
+    - insurance
+    - insurance_token
+    - kit
+    - lab_internal_id
+    - last_modified
+    - media_ids
+    - model
+    - model_name
+    - num_samples
+    - org_name
+    - patient_reference
+    - patient_token
+    - pdf_metadata
+    - pdf_report_types
+    - result_types
+    - source_file_id
+    - specimen
+    - specimen_type
+    - src_file_id
+    - src_file_name
+    - src_file_short_path
+    - started_at
+    - status_id
+    - status_name
+  lab_test:
+    segments_seen:
+      test: 4
+      lab_tests: 3
+      markers: 3
+      tests: 2
+    providers_exposing: 6
+    providers_with_readable_schema: 5
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.833
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.5
+      tier: core
+    - operation: UPDATE item
+      providers: 3
+      share: 0.5
+      tier: core
+    properties:
+    - name: id
+      tier: core
+      providers: 5
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - testId
+    - name: name
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - name
+    - name: status
+      tier: core
+      providers: 4
+      share: 0.8
+      type: string
+      spellings:
+      - status
+    - name: a_la_carte_enabled
+      tier: core
+      providers: 3
+      share: 0.6
+      type: boolean
+      spellings:
+      - a_la_carte_enabled
+    - name: active
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - active
+    - name: aoe
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - aoe
+    - name: auto_generated
+      tier: core
+      providers: 3
+      share: 0.6
+      type: boolean
+      spellings:
+      - auto_generated
+    - name: common_tat_days
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - common_tat_days
+    - name: description
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - description
+    - name: expected_results
+      tier: core
+      providers: 3
+      share: 0.6
+      type: array
+      spellings:
+      - expected_results
+    - name: fasting
+      tier: core
+      providers: 3
+      share: 0.6
+      type: boolean
+      spellings:
+      - fasting
+    - name: has_collection_instructions
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - has_collection_instructions
+    - name: has_missing_results
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - has_missing_results
+    - name: interpretation
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - interpretation
+    - name: is_active
+      tier: core
+      providers: 3
+      share: 0.6
+      type: boolean
+      spellings:
+      - is_active
+    - name: is_delegated
+      tier: core
+      providers: 3
+      share: 0.6
+      type: boolean
+      spellings:
+      - is_delegated
+    - name: is_orderable
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - is_orderable
+    - name: lab
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - lab
+    - name: lab_account_id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - lab_account_id
+    - name: lab_id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - lab_id
+    - name: lab_slug
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - lab_slug
+    - name: marker_ids
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - marker_ids
+    - name: method
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - method
+    - name: price
+      tier: core
+      providers: 3
+      share: 0.6
+      type: number
+      spellings:
+      - price
+    - name: provider_id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - provider_id
+    - name: provider_ids
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - provider_ids
+    - name: result_types
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - result_types
+    - name: sample_type
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - sample_type
+    - name: slug
+      tier: core
+      providers: 3
+      share: 0.6
+      type: string
+      spellings:
+      - slug
+    - name: source_sandbox_lab_test_id
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - source_sandbox_lab_test_id
+    - name: type
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - type
+    - name: unit
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - unit
+    - name: worst_case_tat_days
+      tier: core
+      providers: 3
+      share: 0.6
+      type: null
+      spellings:
+      - worst_case_tat_days
+    long_tail_count: 21
+    long_tail_sample:
+    - assigned_analyst
+    - completed_date
+    - components
+    - due_date
+    - instrument_id
+    - notes
+    - overall_result
+    - p50_tat_days_past_7_days
+    - p50_tat_days_past_90_days
+    - p90_tat_days_past_7_days
+    - p90_tat_days_past_90_days
+    - p95_tat_days_past_7_days
+    - p95_tat_days_past_90_days
+    - priority
+    - requested_date
+    - sample_id
+    - scheduled_date
+    - test_method
+    - test_method_description
+    - updated_at
+    - version
+  lab_result:
+    segments_seen:
+      results: 3
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: POST collection
+      providers: 1
+      share: 0.333
+      tier: long-tail
+    properties: []
+    long_tail_count: 22
+    long_tail_sample:
+    - id
+    - status
+    - approved_by
+    - approved_date
+    - entered_by
+    - entered_date
+    - measured_at
+    - media_ids
+    - name
+    - panel_name
+    - parameter_name
+    - qualitative_value
+    - quantitative_value
+    - report_url
+    - result_numeric
+    - resulted_at
+    - severity
+    - spec_max
+    - spec_min
+    - spec_text
+    - unit
+    - value
+  kit:
+    segments_seen:
+      kits: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 2
+    long_tail_sample:
+    - id
+    - sku

@@ -1,0 +1,35 @@
+context: courts
+name: Courts and Case Records
+intro: >-
+  The common court-records vocabulary -- court cases or dockets, the filings and docket entries in them,
+  the parties and the judges -- distilled from the APIs that already exist.
+tags: [Courts, Court Records, Litigation, Legal Data, Case Law, Judiciary, Public Records]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, case_id, docket_id]
+  created_at: [created, created_date, create_time, date_created, filed_date, date_filed]
+  updated_at: [updated, modified_at, update_time, date_modified]
+  status: [state, case_status]
+  name: [title, display_name, case_name, caption]
+concepts:
+  court_case:
+    path: /court-cases
+    segments: [cases@courts|court|legal, dockets, docket, court_cases, opinions, decisions@courts]
+    aliases:
+      case_number: [docket_number, number, case_no]
+      court: [court_id, court_name, jurisdiction]
+      judge: [judges, assigned_to, judge_name]
+  docket_entry:
+    path: /docket-entries
+    requires_any: [court_case]
+    segments: [entries, docket_entries, filings, documents@dockets|docket|cases]
+    aliases:
+      entry_number: [number, document_number]
+      filed_at: [date_filed, filed_date, entry_date]
+  court:
+    segments: [courts, court, jurisdictions]
+
+findings:
+  - "Court records publish almost no harvested OpenAPI: 22 providers, with cases readable at 2, courts at 2 and docket entries at none. The legal context already holds practice-management matters; public dockets come from PACER and state systems, which have no common API."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

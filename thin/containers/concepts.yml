@@ -1,0 +1,40 @@
+context: containers
+name: Container Registries
+intro: >-
+  The common container-registry vocabulary -- registries, the repositories in them, and the tagged
+  images or artifacts pushed to them -- distilled from the APIs that already exist.
+tags: [Containers, Container Registry, Docker, OCI, Container Security, Artifact Registry]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, repository_id, registry_id]
+  created_at: [created, created_date, create_time, pushed_at, push_time]
+  updated_at: [updated, modified_at, update_time, last_updated]
+  name: [title, display_name, repository_name]
+
+concepts:
+  container_repository:
+    path: /container-repositories
+    segments: [repositories, repository, repos@registry|registries|containers|docker, images@registry|registries]
+    aliases:
+      visibility: [is_private, private, public]
+      pull_count: [pulls, download_count]
+  image_tag:
+    path: /image-tags
+    requires: [container_repository]
+    segments: [tags@repositories|repository|images|image|repos, artifacts, manifests, versions@images|image|repositories|packages]
+    aliases:
+      digest: [sha, manifest_digest, image_digest]
+      size: [size_bytes, full_size, image_size]
+  registry:
+    segments: [registries, registry]
+    aliases:
+      url: [server, endpoint, host]
+      region: [location]
+
+findings:
+  - "Container registries share the OCI Distribution API, not a management shape: in a 104-provider cohort, repositories at 15 readable providers agree on name and description; tags at 5 agree on a name; registries at 9 agree on id and name. Pushing and pulling images goes through the OCI distribution protocol, which every registry implements identically, so a standards pass over the OCI specification is the reference here."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

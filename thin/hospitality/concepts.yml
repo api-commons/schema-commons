@@ -1,0 +1,46 @@
+context: hospitality
+name: Hotels and Property Systems
+intro: >-
+  The common hotel-operations vocabulary -- the hotel properties, their room types and rooms, the
+  reservations or stays booked, the guests, and the rates and availability sold -- distilled from the
+  property-management, channel-manager and booking-engine APIs that already exist.
+tags: [Hospitality, Hotels, Hotel Management, Property Management System, Channel Manager, Vacation Rentals, Short-Term Rentals]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, hotel_id, property_id, reservation_id, room_id, guest_id]
+  created_at: [created, created_date, create_time, booked_at, booking_date]
+  updated_at: [updated, modified_at, update_time, last_modified]
+  status: [state, reservation_status, booking_status]
+  name: [title, display_name]
+concepts:
+  hotel:
+    segments: [hotels, hotel, properties@hotel|hotels|pms|hospitality|channel, listings@rentals|vacation]
+    aliases:
+      address: [location]
+      timezone: [time_zone]
+      currency: [currency_code]
+  room_type:
+    path: /room-types
+    requires_any: [hotel]
+    segments: [room_types, roomtypes, room-types, units@hotels|properties, accommodations]
+    aliases:
+      max_occupancy: [occupancy, max_guests, capacity, max_persons]
+  stay:
+    path: /stays
+    requires_any: [hotel]
+    segments: [reservations, reservation, bookings, booking, stays]
+    aliases:
+      check_in: [arrival, arrival_date, checkin, check_in_date, start_date]
+      check_out: [departure, departure_date, checkout, check_out_date, end_date]
+      guest: [guest_id, primary_guest, booker, customer]
+      adults: [adult_count, number_of_adults, guests_count]
+      total: [total_amount, total_price, amount]
+  rate_plan:
+    path: /rate-plans
+    requires_any: [hotel]
+    segments: [rate_plans, rateplans, rate-plans, rates, availability, inventory@hotels|properties|rooms, ari]
+
+findings:
+  - "Hotel operations add little beyond travel, which is built from the same Hospitality, Hotels and Vacation Rentals tags. In this 86-provider cohort, hotels at 16 readable providers agree on id, name and address; stays at 12 agree only on id and status (check-in and check-out at 42%) and rate plans only on an id. Hotel distribution runs on the OpenTravel Alliance (OTA) and HTNG messages, which are the references."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

@@ -1,0 +1,48 @@
+context: event-streaming
+name: Event Streaming and Queues
+intro: >-
+  The common messaging-infrastructure vocabulary -- topics and queues, the subscriptions and consumer
+  groups that read them, and the messages published to them -- distilled from the APIs that already exist.
+tags: [Event Streaming, Streaming, Message Queue, Kafka, Pub/Sub, Message Broker, Real-Time, Event-Driven]
+
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results,
+           value, next, previous, has_more, message, page_info, cursor, total_count, per_page, total_pages, object]
+
+common_fields:
+  id: [uuid, guid, external_id, topic_id, queue_id, subscription_id]
+  created_at: [created, created_date, create_time, creation_time]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, topic_name, queue_name]
+
+concepts:
+  topic:
+    segments: [topics, topic, streams@kafka|streaming|pubsub|v1|v2|v3, channels@pubsub|realtime, exchanges]
+    aliases:
+      partitions: [partitions_count, partition_count, num_partitions, shards]
+      retention: [retention_ms, retention_period, message_retention_duration, retention_hours]
+      replication_factor: [replicas, replication]
+  queue:
+    segments: [queues, queue]
+    aliases:
+      message_count: [messages, depth, size, approximate_number_of_messages]
+      visibility_timeout: [ack_deadline, ack_deadline_seconds, lease_duration]
+  subscription:
+    requires_any: [topic, queue]
+    segments: [subscriptions@topics|topic|streams|channels|pubsub, consumer_groups, consumer-groups, consumers@topics|topic|streams|queues|queue, consumergroups]
+    aliases:
+      topic: [topic_name, stream]
+      lag: [consumer_lag, total_lag, backlog]
+  stream_message:
+    path: /stream-messages
+    requires_any: [topic, queue]
+    segments: [messages@topics|topic|queues|queue|streams|channels, publish, records@topics|topic|streams, events@topics|topic|streams]
+    aliases:
+      data: [value, payload, body, message]
+      key: [partition_key, message_key, ordering_key]
+      headers: [attributes, properties]
+
+findings:
+  - "Messaging infrastructure is not published in a common REST shape: in a 421-provider cohort, topics at 31 readable providers agree only on a name, queues on name and id, and published messages on a name. The consumer-group core (consumer_group_id, kind, partition_assignor) is the Kafka REST v3 resource shape, republished by Kafka-compatible vendors, so it is one standard and not market agreement. The shapes that streaming actually shares live in AsyncAPI and CloudEvents, which a standards pass should take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

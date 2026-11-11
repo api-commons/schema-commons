@@ -1,0 +1,152 @@
+context: elections
+name: Elections
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Elections
+  - Voting
+  - Civic Tech
+  - Politics
+  - Campaigns
+  - Voter Data
+  providers_with_harvested_openapi: 39
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  election:
+    segments_seen:
+      elections: 3
+    providers_exposing: 3
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    properties: []
+    long_tail_count: 17
+    long_tail_sample:
+    - ballot_measures
+    - canonical_url
+    - citation
+    - contests
+    - created_at
+    - description
+    - election_date
+    - guidance_phase
+    - ocd_id
+    - polling_location_url
+    - population
+    - question_and_answer
+    - registration
+    - type
+    - updated_at
+    - voting
+    - website
+  candidate:
+    segments_seen:
+      candidates: 5
+      candidate: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 5
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    properties: []
+    long_tail_count: 45
+    long_tail_sample:
+    - activations
+    - application_proposal
+    - application_question_responses
+    - assessments
+    - comments_count
+    - completed
+    - conversation_count
+    - custom_influencer_status
+    - custom_status
+    - downvotes
+    - draft_content
+    - due_date
+    - engagements
+    - global_user_ids
+    - has_conversations
+    - has_not_viewed
+    - instagram_posts
+    - list_member_cost_and_performance
+    - list_member_id
+    - net_votes
+    - opted_in
+    - opted_in_date
+    - participating
+    - posted_at
+    - query_filter
+    - status_id
+    - total_votes
+    - unread_conversation_count
+    - upvotes
+    - user
+    - ballotpedia_url
+    - citation
+    - contact
+    - endorsement_count
+    - first_name
+    - id
+    - is_incumbent
+    - is_write_in
+    - last_name
+    - name
+  contest:
+    segments_seen:
+      contests: 2
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 25
+    long_tail_sample:
+    - about_office
+    - body
+    - branch
+    - cancelled
+    - candidates
+    - citation
+    - contest_type
+    - district_name
+    - district_type
+    - general_date
+    - has_primary
+    - id
+    - level
+    - name
+    - ocd_id
+    - partisan_primary
+    - partisan_primary_explainer_en
+    - partisan_primary_explainer_es
+    - partisan_primary_explainer_shared_id
+    - partisan_primary_explainer_url
+    - primary_date
+    - ranked_choice
+    - ranked_choice_explainer_url
+    - ranked_choice_rank_number
+    - seats_up_for_election

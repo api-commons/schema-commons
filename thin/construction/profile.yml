@@ -1,0 +1,541 @@
+context: construction
+name: Construction
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Construction
+  - Construction Technology
+  - Construction Management
+  - ConTech
+  - Building
+  - AEC
+  - Architecture
+  providers_with_harvested_openapi: 54
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  construction_project:
+    segments_seen:
+      projects: 26
+      project: 3
+    providers_exposing: 28
+    providers_with_readable_schema: 25
+    operations:
+    - operation: GET collection
+      providers: 27
+      share: 0.964
+      tier: core
+    - operation: POST collection
+      providers: 26
+      share: 0.929
+      tier: core
+    - operation: GET item
+      providers: 22
+      share: 0.786
+      tier: core
+    - operation: UPDATE item
+      providers: 21
+      share: 0.75
+      tier: core
+    - operation: DELETE item
+      providers: 17
+      share: 0.607
+      tier: core
+    - operation: UPDATE collection
+      providers: 3
+      share: 0.107
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.036
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 23
+      share: 0.92
+      type: string
+      spellings:
+      - name
+      - title
+      - Name
+      - display_name
+    - name: id
+      tier: core
+      providers: 22
+      share: 0.88
+      type: string
+      spellings:
+      - id
+      - external_id
+      - uuid
+      - project_id
+      - externalId
+      - projectId
+      - projectID
+      - Id
+    - name: status
+      tier: core
+      providers: 17
+      share: 0.68
+      type: string
+      spellings:
+      - status
+      - state
+      - Status
+    - name: created_at
+      tier: core
+      providers: 15
+      share: 0.6
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - createdOn
+      - created
+      - createdDate
+    - name: updated_at
+      tier: core
+      providers: 14
+      share: 0.56
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+      - updatedOn
+      - updated
+    - name: address
+      tier: extended
+      providers: 12
+      share: 0.48
+      type: string
+      spellings:
+      - location
+      - address
+      - siteAddress
+    - name: description
+      tier: extended
+      providers: 10
+      share: 0.4
+      type: string
+      spellings:
+      - description
+    - name: project_number
+      tier: extended
+      providers: 10
+      share: 0.4
+      type: string
+      spellings:
+      - number
+      - jobNumber
+      - projectNumber
+      - project_number
+      - code
+    - name: start_date
+      tier: extended
+      providers: 9
+      share: 0.36
+      type: string
+      spellings:
+      - startDate
+      - start_date
+    - name: type
+      tier: extended
+      providers: 9
+      share: 0.36
+      type: string
+      spellings:
+      - type
+    - name: completion_date
+      tier: extended
+      providers: 8
+      share: 0.32
+      type: string
+      spellings:
+      - endDate
+      - end_date
+      - completion_date
+    - name: country
+      tier: extended
+      providers: 8
+      share: 0.32
+      type: string
+      spellings:
+      - country
+    - name: created_by
+      tier: extended
+      providers: 8
+      share: 0.32
+      type: string
+      spellings:
+      - created_by
+      - createdBy
+    - name: city
+      tier: extended
+      providers: 7
+      share: 0.28
+      type: string
+      spellings:
+      - city
+    - name: account_id
+      tier: extended
+      providers: 5
+      share: 0.2
+      type: string
+      spellings:
+      - accountId
+      - account_id
+    - name: postal_code
+      tier: extended
+      providers: 5
+      share: 0.2
+      type: string
+      spellings:
+      - postalCode
+      - postal_code
+    long_tail_count: 649
+    long_tail_sample:
+    - client
+    - company_id
+    - delivery_method
+    - latitude
+    - longitude
+    - notes
+    - region
+    - timezone
+    - updated_by
+    - active
+    - address_line1
+    - address_line2
+    - budget
+    - company
+    - construction_type
+    - contract_type
+    - current_phase
+    - owner
+    - project_type
+    - stage
+    - state_or_province
+    - account
+    - actual_start_date
+    - address_1
+    - address_2
+    - client_id
+    - closed_date
+    - contacts
+    - country_code
+    - currency_code
+    - custom_fields
+    - customer
+    - customer_id
+    - deleted_at
+    - fields
+    - image_url
+    - is_active
+    - location_id
+    - member_count
+    - office
+  rfi:
+    segments_seen:
+      rfis: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 63
+    long_tail_sample:
+    - accepted
+    - add_assignee_ids
+    - add_distribution_ids
+    - add_required_assignee_ids
+    - assignee
+    - assignee_id
+    - assignee_ids
+    - ball_in_court_id
+    - ball_in_court_role
+    - ball_in_courts
+    - connect_export_origin
+    - connect_exported_project_ids
+    - cost_code
+    - cost_code_id
+    - cost_impact
+    - created_at
+    - created_by
+    - current_revision
+    - custom_field_custom_field_definition_id
+    - custom_fields
+    - custom_textfield_1
+    - custom_textfield_2
+    - deleted
+    - deleted_at
+    - description
+    - distribution_ids
+    - distribution_list
+    - draft
+    - drawing_ids
+    - drawing_number
+    - due_date
+    - full_number
+    - has_revisions
+    - id
+    - initiated_at
+    - location
+    - location_id
+    - name
+    - number
+    - prefix
+  submittal:
+    segments_seen:
+      submittals: 1
+      submittal: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 2
+    operations:
+    - operation: DELETE item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 103
+    long_tail_sample:
+    - created_at
+    - name
+    - accepted
+    - accepting_project_name
+    - account
+    - account_name
+    - actual_delivery_date
+    - am_initiator
+    - approvers
+    - assignee
+    - associated_attachments
+    - attachments
+    - attachments_count
+    - bic_due_date
+    - buffer_time
+    - closed_at
+    - confirmed_delivery_date
+    - cost_code
+    - cost_code_id
+    - created_by
+    - current_revision
+    - current_step_approvers
+    - current_step_returned_date
+    - current_step_sent_date
+    - custom_field_custom_field_definition_id
+    - custom_fields
+    - custom_textarea_1
+    - custom_textfield_1
+    - deleted_at
+    - description
+    - design_team_review_time
+    - distributed_at
+    - distributed_submittals
+    - distribution_member_ids
+    - distribution_members
+    - download_ready
+    - drawing_ids
+    - due_date
+    - due_date_days
+    - for_record_only
+  punch_item:
+    segments_seen:
+      observations: 1
+      punch_items: 1
+      defects: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 69
+    long_tail_sample:
+    - altitude
+    - assignee
+    - assignments
+    - attachment_count
+    - attachments
+    - can_email
+    - category
+    - closed_at
+    - closed_by
+    - comments
+    - connected_documents_count
+    - cost_code
+    - cost_impact
+    - cost_impact_amount
+    - created_at
+    - created_by
+    - current_drawing_revision_ids
+    - custom_fields
+    - custom_status
+    - custom_status_id
+    - date_initiated
+    - date_received
+    - defect
+    - deleted_at
+    - description
+    - distribution_members
+    - download_all_attachments_uuid
+    - drawing_ids
+    - due_date
+    - final_approver
+    - has_resolved_responses
+    - has_unresolved_responses
+    - horizontal_accuracy
+    - id
+    - images
+    - invoices
+    - latitude
+    - location
+    - longitude
+    - name
+  change_order:
+    segments_seen:
+      change_orders: 1
+      change-orders: 1
+      change_events: 1
+    providers_exposing: 3
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.667
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 3
+      share: 1.0
+      type: string
+      spellings:
+      - id
+      - project_id
+    long_tail_count: 111
+    long_tail_sample:
+    - created_at
+    - created_by
+    - deleted_at
+    - description
+    - name
+    - updated_at
+    - after
+    - alphanumeric_number
+    - amount
+    - assignee
+    - attachments
+    - attachments_by_drawing_revision
+    - attachments_by_file_version
+    - attachments_by_form
+    - attachments_by_image
+    - attachments_by_uuid
+    - attributes
+    - bill_of_quantities
+    - budget_change
+    - budget_code
+    - budget_days_in_stage
+    - budget_in_status_since
+    - budget_rom_amount_project_currency
+    - budget_stage
+    - budget_stage_status
+    - budget_unit_cost_value_project_currency
+    - change_event
+    - change_event_line_item
+    - change_event_line_items
+    - change_event_origin_id
+    - change_event_origin_type
+    - change_event_status
+    - change_items
+    - change_order_change_reason
+    - change_order_type
+    - change_reason
+    - change_type
+    - comments_enabled
+    - commitment
+    - commitment_status
+  daily_log:
+    segments_seen: {}
+    providers_exposing: 0
+    providers_with_readable_schema: 0
+    operations: []
+    properties: []
+    long_tail_count: 0
+    long_tail_sample: []

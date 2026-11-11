@@ -1,0 +1,27 @@
+context: qr-codes
+name: QR Codes
+intro: >-
+  The common QR-code vocabulary -- generated codes, the destination or payload they encode, and the
+  scans recorded on dynamic codes -- distilled from the APIs that already exist.
+tags: [QR Codes, QR Code, Barcodes, Barcode, Dynamic QR Codes]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, qr_id, code_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time]
+  name: [title, display_name]
+concepts:
+  qr_code:
+    path: /qr-codes
+    segments: [qr, qrcode, qrcodes, qr_codes, qr-codes, codes, barcode, barcodes, generate]
+    aliases:
+      data: [content, payload, text, value, url, destination]
+      format: [image_format, file_format, output, type]
+      size: [width, dimensions]
+      image_url: [image, qr_image, url@qr, svg, png]
+      scans: [scan_count, total_scans]
+
+findings:
+  - "QR codes are a small tag: 11 providers with harvested specs and codes readable at 4, agreeing on data and name. Most QR APIs are a single generate call that returns an image, which is a request, not a resource. The encoding itself is ISO/IEC 18004."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

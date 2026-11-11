@@ -1,0 +1,41 @@
+context: government
+name: Government Services and Permits
+intro: >-
+  The common government-services vocabulary -- service requests (311), permits and licenses, and the
+  inspections and payments attached to them -- distilled from the APIs that already exist, Open311 included.
+tags: [Government, GovTech, Local Government, Federal Government, Public Sector, Civic Tech, Permits, "311"]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, service_request_id, permit_id, license_id, case_id]
+  created_at: [created, created_date, create_time, requested_datetime, opened_at, submitted_at, filed_date]
+  updated_at: [updated, modified_at, update_time, updated_datetime]
+  status: [state, status_notes]
+  name: [title, display_name]
+  description: [desc, details]
+concepts:
+  service_request:
+    path: /service-requests
+    segments: [requests, request, service_requests, servicerequests, service-requests, cases@311, issues@city|311, tickets@311|city]
+    aliases:
+      service_code: [service_name, category, request_type, type]
+      address: [location, address_string]
+      latitude: [lat]
+      longitude: [long, lng, lon]
+  permit:
+    segments: [permits, permit, licenses, license, licences, applications@permits|licensing, records@permits|licensing]
+    aliases:
+      permit_number: [number, license_number, record_number]
+      permit_type: [type, license_type, record_type]
+      issued_at: [issue_date, issued_date, issued]
+      expires_at: [expiration_date, expiry_date]
+  inspection:
+    requires_any: [permit]
+    segments: [inspections, inspection]
+    aliases:
+      result: [outcome, status]
+      scheduled_at: [scheduled_date, date]
+
+findings:
+  - "Government services are not published in a common harvested shape: in a 208-provider cohort (mostly agencies publishing data), service requests are readable at 5 providers and agree only on service_code, the Open311 field. Permits are readable at 1 and inspections at none. Open311 GeoReport v2 is the shared standard for service requests, and the reference."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

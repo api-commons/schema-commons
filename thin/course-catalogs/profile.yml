@@ -1,0 +1,139 @@
+context: course-catalogs
+name: Course Catalogs
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Course Catalog
+  - Online Learning
+  - MOOCs
+  - E-Learning
+  - Training
+  - Corporate Learning
+  - Learning
+  providers_with_harvested_openapi: 91
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  catalog_course:
+    segments_seen:
+      courses: 23
+      course: 9
+      programs: 5
+      catalog: 4
+      program: 1
+    providers_exposing: 30
+    providers_with_readable_schema: 26
+    operations:
+    - operation: GET collection
+      providers: 26
+      share: 0.867
+      tier: core
+    - operation: GET item
+      providers: 23
+      share: 0.767
+      tier: core
+    - operation: POST collection
+      providers: 10
+      share: 0.333
+      tier: extended
+    - operation: UPDATE item
+      providers: 7
+      share: 0.233
+      tier: extended
+    - operation: DELETE item
+      providers: 4
+      share: 0.133
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.067
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.033
+      tier: long-tail
+    - operation: POST item
+      providers: 1
+      share: 0.033
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 22
+      share: 0.846
+      type: string
+      spellings:
+      - id
+      - courseId
+      - externalId
+      - _id
+      - course_id
+      - CourseId
+      - uuid
+    - name: name
+      tier: core
+      providers: 18
+      share: 0.692
+      type: string
+      spellings:
+      - name
+      - title
+      - displayName
+    - name: description
+      tier: core
+      providers: 13
+      share: 0.5
+      type: string
+      spellings:
+      - description
+      - short_description
+      - overview
+    long_tail_count: 363
+    long_tail_sample:
+    - created_at
+    - duration
+    - type
+    - attributes
+    - language
+    - level
+    - price
+    - status
+    - updated_at
+    - url
+    - category_id
+    - code
+    - end_date
+    - format
+    - image_url
+    - languages
+    - number
+    - prerequisites
+    - start_date
+    - subject_code
+    - version
+    - year
+    - academic_term
+    - academic_year
+    - access
+    - access_expiration
+    - access_link
+    - acronym
+    - active
+    - additional_info
+    - address
+    - administrator_user_ids
+    - aliases
+    - allow_anonymous
+    - allow_anonymous_to_peers
+    - android_sku
+    - application_deadline
+    - areas_of_interests
+    - assessment_criteria
+    - associated_academic_career

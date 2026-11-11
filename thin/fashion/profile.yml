@@ -1,0 +1,264 @@
+context: fashion
+name: Fashion and Apparel
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Fashion
+  - Apparel
+  - Footwear
+  - Luxury
+  - Clothing
+  - Retail
+  providers_with_harvested_openapi: 157
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  style:
+    segments_seen:
+      products: 75
+      product: 14
+      styles: 2
+    providers_exposing: 78
+    providers_with_readable_schema: 70
+    operations:
+    - operation: GET collection
+      providers: 62
+      share: 0.795
+      tier: core
+    - operation: GET item
+      providers: 57
+      share: 0.731
+      tier: core
+    - operation: POST collection
+      providers: 45
+      share: 0.577
+      tier: core
+    - operation: UPDATE item
+      providers: 30
+      share: 0.385
+      tier: extended
+    - operation: DELETE item
+      providers: 29
+      share: 0.372
+      tier: extended
+    - operation: UPDATE collection
+      providers: 10
+      share: 0.128
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 7
+      share: 0.09
+      tier: long-tail
+    - operation: POST item
+      providers: 3
+      share: 0.038
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 56
+      share: 0.8
+      type: string
+      spellings:
+      - name
+      - title
+      - productName
+      - Name
+      - product_name
+      - displayName
+      - display_name
+      - Product Name
+    - name: id
+      tier: core
+      providers: 55
+      share: 0.786
+      type: string
+      spellings:
+      - id
+      - product_id
+      - productId
+      - styleId
+      - Id
+      - uuid
+      - $id
+      - variant_id
+    - name: description
+      tier: core
+      providers: 41
+      share: 0.586
+      type: string
+      spellings:
+      - description
+      - Description
+    - name: images
+      tier: core
+      providers: 36
+      share: 0.514
+      type: array
+      spellings:
+      - images
+      - image
+      - image_url
+      - imageUrl
+      - media
+    - name: brand
+      tier: extended
+      providers: 28
+      share: 0.4
+      type: string
+      spellings:
+      - brand
+      - brandName
+      - brand_name
+      - BrandName
+    - name: price
+      tier: extended
+      providers: 27
+      share: 0.386
+      type: number
+      spellings:
+      - price
+      - retail_price
+    - name: created_at
+      tier: extended
+      providers: 21
+      share: 0.3
+      type: string
+      spellings:
+      - created_at
+      - createdAt
+      - created
+      - created_date
+    - name: status
+      tier: extended
+      providers: 21
+      share: 0.3
+      type: string
+      spellings:
+      - status
+      - state
+    - name: type
+      tier: extended
+      providers: 21
+      share: 0.3
+      type: string
+      spellings:
+      - type
+    - name: updated_at
+      tier: extended
+      providers: 20
+      share: 0.286
+      type: string
+      spellings:
+      - updated_at
+      - updatedAt
+      - updated
+    - name: variants
+      tier: extended
+      providers: 18
+      share: 0.257
+      type: array
+      spellings:
+      - variants
+    - name: sku
+      tier: extended
+      providers: 17
+      share: 0.243
+      type: string
+      spellings:
+      - sku
+    - name: tags
+      tier: extended
+      providers: 16
+      share: 0.229
+      type: array
+      spellings:
+      - tags
+    - name: attributes
+      tier: extended
+      providers: 15
+      share: 0.214
+      type: array
+      spellings:
+      - attributes
+    long_tail_count: 1259
+    long_tail_sample:
+    - category
+    - categories
+    - product_type
+    - url
+    - handle
+    - brand_id
+    - sale_price
+    - category_id
+    - color
+    - in_stock
+    - published_at
+    - quantity
+    - sizes
+    - weight
+    - height
+    - options
+    - short_description
+    - vendor
+    - width
+    - average_rating
+    - collections
+    - condition
+    - created_on
+    - error
+    - gender
+    - metadata
+    - slug
+    - upc
+    - body_html
+    - code
+    - cost_price
+    - gtin
+    - length
+    - manufacturer
+    - properties
+    - supplier_id
+    - availability
+    - available
+    - category_ids
+    - cost
+  size_chart:
+    segments_seen:
+      measurements: 2
+      sizes: 1
+    providers_exposing: 2
+    providers_with_readable_schema: 1
+    operations:
+    - operation: GET collection
+      providers: 2
+      share: 1.0
+      tier: long-tail
+    - operation: GET item
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.5
+      tier: long-tail
+    properties: []
+    long_tail_count: 10
+    long_tail_sample:
+    - exact_measurements
+    - general_measurements
+    - id
+    - is_typical_second_size
+    - label
+    - locale_code
+    - second_label
+    - size_group
+    - size_type
+    - system

@@ -45,7 +45,7 @@ def slug(n):
 # Capitalised words in findings that are standards, formats or ordinary words, not providers.
 NOT_PROVIDERS = {"OpenAPI", "GraphQL", "RBAC", "RESO", "OSRM", "OTLP", "Open Banking", "Issues", "Questions",
                  "Current", "Once", "Balance", "Monday", "Wave", "FIX", "SCIM", "FHIR", "NPI", "CAP", "ActivityPub", "LTI", "OneRoster", "OCPI", "OCPP", "CDR",
-                 "JSON", "XML", "REST", "HTTP", "GET", "POST", "PUT", "PATCH", "DELETE", "IATA", "ICAO", "IBAN", "SMILES", "STAC", "UDI", "AIS", "SDK", "SDKs", "API", "APIs", "URL", "CSV", "PDF", "HTML", "LLM", "AI", "OCR",
+                 "JSON", "XML", "REST", "HTTP", "GET", "POST", "PUT", "PATCH", "DELETE", "IATA", "ICAO", "AsyncAPI", "CloudEvents", "JDBC", "ODBC", "PubChem", "ChEMBL", "Surescripts", "OpenTravel", "Catalog", "Trace", "Track", "IBAN", "SMILES", "STAC", "UDI", "AIS", "SDK", "SDKs", "API", "APIs", "URL", "CSV", "PDF", "HTML", "LLM", "AI", "OCR",
                  "MCP", "OAuth", "SSO", "SAML", "SIEM", "KMS", "TLS", "DNS", "CDN", "OTLP", "IoT", "EHR", "ERP", "CRM", "POS", "ITSM", "CMDB", "ITIL", "MDM", "SaaS", "B2B", "BNPL", "KYC", "AML", "HR", "LMS", "CMS", "PDF"}
 SPLIT = re.compile(r",\s*(?:and\s+)?|\s+and\s+|\s*/\s*")
 STOP = {"the", "a", "an", "its", "their", "whether", "when", "which", "what", "dates", "timestamps",
@@ -60,6 +60,7 @@ def concepts_named(text, prof):
     hits = []
     for c in prof:
         words = {c, c.replace("_", " "), c.replace("_", " ") + "s", c + "s", c.split("_")[-1], c.split("_")[-1] + "s"}
+        words |= {w[:-1] + "ies" for w in list(words) if w.endswith("y")}  # entity -> entities
         if any(re.search(rf"\b{re.escape(w)}\b", text, re.I) for w in words):
             hits.append(c)
     return hits or list(prof)

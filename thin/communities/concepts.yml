@@ -1,0 +1,42 @@
+context: communities
+name: Online Communities
+intro: >-
+  The common online-community vocabulary -- community members, the spaces or categories they gather in,
+  the posts and topics they start and the comments or replies on them -- distilled from the APIs that already exist.
+tags: [Community, Online Community, Forums, Community Platform, Creator Economy, Discussion]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, member_id, post_id, space_id, topic_id]
+  created_at: [created, created_date, create_time, published_at, posted_at]
+  updated_at: [updated, modified_at, update_time, edited_at]
+  status: [state]
+  name: [title, display_name]
+concepts:
+  community_member:
+    path: /community-members
+    segments: [members, member, users@community|forum|forums, profiles@community]
+    aliases:
+      username: [handle, user_name, login]
+      avatar_url: [avatar, avatar_template, profile_image, image_url]
+      email: [email_address]
+  space:
+    segments: [spaces, space, categories@forum|community|forums, groups@community, channels@community, boards@forum|community, forums, forum]
+    aliases:
+      slug: [handle, url_name]
+  discussion:
+    segments: [posts@community|forum|spaces|space|topics|groups, topics, topic, threads@forum|community|spaces, discussions, discussion, questions@community]
+    aliases:
+      body: [content, raw, text, message, cooked]
+      author: [author_id, user_id, member_id, user, created_by]
+      space_id: [category_id, group_id, forum_id, channel_id]
+  reply:
+    requires: [discussion]
+    segments: [comments, comment, replies, reply, posts@topics|topic|threads|thread]
+    aliases:
+      body: [content, raw, text, message, cooked]
+      author: [author_id, user_id, member_id, user]
+
+findings:
+  - "Online communities publish little in a common shape: in a 68-provider cohort, members at 14 readable providers agree only on an id, discussions at 7 on id and name, spaces are readable at 1 and replies at 3. The post-and-comment shape is the one social-media and knowledge-base already hold, and federated communities use ActivityPub, the reference."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

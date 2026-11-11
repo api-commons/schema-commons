@@ -1,0 +1,42 @@
+context: climate
+name: Climate and Emissions
+intro: >-
+  The common climate-data vocabulary -- climate risk scores for a location, and the emissions and
+  air-quality measurements recorded at monitoring stations -- distilled from the APIs that already exist.
+tags: [Climate, Climate Tech, Climate Risk, Air Quality, Environmental Data, Emissions, Cleantech]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, station_id, location_id]
+  created_at: [created, created_date, create_time]
+  updated_at: [updated, modified_at, update_time, last_updated]
+  name: [title, display_name]
+concepts:
+  air_quality:
+    path: /air-quality
+    segments: [air_quality, airquality, air-quality, aqi, measurements, pollutants, pollution, latest@air]
+    aliases:
+      aqi: [index, air_quality_index, us_aqi]
+      pollutant: [parameter, dominant_pollutant, main_pollutant]
+      value: [concentration, measurement]
+      unit: [units]
+      measured_at: [timestamp, date, datetime, time]
+      latitude: [lat]
+      longitude: [lon, lng]
+  climate_risk:
+    path: /climate-risk
+    segments: [risk, risks, climate_risk, hazards, scores@climate|risk, exposures]
+    aliases:
+      hazard: [hazard_type, peril, risk_type]
+      score: [risk_score, rating, value]
+      scenario: [ssp, rcp, pathway]
+  monitoring_station:
+    path: /monitoring-stations
+    segments: [stations, station, locations@air|aq|openaq, sensors, monitors]
+    aliases:
+      latitude: [lat]
+      longitude: [lon, lng]
+
+findings:
+  - "Climate data is not published in a common resource shape: in a 79-provider cohort, air-quality measurements at 9 readable providers share no property at half (the timestamp reaches 44%), climate-risk scores are readable at 1, and monitoring stations agree on name and id. Station observations are the shape weather already holds, and environmental observations are standardized by OGC SensorThings, the reference."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

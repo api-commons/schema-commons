@@ -1,0 +1,194 @@
+context: data-warehouses
+name: Data Warehouses and Query
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Data Warehouse
+  - SQL
+  - Big Data
+  - Data Lake
+  - Lakehouse
+  - Query Engine
+  - Data Platform
+  - Analytics Database
+  providers_with_harvested_openapi: 112
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  sql_statement:
+    segments_seen:
+      query: 22
+      queries: 13
+      sql: 4
+      statements: 3
+      statement: 2
+    providers_exposing: 37
+    providers_with_readable_schema: 33
+    operations:
+    - operation: POST collection
+      providers: 31
+      share: 0.838
+      tier: core
+    - operation: GET collection
+      providers: 18
+      share: 0.486
+      tier: extended
+    - operation: GET item
+      providers: 13
+      share: 0.351
+      tier: extended
+    - operation: DELETE item
+      providers: 5
+      share: 0.135
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 4
+      share: 0.108
+      tier: long-tail
+    - operation: POST item
+      providers: 2
+      share: 0.054
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.027
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 18
+      share: 0.545
+      type: string
+      spellings:
+      - id
+      - query_id
+      - queryId
+      - statementId
+      - statementHandle
+    - name: parameters
+      tier: extended
+      providers: 7
+      share: 0.212
+      type: object
+      spellings:
+      - parameters
+    long_tail_count: 207
+    long_tail_sample:
+    - columns
+    - name
+    - created_at
+    - error
+    - rows
+    - status
+    - code
+    - description
+    - kind
+    - schema
+    - updated_at
+    - version
+    - database
+    - limit
+    - page_size
+    - stats
+    - content
+    - filters
+    - format
+    - info_uri
+    - next_uri
+    - offset
+    - output
+    - owner
+    - params
+    - start_time
+    - statement_type
+    - timeout
+    - timestamp
+    - total_records
+    - total_rows
+    - truncated
+    - type
+    - vector
+    - advanced_options
+    - affected_records
+    - agent_type
+    - aggregations
+    - arguments
+    - bindings
+  warehouse:
+    segments_seen:
+      warehouses: 2
+      compute: 1
+      warehouse: 1
+    providers_exposing: 4
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 1.0
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.5
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.25
+      tier: long-tail
+    properties: []
+    long_tail_count: 57
+    long_tail_sample:
+    - id
+    - name
+    - status
+    - account_id
+    - allowed_format_versions
+    - auto_resume
+    - auto_suspend
+    - available
+    - budget
+    - comment
+    - costs
+    - created_on
+    - default_format_version
+    - delete_profile
+    - enable_query_acceleration
+    - engine_id
+    - engine_name
+    - hint
+    - initially_suspended
+    - is_current
+    - is_default
+    - kind
+    - label
+    - managed_access
+    - managed_by
+    - max_cluster_count
+    - max_concurrency_level
+    - min_cluster_count
+    - other
+    - owner
+    - owner_role_type
+    - project_id
+    - protected
+    - provisioning
+    - query_acceleration_max_scale_factor
+    - queued
+    - quiescing
+    - resource_monitor
+    - resumed_on
+    - running

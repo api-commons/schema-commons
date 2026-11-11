@@ -1,0 +1,39 @@
+context: pharmacy
+name: Pharmacy and Prescriptions
+intro: >-
+  The common pharmacy vocabulary -- prescriptions, the medications and drug products they name, and the
+  pharmacies that fill them -- distilled from the APIs that already exist.
+tags: [Pharmacy, Prescriptions, E-Prescribing, Medications, Pharmacy Benefits, Drug Pricing, Pharmaceuticals]
+envelope: [_links, _pagination, _results, data, success, errors, count, total, page, meta, links, result, results, value, next, previous, has_more, message, total_count, object]
+common_fields:
+  id: [uuid, guid, external_id, prescription_id, medication_id, pharmacy_id, ndc]
+  created_at: [created, created_date, create_time, written_date]
+  updated_at: [updated, modified_at, update_time]
+  status: [state]
+  name: [title, display_name, drug_name, brand_name, generic_name]
+concepts:
+  prescription:
+    segments: [prescriptions, prescription, rx, orders@pharmacy|rx, refills]
+    aliases:
+      medication: [medication_id, drug, drug_id, ndc]
+      quantity: [qty, dispense_quantity]
+      directions: [sig, instructions, dosage_instructions]
+      refills: [refills_remaining, number_of_refills]
+      prescriber: [prescriber_id, clinician_id, provider_id]
+  medication:
+    segments: [medications, medication, drugs, drug, products@pharmacy|drugs, ndc, ndcs, labels@drug]
+    aliases:
+      strength: [dosage_strength, active_ingredient_strength]
+      dosage_form: [form, dose_form]
+      ndc: [product_ndc, package_ndc]
+  pharmacy:
+    segments: [pharmacies, pharmacy, stores@pharmacy]
+    aliases:
+      npi: [ncpdp_id, ncpdp]
+      address: [location]
+      phone: [phone_number]
+
+findings:
+  - "Pharmacy is not published openly: in a 45-provider cohort, prescriptions are readable at 3 providers, medications at 3 and pharmacies at 2, with no shared property. E-prescribing runs over NCPDP SCRIPT on the Surescripts network, and drug data comes from NDC, RxNorm and openFDA labels, the references to take."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."

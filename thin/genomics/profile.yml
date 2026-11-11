@@ -1,0 +1,378 @@
+context: genomics
+name: Genomics and Life Sciences
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Genomics
+  - Bioinformatics
+  - Life Sciences
+  - Genetics
+  - DNA Sequencing
+  - Biotechnology
+  - Precision Medicine
+  - Proteomics
+  providers_with_harvested_openapi: 101
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  gene:
+    segments_seen:
+      genes: 3
+      gene: 2
+    providers_exposing: 5
+    providers_with_readable_schema: 5
+    operations:
+    - operation: POST collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: GET item
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: GET collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties: []
+    long_tail_count: 23
+    long_tail_sample:
+    - accession_filter
+    - accessions
+    - gene_ids
+    - include_tabular_header
+    - item
+    - locus_tags
+    - messages
+    - next_page_token
+    - page_size
+    - page_token
+    - query
+    - reports
+    - returned_content
+    - sort
+    - symbols_for_taxon
+    - table_fields
+    - table_format
+    - tax_search_subtree
+    - taxon
+    - token
+    - types
+    - url
+    - variants
+  variant:
+    segments_seen:
+      variant: 2
+      variants: 2
+      variations: 2
+    providers_exposing: 5
+    providers_with_readable_schema: 3
+    operations:
+    - operation: GET collection
+      providers: 3
+      share: 0.6
+      tier: core
+    - operation: DELETE item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: GET item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties: []
+    long_tail_count: 27
+    long_tail_sample:
+    - id
+    - alternative
+    - annotation
+    - annotation_fields
+    - chromosome
+    - completion_time
+    - creation_time
+    - destination_name
+    - filter
+    - gene
+    - genome_assembly
+    - ids
+    - items
+    - job_id
+    - next_token
+    - position
+    - reference
+    - reports
+    - role_arn
+    - run_left_normalization
+    - source
+    - species
+    - status
+    - status_message
+    - updated_at
+    - url
+    - variant_import_jobs
+  sample:
+    segments_seen:
+      samples: 8
+      sample: 4
+    providers_exposing: 10
+    providers_with_readable_schema: 8
+    operations:
+    - operation: GET collection
+      providers: 7
+      share: 0.7
+      tier: core
+    - operation: GET item
+      providers: 7
+      share: 0.7
+      tier: core
+    - operation: DELETE item
+      providers: 3
+      share: 0.3
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.3
+      tier: extended
+    - operation: POST collection
+      providers: 1
+      share: 0.1
+      tier: long-tail
+    properties:
+    - name: created_at
+      tier: core
+      providers: 4
+      share: 0.5
+      type: string
+      spellings:
+      - created
+      - date_created
+      - created_at
+    - name: updated_at
+      tier: core
+      providers: 4
+      share: 0.5
+      type: string
+      spellings:
+      - modified
+      - last_modified
+      - updated_at
+    - name: status
+      tier: extended
+      providers: 3
+      share: 0.375
+      type: string
+      spellings:
+      - status
+    long_tail_count: 59
+    long_tail_sample:
+    - description
+    - id
+    - name
+    - project
+    - tags
+    - activated_at
+    - analysis
+    - archive_last_status
+    - breadcrumb
+    - cancelled_at
+    - client_id
+    - collected_at
+    - collection
+    - contributor
+    - current_user_permissions
+    - customer
+    - data_count
+    - due_date
+    - duplicated
+    - error_msg
+    - filename
+    - files
+    - harvest_id
+    - hidden
+    - identity
+    - is_paired_end
+    - kit_barcode
+    - lab_internal_id
+    - labsheet_id
+    - last_status
+    - legacy_id
+    - metadata
+    - owner
+    - participant_id
+    - physical_id
+    - primary_classification
+    - processing_lab
+    - product
+    - public_key
+    - received_at_lab
+  sequencing_run:
+    segments_seen:
+      readsets: 1
+    providers_exposing: 1
+    providers_with_readable_schema: 1
+    operations:
+    - operation: POST collection
+      providers: 1
+      share: 1.0
+      tier: long-tail
+    properties: []
+    long_tail_count: 11
+    long_tail_sample:
+    - created_after
+    - created_before
+    - creation_type
+    - generated_from
+    - name
+    - next_token
+    - read_sets
+    - reference_arn
+    - sample_id
+    - status
+    - subject_id
+  dataset:
+    segments_seen:
+      datasets: 8
+      studies: 3
+      study: 2
+      dataset: 1
+      files: 1
+    providers_exposing: 13
+    providers_with_readable_schema: 12
+    operations:
+    - operation: GET collection
+      providers: 13
+      share: 1.0
+      tier: core
+    - operation: GET item
+      providers: 10
+      share: 0.769
+      tier: core
+    - operation: POST collection
+      providers: 5
+      share: 0.385
+      tier: extended
+    - operation: UPDATE item
+      providers: 3
+      share: 0.231
+      tier: extended
+    - operation: DELETE item
+      providers: 2
+      share: 0.154
+      tier: long-tail
+    - operation: DELETE collection
+      providers: 1
+      share: 0.077
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 7
+      share: 0.583
+      type: string
+      spellings:
+      - name
+      - label
+    - name: id
+      tier: extended
+      providers: 5
+      share: 0.417
+      type: string
+      spellings:
+      - id
+      - dataset_id
+      - datasetId
+    - name: created_at
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - createdAt
+      - created_at
+      - dateCreated
+    - name: derived_section
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - derivedSection
+    - name: protocol_section
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: object
+      spellings:
+      - protocolSection
+    - name: version
+      tier: extended
+      providers: 3
+      share: 0.25
+      type: string
+      spellings:
+      - version
+    long_tail_count: 108
+    long_tail_sample:
+    - created_by
+    - description
+    - has_results
+    - href
+    - item
+    - results_section
+    - status
+    - tags
+    - token
+    - url
+    - a_size
+    - alpha_size
+    - annotation_section
+    - archive_datetime
+    - archive_reason
+    - archive_record
+    - archive_user
+    - archived
+    - artifact_count
+    - author_ids
+    - authors
+    - binder
+    - codelist_submission_values
+    - coming_soon
+    - core
+    - created_on
+    - creator
+    - custom_fields
+    - data_frame_id
+    - data_type
+    - dataset_description
+    - dataset_ids
+    - dataset_name
+    - deleted
+    - density
+    - design_entry
+    - design_entry_id
+    - details
+    - disabled
+    - display_id

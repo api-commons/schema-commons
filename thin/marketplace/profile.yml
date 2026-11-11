@@ -1,0 +1,257 @@
+context: marketplace
+name: Marketplace
+generated: '2026-11-11'
+version: 0.1.0-draft.20261111
+status: draft
+cohort:
+  tags:
+  - Marketplace
+  - Marketplaces
+  - Online Marketplace
+  - Multi-Vendor Marketplace
+  - B2B Marketplace
+  - E-Commerce
+  providers_with_harvested_openapi: 468
+thresholds:
+  core: 0.5
+  extended: 0.2
+  min_providers: 3
+excluded: {}
+duplicates: {}
+shared_specs: {}
+concepts:
+  seller:
+    segments_seen:
+      sellers: 7
+      seller: 6
+      vendors: 2
+      shops: 1
+    providers_exposing: 14
+    providers_with_readable_schema: 13
+    operations:
+    - operation: GET collection
+      providers: 8
+      share: 0.571
+      tier: core
+    - operation: POST collection
+      providers: 8
+      share: 0.571
+      tier: core
+    - operation: GET item
+      providers: 4
+      share: 0.286
+      tier: extended
+    - operation: UPDATE collection
+      providers: 2
+      share: 0.143
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 2
+      share: 0.143
+      tier: long-tail
+    properties:
+    - name: id
+      tier: core
+      providers: 8
+      share: 0.615
+      type: string
+      spellings:
+      - id
+    - name: name
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - name
+      - title
+      - shop_name
+      - Name
+    - name: seller_id
+      tier: extended
+      providers: 5
+      share: 0.385
+      type: string
+      spellings:
+      - seller_id
+      - sellerId
+      - shop_id
+      - SellerId
+    - name: email
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - email
+      - contactEmail
+      - Email
+    - name: status
+      tier: extended
+      providers: 4
+      share: 0.308
+      type: string
+      spellings:
+      - state
+      - status
+      - IsActive
+      - isActive
+    - name: city
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - city
+    - name: currency
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - currency_code
+      - currency
+    - name: phone
+      tier: extended
+      providers: 3
+      share: 0.231
+      type: string
+      spellings:
+      - phone
+    long_tail_count: 236
+    long_tail_sample:
+    - account_id
+    - country
+    - created_at
+    - description
+    - product_id
+    - rating
+    - request_id
+    - type
+    - user_id
+    - username
+    - about
+    - accepted_buyer_id
+    - accepts_custom_requests
+    - accepts_pickup
+    - account
+    - account_name
+    - address
+    - address1
+    - address2
+    - age_seconds
+    - allow_hybrid_payments
+    - announcement
+    - archive_id
+    - attribute_values
+    - available_sales_channels
+    - avatar_url
+    - bold
+    - business
+    - buy_it_now_price
+    - buy_it_now_price_specified
+    - buyer_list
+    - cached
+    - catalog_system_endpoint
+    - category_commission_percentage
+    - category_id
+    - channel
+    - class
+    - cnpj
+    - company_name
+    - completeness
+  marketplace_listing:
+    segments_seen:
+      offers: 3
+      listings: 2
+      listing: 2
+      inventory: 1
+      offer: 1
+    providers_exposing: 5
+    providers_with_readable_schema: 4
+    operations:
+    - operation: GET collection
+      providers: 4
+      share: 0.8
+      tier: core
+    - operation: GET item
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: POST collection
+      providers: 2
+      share: 0.4
+      tier: long-tail
+    - operation: DELETE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE collection
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    - operation: UPDATE item
+      providers: 1
+      share: 0.2
+      tier: long-tail
+    properties:
+    - name: name
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - title
+      - name
+      - Name
+    - name: sku
+      tier: core
+      providers: 3
+      share: 0.75
+      type: string
+      spellings:
+      - product_id
+      - sku
+      - ProductId
+    long_tail_count: 116
+    long_tail_sample:
+    - description
+    - listing_id
+    - main_image
+    - metadata
+    - status
+    - address
+    - adid
+    - age_seconds
+    - asin
+    - buyer_price
+    - cached
+    - categories
+    - category
+    - cid
+    - completeness
+    - converted_price
+    - country
+    - created_timestamp
+    - creation_timestamp
+    - credits_remaining
+    - credits_used
+    - degraded
+    - domain
+    - ean_id
+    - ending_timestamp
+    - endpoint
+    - error
+    - featured_rank
+    - fetched_at
+    - file_data
+    - has_variations
+    - hours
+    - id
+    - images
+    - is_claimed
+    - is_customizable
+    - is_personalizable
+    - is_private
+    - is_supply
+    - is_taxable

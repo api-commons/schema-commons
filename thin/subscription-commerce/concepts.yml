@@ -1,0 +1,42 @@
+context: subscription-commerce
+name: Subscription Commerce
+intro: >-
+  The common subscription-commerce vocabulary -- the scheduled orders a product subscription
+  produces, which customers can skip, reschedule or swap -- distilled from the APIs that already
+  exist. The subscription itself belongs to billing, and the products to commerce.
+tags: [Subscription Commerce, Subscription Boxes, Recurring Orders, Subscribe and Save, Subscription, E-Commerce, Shopify]
+
+envelope: [_links, _pagination, _results, data, success, errors, warnings, count, total, page, meta, links,
+           value, results, next, previous, has_more, message, status_code, ids, next_page, previous_page,
+           page_info, cursor, total_count, per_page, total_pages, current_page, object, url]
+
+common_fields:
+  id: [uuid, guid, object_id, record_id, external_id, public_id]
+  created_at: [created, created_date, date_created, create_time, creation_date, created_on]
+  updated_at: [updated, updated_date, modified_at, last_modified, date_modified, update_time, modified_date, modified]
+  metadata: [meta_data, custom_fields, custom, attributes, properties]
+  status: [state, charge_status, order_status]
+  customer_id: [customer, user_id, shopper_id, customer_external_id]
+  subscription_id: [subscription, subscription_ids, contract_id, purchase_item_id]
+
+concepts:
+  scheduled_order:
+    path: /scheduled-orders
+    segments: ["charges@subscriptions|subscription|recurring", charge@subscriptions, upcoming_orders, upcoming-orders, scheduled_orders, "orders@subscriptions|subscription|recurring", "deliveries@subscriptions|subscription", onetimes, shipments@subscriptions]
+    aliases:
+      scheduled_at: [scheduled_date, next_charge_scheduled_at, charge_date, ship_date, place_date, next_order_date, date]
+      total: [total_price, amount, subtotal, total_amount, price]
+      line_items: [items, line_items_list, products]
+      skipped: [is_skipped, skip]
+      address_id: [address, shipping_address, ship_to]
+
+findings:
+  - "The scheduled order a product subscription produces is barely a resource of its own: 6
+    providers in a 413-provider commerce cohort, agreeing on id, status, total and created_at. A
+    first measurement found 21 -- most of them payment processors' `/charges`, which are payments,
+    not scheduled orders."
+decisions:
+  - "Measured and not published: recorded as `thin`, with its findings."
+  - "A bare `/charges` is a payment charge (payments); charges count here only beneath a
+    subscription path."
+  - "The subscription is billing's; its products are commerce's."
