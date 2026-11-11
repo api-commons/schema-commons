@@ -665,7 +665,7 @@ contexts:
   status: thin
 - context: clinical-trials
   name: Clinical Trials
-  status: planned
+  status: thin
 - context: drug-discovery
   name: Drug Discovery
   status: planned
