@@ -759,7 +759,7 @@ contexts:
   status: thin
 - context: courts
   name: Courts and Case Records
-  status: planned
+  status: thin
 - context: elections
   name: Elections
   status: planned
