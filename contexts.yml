@@ -512,13 +512,16 @@ contexts:
   status: thin
 - context: sports
   name: Sports Data
-  status: planned
+  status: built
+  repo: api-commons/sports
 - context: gaming
   name: Gaming
-  status: planned
+  status: built
+  repo: api-commons/gaming
 - context: fitness
   name: Fitness and Wellness
-  status: planned
+  status: built
+  repo: api-commons/fitness
 - context: genomics
   name: Genomics and Clinical Trials
-  status: planned
+  status: thin
