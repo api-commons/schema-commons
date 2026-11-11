@@ -792,7 +792,7 @@ contexts:
   status: thin
 - context: sustainability
   name: Sustainability Reporting
-  status: planned
+  status: thin
 - context: robotics
   name: Robotics
   status: planned
