@@ -22,6 +22,7 @@ case "$1" in
     python3 "$HUB/scripts/readme.py"
     python3 "$HUB/scripts/build.py" 2>&1 | tail -1
     python3 "$HUB/scripts/arazzo.py"
+    python3 "$HUB/scripts/overlay.py" | grep -v "none$" || true
     python3 "$HUB/scripts/apisjson.py"
     # Findings cite measurements; refuse to commit a context whose findings have drifted.
     python3 "$HUB/scripts/check-findings.py" "$2" --strict || { echo "findings drifted -- fix concepts.yml findings, then finish again"; exit 1; }
