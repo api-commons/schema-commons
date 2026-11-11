@@ -705,10 +705,11 @@ contexts:
   status: thin
 - context: aviation
   name: Aviation and Flights
-  status: planned
+  status: built
+  repo: api-commons/aviation
 - context: oil-and-gas
   name: Oil and Gas
-  status: planned
+  status: thin
 - context: mining
   name: Mining
   status: planned
