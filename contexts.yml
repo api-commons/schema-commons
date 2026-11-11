@@ -807,13 +807,15 @@ contexts:
   status: thin
 - context: movies
   name: Movies and TV
-  status: planned
+  status: built
+  repo: api-commons/movies
 - context: digital-asset-management
   name: Digital Asset Management
-  status: planned
+  status: built
+  repo: api-commons/digital-asset-management
 - context: content-moderation
   name: Content Moderation
-  status: planned
+  status: thin
 - context: personalization
   name: Personalization and Recommendations
   status: planned
