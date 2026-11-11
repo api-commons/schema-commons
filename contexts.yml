@@ -683,7 +683,7 @@ contexts:
   status: thin
 - context: patient-engagement
   name: Patient Engagement
-  status: planned
+  status: thin
 - context: medical-devices
   name: Medical Devices
   status: planned
