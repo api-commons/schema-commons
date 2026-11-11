@@ -855,4 +855,4 @@ contexts:
   status: thin
 - context: churches
   name: Churches and Congregations
-  status: planned
+  status: thin
