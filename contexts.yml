@@ -728,7 +728,7 @@ contexts:
   status: thin
 - context: inventory
   name: Inventory Management
-  status: planned
+  status: thin
 - context: wholesale
   name: Wholesale and B2B Ordering
   status: planned
