@@ -15,7 +15,7 @@ text = f"""# {name}
 {cfg['intro'].strip()} Part of [Schema Commons](https://github.com/api-commons/schema-commons),
 published by the [API Commons](https://apicommons.org).
 
-Built from the providers tagged {', '.join(cfg['tags'])} in [APIs.io](https://apis.io) that
+Built from the providers tagged {', '.join(map(str, cfg['tags']))} in [APIs.io](https://apis.io) that
 publish their own OpenAPI. Only harvested contracts count -- nothing API Evangelist
 generated. Every number below is a count of providers.
 

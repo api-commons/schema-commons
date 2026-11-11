@@ -6,7 +6,7 @@
 set -euo pipefail
 HUB="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$1"
-TAGS=$(python3 -c "import yaml;print('\n'.join(yaml.safe_load(open('concepts.yml'))['tags']))")
+TAGS=$(python3 -c "import yaml;print('\n'.join(str(t) for t in yaml.safe_load(open('concepts.yml'))['tags']))")
 mkdir -p census
 
 IFS=$'\n' read -r -d "" -a T <<< "$TAGS" || true
