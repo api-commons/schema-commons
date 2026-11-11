@@ -768,7 +768,7 @@ contexts:
   status: thin
 - context: course-catalogs
   name: Course Catalogs
-  status: planned
+  status: thin
 - context: staffing
   name: Staffing
   status: planned
