@@ -607,7 +607,7 @@ contexts:
   status: thin
 - context: containers
   name: Container Registries
-  status: planned
+  status: thin
 - context: serverless
   name: Serverless Functions
   status: planned
