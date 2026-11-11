@@ -734,7 +734,7 @@ contexts:
   status: thin
 - context: grocery
   name: Grocery
-  status: planned
+  status: thin
 - context: nutrition
   name: Nutrition and Recipes
   status: planned
