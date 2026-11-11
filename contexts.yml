@@ -731,7 +731,7 @@ contexts:
   status: thin
 - context: wholesale
   name: Wholesale and B2B Ordering
-  status: planned
+  status: thin
 - context: grocery
   name: Grocery
   status: planned
