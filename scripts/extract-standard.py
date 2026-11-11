@@ -50,7 +50,7 @@ elif fmt == "cap":
                 walk(k)
     walk(ET.parse(files[0]).getroot().find(f"{XS}element"))
 elif fmt == "jsonschema":
-    import json
+    import json, os
     for f in files:
         d = json.load(open(f))
         top = [k for k in (d.get("properties") or {}) if not k.startswith("@")]
@@ -75,9 +75,12 @@ elif fmt == "jsonschema":
             for part in (n.get("allOf") or []) + (n.get("oneOf") or []) + (n.get("anyOf") or []):
                 out += [k for k in dprops(part, seen) if k not in out]
             return out
+        only = set(filter(None, os.environ.get("ONLY", "").split(",")))  # FHIR defines ~900 types
         for k, n in defs.items():
-            if dprops(n):
-                objects[f"{Path(f).stem}.{k}"] = dprops(n)
+            # FHIR's _field entries carry a primitive's extensions, not a field of their own
+            fields = [x for x in dprops(n) if not x.startswith("_")]
+            if (not only or k in only) and fields:
+                objects[f"{Path(f).stem}.{k}"] = fields
 elif fmt == "openapi":
     # A standard published as OpenAPI (CAMARA): each component schema's properties, with
     # allOf parts and local $refs followed, so a request body lists what a caller sends.

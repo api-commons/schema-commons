@@ -12,6 +12,7 @@ Every standard Schema Commons reads, extracted from the standard's own published
 | `cloudevents-1.0` (1 objects) | [github.com](https://github.com/cloudevents/spec/tree/ce@v1.0.2) | [webhooks](https://github.com/api-commons/webhooks) | [cloud-events](https://github.com/api-commons/cloud-events) |
 | `dcat-us-1.1` (2 objects) | [github.com](https://github.com/project-open-data/project-open-data.github.io/tree/master/v1.1/schema) | [open-data-catalogs](https://github.com/api-commons/open-data-catalogs) | -- |
 | `dcsa-2025` (199 objects) | [app.swaggerhub.com](https://app.swaggerhub.com/organizations/dcsaorg) | -- | [ocean-shipping](https://github.com/api-commons/ocean-shipping) |
+| `fhir-r4` (8 objects) | [hl7.org](https://hl7.org/fhir/R4/fhir.schema.json.zip) | [healthcare](https://github.com/api-commons/healthcare) | -- |
 | `ga4gh-2025` (31 objects) | [github.com](https://github.com/ga4gh) | -- | -- |
 | `ocds-1.1` (21 objects) | [standard.open-contracting.org](https://standard.open-contracting.org/schema/1__1__5/release-schema.json) | -- | -- |
 | `oci-distribution-1.1` (1 objects) | [github.com](https://github.com/opencontainers/distribution-spec/tree/v1.1.1) | -- | [registry-protocol](https://github.com/api-commons/registry-protocol) |
@@ -19,6 +20,7 @@ Every standard Schema Commons reads, extracted from the standard's own published
 | `openlineage-2.0` (16 objects) | [github.com](https://github.com/OpenLineage/OpenLineage/tree/1.55.0/spec) | -- | -- |
 | `otlp-1` (9 objects) | [github.com](https://github.com/open-telemetry/opentelemetry-proto) | [observability](https://github.com/api-commons/observability) | -- |
 | `reso-dd-2.0` (41 objects) | [github.com](https://github.com/RESOStandards/reso-tools/blob/main/reso-certification/tests/fixtures/commander/RESODataDictionary-2.0.xml) | [property-management](https://github.com/api-commons/property-management) | -- |
+| `schemaorg-30.1` (18 objects) | [github.com](https://github.com/schemaorg/schemaorg/tree/v30.1) | [commerce](https://github.com/api-commons/commerce), [events](https://github.com/api-commons/events), [reviews](https://github.com/api-commons/reviews), [podcasts](https://github.com/api-commons/podcasts), [books](https://github.com/api-commons/books), [aviation](https://github.com/api-commons/aviation), [nutrition](https://github.com/api-commons/nutrition), [job-boards](https://github.com/api-commons/job-boards), [movies](https://github.com/api-commons/movies) | -- |
 | `stac-1.1` (11 objects) | [github.com](https://github.com/radiantearth/stac-api-spec/tree/v1.0.0) | -- | [imagery-catalogs](https://github.com/api-commons/imagery-catalogs) |
 | `stix-2.1` (10 objects) | [github.com](https://github.com/oasis-open/cti-stix2-json-schemas/tree/9af1db41b7b8) | -- | -- |
 
