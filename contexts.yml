@@ -786,7 +786,7 @@ contexts:
   status: thin
 - context: mortgages
   name: Mortgages
-  status: planned
+  status: thin
 - context: climate
   name: Climate and Emissions
   status: planned
