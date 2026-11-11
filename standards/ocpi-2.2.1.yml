@@ -1,0 +1,128 @@
+standard: ocpi-2.2.1
+source: https://github.com/ocpi/ocpi/tree/release-2.2.1-bugfixes
+format: ocpi
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  Location:
+  - country_code
+  - party_id
+  - id
+  - publish
+  - publish_allowed_to
+  - name
+  - address
+  - city
+  - postal_code
+  - state
+  - country
+  - coordinates
+  - related_locations
+  - parking_type
+  - evses
+  - directions
+  - operator
+  - suboperator
+  - owner
+  - facilities
+  - time_zone
+  - opening_times
+  - charging_when_closed
+  - images
+  - energy_mix
+  - last_updated
+  EVSE:
+  - uid
+  - evse_id
+  - status
+  - status_schedule
+  - capabilities
+  - connectors
+  - floor_level
+  - coordinates
+  - physical_reference
+  - directions
+  - parking_restrictions
+  - images
+  - last_updated
+  Connector:
+  - id
+  - standard
+  - format
+  - power_type
+  - max_voltage
+  - max_amperage
+  - max_electric_power
+  - tariff_ids
+  - terms_and_conditions
+  - last_updated
+  Session:
+  - country_code
+  - party_id
+  - id
+  - start_date_time
+  - end_date_time
+  - kwh
+  - cdr_token
+  - auth_method
+  - authorization_reference
+  - location_id
+  - evse_uid
+  - connector_id
+  - meter_id
+  - currency
+  - charging_periods
+  - total_cost
+  - status
+  - last_updated
+  ChargingPreferences:
+  - profile_type
+  - departure_time
+  - energy_need
+  - discharge_allowed
+  CDR:
+  - country_code
+  - party_id
+  - id
+  - start_date_time
+  - end_date_time
+  - session_id
+  - cdr_token
+  - auth_method
+  - authorization_reference
+  - cdr_location
+  - meter_id
+  - currency
+  - tariffs
+  - charging_periods
+  - signed_data
+  - total_cost
+  - total_fixed_cost
+  - total_energy
+  - total_energy_cost
+  - total_time
+  - total_time_cost
+  - total_parking_time
+  - total_parking_cost
+  - total_reservation_cost
+  - remark
+  - invoice_reference_id
+  - credit
+  - credit_reference_id
+  - home_charging_compensation
+  - last_updated
+  Tariff:
+  - country_code
+  - party_id
+  - id
+  - currency
+  - type
+  - tariff_alt_text
+  - tariff_alt_url
+  - min_price
+  - max_price
+  - elements
+  - start_date_time
+  - end_date_time
+  - energy_mix
+  - last_updated

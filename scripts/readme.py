@@ -29,6 +29,20 @@ extended tier and the long tail of every concept are in [profile.yml](profile.ym
 """
 if findings:
     text += "\n## What the measurement shows\n\n" + bullets(findings) + "\n"
+import glob as _g
+std_files = sorted(_g.glob("standards/*.yml"))
+if std_files:
+    text += "\n## Measured against the standard\n\n"
+    text += ("The census reads what providers publish. Where the domain has a standard, the standard's own\n"
+             "definition is read as one more voice: how much of the measured core it defines, and what it\n"
+             "defines that no provider in the cohort publishes. Crosswalks are in [standards/](standards).\n\n")
+    text += "| Standard | Concept | Core defined by the standard | Fields only the standard has |\n| --- | --- | ---: | ---: |\n"
+    for f in std_files:
+        r = yaml.safe_load(open(f))
+        for c, v in r["concepts"].items():
+            text += f"| [{r['standard']}]({r['source']}) | `{c}` | {('no measured core' if v['core_coverage'] is None else format(v['core_coverage'], '.0%'))} | {len(v['standard_only'])} |\n"
+        for c, v in (r.get("defines_unpublished") or {}).items():
+            text += f"| [{r['standard']}]({r['source']}) | `{c}` *(not published by the market)* | -- | {len(v['fields'])} |\n"
 text += f"""
 ## Artifacts
 

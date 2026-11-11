@@ -1,0 +1,66 @@
+standard: cap-1.2
+source: https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd
+format: cap
+note: Field names extracted from the standard's own published definition by scripts/extract-standard.py; nothing here comes
+  from a provider's spec.
+objects:
+  alert:
+  - identifier
+  - sender
+  - sent
+  - status
+  - msgType
+  - source
+  - scope
+  - restriction
+  - addresses
+  - code
+  - note
+  - references
+  - incidents
+  - info
+  info:
+  - language
+  - category
+  - event
+  - responseType
+  - urgency
+  - severity
+  - certainty
+  - audience
+  - eventCode
+  - effective
+  - onset
+  - expires
+  - senderName
+  - headline
+  - description
+  - instruction
+  - web
+  - contact
+  - parameter
+  - resource
+  - area
+  eventCode:
+  - null
+  - null
+  parameter:
+  - null
+  - null
+  resource:
+  - resourceDesc
+  - mimeType
+  - size
+  - uri
+  - derefUri
+  - digest
+  area:
+  - areaDesc
+  - polygon
+  - circle
+  - geocode
+  - altitude
+  - ceiling
+  geocode:
+  - null
+  - null
