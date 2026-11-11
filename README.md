@@ -53,18 +53,18 @@ Counts are generated into [evidence/naming.yml](evidence/naming.yml) by
 and this table from them:
 
 <!-- commons:naming -->
-Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing: 1258 providers.
+Measured across Customer Relationship Management, Help Desk and Ticketing, Commerce, Payments, Card Issuing, Billing and Invoicing: 1383 providers.
 
 | Rule | Measured (providers) | Severity |
 | --- | --- | --- |
-| path segments kebab-case | lowercase 1209; multi-word kebab 731 / snake 380 / camel 269 | warn |
-| timestamps end in `_at` | `_at` 349 / bare `created` 130 / `_time`, `_date`, `on` 89 | warn |
-| collections are plural | plural 835 / singular 414 | info |
-| properties snake_case | multi-word snake 413 / camel 432 | info |
-| references `<resource>_id` | `_id` 337 / `...Id` 381 | info |
-| path params snake_case | `{id}` 723; multi-word camel 579 / snake 434 | info |
-| query params snake_case | snake 528 / camel 562 | info |
-| paging is `limit` + `cursor` | limit 492, page 394, offset 261, cursor 148 | info |
+| path segments kebab-case | lowercase 1328; multi-word kebab 787 / snake 420 / camel 302 | warn |
+| timestamps end in `_at` | `_at` 380 / bare `created` 152 / `_time`, `_date`, `on` 109 | warn |
+| collections are plural | plural 922 / singular 471 | info |
+| properties snake_case | multi-word snake 453 / camel 478 | info |
+| references `<resource>_id` | `_id` 371 / `...Id` 419 | info |
+| path params snake_case | `{id}` 798; multi-word camel 637 / snake 476 | info |
+| query params snake_case | snake 581 / camel 607 | info |
+| paging is `limit` + `cursor` | limit 534, page 438, offset 278, cursor 161 | info |
 <!-- /commons:naming -->
 
 The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/openlint/rules/pull/2).
@@ -80,9 +80,10 @@ The ruleset is also proposed to OpenLint: [openlint/rules#2](https://github.com/
 | Help Desk and Ticketing | [api-commons/ticketing](https://github.com/api-commons/ticketing) | published | 77 | 48 |
 | Commerce | [api-commons/commerce](https://github.com/api-commons/commerce) | published | 401 | 252 |
 | Payments | [api-commons/payments](https://github.com/api-commons/payments) | published | 692 | 431 |
-| Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | built | 740 | 64 |
+| Card Issuing | [api-commons/card-issuing](https://github.com/api-commons/card-issuing) | published | 740 | 64 |
+| Billing and Invoicing | [api-commons/billing](https://github.com/api-commons/billing) | built | 837 | 269 |
 
-Planned, in order: Billing and Invoicing, Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
+Planned, in order: Messaging (Email, SMS, Chat), Calendars and Scheduling, People and HR, Files and Documents, Identity and Users (cross-cutting).
 <!-- /commons:contexts -->
 
 ## Running a context

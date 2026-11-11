@@ -5,63 +5,64 @@ contexts:
 - commerce
 - payments
 - card-issuing
-providers: 1258
+- billing
+providers: 1383
 note: Counts are providers (catalog duplicates and shared specifications folded),
   a provider can appear under several forms.
 measures:
   collection_noun:
-    plural: 835
-    singular: 414
+    plural: 922
+    singular: 471
   foreign_key:
-    Id: 381
-    _id: 337
+    Id: 419
+    _id: 371
   pagination_param:
-    limit: 492
-    page: 394
-    offset: 261
-    page_size: 234
-    cursor: 148
-    per_page: 118
-    size: 90
-    count: 61
-    start: 59
-    skip: 56
-    after: 55
-    before: 41
-    page_token: 37
-    starting_after: 30
-    max_results: 17
-    top: 16
+    limit: 534
+    page: 438
+    offset: 278
+    page_size: 262
+    cursor: 161
+    per_page: 131
+    size: 99
+    count: 67
+    start: 65
+    skip: 62
+    after: 59
+    before: 45
+    page_token: 40
+    starting_after: 32
+    top: 21
+    max_results: 19
     next: 10
   path_param:
-    lower: 723
-    camelCase: 579
-    snake_case: 434
-    PascalCase: 69
-    kebab-case: 52
-    other: 36
+    lower: 798
+    camelCase: 637
+    snake_case: 476
+    PascalCase: 75
+    kebab-case: 54
+    other: 38
   path_segment:
-    lower: 1209
-    kebab-case: 731
-    snake_case: 380
-    camelCase: 269
-    other: 234
-    PascalCase: 104
+    lower: 1328
+    kebab-case: 787
+    snake_case: 420
+    camelCase: 302
+    other: 256
+    PascalCase: 120
   property:
-    lower: 811
-    camelCase: 432
-    snake_case: 413
-    PascalCase: 83
-    other: 74
-    kebab-case: 6
+    lower: 894
+    camelCase: 478
+    snake_case: 453
+    PascalCase: 87
+    other: 79
+    kebab-case: 7
   query_param:
-    lower: 954
-    camelCase: 562
-    snake_case: 528
-    other: 222
-    PascalCase: 69
-    kebab-case: 44
+    lower: 1048
+    camelCase: 607
+    snake_case: 581
+    other: 251
+    PascalCase: 78
+    kebab-case: 49
   timestamp:
-    _at: 349
-    bare: 130
-    _date/_time/on: 89
+    _at: 380
+    bare: 152
+    _date/_time/on: 109
