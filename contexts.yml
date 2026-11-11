@@ -571,13 +571,15 @@ contexts:
   status: thin
 - context: databases
   name: Databases
-  status: planned
+  status: built
+  repo: api-commons/databases
 - context: etl
   name: Data Integration and ETL
-  status: planned
+  status: built
+  repo: api-commons/etl
 - context: event-streaming
   name: Event Streaming and Queues
-  status: planned
+  status: thin
 - context: data-governance
   name: Data Catalogs and Governance
   status: planned
