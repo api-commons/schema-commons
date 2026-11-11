@@ -762,7 +762,7 @@ contexts:
   status: thin
 - context: elections
   name: Elections
-  status: planned
+  status: thin
 - context: higher-education
   name: Higher Education
   status: planned
