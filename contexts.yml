@@ -582,13 +582,15 @@ contexts:
   status: thin
 - context: data-governance
   name: Data Catalogs and Governance
-  status: planned
+  status: built
+  repo: api-commons/data-governance
 - context: business-intelligence
   name: Business Intelligence
-  status: planned
+  status: built
+  repo: api-commons/business-intelligence
 - context: data-warehouses
   name: Data Warehouses and Query
-  status: planned
+  status: thin
 - context: web-scraping
   name: Web Scraping and Crawling
   status: planned
