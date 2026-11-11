@@ -852,7 +852,7 @@ contexts:
   status: thin
 - context: hospitality
   name: Hotels and Property Systems
-  status: planned
+  status: thin
 - context: churches
   name: Churches and Congregations
   status: planned
