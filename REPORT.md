@@ -299,7 +299,7 @@ digital-asset-management and productivity.
    crawls, training runs and sync jobs share one pattern: POST a request, poll a status, collect an output.
    It is a candidate for a cross-context pattern, like the envelope.
 4. **Duplicate listings still fake agreement.** One lab aggregator listed under three slugs produced a
-   35-property lab-test core; MX under three slugs produced a savings-goal core. In the CDR, Congress.gov
+   lab-test core of more than thirty properties; MX under three slugs produced a savings-goal core. In the CDR, Congress.gov
    and CAMARA cases, a "core" was one publisher counted several times. The check is now a habit: when a core
    is suspiciously long, grep the crosswalks for its rarest property.
 5. **Thin records were at risk.** Thin contexts have no repository, and their findings existed only in
