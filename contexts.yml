@@ -689,7 +689,7 @@ contexts:
   status: thin
 - context: telecommunications
   name: Telecommunications
-  status: planned
+  status: thin
 - context: iot-connectivity
   name: IoT Connectivity and SIMs
   status: planned
