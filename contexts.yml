@@ -798,7 +798,7 @@ contexts:
   status: thin
 - context: autonomous-vehicles
   name: Autonomous Vehicles
-  status: planned
+  status: thin
 - context: 3d-printing
   name: 3D Printing
   status: planned
