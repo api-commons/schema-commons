@@ -638,16 +638,19 @@ contexts:
   status: thin
 - context: foreign-exchange
   name: Foreign Exchange
-  status: planned
+  status: built
+  repo: api-commons/foreign-exchange
 - context: payouts
   name: Payouts and Cross-Border Payments
-  status: planned
+  status: built
+  repo: api-commons/payouts
 - context: personal-finance
   name: Personal Finance
-  status: planned
+  status: built
+  repo: api-commons/personal-finance
 - context: wealth-management
   name: Wealth and Asset Management
-  status: planned
+  status: thin
 - context: risk-management
   name: Risk and Compliance
   status: planned
