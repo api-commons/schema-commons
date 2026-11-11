@@ -756,7 +756,7 @@ contexts:
   status: thin
 - context: legislation
   name: Legislation
-  status: planned
+  status: thin
 - context: courts
   name: Courts and Case Records
   status: planned
