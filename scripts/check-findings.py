@@ -184,6 +184,8 @@ def check(ctx):
             if " " not in m.group(1) and (not before or before[-1] in ".:;!?\"-"):
                 continue
             s = slug(m.group(1))
+            if s == ctx or s == slug(cfg.get("name", "")):
+                continue  # the context's own name ("MLOps") is the domain, not a provider
             if s in (cfg.get("shared_specs") or {}) or any(s in k for k in (cfg.get("shared_specs") or {})):
                 continue  # a shared standard's voice is named for the standard, not a crosswalk
             flat = {x.replace("-", "") for x in crosswalk}
