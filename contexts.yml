@@ -765,7 +765,7 @@ contexts:
   status: thin
 - context: higher-education
   name: Higher Education
-  status: planned
+  status: thin
 - context: course-catalogs
   name: Course Catalogs
   status: planned
