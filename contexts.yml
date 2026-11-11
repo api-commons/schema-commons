@@ -674,7 +674,7 @@ contexts:
   status: thin
 - context: medical-imaging
   name: Medical Imaging
-  status: planned
+  status: thin
 - context: pharmacy
   name: Pharmacy and Prescriptions
   status: planned
