@@ -93,6 +93,13 @@ def load(p):
                 return yaml.load(attempt, Loader=Loader)
             except Exception:
                 pass
+    # libyaml rejects a tab inside a block scalar that the pure-Python parser accepts; NovoPayment
+    # publishes exactly that (payment-authorizer, tokenization), byte-identical to what we archived.
+    if Loader is not yaml.SafeLoader and p.suffix != ".json":
+        try:
+            return yaml.load(t, Loader=yaml.SafeLoader)
+        except Exception:
+            pass
     UNREADABLE.append({"spec": str(p.relative_to(ALL)), "error": err})
     return None
 
